@@ -2,6 +2,8 @@
 
 A personal blog built with Hugo using the Pehtheme-Hugo theme.
 
+> **Note**: For a minimal working reference implementation, see the [`frozen_minimum_working_install_branch`](../../tree/frozen_minimum_working_install_branch) branch.
+
 ## Quick Start
 
 1. Install required software:
