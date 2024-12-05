@@ -30,18 +30,30 @@ A personal blog built with Hugo using the Pehtheme-Hugo theme.
   - Tailwind CSS watcher
   - Changes to content/CSS auto-reload
 
-- `npm run build` creates production build:
-  - Processes Tailwind CSS
-  - Builds Hugo site
-  - Output goes to /public
+## Production Build and Deployment
 
-## Deployment
+1. Local Build:
+   ```bash
+   npm run build
+   ```
+   This command:
+   - Processes Tailwind CSS
+   - Builds Hugo site
+   - Output goes to /public
 
-The site is automatically deployed to GitHub Pages when changes are pushed to the main branch. The deployment process:
+2. Commit the changes:
+   ```bash
+   git add .
+   git commit -m "Update site content"
+   git push origin main
+   ```
+   Important: The /public directory must be committed as it contains the built site.
 
-1. Builds the Hugo site with Tailwind CSS
-2. Deploys to GitHub Pages
-3. Makes the site available at thingsithinkithink.blog
+3. Deployment:
+   - The site automatically deploys to GitHub Pages when changes are pushed to main
+   - The deployment uses the pre-built files from the /public directory
+   - No build process runs on GitHub - only deployment
+   - Site becomes available at thingsithinkithink.blog
 
 ## Site Configuration
 
