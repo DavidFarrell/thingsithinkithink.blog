@@ -1,0 +1,20 @@
+name = 'Pehtheme Hugo'
+license = 'MIT'
+licenselink = 'https://github.com/fauzanmy/pehtheme-hugo/blob/main/LICENSE'
+description = 'Pehtheme Hugo : A minimalist Hugo theme built with TailwindCSS, for efficient performance and minimalism'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/fauzanmy/pehtheme-hugo'
+
+# If you have a running demo of the theme
+demosite = 'https://pehtheme-hugo.netlify.app/'
+
+# Taxonomy terms
+tags = ['blog', 'responsive', 'light', 'tailwindcss']
+features = ['tailwindcss', 'two-column', 'sidebar', 'horizontal-menu']
+
+# If the theme has multiple authors
+
+[author]
+  name = 'Fauzan My'
+  homepage = 'https://fzn.my.id/'
