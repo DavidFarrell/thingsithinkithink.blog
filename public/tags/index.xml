@@ -1,116 +1,116 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Pehtheme</title>
-    <link>http://localhost:1313/tags/</link>
-    <description>Recent content in Tags on Pehtheme</description>
+    <title>Tags on thingsithinkithink</title>
+    <link>https://thingsithinkithink.blog/tags/</link>
+    <description>Recent content in Tags on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Dec 2024 13:23:44 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Dec 2024 14:33:22 +0000</lastBuildDate>
+    <atom:link href="https://thingsithinkithink.blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Untagged</title>
-      <link>http://localhost:1313/tags/untagged/</link>
-      <pubDate>Thu, 05 Dec 2024 13:23:44 +0000</pubDate>
-      <guid>http://localhost:1313/tags/untagged/</guid>
+      <title>Feature</title>
+      <link>https://thingsithinkithink.blog/tags/feature/</link>
+      <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/feature/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Thoughts</title>
+      <link>https://thingsithinkithink.blog/tags/thoughts/</link>
+      <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/thoughts/</guid>
       <description></description>
     </item>
     <item>
       <title>Black Hole</title>
-      <link>http://localhost:1313/tags/black-hole/</link>
+      <link>https://thingsithinkithink.blog/tags/black-hole/</link>
       <pubDate>Wed, 04 Oct 2023 22:11:36 +0700</pubDate>
-      <guid>http://localhost:1313/tags/black-hole/</guid>
+      <guid>https://thingsithinkithink.blog/tags/black-hole/</guid>
       <description></description>
     </item>
     <item>
       <title>Relativity</title>
-      <link>http://localhost:1313/tags/relativity/</link>
+      <link>https://thingsithinkithink.blog/tags/relativity/</link>
       <pubDate>Wed, 04 Oct 2023 22:11:36 +0700</pubDate>
-      <guid>http://localhost:1313/tags/relativity/</guid>
+      <guid>https://thingsithinkithink.blog/tags/relativity/</guid>
       <description></description>
     </item>
     <item>
       <title>Space</title>
-      <link>http://localhost:1313/tags/space/</link>
+      <link>https://thingsithinkithink.blog/tags/space/</link>
       <pubDate>Wed, 04 Oct 2023 22:11:36 +0700</pubDate>
-      <guid>http://localhost:1313/tags/space/</guid>
+      <guid>https://thingsithinkithink.blog/tags/space/</guid>
       <description></description>
     </item>
     <item>
       <title>Cosmic</title>
-      <link>http://localhost:1313/tags/cosmic/</link>
+      <link>https://thingsithinkithink.blog/tags/cosmic/</link>
       <pubDate>Sun, 24 Sep 2023 11:15:17 +0700</pubDate>
-      <guid>http://localhost:1313/tags/cosmic/</guid>
+      <guid>https://thingsithinkithink.blog/tags/cosmic/</guid>
       <description></description>
     </item>
     <item>
       <title>Nebula</title>
-      <link>http://localhost:1313/tags/nebula/</link>
+      <link>https://thingsithinkithink.blog/tags/nebula/</link>
       <pubDate>Sun, 24 Sep 2023 11:15:17 +0700</pubDate>
-      <guid>http://localhost:1313/tags/nebula/</guid>
+      <guid>https://thingsithinkithink.blog/tags/nebula/</guid>
       <description></description>
     </item>
     <item>
       <title>Supernova</title>
-      <link>http://localhost:1313/tags/supernova/</link>
+      <link>https://thingsithinkithink.blog/tags/supernova/</link>
       <pubDate>Sat, 23 Sep 2023 22:45:37 +0700</pubDate>
-      <guid>http://localhost:1313/tags/supernova/</guid>
+      <guid>https://thingsithinkithink.blog/tags/supernova/</guid>
       <description></description>
     </item>
     <item>
       <title>Exploration</title>
-      <link>http://localhost:1313/tags/exploration/</link>
+      <link>https://thingsithinkithink.blog/tags/exploration/</link>
       <pubDate>Tue, 15 Aug 2023 13:45:49 +0700</pubDate>
-      <guid>http://localhost:1313/tags/exploration/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Feature</title>
-      <link>http://localhost:1313/tags/feature/</link>
-      <pubDate>Tue, 15 Aug 2023 13:45:49 +0700</pubDate>
-      <guid>http://localhost:1313/tags/feature/</guid>
+      <guid>https://thingsithinkithink.blog/tags/exploration/</guid>
       <description></description>
     </item>
     <item>
       <title>Mars</title>
-      <link>http://localhost:1313/tags/mars/</link>
+      <link>https://thingsithinkithink.blog/tags/mars/</link>
       <pubDate>Tue, 15 Aug 2023 13:45:49 +0700</pubDate>
-      <guid>http://localhost:1313/tags/mars/</guid>
+      <guid>https://thingsithinkithink.blog/tags/mars/</guid>
       <description></description>
     </item>
     <item>
       <title>Cosmos</title>
-      <link>http://localhost:1313/tags/cosmos/</link>
+      <link>https://thingsithinkithink.blog/tags/cosmos/</link>
       <pubDate>Sat, 12 Aug 2023 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/cosmos/</guid>
+      <guid>https://thingsithinkithink.blog/tags/cosmos/</guid>
       <description></description>
     </item>
     <item>
       <title>Telescopes</title>
-      <link>http://localhost:1313/tags/telescopes/</link>
+      <link>https://thingsithinkithink.blog/tags/telescopes/</link>
       <pubDate>Mon, 07 Aug 2023 09:30:32 +0700</pubDate>
-      <guid>http://localhost:1313/tags/telescopes/</guid>
+      <guid>https://thingsithinkithink.blog/tags/telescopes/</guid>
       <description></description>
     </item>
     <item>
       <title>Astronomy</title>
-      <link>http://localhost:1313/tags/astronomy/</link>
+      <link>https://thingsithinkithink.blog/tags/astronomy/</link>
       <pubDate>Sun, 30 Jul 2023 09:30:32 +0700</pubDate>
-      <guid>http://localhost:1313/tags/astronomy/</guid>
+      <guid>https://thingsithinkithink.blog/tags/astronomy/</guid>
       <description></description>
     </item>
     <item>
       <title>Telescope</title>
-      <link>http://localhost:1313/tags/telescope/</link>
+      <link>https://thingsithinkithink.blog/tags/telescope/</link>
       <pubDate>Sun, 30 Jul 2023 09:30:32 +0700</pubDate>
-      <guid>http://localhost:1313/tags/telescope/</guid>
+      <guid>https://thingsithinkithink.blog/tags/telescope/</guid>
       <description></description>
     </item>
     <item>
       <title>Exoplanets</title>
-      <link>http://localhost:1313/tags/exoplanets/</link>
+      <link>https://thingsithinkithink.blog/tags/exoplanets/</link>
       <pubDate>Thu, 27 Jul 2023 13:03:07 +0700</pubDate>
-      <guid>http://localhost:1313/tags/exoplanets/</guid>
+      <guid>https://thingsithinkithink.blog/tags/exoplanets/</guid>
       <description></description>
     </item>
   </channel>

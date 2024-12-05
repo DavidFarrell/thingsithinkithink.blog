@@ -1,6 +1,6 @@
 baseURL = 'https://thingsithinkithink.blog/'
 languageCode = 'en-us'
-title = 'Pehtheme'
+title = 'thingsithinkithink'
 theme = 'pehtheme-hugo'
 
 paginate = '6' # <- Set the desired number of posts per page 
@@ -10,14 +10,14 @@ disqusShortname = 'your-disqus-shortname' # <- Get form here : https://disqus.co
 
 [params]
 	# Meta description, not exceeding 160 characters, used for the meta description within the HTML head
-	description = 'Pehtheme Hugo Lite: A minimalist Hugo theme, built with TailwindCSS, for efficient performance and minimalism.'
+	description = 'This is a personal blog where I can think, learn, and work in public.'
 	mainSections = 'posts'
 	
 	[params.author]
-		name = 'Anthony Arphan'
-		bio = 'Debitis assumenda esse dignissimos aperiam delectus maxime tenetur repudiandae dolore'
+		name = 'David Gerouville-Farrell'
+		bio = 'I used to be a lecturer. Now I am mostly an AI consultant.'
 		avatar = '/images/nasa-astronaut-unsplash.jpg'
-		twitter = 'https://twitter.com/insertapps'
+		twitter = 'https://bsky.app/profile/dgerouvillefarrell.bsky.social'
 
 [menu] # Menu management
 	[[menu.main]]

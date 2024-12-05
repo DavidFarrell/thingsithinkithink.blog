@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Uncategorized on Pehtheme</title>
+    <title>Uncategorized on thingsithinkithink</title>
     <link>http://localhost:1313/categories/uncategorized/</link>
-    <description>Recent content in Uncategorized on Pehtheme</description>
+    <description>Recent content in Uncategorized on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Dec 2024 13:23:44 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/uncategorized/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>test</title>
-      <link>http://localhost:1313/posts/2024/12-05-test/</link>
-      <pubDate>Thu, 05 Dec 2024 13:23:44 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2024/12-05-test/</guid>
-      <description>&lt;p&gt;sdfasdfasdfasd&lt;/p&gt;&#xA;&lt;p&gt;The dream of reaching Mars has captured the imagination of scientists, engineers, and space enthusiasts for decades. In recent years, this dream has transformed into a tangible goal, with various space agencies and private companies embarking on missions to make it a reality. In this article, we delve into space exploration&amp;rsquo;s next frontier—the race to reach Mars.&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>

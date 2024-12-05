@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Feature on Pehtheme</title>
-    <link>http://localhost:1313/tags/feature/</link>
-    <description>Recent content in Feature on Pehtheme</description>
+    <title>Feature on thingsithinkithink</title>
+    <link>https://thingsithinkithink.blog/tags/feature/</link>
+    <description>Recent content in Feature on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Aug 2023 13:45:49 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/feature/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Dec 2024 14:33:22 +0000</lastBuildDate>
+    <atom:link href="https://thingsithinkithink.blog/tags/feature/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Things I Think I Think</title>
+      <link>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think/</link>
+      <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think/</guid>
+      <description>&lt;p&gt;I want to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because, during my PhD, I struggled significantly with writer&amp;rsquo;s block, and I had the most patient PhD supervisor, David Moffat. David was (is) excellent at helping me work through things.  He is very socratic in his approach and he helped me understand the reasons behind my writer&amp;rsquo;s block, much of which stemmed from a feeling of needing to be perfect.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>dfSpace Exploration&#39;s Next Frontier: The Race to Reach Mars</title>
-      <link>http://localhost:1313/posts/2023/space-explorations-next-frontier/</link>
+      <link>https://thingsithinkithink.blog/posts/2023/space-explorations-next-frontier/</link>
       <pubDate>Tue, 15 Aug 2023 13:45:49 +0700</pubDate>
-      <guid>http://localhost:1313/posts/2023/space-explorations-next-frontier/</guid>
+      <guid>https://thingsithinkithink.blog/posts/2023/space-explorations-next-frontier/</guid>
       <description>&lt;p&gt;The dream of reaching Mars has captured the imagination of scientists, engineers, and space enthusiasts for decades. In recent years, this dream has transformed into a tangible goal, with various space agencies and private companies embarking on missions to make it a reality. In this article, we delve into space exploration&amp;rsquo;s next frontier—the race to reach Mars.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Exoplanets: Hunting for Earth&#39;s Cosmic Cousins</title>
-      <link>http://localhost:1313/posts/2022/exoplanets-hunting/</link>
+      <link>https://thingsithinkithink.blog/posts/2022/exoplanets-hunting/</link>
       <pubDate>Thu, 27 Jul 2023 13:03:07 +0700</pubDate>
-      <guid>http://localhost:1313/posts/2022/exoplanets-hunting/</guid>
+      <guid>https://thingsithinkithink.blog/posts/2022/exoplanets-hunting/</guid>
       <description>&lt;p&gt;In the vast tapestry of the cosmos, one of the most intriguing quests of modern astronomy is the search for exoplanets, distant celestial bodies that might bear a resemblance to our own Earth. This endeavor is driven by the tantalizing question: Could there be other habitable worlds out there? In this article, we embark on a journey to explore the captivating hunt for Earth&amp;rsquo;s cosmic cousins.&lt;/p&gt;</description>
     </item>
   </channel>

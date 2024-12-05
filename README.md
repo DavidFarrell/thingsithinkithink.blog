@@ -13,14 +13,28 @@ A personal blog built with Hugo using the Pehtheme-Hugo theme.
    npm install
    ```
 
-3. Start the development server:
+## Local Development
+
+There are two main ways to run the site locally, depending on what you're working on:
+
+1. For content development and general testing:
+   ```bash
+   hugo server -D --disableFastRender --poll 500ms
+   ```
+   This command:
+   - Starts the Hugo server (localhost:1313)
+   - `-D`: Includes draft posts
+   - `--disableFastRender`: Ensures full page rebuilds for accurate previews
+   - `--poll 500ms`: Watches for file changes every 500ms (more reliable than default)
+
+2. For Tailwind CSS development:
    ```bash
    npm run dev
    ```
-   This single command:
-   - Starts the Hugo server (localhost:1313)
+   Only use this command when actively working on Tailwind CSS styles. It:
+   - Starts the Hugo server
    - Watches for Tailwind CSS changes
-   - Auto-reloads when content or CSS changes
+   - Processes CSS changes in real-time
 
 ## Creating New Posts
 

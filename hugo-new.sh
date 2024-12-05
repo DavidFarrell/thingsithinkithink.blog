@@ -1,10 +1,34 @@
 #!/bin/bash
 
+# Show usage information function
+show_usage() {
+    echo "Usage: $0 [-d YYMMDD|YYYYMMDD] \"Post Title\""
+    echo
+    echo "Options:"
+    echo "  -d DATE    Specify post date in YYMMDD or YYYYMMDD format"
+    echo "             Example: -d 241205 or -d 20241205"
+    echo
+    echo "Examples:"
+    echo "  $0 \"My New Blog Post\"              # Creates post with current date"
+    echo "  $0 -d 241205 \"My New Blog Post\"    # Creates post dated Dec 5, 2024"
+    echo
+    echo "The script will:"
+    echo "  - Create a new post in content/posts/YEAR/"
+    echo "  - Add date prefix to filename (MM-DD-title)"
+    echo "  - Preserve original title capitalization"
+}
+
 # Initialize variables
 CUSTOM_DATE=""
 
+# Show usage if no arguments provided
+if [ $# -eq 0 ]; then
+    show_usage
+    exit 1
+fi
+
 # Parse command line arguments
-while getopts "d:" opt; do
+while getopts "d:h" opt; do
   case $opt in
     d)
       # Handle both YYYYMMDD and YYMMDD formats
@@ -19,8 +43,13 @@ while getopts "d:" opt; do
       fi
       CUSTOM_DATE="${YEAR}-${MONTH}-${DAY}T12:00:00Z"
       ;;
+    h)
+      show_usage
+      exit 0
+      ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
+      show_usage
       exit 1
       ;;
   esac
@@ -31,8 +60,9 @@ shift $((OPTIND-1))
 
 # Check if a title was provided
 if [ -z "$1" ]; then
-  echo "Please provide a title for the post."
-  echo "Usage: $0 [-d YYMMDD|YYYYMMDD] \"Post Title\""
+  echo "Error: Please provide a title for the post."
+  echo
+  show_usage
   exit 1
 fi
 

@@ -2,100 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-12-06T12:00:00+00:00</lastmod>
+    <loc>https://thingsithinkithink.blog/categories/blog/</loc>
+    <lastmod>2024-12-05T14:33:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-12-06T12:00:00+00:00</lastmod>
+    <loc>https://thingsithinkithink.blog/categories/</loc>
+    <lastmod>2024-12-05T14:33:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-12-05T13:23:44+00:00</lastmod>
+    <loc>https://thingsithinkithink.blog/tags/feature/</loc>
+    <lastmod>2024-12-05T14:33:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-12-05T13:23:44+00:00</lastmod>
+    <loc>https://thingsithinkithink.blog/posts/</loc>
+    <lastmod>2024-12-05T14:33:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2024/12-05-test/</loc>
-    <lastmod>2024-12-05T13:23:44+00:00</lastmod>
+    <loc>https://thingsithinkithink.blog/tags/</loc>
+    <lastmod>2024-12-05T14:33:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/uncategorized/</loc>
-    <lastmod>2024-12-05T13:23:44+00:00</lastmod>
+    <loc>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think/</loc>
+    <lastmod>2024-12-05T14:33:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/untagged/</loc>
-    <lastmod>2024-12-05T13:23:44+00:00</lastmod>
+    <loc>https://thingsithinkithink.blog/</loc>
+    <lastmod>2024-12-05T14:33:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://thingsithinkithink.blog/tags/thoughts/</loc>
+    <lastmod>2024-12-05T14:33:22+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/about/</loc>
     <lastmod>2023-10-06T20:37:29+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/astronomy/</loc>
+    <loc>https://thingsithinkithink.blog/categories/astronomy/</loc>
     <lastmod>2023-10-04T22:11:36+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/black-hole/</loc>
+    <loc>https://thingsithinkithink.blog/tags/black-hole/</loc>
     <lastmod>2023-10-04T22:11:36+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/relativity/</loc>
+    <loc>https://thingsithinkithink.blog/tags/relativity/</loc>
     <lastmod>2023-10-04T22:11:36+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/space/</loc>
+    <loc>https://thingsithinkithink.blog/tags/space/</loc>
     <lastmod>2023-10-04T22:11:36+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2023/unveiling-the-secrets-of-black-holes/</loc>
+    <loc>https://thingsithinkithink.blog/posts/2023/unveiling-the-secrets-of-black-holes/</loc>
     <lastmod>2023-10-04T22:11:36+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cosmic/</loc>
+    <loc>https://thingsithinkithink.blog/tags/cosmic/</loc>
     <lastmod>2023-09-24T11:15:17+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2023/galactic-marvels/</loc>
+    <loc>https://thingsithinkithink.blog/posts/2023/galactic-marvels/</loc>
     <lastmod>2023-09-24T11:15:17+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/nebula/</loc>
+    <loc>https://thingsithinkithink.blog/tags/nebula/</loc>
     <lastmod>2023-09-24T11:15:17+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/space/</loc>
+    <loc>https://thingsithinkithink.blog/categories/space/</loc>
     <lastmod>2023-09-24T11:15:17+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2023/stellar-spectacles/</loc>
+    <loc>https://thingsithinkithink.blog/posts/2023/stellar-spectacles/</loc>
     <lastmod>2023-09-23T22:45:37+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/supernova/</loc>
+    <loc>https://thingsithinkithink.blog/tags/supernova/</loc>
     <lastmod>2023-09-23T22:45:37+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2023/space-explorations-next-frontier/</loc>
+    <loc>https://thingsithinkithink.blog/posts/2023/space-explorations-next-frontier/</loc>
     <lastmod>2023-08-15T13:45:49+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/exploration/</loc>
+    <loc>https://thingsithinkithink.blog/tags/exploration/</loc>
     <lastmod>2023-08-15T13:45:49+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/feature/</loc>
+    <loc>https://thingsithinkithink.blog/tags/mars/</loc>
     <lastmod>2023-08-15T13:45:49+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mars/</loc>
-    <lastmod>2023-08-15T13:45:49+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/cosmos/</loc>
+    <loc>https://thingsithinkithink.blog/tags/cosmos/</loc>
     <lastmod>2023-08-12T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2023/the-great-beyond/</loc>
+    <loc>https://thingsithinkithink.blog/posts/2023/the-great-beyond/</loc>
     <lastmod>2023-08-12T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2022/cosmic-time-travel/</loc>
+    <loc>https://thingsithinkithink.blog/posts/2022/cosmic-time-travel/</loc>
     <lastmod>2023-08-07T09:30:32+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/telescopes/</loc>
+    <loc>https://thingsithinkithink.blog/tags/telescopes/</loc>
     <lastmod>2023-08-07T09:30:32+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/astronomy/</loc>
+    <loc>https://thingsithinkithink.blog/tags/astronomy/</loc>
     <lastmod>2023-07-30T09:30:32+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/telescope/</loc>
+    <loc>https://thingsithinkithink.blog/tags/telescope/</loc>
     <lastmod>2023-07-30T09:30:32+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2022/the-hubble-space-telescope/</loc>
+    <loc>https://thingsithinkithink.blog/posts/2022/the-hubble-space-telescope/</loc>
     <lastmod>2023-07-30T09:30:32+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/exoplanets/</loc>
+    <loc>https://thingsithinkithink.blog/tags/exoplanets/</loc>
     <lastmod>2023-07-27T13:03:07+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2022/exoplanets-hunting/</loc>
+    <loc>https://thingsithinkithink.blog/posts/2022/exoplanets-hunting/</loc>
     <lastmod>2023-07-27T13:03:07+07:00</lastmod>
   </url>
 </urlset>
