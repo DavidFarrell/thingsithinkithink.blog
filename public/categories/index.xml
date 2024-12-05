@@ -2,24 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Pehtheme</title>
-    <link>https://thingsithinkithink.blog/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on Pehtheme</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Oct 2023 22:11:36 +0700</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Dec 2024 13:23:44 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Uncategorized</title>
+      <link>http://localhost:1313/categories/uncategorized/</link>
+      <pubDate>Thu, 05 Dec 2024 13:23:44 +0000</pubDate>
+      <guid>http://localhost:1313/categories/uncategorized/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Astronomy</title>
-      <link>https://thingsithinkithink.blog/categories/astronomy/</link>
+      <link>http://localhost:1313/categories/astronomy/</link>
       <pubDate>Wed, 04 Oct 2023 22:11:36 +0700</pubDate>
-      <guid>https://thingsithinkithink.blog/categories/astronomy/</guid>
+      <guid>http://localhost:1313/categories/astronomy/</guid>
       <description></description>
     </item>
     <item>
       <title>Space</title>
-      <link>https://thingsithinkithink.blog/categories/space/</link>
+      <link>http://localhost:1313/categories/space/</link>
       <pubDate>Sun, 24 Sep 2023 11:15:17 +0700</pubDate>
-      <guid>https://thingsithinkithink.blog/categories/space/</guid>
+      <guid>http://localhost:1313/categories/space/</guid>
       <description></description>
     </item>
   </channel>

@@ -13,22 +13,36 @@ A personal blog built with Hugo using the Pehtheme-Hugo theme.
    npm install
    ```
 
-3. Start development server:
+3. Start the development server:
    ```bash
    npm run dev
    ```
+   This single command:
+   - Starts the Hugo server (localhost:1313)
+   - Watches for Tailwind CSS changes
+   - Auto-reloads when content or CSS changes
 
-4. Build for production:
+## Creating New Posts
+
+Use the `hugo-new.sh` script to create new posts:
+
+1. Basic usage (creates post with current date):
    ```bash
-   npm run build
+   ./hugo-new.sh "Your Post Title"
    ```
 
-## Development Workflow
+2. With custom date (supports both YYMMDD and YYYYMMDD formats):
+   ```bash
+   ./hugo-new.sh -d 241205 "Your Post Title"
+   # or
+   ./hugo-new.sh -d 20241205 "Your Post Title"
+   ```
 
-- `npm run dev` starts both:
-  - Hugo server (localhost:1313)
-  - Tailwind CSS watcher
-  - Changes to content/CSS auto-reload
+The script will:
+- Create a new markdown file in `content/posts/YEAR/`
+- Add the date prefix to the filename (MM-DD-title)
+- Preserve original title capitalization in the frontmatter
+- Set the post date (current or specified)
 
 ## Production Build and Deployment
 
