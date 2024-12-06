@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Thoughts on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/thoughts/</link>
+    <link>http://localhost:1313/tags/thoughts/</link>
     <description>Recent content in Thoughts on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 Dec 2024 14:33:22 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Things I Think I Think</title>
-      <link>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think/</link>
+      <link>http://localhost:1313/posts/2024/12-05-things-i-think-i-think/</link>
       <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think/</guid>
+      <guid>http://localhost:1313/posts/2024/12-05-things-i-think-i-think/</guid>
       <description>&lt;p&gt;I want to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because, during my PhD, I struggled significantly with writer&amp;rsquo;s block, and I had the most patient PhD supervisor, David Moffat. David was (is) excellent at helping me work through things.  He is very socratic in his approach and he helped me understand the reasons behind my writer&amp;rsquo;s block, much of which stemmed from a feeling of needing to be perfect.&lt;/p&gt;</description>
     </item>
   </channel>
