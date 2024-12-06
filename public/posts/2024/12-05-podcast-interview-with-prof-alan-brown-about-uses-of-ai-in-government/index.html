@@ -56,7 +56,7 @@
       <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
     </li>
     <li class="my-2">
-      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/space/">Taxonomy</a>
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
     </li>
     </ul>
   </nav>
@@ -94,15 +94,19 @@
 
       </div>
       
-      <div id="writer" class="flex items-center space-x-4"><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="http://localhost:1313/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
           
-          <li class="font-semibold my-2"></li>
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
           
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2024-12-05T12:00:00&#43;00:00">December 5, 2024</time>
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            3 min read
+            4 min read
           </li>
 
         </ul>
@@ -118,9 +122,10 @@
     </figure>
 
     <div id="content" class="mb-14">
-      <p>I&rsquo;ve been thinking recently about how to frame the ways that generative AI is going to make its way into enterprise and the public sector. A <a href="https://www.youtube.com/watch?v=KOyovrkEhlk&amp;list=PLWovoZxDVoYMQJzx9zpNjeJ3UNGuCwYLt&amp;index=6">recent podcast interview</a> between <a href="https://www.alanbrown.net/"><strong>Professor Alan Brown</strong></a> and <a href="https://thinktankproduction.co.uk/"><strong>Think Tank</strong></a> touched upon this.</p>
+      <p>I&rsquo;ve been thinking recently about how to frame the ways that (generative) AI is going to make its way into enterprise and the public sector.  A <a href="https://www.youtube.com/watch?v=KOyovrkEhlk&amp;list=PLWovoZxDVoYMQJzx9zpNjeJ3UNGuCwYLt&amp;index=6">recent podcast interview</a> between <a href="https://www.alanbrown.net/"><strong>Professor Alan Brown</strong></a> and <a href="https://thinktankproduction.co.uk/"><strong>Think Tank</strong></a> touched upon this.</p>
 <p>Alan spent nearly two decades in the USA driving large-scale software programmes and leading R&amp;D teams. After roles at Carnegie Mellon University and as an IBM Distinguished Engineer, he&rsquo;s now focused on digital transformation. In addition to his research at <a href="https://experts.exeter.ac.uk/27811-alan-brown">Exeter</a>, he&rsquo;s recently published <a href="https://surviveaibook.com/"><em>&ldquo;Surviving and Thriving in the Age of AI&rdquo;</em></a> which aims to help digital leaders navigate the challenges and opportunities of AI.</p>
-<p>I thought Alan&rsquo;s framing of the ways AI is being used in Government rang quite true to me.</p>
+<p>One thing Alan mentioned stuck with me: the discussion around digital transformation often centres on trade-offs between Risk, Trust, and Value. While this framing is crucial to how governments (should) approach new technologies, it captures only part of the picture. Conversations about AI in government often miss the messier realities of how AI is actually making its way into the public sector. Formal, large-scale projects—complete with governance and guiding principles—draw all the attention, while quieter, more pervasive uses often slip under the radar. Before you realise it, you’re already swimming in AI.</p>
+<p>I thought Alan&rsquo;s framing of the <em>reality</em> of how AI is making its way into Government rang quite true.</p>
 <hr>
 <h2 id="large-scale-formal-projects">Large-Scale Formal Projects</h2>
 <p>The first involves large-scale projects requiring significant resources—think facial recognition at borders or fraud detection across tax returns. These could be small 6 month projects or large investments, spanning three to four years, with formal requirements and extensive governance, rollout plans, change champions, etc.</p>
@@ -128,13 +133,17 @@
 <p>So in some ways, &ldquo;how will AI be used in government&rdquo; can be answered along the lines of <em>the same way any other new technology is used</em> - with a user centric, service design oriented methodology to provide high quality, citizen focused products and services. Duh.</p>
 <hr>
 <h2 id="informal-use-and-shadow-ai">Informal Use and Shadow AI</h2>
-<p>The second way is through informal use, where staff might run queries through <strong>ChatGPT</strong> (of one of the myriad alternatives) to get outputs - for a whole variety of contexts and use cases and entirely &lsquo;off book&rsquo;. This raises important questions, particularly around issues of data governance and accuracy. Hallucinations (where the system produces inaccurate information) might not happen <em>that</em> often, but the consequences can be serious when they do.</p>
+<p>The second way is through informal use, where staff might run queries through ChatGPT (or one of the myriad alternatives) to get outputs - for a whole variety of contexts and use cases and entirely &lsquo;off book&rsquo;. This raises important questions, particularly around issues of data governance and accuracy. Hallucinations (where the system produces inaccurate information) might not happen <em>that</em> often, but the consequences <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/concerns-about-medical-note-taking-tool-raised-after-researcher-discovers-it-invents-things-no-one-said-nabla-is-powered-by-openais-whisper">can be serious when they do</a>.</p>
 <p>Government is by default risk averse (rightfully so) but this downside should be considered against what currently happens.</p>
 <p>Are we confident that staff are always reading complex case notes in detail? What is worse, a person <em>not</em> engaging with the material, or the material possibly containing a hallucination? I don&rsquo;t think the answers are easy here.</p>
-<p>The default stance of risk averse organisations may be to discourage such use of AI. However, informal use happens regardless of oversight, bringing a pressure to focus on risk mitigation rather than outright prohibition. I&rsquo;m reminded of <a href="https://en.wikipedia.org/wiki/Desire_path">desire paths</a> where people ignore the designed paved route in favour of cutting across the grass.</p>
+<p>The default stance of risk averse organisations may be to discourage (or ban) such use of AI. However, informal use happens regardless of oversight, bringing a pressure to focus on risk mitigation rather than outright prohibition. I&rsquo;m reminded of <a href="https://en.wikipedia.org/wiki/Desire_path">desire paths</a> where people ignore the designed paved route in favour of cutting across the grass.</p>
 <hr>
 <h2 id="embedded-ai-in-commercial-products">Embedded AI in Commercial Products</h2>
 <p>The third way is perhaps the most subtle: AI integration into commercial products. From email autocomplete to meeting summaries, to the &ldquo;summarise this email&rdquo; button that has appeared in my Gmail, AI is becoming embedded in our everyday tools (whether or not we asked for it). This integration makes it increasingly difficult to control or implement policies against AI use.</p>
+<hr>
+<h2 id="i-think-i-think">I think I think</h2>
+<p>Frameworks often propel us into action—they help us focus, prioritise, or tackle challenges from a specific angle. But sometimes their value lies not in driving action but in helping us see and name what’s already happening around us.</p>
+<p>This framework, with its three simple categories, provides a way to acknowledge the current reality of AI adoption in government and the public sector. By naming and categorising these patterns, we can move past the illusion of total control and instead focus on understanding what’s actually unfolding. The first step to making effective decisions is recognising and living in this reality.</p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
@@ -147,51 +156,9 @@
 
     <footer id="content-footer" class="not-prose">
 
-      <div id="comment" class="border p-8 bg-zinc-100 rounded-2xl">
+      
 
-        <h2 class="text-xl font-semibold">Comment</h2>
-
-        <p>Disqus comment here</p></div>
-
-      <div id="author-box" class="my-8 md:my-14 border p-8 bg-zinc-100 rounded-2xl">
-
-        <img class="w-20 h-20 rounded-full" src="" alt="">
-
-        <h2 class="text-xl font-bold my-4">Writter by : </h2>
-
-        <p class="mb-4"></p>
-
-        <ul class="flex flex-wrap space-x-4">
-          <li>
-            <a class="flex items-center decoration-auto hover:underline" href="https://facebook.com/#" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-              </svg>
-              <span class="ml-2">Facebook</span>
-            </a>
-          </li>
-          <li>
-            <a class="flex items-center decoration-auto hover:underline" href="https://facebook.com/#" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
-              </svg>
-              <span class="ml-2">Twitter</span>
-            </a>
-          </li>
-          <li>
-            <a class="flex items-center decoration-auto hover:underline" href="https://facebook.com/#" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
-
-              </svg>
-              <span class="ml-2">Instagram</span>
-            </a>
-          </li>
-
-        </ul>
-        
-      </div>
-
+      
       <div id="related-post" class="">
 
         <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2>
@@ -326,7 +293,7 @@
       
         <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
       
-        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/space/">Taxonomy</a></li>
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
       
     </ul>
   </div>

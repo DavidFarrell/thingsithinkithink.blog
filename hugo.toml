@@ -14,9 +14,9 @@ disqusShortname = 'your-disqus-shortname' # <- Get form here : https://disqus.co
 	mainSections = 'posts'
 	
 	[params.author]
-		name = 'David Gerouville-Farrell'
+		name = 'David Gérouville-Farrell'
 		bio = 'I used to be a lecturer. Now I am mostly an AI consultant.'
-		avatar = '/images/goldfinch.png'
+		avatar = '/images/goldfinch.jpg'
 		twitter = 'https://bsky.app/profile/dgerouvillefarrell.bsky.social'
 
 [menu] # Menu management
@@ -34,7 +34,7 @@ disqusShortname = 'your-disqus-shortname' # <- Get form here : https://disqus.co
 		weight = 20
 	[[menu.main]]
 		name = 'Taxonomy'
-		pageRef = '/tags/space/'
+		pageRef = '/categories/'
 		weight = 25
 
 [module]
