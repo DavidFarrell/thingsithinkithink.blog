@@ -15,4 +15,4 @@ I left academia a few years ago to return to the 'real world'. Since then, I've 
 
 Connect:
 - LinkedIn: [davidfarrell81](https://linkedin.com/in/davidfarrell81)
-- Bluesky: [@dgerouvillefarrell](https://bsky.app/profile/dgerouvillefarrell)
+- Bluesky: [@dgerouvillefarrell](https://bsky.app/profile/dgerouvillefarrell.bsky.social)

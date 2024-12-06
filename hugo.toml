@@ -16,7 +16,7 @@ disqusShortname = 'your-disqus-shortname' # <- Get form here : https://disqus.co
 	[params.author]
 		name = 'David Gerouville-Farrell'
 		bio = 'I used to be a lecturer. Now I am mostly an AI consultant.'
-		avatar = '/images/nasa-astronaut-unsplash.jpg'
+		avatar = '/images/goldfinch.png'
 		twitter = 'https://bsky.app/profile/dgerouvillefarrell.bsky.social'
 
 [menu] # Menu management
