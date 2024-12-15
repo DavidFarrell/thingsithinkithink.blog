@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ai on thingsithinkithink</title>
+    <title>AI on thingsithinkithink</title>
     <link>http://localhost:1313/tags/ai/</link>
-    <description>Recent content in Ai on thingsithinkithink</description>
+    <description>Recent content in AI on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Dec 2024 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Dec 2024 12:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A good interview with Simon Willison on Around the Prompt</title>
+      <link>http://localhost:1313/posts/2024/12-15-a-good-interview-with-simon-willison-on-around-the-prompt/</link>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-15-a-good-interview-with-simon-willison-on-around-the-prompt/</guid>
+      <description>&lt;p&gt;Things I like:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Simon&amp;rsquo;s stance that AI is exciting and amazing when it&amp;rsquo;s a cyborg like enhancement to us.  Wehn it makes idnividuals 10 or 20 times as procuctive and creative. .&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Podcast interview with Prof Alan Brown about uses of AI in Government</title>
       <link>http://localhost:1313/posts/2024/12-05-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</link>
