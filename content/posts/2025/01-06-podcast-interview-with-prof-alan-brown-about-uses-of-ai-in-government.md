@@ -1,7 +1,7 @@
 ---
 title: "Podcast interview with Prof Alan Brown about uses of AI in Government"
-date: 2024-12-05T12:00:00Z
-slug: /12-05-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/
+date: 2025-01-06T12:00:00Z
+slug: /01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/
 description: "Exploring AI's role in government: from sanctioned projects to unapproved staff use, and its creeping integration into everyday tools."
 image: images/2024/1212_alan_brown.png
 caption: Image of Prof. Brown being interviewed by Paul Zimmerman by Think Tank
@@ -10,7 +10,8 @@ categories:
 tags:
   - ai
   - government
-draft: true
+  - podcast
+draft: false
 ---
 
 I've been thinking recently about how to frame the ways that (generative) AI is going to make its way into enterprise and the public sector.  A [recent podcast interview](https://www.youtube.com/watch?v=KOyovrkEhlk&list=PLWovoZxDVoYMQJzx9zpNjeJ3UNGuCwYLt&index=6) between [**Professor Alan Brown**](https://www.alanbrown.net/) and [**Think Tank**](https://thinktankproduction.co.uk/) touched upon this.
