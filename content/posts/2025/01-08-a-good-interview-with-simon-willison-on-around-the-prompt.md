@@ -1,6 +1,6 @@
 ---
 title: "The challenges of mastering LLMs, and their role as cyborg enhancement"
-date: 2024-01-08T12:00:00Z
+date: 2025-01-08T12:00:00Z
 slug: /01-08-a-good-interview-with-simon-willison-on-around-the-prompt/
 description: "I enjoyed a recent interview with Simon Willison on Logan Kilpatrick's Google podcast. Topics covered: AI as a 'cyborg enhancement', the non-intuitive challenges of mastering LLM use, and the legitimate need for uncensored language models in fields like journalism."
 image: images/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt.png

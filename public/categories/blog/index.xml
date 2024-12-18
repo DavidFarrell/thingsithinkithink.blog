@@ -10,24 +10,10 @@
     <atom:link href="https://thingsithinkithink.blog/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Things I Think I Think</title>
-      <link>https://thingsithinkithink.blog/posts/2025/12-05-things-i-think-i-think-blog/</link>
+      <link>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think-blog/</link>
       <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/12-05-things-i-think-i-think-blog/</guid>
+      <guid>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think-blog/</guid>
       <description>&lt;p&gt;I want to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because I want to be able to write stuff without having to definitely commit forever to holding whatever ideas I have shared.  Therefore these posts are just things I &lt;em&gt;think&lt;/em&gt; I think.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Jackie Bavaro on Strategy</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-13-three-parts-of-strategy-with-jackie-bavaro/</link>
-      <pubDate>Sat, 13 Jan 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-13-three-parts-of-strategy-with-jackie-bavaro/</guid>
-      <description>&lt;p&gt;Jackie Bavaro’s breakdown of strategy in her &lt;a href=&#34;https://www.lennysnewsletter.com/p/jackie-bavaro-on-how-to-build-product&#34;&gt;recent podcast interview&lt;/a&gt; really stuck with me. She shared a simple (but I think, pretty good) framework that highlights three key components of strategy: &lt;strong&gt;Vision&lt;/strong&gt;, &lt;strong&gt;Strategic Framework&lt;/strong&gt;, and &lt;strong&gt;Roadmap&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>The challenges of mastering LLMs, and their role as cyborg enhancement</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</link>
-      <pubDate>Mon, 08 Jan 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</guid>
-      <description>&lt;p&gt;I recently watched a good &lt;a href=&#34;https://www.youtube.com/watch?v=rLcKbvmegag&#34;&gt;interview&lt;/a&gt; with Simon Willison on Logan Kilpatrick&amp;rsquo;s podcast, hosted for Google. Simon is known for building &lt;a href=&#34;https://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; (the Python web framework), &lt;a href=&#34;https://datasette.io/&#34;&gt;Datasette&lt;/a&gt; (a data tool for journalists), and the &lt;a href=&#34;https://github.com/simonw/llm&#34;&gt;LLM command line tool&lt;/a&gt; (which lets you run large language models from the command prompt). I used LLM for months until recently &lt;a href=&#34;https://www.answer.ai/posts/2024-12-05-introducing-shell-sage.html&#34;&gt;Shell Sage&lt;/a&gt; became my daily tool.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

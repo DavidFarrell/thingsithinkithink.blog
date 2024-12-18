@@ -1,6 +1,6 @@
 ---
 title: "Jackie Bavaro on Strategy"
-date: 2024-01-13T12:00:00Z
+date: 2025-01-13T12:00:00Z
 slug: /01-13-three-parts-of-strategy-with-jackie-bavaro/
 description: "Bavaro's approach to strategy: Vision, Strategic Framework, and Roadmap."
 image: images/2025/01-13-three-parts-of-strategy.png

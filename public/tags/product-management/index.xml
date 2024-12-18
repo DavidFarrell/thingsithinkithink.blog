@@ -2,18 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Product Management on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/product-management/</link>
+    <link>http://localhost:1313/tags/product-management/</link>
     <description>Recent content in Product Management on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Jan 2024 12:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/product-management/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Jackie Bavaro on Strategy</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-13-three-parts-of-strategy-with-jackie-bavaro/</link>
-      <pubDate>Sat, 13 Jan 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-13-three-parts-of-strategy-with-jackie-bavaro/</guid>
-      <description>&lt;p&gt;Jackie Bavaro’s breakdown of strategy in her &lt;a href=&#34;https://www.lennysnewsletter.com/p/jackie-bavaro-on-how-to-build-product&#34;&gt;recent podcast interview&lt;/a&gt; really stuck with me. She shared a simple (but I think, pretty good) framework that highlights three key components of strategy: &lt;strong&gt;Vision&lt;/strong&gt;, &lt;strong&gt;Strategic Framework&lt;/strong&gt;, and &lt;strong&gt;Roadmap&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
+    <atom:link href="http://localhost:1313/tags/product-management/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

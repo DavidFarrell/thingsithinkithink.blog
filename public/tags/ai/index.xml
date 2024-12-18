@@ -2,25 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ai on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/ai/</link>
+    <link>http://localhost:1313/tags/ai/</link>
     <description>Recent content in Ai on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jan 2024 12:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/ai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>The challenges of mastering LLMs, and their role as cyborg enhancement</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</link>
-      <pubDate>Mon, 08 Jan 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</guid>
-      <description>&lt;p&gt;I recently watched a good &lt;a href=&#34;https://www.youtube.com/watch?v=rLcKbvmegag&#34;&gt;interview&lt;/a&gt; with Simon Willison on Logan Kilpatrick&amp;rsquo;s podcast, hosted for Google. Simon is known for building &lt;a href=&#34;https://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; (the Python web framework), &lt;a href=&#34;https://datasette.io/&#34;&gt;Datasette&lt;/a&gt; (a data tool for journalists), and the &lt;a href=&#34;https://github.com/simonw/llm&#34;&gt;LLM command line tool&lt;/a&gt; (which lets you run large language models from the command prompt). I used LLM for months until recently &lt;a href=&#34;https://www.answer.ai/posts/2024-12-05-introducing-shell-sage.html&#34;&gt;Shell Sage&lt;/a&gt; became my daily tool.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>How AI is making its way into Government</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</link>
-      <pubDate>Sat, 06 Jan 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve been thinking recently about how to frame the ways that (generative) AI is going to make its way into enterprise and the public sector.  A &lt;a href=&#34;https://www.youtube.com/watch?v=KOyovrkEhlk&amp;amp;list=PLWovoZxDVoYMQJzx9zpNjeJ3UNGuCwYLt&amp;amp;index=6&#34;&gt;recent podcast interview&lt;/a&gt; between &lt;a href=&#34;https://www.alanbrown.net/&#34;&gt;&lt;strong&gt;Professor Alan Brown&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;https://thinktankproduction.co.uk/&#34;&gt;&lt;strong&gt;Think Tank&lt;/strong&gt;&lt;/a&gt; touched upon this.&lt;/p&gt;</description>
-    </item>
+    <atom:link href="http://localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
