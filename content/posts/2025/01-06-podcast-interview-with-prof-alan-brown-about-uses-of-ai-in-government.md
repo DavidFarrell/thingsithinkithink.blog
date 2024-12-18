@@ -1,12 +1,12 @@
 ---
-title: "Podcast interview with Prof Alan Brown about uses of AI in Government"
-date: 2025-01-06T12:00:00Z
+title: "How AI is making its way into Government"
+date: 2024-01-06T12:00:00Z
 slug: /01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/
 description: "Exploring AI's role in government: from sanctioned projects to unapproved staff use, and its creeping integration into everyday tools."
 image: images/2024/1212_alan_brown.png
 caption: Image of Prof. Brown being interviewed by Paul Zimmerman by Think Tank
 categories:
-  - artificial intelligence
+  - artificial-intelligence
 tags:
   - ai
   - government

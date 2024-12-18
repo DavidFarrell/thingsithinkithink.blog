@@ -1,6 +1,6 @@
 ---
 title: "Things I Think I Think"
-date: 2024-12-05T14:33:22Z
+date: 2028-12-05T14:33:22Z
 slug: /12-05-things-i-think-i-think/
 description: "I need a space to think, learn, and work in public."
 image: images/2024/rustywaves.png
@@ -10,9 +10,9 @@ categories:
 tags: # tags - one per line
   - thoughts    
   - feature
-draft: false
+draft: true
 ---
-I want to use this blog to think, learn, and work in public.. 
+I wantt to use this blog to think, learn, and work in public.. 
 
 I chose this name because, during my PhD, I struggled significantly with writer's block, and I had the most patient PhD supervisor, David Moffat. David was (is) excellent at helping me work through things.  He is very socratic in his approach and he helped me understand the reasons behind my writer's block, much of which stemmed from a feeling of needing to be perfect.
 
