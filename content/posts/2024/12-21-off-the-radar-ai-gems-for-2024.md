@@ -25,7 +25,7 @@ As 2024 wraps up, I wanted to share a few things that have been shaping my think
 [**Civic AI Observatory**](https://civicai.uk/?utm_source=substack&utm_medium=email&utm_content=share) is a community of civic-minded AI enthusiasts. It’s become one of my favourite spaces for fresh, thoughtful perspectives on AI. There are two reasons why I’m particularly glad I found this group:  
 
 1. **Breadth of resources**: They share (and discuss) an incredible variety of articles, videos, and links on AI.  
-2. **Civic-first mindset**: Unlike many tech-focused spaces, their primary lens is civic impact, with AI as a means rather than an end.  It's not all positive discussion.  The risks and downsides of AI on society are taken very seriously here and with more a grounded perspective than you usually find online.  
+2. **Civic-first mindset**: Unlike many tech-focused spaces, their primary lens is civic impact, with AI as a means rather than an end.  It's not all positive discussion.  The risks and downsides of AI on society are taken very seriously here and with a more grounded perspective than you usually find online.  
 
 This mix of perspectives cuts through the hype bubble dominating other feeds. I’ve found that their discussions and resources offer a higher diversity of angles compared to almost any other information source I follow.  
 
