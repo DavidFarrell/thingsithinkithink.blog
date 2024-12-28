@@ -1,6 +1,6 @@
 ---
 title: "Improving Python Function Usability with wrapping"
-date: 2024-12-28T12:00:00Z
+date: 2024-12-27T12:00:00Z
 slug: /12-28-improving-function-usability-a-practical-tip/
 description: "A simple approach to modifying Python functions for better usability without altering their core behaviour."
 image: images/2024/12-28-function-usability.png

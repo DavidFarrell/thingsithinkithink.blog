@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Regex on thingsithinkithink</title>
+    <link>https://thingsithinkithink.blog/tags/regex/</link>
+    <description>Recent content in Regex on thingsithinkithink</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Dec 2024 12:00:00 +0000</lastBuildDate>
+    <atom:link href="https://thingsithinkithink.blog/tags/regex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Regular Expression Basics</title>
+      <link>https://thingsithinkithink.blog/posts/2024/12-28-regular-expressions/</link>
+      <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2024/12-28-regular-expressions/</guid>
+      <description>&lt;h3 id=&#34;regular-expressions&#34;&gt;&lt;strong&gt;Regular Expressions&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Regular expressions have always been a pain in the arse for me. I usually use online generators, or more recently AI to create them.  On a recent Solveit tutorial, I finally got my head around some basics.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
