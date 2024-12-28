@@ -4,9 +4,9 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Things I Think I Think | thingsithinkithink</title>
+<title>Improving Python Function Usability with wrapping | thingsithinkithink</title>
 
-<meta name="description" content="I need a space to think, learn, and work in public.">
+<meta name="description" content="A simple approach to modifying Python functions for better usability without altering their core behaviour.">
       <link rel="stylesheet" href="/css/main.min.1188bca307f4eccd3ab4edf9c00e4545a2d7f5d0c3f98a288950746b92c49d73.css" integrity="sha256-EYi8owf07M06tO35wA5FRaLX9dDD&#43;YooiVB0a5LEnXM=" crossorigin="anonymous">
 
 <link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
@@ -86,11 +86,11 @@
 
     <header class="not-prose">
       
-      <h1 id="title" class="text-4xl font-bold leading-normal">Things I Think I Think</h1>
+      <h1 id="title" class="text-4xl font-bold leading-normal">Improving Python Function Usability with wrapping</h1>
 
       <div id="lead" class="my-6">
 
-        <p class="font-bold">I need a space to think, learn, and work in public. </p>
+        <p class="font-bold">A simple approach to modifying Python functions for better usability without altering their core behaviour. </p>
 
       </div>
       
@@ -102,11 +102,11 @@
           
           <li class="font-semibold my-2">David Gérouville-Farrell</li>
           
-          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2024-12-05T14:33:22&#43;00:00">December 5, 2024</time>
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2024-12-28T12:00:00&#43;00:00">December 28, 2024</time>
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            1 min read
+            2 min read
           </li>
 
         </ul>
@@ -116,21 +116,43 @@
     </header>
 
     <figure id="featureimage" class="rounded-xl aspect-video">
-            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2024/rustywaves_hu5507334865364278152.png" alt="" width="750" height="750">
-        <figcaption class="text-center italic text-xs">Abstract thinking waves from ChatGPT / DALL-E</figcaption>
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2024/12-28-function-usability_hu8363339060778602906.png" alt="" width="750" height="750">
+        <figcaption class="text-center italic text-xs">an AI generated image of a python function</figcaption>
 
     </figure>
 
     <div id="content" class="mb-14">
-      <p>I want to use this blog to think, learn, and work in public..</p>
-<p>I chose this name because I want to be able to write stuff without having to definitely commit forever to holding whatever ideas I have shared.  Therefore these posts are just things I <em>think</em> I think.</p>
+      <h3 id="improving-function-usability-a-practical-tip"><strong>Improving Function Usability: A Practical Tip</strong></h3>
+<p>Today I was doing a Solveit tutorial and it touched on a simple way to improve the usability of functions without altering their core behaviour.</p>
+<hr>
+<h3 id="wrapping-functions-for-easier-use">Wrapping Functions for Easier Use</h3>
+<p>Take Python’s <code>re.finditer</code>, for example. It returns an iterator, which you might often need to convert into a list for processing. Instead of repeating <code>list(re.finditer(...))</code> all over your code, you can wrap it in a helper function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">finditer</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kw): 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> list(re<span style="color:#f92672">.</span>finditer(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kw))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Example usage</span>
+</span></span><span style="display:flex;"><span>pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;\d+&#39;</span>
+</span></span><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The year is 2024, and the day is 28th.&#34;</span>
+</span></span><span style="display:flex;"><span>matches <span style="color:#f92672">=</span> finditer(pattern, text)
+</span></span><span style="display:flex;"><span>print(matches)  <span style="color:#75715e"># Output: [&lt;re.Match object&gt;, &lt;re.Match object&gt;]</span>
+</span></span></code></pre></div><hr>
+<h3 id="key-points-for-wrapping-functions">Key Points for Wrapping Functions</h3>
+<h4 id="1-maintain-original-logic">1. <strong>Maintain Original Logic</strong></h4>
+<p>You need to make sure your wrapper explicitly calls the original function (e.g., <code>re.finditer</code>). If you don&rsquo;t do this, you&rsquo;ll lose the functionality of the original function.</p>
+<h4 id="2-avoid-overwriting-the-original">2. <strong>Avoid Overwriting the Original</strong></h4>
+<p>Instead of reassigning <code>re.finditer</code> to the new function (which might have unexpected side effects) you can use a different name - or a similar name that isn&rsquo;t scoped the same way - i.e. <code>finditer</code> instead of <code>re.finditer</code>.</p>
+<h4 id="3-keep-all-the-params-the-same-with-args-and-kw">3. <strong>Keep all the params the same with <code>*args</code> and <code>**kw</code></strong></h4>
+<p>Use <code>*args</code> (to capture positional arguments as a tuple) and <code>**kw</code> (to capture keyword arguments as a dictionary). You pass them to the original function.</p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
 
       <li class="font-semibold my-4">Tags:</li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/thoughts/">Thoughts</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/python/">Python</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/coding/">Coding</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/til/">Til</a></li>
     </ul>
 </div>
 

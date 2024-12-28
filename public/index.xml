@@ -6,8 +6,15 @@
     <description>Recent content on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Dec 2024 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Dec 2024 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Improving Python Function Usability with wrapping</title>
+      <link>https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/</link>
+      <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/</guid>
+      <description>&lt;h3 id=&#34;improving-function-usability-a-practical-tip&#34;&gt;&lt;strong&gt;Improving Function Usability: A Practical Tip&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Today I was doing a Solveit tutorial and it touched on a simple way to improve the usability of functions without altering their core behaviour.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Off-the-Radar AI Gems for the End of the Year</title>
       <link>https://thingsithinkithink.blog/posts/2024/off-the-radar-ai-gems-for-2024/</link>
