@@ -131,6 +131,59 @@ This matches one or more of that character class in a row - hence finding the nu
 <re.Match object; span=(95, 98), match='598'>] 
 ```
 
+### Finding everything that isn't a digit
+
+You can use the `^` to find everything that isn't a digit.
+
+```python
+finditer(r'[^0-9]', ss)
+```
+
+### Escaping Special Characters
+
+Special characters are characters that have a special meaning in regex. For example, `.` matches any character and `*` matches zero or more of the previous character. 
+
+Therefore, if you want to find a dot, you need to escape it with a backslash.
+```python
+finditer(r'\.', ss)
+
+### A bunch of common special chars
+```
+.      Matches any single character except a newline.
+^      Matches the start of a line or string.
+$      Matches the end of a line or string.
+*      Matches zero or more occurrences of the preceding character or group.
++      Matches one or more occurrences of the preceding character or group.
+?      Matches zero or one occurrence of the preceding character or group (makes quantifiers lazy if placed after them).
+|      Acts as an OR operator between patterns.
+()     Groups characters or expressions and captures them for back-referencing.
+[]     Denotes a character class. Matches any character inside the brackets.
+       - Example: [a-z] matches any lowercase letter.
+
+{}     Specifies the number of occurrences of the preceding character or group.
+       - Example: a{2,4} matches "aa", "aaa", or "aaaa".
+
+\      Escapes special characters or introduces special sequences.
+       - Example: \. matches a literal dot.
+
+\d     Matches any digit (equivalent to [0-9]).
+\D     Matches any non-digit.
+\w     Matches any word character (letters, digits, and underscores).
+\W     Matches any non-word character.
+\s     Matches any whitespace character (spaces, tabs, etc.).
+\S     Matches any non-whitespace character.
+\b     Matches a word boundary.
+\B     Matches a non-word boundary.
+\n     Matches a newline character.
+\t     Matches a tab character.
+
+(?=...) Positive lookahead. Asserts that what follows is a match for the pattern in parentheses.
+(?!...) Negative lookahead. Asserts that what follows is NOT a match for the pattern in parentheses.
+(?<=...) Positive lookbehind. Asserts that what precedes is a match for the pattern in parentheses.
+(?<!...) Negative lookbehind. Asserts that what precedes is NOT a match for the pattern in parentheses.
+(?:...) Non-capturing group. Groups expressions but does not capture them.
+```
+
 ---
 
 ### Playing with Regex  

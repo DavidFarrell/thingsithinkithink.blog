@@ -106,7 +106,7 @@
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            3 min read
+            5 min read
           </li>
 
         </ul>
@@ -183,12 +183,64 @@
 &lt;re.Match object; span=(76, 79), match=&#39;755&#39;&gt;,
 &lt;re.Match object; span=(91, 94), match=&#39;664&#39;&gt;,
 &lt;re.Match object; span=(95, 98), match=&#39;598&#39;&gt;] 
-</code></pre><hr>
-<h3 id="playing-with-regex">Playing with Regex</h3>
-<p><a href="https://regex101.com/">regex101.com</a> is a handy site where you can work on your regex iteratively in a webpage.</p>
-<p>It will show you matches but also explain in plain English what is going on.<br>
-<img src="/images/2024/regexexample.png" alt="Regex Example"></p>
+</code></pre><h3 id="finding-everything-that-isnt-a-digit">Finding everything that isn&rsquo;t a digit</h3>
+<p>You can use the <code>^</code> to find everything that isn&rsquo;t a digit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>finditer(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;[^0-9]&#39;</span>, ss)
+</span></span></code></pre></div><h3 id="escaping-special-characters">Escaping Special Characters</h3>
+<p>Special characters are characters that have a special meaning in regex. For example, <code>.</code> matches any character and <code>*</code> matches zero or more of the previous character.</p>
+<p>Therefore, if you want to find a dot, you need to escape it with a backslash.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>finditer(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;\.&#39;</span>, ss)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### A bunch of common special chars</span>
+</span></span></code></pre></div><p>.      Matches any single character except a newline.
+^      Matches the start of a line or string.
+$      Matches the end of a line or string.</p>
+<ul>
+<li>
+<pre><code> Matches zero or more occurrences of the preceding character or group.
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>
+<pre><code> Matches one or more occurrences of the preceding character or group.
+</code></pre>
+</li>
+</ul>
+<p>?      Matches zero or one occurrence of the preceding character or group (makes quantifiers lazy if placed after them).
+|      Acts as an OR operator between patterns.
+()     Groups characters or expressions and captures them for back-referencing.
+[]     Denotes a character class. Matches any character inside the brackets.
+- Example: [a-z] matches any lowercase letter.</p>
+<p>{}     Specifies the number of occurrences of the preceding character or group.
+- Example: a{2,4} matches &ldquo;aa&rdquo;, &ldquo;aaa&rdquo;, or &ldquo;aaaa&rdquo;.</p>
+<p>\      Escapes special characters or introduces special sequences.
+- Example: . matches a literal dot.</p>
+<p>\d     Matches any digit (equivalent to [0-9]).
+\D     Matches any non-digit.
+\w     Matches any word character (letters, digits, and underscores).
+\W     Matches any non-word character.
+\s     Matches any whitespace character (spaces, tabs, etc.).
+\S     Matches any non-whitespace character.
+\b     Matches a word boundary.
+\B     Matches a non-word boundary.
+\n     Matches a newline character.
+\t     Matches a tab character.</p>
+<p>(?=&hellip;) Positive lookahead. Asserts that what follows is a match for the pattern in parentheses.
+(?!&hellip;) Negative lookahead. Asserts that what follows is NOT a match for the pattern in parentheses.
+(?&lt;=&hellip;) Positive lookbehind. Asserts that what precedes is a match for the pattern in parentheses.
+(?&lt;!&hellip;) Negative lookbehind. Asserts that what precedes is NOT a match for the pattern in parentheses.
+(?:&hellip;) Non-capturing group. Groups expressions but does not capture them.</p>
+<pre tabindex="0"><code>
+---
 
+### Playing with Regex  
+
+[regex101.com](https://regex101.com/) is a handy site where you can work on your regex iteratively in a webpage.  
+
+It will show you matches but also explain in plain English what is going on.  
+![Regex Example](/images/2024/regexexample.png)
+</code></pre>
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
 
