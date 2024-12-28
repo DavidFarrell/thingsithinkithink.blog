@@ -146,8 +146,10 @@ Special characters are characters that have a special meaning in regex. For exam
 Therefore, if you want to find a dot, you need to escape it with a backslash.
 ```python
 finditer(r'\.', ss)
+```
 
 ### A bunch of common special chars
+
 ```
 .      Matches any single character except a newline.
 ^      Matches the start of a line or string.
