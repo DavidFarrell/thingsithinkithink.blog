@@ -23,7 +23,7 @@ I recently watched a talk from [LatentSpace Live (NeurIPS 2024)](https://www.you
 
 2024 marked a significant shift in open model capabilities. Compared to 2023 (which introduced models like Llama 1 and 2, Mistral, and Falcon), 2024 brought a new class of open models that rival frontier-level closed models. Releases like Qwen, Deep Seek, and Llama 3 show how much ground open-source AI has gained in a relatively short time.
 
-But the leap isn’t just technical. Luca stressed that **open models now embrace “recipes”**—detailed workflows that document every stage of development, from data gathering to post-training (as oppossed to 2023's "throw shit at the wall and see what sticks" approach). This transformation of AI from just sharing “checkpoints” to sharing full pipelines has become a collaboration cornerstone.
+But the leap isn’t just technical. Luca stressed that **open models now embrace “recipes”**—detailed workflows that document every stage of development, from data gathering to post-training (as oppossed to 2023's "throw shit at the wall and see what sticks" (paraphrased) approach). This transformation of AI from just sharing “checkpoints” to sharing full pipelines has become a collaboration cornerstone.
 
 ---
 
