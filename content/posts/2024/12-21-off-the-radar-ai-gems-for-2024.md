@@ -2,7 +2,7 @@
 title: "Off-the-Radar AI links for the End of the Year"
 date: 2024-12-21T12:00:00Z
 slug: /off-the-radar-ai-links-for-2024/
-description: "Sharing a few lesser-known but invaluable resources and use cases in AI that might have flown under your radar this year."
+description: "Sharing a few lesser-known (but I liked them) things that I don't see other people talking about."
 image: images/2024/off-the-radar-ai-gems.png
 caption: an AI generatted image of end of year reflections on my computer
 categories:
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-As 2024 wraps up, I wanted to share a few things that have been shaping my thinking recently. These aren’t the headline grabbers—more like hidden gems that have influenced how I approach and think about AI. Hopefully, there’s something here that sparks your curiosity too.
+Everyone has an exhaustive end of the year list.  I don't but there were a coupld of things I got value from that I havne't seen anyone else posting about.
 
 ---
 
