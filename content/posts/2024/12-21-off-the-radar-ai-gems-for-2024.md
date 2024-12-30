@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-Everyone has an exhaustive end of the year list.  I don't but there were a coupld of things I got value from that I havne't seen anyone else posting about.
+Everyone has an exhaustive end of the year list.  I don't but there were a couple of things I got value from that I havne't seen anyone else posting about.
 
 ---
 

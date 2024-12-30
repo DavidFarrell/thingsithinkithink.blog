@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-I recently watched a talk from [LatentSpace Live (NeurIPS 2024)](https://www.youtube.com/watch?v=jX1nuoTs2WU) by [Luca Soldaini](https://soldaini.net/) a research scientist at the AI Institute, on the state of open models in 2024. His reflections on how far we've come—and the challenges ahead—offer a good perspective on where AI might be heading. 
+I recently watched a talk from [LatentSpace Live (NeurIPS 2024)](https://www.youtube.com/watch?v=jX1nuoTs2WU) by [Luca Soldaini](https://soldaini.net/) a research scientist at the AI Institute, on the state of open models in 2024. His reflections on how far we've come—and the challenges ahead—offer a good perspective on where (actually-open)AI might be heading. 
 
 ---
 
