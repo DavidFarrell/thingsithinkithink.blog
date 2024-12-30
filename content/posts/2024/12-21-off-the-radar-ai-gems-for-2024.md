@@ -1,7 +1,7 @@
 ---
-title: "Off-the-Radar AI Gems for the End of the Year"
+title: "Off-the-Radar AI links for the End of the Year"
 date: 2024-12-21T12:00:00Z
-slug: /off-the-radar-ai-gems-for-2024/
+slug: /off-the-radar-ai-links-for-2024/
 description: "Sharing a few lesser-known but invaluable resources and use cases in AI that might have flown under your radar this year."
 image: images/2024/off-the-radar-ai-gems.png
 caption: an AI generatted image of end of year reflections on my computer

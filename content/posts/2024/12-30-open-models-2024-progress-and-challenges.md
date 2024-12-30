@@ -4,7 +4,7 @@ date: 2024-12-30T12:00:00Z
 slug: /12-30-open-models-2024-progress-and-challenges/
 description: "Open models achieved a lot in 2024, Luca from the AI Institute gives a good overview."
 image: images/2024/12-30-open-models-2024-progress-and-challenges.png
-caption: an AI generated image of a couple of AI researchers competing with server farms
+caption: a chart showing the progress of open models in 2024
 categories:
   - artificial-intelligence
 tags:
@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-I recently watched a talk from [LatentSpace Live (NeurIPS 2024)](https://www.latent.space/p/2024-open-models) by [Luca Soldaini](https://soldaini.net/) a research scientist at the AI Institute, on the state of open models in 2024. His reflections on how far we've come—and the challenges ahead—offer a good perspective on where AI might be heading. 
+I recently watched a talk from [LatentSpace Live (NeurIPS 2024)](https://www.youtube.com/watch?v=jX1nuoTs2WU) by [Luca Soldaini](https://soldaini.net/) a research scientist at the AI Institute, on the state of open models in 2024. His reflections on how far we've come—and the challenges ahead—offer a good perspective on where AI might be heading. 
 
 ---
 
