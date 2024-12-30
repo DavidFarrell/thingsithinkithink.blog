@@ -46,7 +46,7 @@ One of Luca’s biggest concerns is how **only a select few organisations have a
 
 Another challenge—potentially even more pivotal than compute—is **shrinking access to high-quality training data**. Many site owners have begun blocking AI crawlers, whether intentionally or through blanket policies on services like Cloudflare. Ironically, these blocks might be unknowingly preventing open labs from obtaining data that large closed labs already amassed in prior scrapes. Luca’s warning is stark: “We aren’t just running out of training data—we’re running out of **open** training data.” If it’s too hard to gather new content, the advantage sticks to those who’ve already done so.
 
-AI aside, this also makes the internet in general more difficult to navigate. Twitter / X is a good example.  Compare the innovation being done on Bluesky to the mundanity of X to see what closing access to data can do. 
+AI aside, this also makes the internet in general more difficult to navigate. Twitter / X is a good example.  Compare the [innovation being done on Bluesky](https://github.com/fishttp/awesome-bluesky) to the mundanity of X to see what closing access to data can do. 
 
 ---
 
