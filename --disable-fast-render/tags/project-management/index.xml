@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Project Management on thingsithinkithink</title>
+    <link>http://localhost:1313/tags/project-management/</link>
+    <description>Recent content in Project Management on thingsithinkithink</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Jan 2025 12:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/project-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Think Slow, Act Fast: The Paradox of Project Planning</title>
+      <link>http://localhost:1313/posts/2025/01-04-think-slow-act-fast-ch-1/</link>
+      <pubDate>Sat, 04 Jan 2025 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025/01-04-think-slow-act-fast-ch-1/</guid>
+      <description>&lt;p&gt;In the book &lt;em&gt;How Big Things Get Done&lt;/em&gt;, Bent Flyvbjerg and Dan Gardner presented an analysis of why large projects fail to meet their objectives. As someone who has witnessed the ups and downs of loads of projects, I&amp;rsquo;m very curious to learn what we can do better.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

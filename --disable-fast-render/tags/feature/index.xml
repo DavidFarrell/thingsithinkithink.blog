@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Feature on thingsithinkithink</title>
+    <link>http://localhost:1313/tags/feature/</link>
+    <description>Recent content in Feature on thingsithinkithink</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 21 Dec 2024 12:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/feature/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Off-the-Radar AI links for the End of the Year</title>
+      <link>http://localhost:1313/posts/2024/off-the-radar-ai-links-for-2024/</link>
+      <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/off-the-radar-ai-links-for-2024/</guid>
+      <description>&lt;p&gt;Everyone has an exhaustive end of the year list.  I don&amp;rsquo;t but there were a couple of things I got value from that I havne&amp;rsquo;t seen anyone else posting about.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Things I Think I Think</title>
+      <link>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-blog/</link>
+      <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-blog/</guid>
+      <description>&lt;p&gt;I want to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because I want to be able to write stuff without having to definitely commit forever to holding whatever ideas I have shared.  Therefore these posts are just things I &lt;em&gt;think&lt;/em&gt; I think.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on thingsithinkithink</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on thingsithinkithink</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Jan 2025 12:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Think Slow, Act Fast: The Paradox of Project Planning</title>
+      <link>http://localhost:1313/posts/2025/01-04-think-slow-act-fast-ch-1/</link>
+      <pubDate>Sat, 04 Jan 2025 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025/01-04-think-slow-act-fast-ch-1/</guid>
+      <description>&lt;p&gt;In the book &lt;em&gt;How Big Things Get Done&lt;/em&gt;, Bent Flyvbjerg and Dan Gardner presented an analysis of why large projects fail to meet their objectives. As someone who has witnessed the ups and downs of loads of projects, I&amp;rsquo;m very curious to learn what we can do better.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Two AI things from Kent Hendricks&#39; annual &#39;Things I learned&#39; blog</title>
+      <link>http://localhost:1313/posts/2024/12-30-two-ai-things-from-kent-hendrick-s-annual-things-i-learned-blog/</link>
+      <pubDate>Mon, 30 Dec 2024 20:16:05 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-30-two-ai-things-from-kent-hendrick-s-annual-things-i-learned-blog/</guid>
+      <description>&lt;p&gt;Two AI things I learned reading Kent Hendricks&amp;rsquo; annual &lt;a href=&#34;https://kenthendricks.com/52-things-i-learned-in-2024/&#34;&gt;&amp;ldquo;Things I learned&amp;rdquo;&lt;/a&gt; blog post:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;The introduction of ChatGPT led to a 2% decrease in freelance job postings on Upwork.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Open Models in 2024: Progress and Challenges</title>
+      <link>http://localhost:1313/posts/2024/12-30-open-models-2024-progress-and-challenges/</link>
+      <pubDate>Mon, 30 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-30-open-models-2024-progress-and-challenges/</guid>
+      <description>&lt;p&gt;I recently watched a talk from &lt;a href=&#34;https://www.youtube.com/watch?v=jX1nuoTs2WU&#34;&gt;LatentSpace Live (NeurIPS 2024)&lt;/a&gt; by &lt;a href=&#34;https://soldaini.net/&#34;&gt;Luca Soldaini&lt;/a&gt; a research scientist at the AI Institute, on the state of open models in 2024. His reflections on how far we&amp;rsquo;ve come—and the challenges ahead—offer a good perspective on where (actually-open)AI might be heading.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Regular Expression Basics</title>
+      <link>http://localhost:1313/posts/2024/12-28-regular-expressions/</link>
+      <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-28-regular-expressions/</guid>
+      <description>&lt;h3 id=&#34;regular-expressions&#34;&gt;&lt;strong&gt;Regular Expressions&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Regular expressions have always been a pain in the arse for me. I usually use online generators, or more recently AI to create them.  On a recent Solveit tutorial, I finally got my head around some basics.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Improving Python Function Usability with wrapping</title>
+      <link>http://localhost:1313/posts/2024/12-28-improving-function-usability-a-practical-tip/</link>
+      <pubDate>Fri, 27 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-28-improving-function-usability-a-practical-tip/</guid>
+      <description>&lt;h3 id=&#34;improving-function-usability-a-practical-tip&#34;&gt;&lt;strong&gt;Improving Function Usability: A Practical Tip&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Today I was doing a Solveit tutorial and it touched on a simple way to improve the usability of functions without altering their core behaviour.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Off-the-Radar AI links for the End of the Year</title>
+      <link>http://localhost:1313/posts/2024/off-the-radar-ai-links-for-2024/</link>
+      <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/off-the-radar-ai-links-for-2024/</guid>
+      <description>&lt;p&gt;Everyone has an exhaustive end of the year list.  I don&amp;rsquo;t but there were a couple of things I got value from that I havne&amp;rsquo;t seen anyone else posting about.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Things I Think I Think</title>
+      <link>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-blog/</link>
+      <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-blog/</guid>
+      <description>&lt;p&gt;I want to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because I want to be able to write stuff without having to definitely commit forever to holding whatever ideas I have shared.  Therefore these posts are just things I &lt;em&gt;think&lt;/em&gt; I think.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

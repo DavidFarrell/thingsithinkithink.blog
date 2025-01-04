@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Til on thingsithinkithink</title>
+    <link>http://localhost:1313/tags/til/</link>
+    <description>Recent content in Til on thingsithinkithink</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Dec 2024 20:16:05 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/til/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Two AI things from Kent Hendricks&#39; annual &#39;Things I learned&#39; blog</title>
+      <link>http://localhost:1313/posts/2024/12-30-two-ai-things-from-kent-hendrick-s-annual-things-i-learned-blog/</link>
+      <pubDate>Mon, 30 Dec 2024 20:16:05 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-30-two-ai-things-from-kent-hendrick-s-annual-things-i-learned-blog/</guid>
+      <description>&lt;p&gt;Two AI things I learned reading Kent Hendricks&amp;rsquo; annual &lt;a href=&#34;https://kenthendricks.com/52-things-i-learned-in-2024/&#34;&gt;&amp;ldquo;Things I learned&amp;rdquo;&lt;/a&gt; blog post:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;The introduction of ChatGPT led to a 2% decrease in freelance job postings on Upwork.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Regular Expression Basics</title>
+      <link>http://localhost:1313/posts/2024/12-28-regular-expressions/</link>
+      <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-28-regular-expressions/</guid>
+      <description>&lt;h3 id=&#34;regular-expressions&#34;&gt;&lt;strong&gt;Regular Expressions&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Regular expressions have always been a pain in the arse for me. I usually use online generators, or more recently AI to create them.  On a recent Solveit tutorial, I finally got my head around some basics.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Improving Python Function Usability with wrapping</title>
+      <link>http://localhost:1313/posts/2024/12-28-improving-function-usability-a-practical-tip/</link>
+      <pubDate>Fri, 27 Dec 2024 12:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-28-improving-function-usability-a-practical-tip/</guid>
+      <description>&lt;h3 id=&#34;improving-function-usability-a-practical-tip&#34;&gt;&lt;strong&gt;Improving Function Usability: A Practical Tip&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Today I was doing a Solveit tutorial and it touched on a simple way to improve the usability of functions without altering their core behaviour.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
