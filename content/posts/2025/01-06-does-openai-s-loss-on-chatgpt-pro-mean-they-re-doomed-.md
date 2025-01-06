@@ -7,6 +7,7 @@ image: images/2025/01-06-does-openai-s-loss-on-chatgpt-pro-mean-they-re-doomed.p
 caption: Illustration...
 categories:
   - blog
+  - artificial-intelligence
 tags: # tags - one per line
   - AI    
   - strategy
