@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ai on thingsithinkithink</title>
+    <title>AI on thingsithinkithink</title>
     <link>https://thingsithinkithink.blog/tags/ai/</link>
-    <description>Recent content in Ai on thingsithinkithink</description>
+    <description>Recent content in AI on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Dec 2024 20:16:05 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jan 2025 01:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Does OpenAI&#39;s loss on ChatGPT Pro mean they&#39;re doomed?</title>
+      <link>https://thingsithinkithink.blog/posts/2025/01-06-does-openai-s-loss-on-chatgpt-pro-mean-they-re-doomed-/</link>
+      <pubDate>Mon, 06 Jan 2025 01:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/01-06-does-openai-s-loss-on-chatgpt-pro-mean-they-re-doomed-/</guid>
+      <description>&lt;p&gt;A WhatsApp group that I&amp;rsquo;m part of has been discussing whether or not OpenAI is overvalued and in trouble as a result of this recent &lt;a href=&#34;https://techcrunch.com/2025/01/05/openai-is-losing-money-on-its-pricey-chatgpt-pro-plan-ceo-sam-altman-says/&#34;&gt;TechCrunch article&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Two AI things from Kent Hendricks&#39; annual &#39;Things I learned&#39; blog</title>
       <link>https://thingsithinkithink.blog/posts/2024/12-30-two-ai-things-from-kent-hendrick-s-annual-things-i-learned-blog/</link>
