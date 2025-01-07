@@ -1,0 +1,15 @@
+ mv ~/anaconda3/pkgs/* /media/david/Elements/conda_pkgs/
+
+
+ 4 Verify the new configuration:
+
+
+ conda config --show pkgs_dirs
+
+
+ 5 Update Conda to recognize the new location:
+
+
+ conda update conda
+
+
