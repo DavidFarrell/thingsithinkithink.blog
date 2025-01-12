@@ -6,8 +6,15 @@
     <description>Recent content in Podcast on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jan 2025 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jan 2025 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/podcast/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The challenges of mastering LLMs, and their role as cyborg enhancement</title>
+      <link>https://thingsithinkithink.blog/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</link>
+      <pubDate>Wed, 08 Jan 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</guid>
+      <description>&lt;p&gt;I recently watched a good &lt;a href=&#34;https://www.youtube.com/watch?v=rLcKbvmegag&#34;&gt;interview&lt;/a&gt; with Simon Willison on Logan Kilpatrick&amp;rsquo;s podcast, hosted for Google. Simon is known for building &lt;a href=&#34;https://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; (the Python web framework), &lt;a href=&#34;https://datasette.io/&#34;&gt;Datasette&lt;/a&gt; (a data tool for journalists), and the &lt;a href=&#34;https://github.com/simonw/llm&#34;&gt;LLM command line tool&lt;/a&gt; (which lets you run large language models from the command prompt). I used LLM for months until recently &lt;a href=&#34;https://www.answer.ai/posts/2024-12-05-introducing-shell-sage.html&#34;&gt;Shell Sage&lt;/a&gt; became my daily tool.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How AI is making its way into Government</title>
       <link>https://thingsithinkithink.blog/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</link>

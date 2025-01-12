@@ -1,9 +1,9 @@
 ---
 title: "Jackie Bavaro on Strategy"
-date: 2025-01-13T12:00:00Z
-slug: /01-13-three-parts-of-strategy-with-jackie-bavaro/
+date: 2025-01-14T12:00:00Z
+slug: /01-14-three-parts-of-strategy-with-jackie-bavaro/
 description: "Bavaro's approach to strategy: Vision, Strategic Framework, and Roadmap."
-image: images/2025/01-13-three-parts-of-strategy.png
+image: images/2025/01-14-three-parts-of-strategy.png
 caption: Three parts of strategy, as discussed on Lennys Podcast
 categories:
   - blog
