@@ -9,8 +9,8 @@ categories:
   - blog
 tags:
   - frameworks
-  - thinking
   - blog
+  - feature
 draft: false
 ---
 
