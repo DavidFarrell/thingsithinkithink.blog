@@ -1,6 +1,6 @@
 ---
 title: "Three Ways I Think Frameworks are Good (actually)"
-date: 2025-01-13T15:48:51Z
+date: 2025-01-13T09:20:51Z
 slug: /250113-three-ways-i-think-frameworks-are-good-actually/
 description: "Are frameworks actually useful? Exploring how they enable communication, engagement, and focused thinking"
 image: images/2025/01-13-frameworks.png
