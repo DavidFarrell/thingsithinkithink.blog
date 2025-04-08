@@ -13,7 +13,7 @@
       <link>https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/</link>
       <pubDate>Fri, 27 Dec 2024 12:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/</guid>
-      <description>&lt;h3 id=&#34;improving-function-usability-a-practical-tip&#34;&gt;&lt;strong&gt;Improving Function Usability: A Practical Tip&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Today I was doing a Solveit tutorial and it touched on a simple way to improve the usability of functions without altering their core behaviour.&lt;/p&gt;</description>
+      <description>&lt;h3 id=&#34;improving-function-usability-a-practical-tip&#34;&gt;&lt;strong&gt;Improving Function Usability: A Practical Tip&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Today I was doing a Solveit tutorial and it touched on a simple way to improve the usability of functions without altering their core behaviour.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;wrapping-functions-for-easier-use&#34;&gt;Wrapping Functions for Easier Use&lt;/h3&gt;&#xA;&lt;p&gt;Take Python’s &lt;code&gt;re.finditer&lt;/code&gt;, for example. It returns an iterator, which you might often need to convert into a list for processing. Instead of repeating &lt;code&gt;list(re.finditer(...))&lt;/code&gt; all over your code, you can wrap it in a helper function:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
