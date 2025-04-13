@@ -2,9 +2,9 @@
 title: "Error Analysis for Improving LLM Applications"
 date: 2025-04-13T00:00:00Z
 slug: /04-13-error-analysis-for-improving-llm-applications/
-description: "A systematic approach to analyzing and improving large language model applications through error analysis."
+description: "A systematic approach to analysing and improving large language model applications through error analysis."
 image: images/2025/hamel/error_analysis/motivation.png
-caption: Analyzing errors helps identify improvement opportunities in LLM applications
+caption: Analysing errors helps identify improvement opportunities in LLM applications
 categories:
   - artificial-intelligence
   - development
@@ -41,12 +41,12 @@ This initial step involves manually reviewing outputs from your system and writi
 
 What makes this stage effective:
 
-- You're not trying to categorize errors yet
+- You're not trying to categorise errors yet
 - You're simply documenting what feels wrong or right
 - You don't need to root-cause issues immediately
 - You should spend minutes per example at first
 
-### 2. Categorize
+### 2. Categorise
 
 After collecting your observations, you'll identify patterns by grouping similar issues. While you could use clustering techniques, LLMs are particularly effective at this stage:
 
@@ -54,9 +54,9 @@ After collecting your observations, you'll identify patterns by grouping similar
 2. Ask the LLM to identify common failure modes or suggest categories
 3. Refine these categories as needed
 
-### 3. Analyze
+### 3. Analyse
 
-With your categories established, you can now quantify how frequently each error occurs. This creates a prioritized list of issues to address and becomes the foundation for targeted metrics.
+With your categories established, you can now quantify how frequently each error occurs. This creates a prioritised list of issues to address and becomes the foundation for targeted metrics.
 
 ### 4. Ship Improvements & Evaluations
 
@@ -88,7 +88,7 @@ The manual annotation process forces you to articulate what you care about, whic
 
 ## The Case Study: AI Recruiter Emails
 
-To demonstrate the process, Hamel and Shreya worked through a case study of an AI system that writes personalized recruiter emails based on candidate CVs.
+To demonstrate the process, Hamel and Shreya worked through a case study of an AI system that writes personalised recruiter emails based on candidate CVs.
 
 
 

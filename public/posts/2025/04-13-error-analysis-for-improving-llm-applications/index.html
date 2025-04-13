@@ -6,7 +6,7 @@
 
 <title>Error Analysis for Improving LLM Applications | thingsithinkithink</title>
 
-<meta name="description" content="A systematic approach to analyzing and improving large language model applications through error analysis.">
+<meta name="description" content="A systematic approach to analysing and improving large language model applications through error analysis.">
       <link rel="stylesheet" href="/css/main.min.1188bca307f4eccd3ab4edf9c00e4545a2d7f5d0c3f98a288950746b92c49d73.css" integrity="sha256-EYi8owf07M06tO35wA5FRaLX9dDD&#43;YooiVB0a5LEnXM=" crossorigin="anonymous">
 
 <link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
@@ -90,7 +90,7 @@
 
       <div id="lead" class="my-6">
 
-        <p class="font-bold">A systematic approach to analyzing and improving large language model applications through error analysis. </p>
+        <p class="font-bold">A systematic approach to analysing and improving large language model applications through error analysis. </p>
 
       </div>
       
@@ -117,7 +117,7 @@
 
     <figure id="featureimage" class="rounded-xl aspect-video">
             <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2025/hamel/error_analysis/motivation_hu_1e5556b0949b962.png" alt="" width="750" height="362">
-        <figcaption class="text-center italic text-xs">Analyzing errors helps identify improvement opportunities in LLM applications</figcaption>
+        <figcaption class="text-center italic text-xs">Analysing errors helps identify improvement opportunities in LLM applications</figcaption>
 
     </figure>
 
@@ -138,20 +138,20 @@
 <p>This initial step involves manually reviewing outputs from your system and writing free-form notes about what you observe. It&rsquo;s crucial not to rush through this stage or outsource it to an LLM.</p>
 <p>What makes this stage effective:</p>
 <ul>
-<li>You&rsquo;re not trying to categorize errors yet</li>
+<li>You&rsquo;re not trying to categorise errors yet</li>
 <li>You&rsquo;re simply documenting what feels wrong or right</li>
 <li>You don&rsquo;t need to root-cause issues immediately</li>
 <li>You should spend minutes per example at first</li>
 </ul>
-<h3 id="2-categorize">2. Categorize</h3>
+<h3 id="2-categorise">2. Categorise</h3>
 <p>After collecting your observations, you&rsquo;ll identify patterns by grouping similar issues. While you could use clustering techniques, LLMs are particularly effective at this stage:</p>
 <ol>
 <li>Feed your notes to an LLM with a prompt like: &ldquo;I&rsquo;ve been coding my data to identify things I don&rsquo;t like in it. Here are the feedbacks I&rsquo;ve given. Note that this is in order; later feedbacks represent my updated thinking.&rdquo;</li>
 <li>Ask the LLM to identify common failure modes or suggest categories</li>
 <li>Refine these categories as needed</li>
 </ol>
-<h3 id="3-analyze">3. Analyze</h3>
-<p>With your categories established, you can now quantify how frequently each error occurs. This creates a prioritized list of issues to address and becomes the foundation for targeted metrics.</p>
+<h3 id="3-analyse">3. Analyse</h3>
+<p>With your categories established, you can now quantify how frequently each error occurs. This creates a prioritised list of issues to address and becomes the foundation for targeted metrics.</p>
 <h3 id="4-ship-improvements--evaluations">4. Ship Improvements &amp; Evaluations</h3>
 <p>Based on your analysis, you can now make targeted improvements to your system and create custom evaluation criteria specific to your application&rsquo;s needs.</p>
 <h3 id="5-iterate">5. Iterate</h3>
@@ -169,7 +169,7 @@ Have a table of feedbacks persistent, maybe at the bottom right. Generate this a
 <p>When you ask an LLM to judge your application&rsquo;s outputs without first doing manual analysis, you&rsquo;ll likely find yourself agreeing with whatever the model says - but missing the specific issues that matter to your use case.</p>
 <p>The manual annotation process forces you to articulate what you care about, which creates much more specific and useful evaluation criteria than generic metrics like helpfulness, toxicity, or conciseness scores.</p>
 <h2 id="the-case-study-ai-recruiter-emails">The Case Study: AI Recruiter Emails</h2>
-<p>To demonstrate the process, Hamel and Shreya worked through a case study of an AI system that writes personalized recruiter emails based on candidate CVs.</p>
+<p>To demonstrate the process, Hamel and Shreya worked through a case study of an AI system that writes personalised recruiter emails based on candidate CVs.</p>
 <p>ChatGPT is very capable of treating the categories following your bespoke error analysis.
 <img src="/images/2025/hamel/error_analysis/error_categories.png" alt="Custom annotation interface"></p>
 <p>The system showed various issues:</p>
