@@ -6,8 +6,15 @@
     <description>Recent content on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Error Analysis for Improving LLM Applications</title>
+      <link>https://thingsithinkithink.blog/posts/2025/04-13-error-analysis-for-improving-llm-applications/</link>
+      <pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/04-13-error-analysis-for-improving-llm-applications/</guid>
+      <description>&lt;p&gt;I recently &lt;a href=&#34;https://www.youtube.com/watch?v=qH1dZ8JLLdU&#34;&gt;watched&lt;/a&gt; a talk by &lt;a href=&#34;https://www.linkedin.com/in/hamelhusain/&#34;&gt;Hamel Husain&lt;/a&gt; and &lt;a href=&#34;https://www.linkedin.com/in/shrshnk/&#34;&gt;Shreya Shankar&lt;/a&gt; on error analysis for LLM applications. The approach they presented offers a systematic way to improve AI systems that rely on large language models.&lt;/p&gt;&#xA;&lt;p&gt;Building LLM applications presents unique challenges since outputs are typically text-based and difficult to evaluate with traditional metrics. While many developers focus on frameworks and tools (which RAG database to use, which agentic framework to implement), Hamel and Shreya emphasise the value of looking at your data closely.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Why we need Experiment-based Roadmaps in the AI Product Era</title>
       <link>https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</link>
