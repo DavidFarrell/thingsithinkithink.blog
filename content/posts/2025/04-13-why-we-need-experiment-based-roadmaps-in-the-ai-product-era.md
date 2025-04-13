@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-I recently watched a good talk by [Brian Bischoff](https://www.linkedin.com/in/bryan-bischof/), Head of AI at Theory Ventures, on why traditional product roadmaps fail for AI development and how teams should approach building AI capabilities differently. The presentation provided a good mental model for shifting from rigid planning to experimental discovery.
+I recently [watched](https://www.youtube.com/watch?v=R_HnI9oTv3c) a good talk by [Brian Bischoff](https://www.linkedin.com/in/bryan-bischof/), Head of AI at Theory Ventures, on why traditional product roadmaps fail for AI development and how teams should approach building AI capabilities differently. The presentation provided a good mental model for shifting from rigid planning to experimental discovery.
 
 ## The Problem with Traditional Roadmaps in AI
 
