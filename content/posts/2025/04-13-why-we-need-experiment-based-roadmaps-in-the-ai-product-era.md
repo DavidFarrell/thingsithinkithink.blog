@@ -1,6 +1,6 @@
 ---
 title: "Why we need Experiment-based Roadmaps in the AI Product Era"
-date: 2025-04-13T00:00:00Z
+date: 2025-04-12T00:00:00Z
 slug: /04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/
 description: "Why evaluation-driven experimentation creates better roadmaps in AI products."
 image: images/2025/hamel/14.png
