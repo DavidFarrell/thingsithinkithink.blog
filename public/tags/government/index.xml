@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Government on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/government/</link>
+    <link>http://localhost:65142/tags/government/</link>
     <description>Recent content in Government on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 06 Jan 2025 12:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/government/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:65142/tags/government/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How AI is making its way into Government</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</link>
+      <link>http://localhost:65142/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</link>
       <pubDate>Mon, 06 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</guid>
+      <guid>http://localhost:65142/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been thinking recently about how to frame the ways that (generative) AI is going to make its way into enterprise and the public sector.  A &lt;a href=&#34;https://www.youtube.com/watch?v=KOyovrkEhlk&amp;amp;list=PLWovoZxDVoYMQJzx9zpNjeJ3UNGuCwYLt&amp;amp;index=6&#34;&gt;recent podcast interview&lt;/a&gt; between &lt;a href=&#34;https://www.alanbrown.net/&#34;&gt;&lt;strong&gt;Professor Alan Brown&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;https://thinktankproduction.co.uk/&#34;&gt;&lt;strong&gt;Think Tank&lt;/strong&gt;&lt;/a&gt; touched upon this.&lt;/p&gt;&#xA;&lt;p&gt;Alan spent nearly two decades in the USA driving large-scale software programmes and leading R&amp;amp;D teams. After roles at Carnegie Mellon University and as an IBM Distinguished Engineer, he&amp;rsquo;s now focused on digital transformation. In addition to his research at &lt;a href=&#34;https://experts.exeter.ac.uk/27811-alan-brown&#34;&gt;Exeter&lt;/a&gt;, he&amp;rsquo;s recently published &lt;a href=&#34;https://surviveaibook.com/&#34;&gt;&lt;em&gt;&amp;ldquo;Surviving and Thriving in the Age of AI&amp;rdquo;&lt;/em&gt;&lt;/a&gt; which aims to help digital leaders navigate the challenges and opportunities of AI.&lt;/p&gt;</description>
     </item>
   </channel>

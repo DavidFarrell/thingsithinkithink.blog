@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Regex on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/regex/</link>
+    <link>http://localhost:65142/tags/regex/</link>
     <description>Recent content in Regex on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 28 Dec 2024 12:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/regex/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:65142/tags/regex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Regular Expression Basics</title>
-      <link>https://thingsithinkithink.blog/posts/2024/12-28-regular-expressions/</link>
+      <link>http://localhost:65142/posts/2024/12-28-regular-expressions/</link>
       <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/12-28-regular-expressions/</guid>
-      <description>&lt;h3 id=&#34;regular-expressions&#34;&gt;&lt;strong&gt;Regular Expressions&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Regular expressions have always been a pain in the arse for me. I usually use online generators, or more recently AI to create them.  On a recent Solveit tutorial, I finally got my head around some basics.&lt;/p&gt;&#xA;&lt;p&gt;A thing to note: I’m using the &lt;a href=&#34;https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/&#34;&gt;wrapped version of &lt;code&gt;finditer&lt;/code&gt;&lt;/a&gt; here, so it always returns a list.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;finding-a-simple-char-using-regex&#34;&gt;Finding a Simple Char Using Regex&lt;/h3&gt;&#xA;&lt;p&gt;If I have a string like this:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ss &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;467...114...35...633...#...617...+...58...592...755...$...664...598.&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then this regex finds &lt;code&gt;7&lt;/code&gt;s in the string.&lt;/p&gt;</description>
+      <guid>http://localhost:65142/posts/2024/12-28-regular-expressions/</guid>
+      <description>&lt;h3 id=&#34;regular-expressions&#34;&gt;&lt;strong&gt;Regular Expressions&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Regular expressions have always been a pain in the arse for me. I usually use online generators, or more recently AI to create them.  On a recent Solveit tutorial, I finally got my head around some basics.&lt;/p&gt;&#xA;&lt;p&gt;A thing to note: I’m using the &lt;a href=&#34;http://localhost:65142/posts/2024/12-28-improving-function-usability-a-practical-tip/&#34;&gt;wrapped version of &lt;code&gt;finditer&lt;/code&gt;&lt;/a&gt; here, so it always returns a list.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;finding-a-simple-char-using-regex&#34;&gt;Finding a Simple Char Using Regex&lt;/h3&gt;&#xA;&lt;p&gt;If I have a string like this:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ss &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;467...114...35...633...#...617...+...58...592...755...$...664...598.&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then this regex finds &lt;code&gt;7&lt;/code&gt;s in the string.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

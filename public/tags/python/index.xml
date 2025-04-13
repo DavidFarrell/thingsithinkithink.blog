@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/python/</link>
+    <link>http://localhost:65142/tags/python/</link>
     <description>Recent content in Python on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 27 Dec 2024 12:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:65142/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Improving Python Function Usability with wrapping</title>
-      <link>https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/</link>
+      <link>http://localhost:65142/posts/2024/12-28-improving-function-usability-a-practical-tip/</link>
       <pubDate>Fri, 27 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/</guid>
+      <guid>http://localhost:65142/posts/2024/12-28-improving-function-usability-a-practical-tip/</guid>
       <description>&lt;h3 id=&#34;improving-function-usability-a-practical-tip&#34;&gt;&lt;strong&gt;Improving Function Usability: A Practical Tip&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Today I was doing a Solveit tutorial and it touched on a simple way to improve the usability of functions without altering their core behaviour.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;wrapping-functions-for-easier-use&#34;&gt;Wrapping Functions for Easier Use&lt;/h3&gt;&#xA;&lt;p&gt;Take Python’s &lt;code&gt;re.finditer&lt;/code&gt;, for example. It returns an iterator, which you might often need to convert into a list for processing. Instead of repeating &lt;code&gt;list(re.finditer(...))&lt;/code&gt; all over your code, you can wrap it in a helper function:&lt;/p&gt;</description>
     </item>
   </channel>
