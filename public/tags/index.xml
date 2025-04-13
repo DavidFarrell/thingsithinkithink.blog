@@ -2,185 +2,185 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on thingsithinkithink</title>
-    <link>http://localhost:65142/tags/</link>
+    <link>https://thingsithinkithink.blog/tags/</link>
     <description>Recent content in Tags on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 11 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:65142/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://thingsithinkithink.blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ai</title>
-      <link>http://localhost:65142/tags/ai/</link>
+      <link>https://thingsithinkithink.blog/tags/ai/</link>
       <pubDate>Fri, 11 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/ai/</guid>
+      <guid>https://thingsithinkithink.blog/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Evaluation</title>
-      <link>http://localhost:65142/tags/evaluation/</link>
+      <link>https://thingsithinkithink.blog/tags/evaluation/</link>
       <pubDate>Fri, 11 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/evaluation/</guid>
+      <guid>https://thingsithinkithink.blog/tags/evaluation/</guid>
       <description></description>
     </item>
     <item>
       <title>Experimentation</title>
-      <link>http://localhost:65142/tags/experimentation/</link>
+      <link>https://thingsithinkithink.blog/tags/experimentation/</link>
       <pubDate>Fri, 11 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/experimentation/</guid>
+      <guid>https://thingsithinkithink.blog/tags/experimentation/</guid>
       <description></description>
     </item>
     <item>
       <title>Feature</title>
-      <link>http://localhost:65142/tags/feature/</link>
+      <link>https://thingsithinkithink.blog/tags/feature/</link>
       <pubDate>Fri, 11 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/feature/</guid>
+      <guid>https://thingsithinkithink.blog/tags/feature/</guid>
       <description></description>
     </item>
     <item>
       <title>Product-Management</title>
-      <link>http://localhost:65142/tags/product-management/</link>
+      <link>https://thingsithinkithink.blog/tags/product-management/</link>
       <pubDate>Fri, 11 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/product-management/</guid>
+      <guid>https://thingsithinkithink.blog/tags/product-management/</guid>
       <description></description>
     </item>
     <item>
       <title>Programming</title>
-      <link>http://localhost:65142/tags/programming/</link>
+      <link>https://thingsithinkithink.blog/tags/programming/</link>
       <pubDate>Tue, 08 Apr 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/programming/</guid>
+      <guid>https://thingsithinkithink.blog/tags/programming/</guid>
       <description></description>
     </item>
     <item>
       <title>Software-Architecture</title>
-      <link>http://localhost:65142/tags/software-architecture/</link>
+      <link>https://thingsithinkithink.blog/tags/software-architecture/</link>
       <pubDate>Tue, 08 Apr 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/software-architecture/</guid>
+      <guid>https://thingsithinkithink.blog/tags/software-architecture/</guid>
       <description></description>
     </item>
     <item>
       <title>System-Design</title>
-      <link>http://localhost:65142/tags/system-design/</link>
+      <link>https://thingsithinkithink.blog/tags/system-design/</link>
       <pubDate>Tue, 08 Apr 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/system-design/</guid>
+      <guid>https://thingsithinkithink.blog/tags/system-design/</guid>
       <description></description>
     </item>
     <item>
       <title>Podcast</title>
-      <link>http://localhost:65142/tags/podcast/</link>
+      <link>https://thingsithinkithink.blog/tags/podcast/</link>
       <pubDate>Tue, 14 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/podcast/</guid>
+      <guid>https://thingsithinkithink.blog/tags/podcast/</guid>
       <description></description>
     </item>
     <item>
       <title>Strategy</title>
-      <link>http://localhost:65142/tags/strategy/</link>
+      <link>https://thingsithinkithink.blog/tags/strategy/</link>
       <pubDate>Tue, 14 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/strategy/</guid>
+      <guid>https://thingsithinkithink.blog/tags/strategy/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>http://localhost:65142/tags/blog/</link>
+      <link>https://thingsithinkithink.blog/tags/blog/</link>
       <pubDate>Mon, 13 Jan 2025 09:20:51 +0000</pubDate>
-      <guid>http://localhost:65142/tags/blog/</guid>
+      <guid>https://thingsithinkithink.blog/tags/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Frameworks</title>
-      <link>http://localhost:65142/tags/frameworks/</link>
+      <link>https://thingsithinkithink.blog/tags/frameworks/</link>
       <pubDate>Mon, 13 Jan 2025 09:20:51 +0000</pubDate>
-      <guid>http://localhost:65142/tags/frameworks/</guid>
+      <guid>https://thingsithinkithink.blog/tags/frameworks/</guid>
       <description></description>
     </item>
     <item>
       <title>Project Management</title>
-      <link>http://localhost:65142/tags/project-management/</link>
+      <link>https://thingsithinkithink.blog/tags/project-management/</link>
       <pubDate>Tue, 07 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/project-management/</guid>
+      <guid>https://thingsithinkithink.blog/tags/project-management/</guid>
       <description></description>
     </item>
     <item>
       <title>Psychology</title>
-      <link>http://localhost:65142/tags/psychology/</link>
+      <link>https://thingsithinkithink.blog/tags/psychology/</link>
       <pubDate>Tue, 07 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/psychology/</guid>
+      <guid>https://thingsithinkithink.blog/tags/psychology/</guid>
       <description></description>
     </item>
     <item>
       <title>Government</title>
-      <link>http://localhost:65142/tags/government/</link>
+      <link>https://thingsithinkithink.blog/tags/government/</link>
       <pubDate>Mon, 06 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/government/</guid>
+      <guid>https://thingsithinkithink.blog/tags/government/</guid>
       <description></description>
     </item>
     <item>
       <title>Planning</title>
-      <link>http://localhost:65142/tags/planning/</link>
+      <link>https://thingsithinkithink.blog/tags/planning/</link>
       <pubDate>Sat, 04 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/planning/</guid>
+      <guid>https://thingsithinkithink.blog/tags/planning/</guid>
       <description></description>
     </item>
     <item>
       <title>Til</title>
-      <link>http://localhost:65142/tags/til/</link>
+      <link>https://thingsithinkithink.blog/tags/til/</link>
       <pubDate>Mon, 30 Dec 2024 20:16:05 +0000</pubDate>
-      <guid>http://localhost:65142/tags/til/</guid>
+      <guid>https://thingsithinkithink.blog/tags/til/</guid>
       <description></description>
     </item>
     <item>
       <title>Open-Source</title>
-      <link>http://localhost:65142/tags/open-source/</link>
+      <link>https://thingsithinkithink.blog/tags/open-source/</link>
       <pubDate>Mon, 30 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/open-source/</guid>
+      <guid>https://thingsithinkithink.blog/tags/open-source/</guid>
       <description></description>
     </item>
     <item>
       <title>Coding</title>
-      <link>http://localhost:65142/tags/coding/</link>
+      <link>https://thingsithinkithink.blog/tags/coding/</link>
       <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/coding/</guid>
+      <guid>https://thingsithinkithink.blog/tags/coding/</guid>
       <description></description>
     </item>
     <item>
       <title>Regex</title>
-      <link>http://localhost:65142/tags/regex/</link>
+      <link>https://thingsithinkithink.blog/tags/regex/</link>
       <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/regex/</guid>
+      <guid>https://thingsithinkithink.blog/tags/regex/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>http://localhost:65142/tags/python/</link>
+      <link>https://thingsithinkithink.blog/tags/python/</link>
       <pubDate>Fri, 27 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/python/</guid>
+      <guid>https://thingsithinkithink.blog/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Case-Studies</title>
-      <link>http://localhost:65142/tags/case-studies/</link>
+      <link>https://thingsithinkithink.blog/tags/case-studies/</link>
       <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/case-studies/</guid>
+      <guid>https://thingsithinkithink.blog/tags/case-studies/</guid>
       <description></description>
     </item>
     <item>
       <title>Civic-Tech</title>
-      <link>http://localhost:65142/tags/civic-tech/</link>
+      <link>https://thingsithinkithink.blog/tags/civic-tech/</link>
       <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/civic-tech/</guid>
+      <guid>https://thingsithinkithink.blog/tags/civic-tech/</guid>
       <description></description>
     </item>
     <item>
       <title>Newsletters</title>
-      <link>http://localhost:65142/tags/newsletters/</link>
+      <link>https://thingsithinkithink.blog/tags/newsletters/</link>
       <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/tags/newsletters/</guid>
+      <guid>https://thingsithinkithink.blog/tags/newsletters/</guid>
       <description></description>
     </item>
     <item>
       <title>Thoughts</title>
-      <link>http://localhost:65142/tags/thoughts/</link>
+      <link>https://thingsithinkithink.blog/tags/thoughts/</link>
       <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
-      <guid>http://localhost:65142/tags/thoughts/</guid>
+      <guid>https://thingsithinkithink.blog/tags/thoughts/</guid>
       <description></description>
     </item>
   </channel>

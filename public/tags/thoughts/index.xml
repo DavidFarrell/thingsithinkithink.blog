@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Thoughts on thingsithinkithink</title>
-    <link>http://localhost:65142/tags/thoughts/</link>
+    <link>https://thingsithinkithink.blog/tags/thoughts/</link>
     <description>Recent content in Thoughts on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 Dec 2024 14:33:22 +0000</lastBuildDate>
-    <atom:link href="http://localhost:65142/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://thingsithinkithink.blog/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Things I Think I Think</title>
-      <link>http://localhost:65142/posts/2024/12-05-things-i-think-i-think-blog/</link>
+      <link>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think-blog/</link>
       <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
-      <guid>http://localhost:65142/posts/2024/12-05-things-i-think-i-think-blog/</guid>
+      <guid>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think-blog/</guid>
       <description>&lt;p&gt;I want to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because I want to be able to write stuff without having to definitely commit forever to holding whatever ideas I have shared.  Therefore these posts are just things I &lt;em&gt;think&lt;/em&gt; I think.&lt;/p&gt;</description>
     </item>
   </channel>

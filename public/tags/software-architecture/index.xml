@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software-Architecture on thingsithinkithink</title>
-    <link>http://localhost:65142/tags/software-architecture/</link>
+    <link>https://thingsithinkithink.blog/tags/software-architecture/</link>
     <description>Recent content in Software-Architecture on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 08 Apr 2025 12:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:65142/tags/software-architecture/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://thingsithinkithink.blog/tags/software-architecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The M×N Problem in Software Architecture</title>
-      <link>http://localhost:65142/posts/2025/04-08-the-m-x-n-problem-in-software-architecture/</link>
+      <link>https://thingsithinkithink.blog/posts/2025/04-08-the-m-x-n-problem-in-software-architecture/</link>
       <pubDate>Tue, 08 Apr 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65142/posts/2025/04-08-the-m-x-n-problem-in-software-architecture/</guid>
+      <guid>https://thingsithinkithink.blog/posts/2025/04-08-the-m-x-n-problem-in-software-architecture/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve heard about the &amp;ldquo;M×N problem&amp;rdquo; a couple of times lately. After watching Swyx on the Latent Space podcast interviewing the creators of MCP from Anthropic, where he mentioned this problem again, I decided to figure out what it actually meant. According to Swyx, it&amp;rsquo;s a problem he&amp;rsquo;s had to solve repeatedly in his career because of his work on developer tooling.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-mn-problem-defined&#34;&gt;The M×N Problem Defined&lt;/h2&gt;&#xA;&lt;p&gt;The M×N problem occurs in software architecture when you have M components that need to interact with N other components, with each interaction handled individually. This creates a tangled web of connections where the total number of integrations grows to M × N.&lt;/p&gt;</description>
     </item>
   </channel>
