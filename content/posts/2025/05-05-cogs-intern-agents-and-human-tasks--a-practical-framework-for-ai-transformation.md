@@ -20,7 +20,8 @@ I also like Ethan Mollick's [framework](https://www.oneusefulthing.org/p/on-boar
 I'm using this framework now and I'm finding it really helpful. People understand it and it gives us nice buckets to put things into in order to plan a real practical transformation project.
 
 - **Cogs**
-  - Brunig and Mollick have similar definitions. Brunig's word is better, so I use Cogs. Well-defined tasks that AI performs exceptionally well and can be trusted to do without supervision.
+  - Brunig and Mollick have similar definitions. Brunig's word is better, so I use Cogs.
+  - Well-defined tasks that AI performs exceptionally well and can be trusted to do without supervision. Could be a simple ML type AI. Could be a full on Agent. Key thing is - v v v reliable, basically never fails. Full automation.
 - **AI Interns**
   - Bundles of cogs and other more complicated tasks that are executed by AI Agents, supervised by responsible humans.
   - Borrowing here from both frameworks - "Intern" communicates perfectly the relationship between human and AI, but Ethan's "bundles of tasks" concept makes it clearer what exactly is happening here.
