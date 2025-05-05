@@ -23,7 +23,7 @@ I'm using this framework now and I'm finding it really helpful. People understan
   - Brunig and Mollick have similar definitions. Brunig's word is better, so I use Cogs.
   - Well-defined tasks that AI performs exceptionally well and can be trusted to do without supervision. Could be a simple ML type AI. Could be a full on Agent. Key thing is - v v v reliable, basically never fails. Full automation.
 - **AI Interns**
-  - Bundles of cogs and other more complicated tasks that are executed by AI Agents, supervised by responsible humans.
+  - Bundles of cogs and / or other more complicated tasks that are executed by AI Agents, supervised by responsible humans.
   - Borrowing here from both frameworks - "Intern" communicates perfectly the relationship between human and AI, but Ethan's "bundles of tasks" concept makes it clearer what exactly is happening here.
 - **Human-Only**
   - Leaning more on Mollick's framework here, there are two types of human-only tasks:
