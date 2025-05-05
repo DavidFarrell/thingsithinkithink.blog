@@ -1071,6 +1071,10 @@ video {
   content: var(--tw-content);
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
 }
