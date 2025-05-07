@@ -26,7 +26,7 @@ I'm using this blended framework now and I'm finding it really helpful. People u
   - Brunig and Mollick have similar definitions. Brunig's word is better, so I use Cogs.
 - **AI Interns**
   - Bundles of cogs and / or other more complicated tasks that are involve AI or are executed by AI Agents - supervised by responsible humans. 
-  - Think co-drafting a memo with ChatGPT. Think Deep Research doing a bunch of basic work for you, that you then take as a starting point for your own outputs.
+    - Think co-drafting a memo with ChatGPT. Think Deep Research doing a bunch of basic work for you, that you then take as a starting point for your own outputs.
   - Borrowing here from both frameworks - "Intern" communicates perfectly the relationship between human and AI, but Ethan's "bundles of tasks" concept makes it clearer what exactly is happening here.
 - **Human-Only**
   - Leaning more on Mollick's framework here ("Just me" - but with better wording), there are two types of human-only tasks:
