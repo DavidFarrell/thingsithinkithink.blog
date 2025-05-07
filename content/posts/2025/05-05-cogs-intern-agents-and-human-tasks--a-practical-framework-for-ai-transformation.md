@@ -13,17 +13,19 @@ tags: # tags - one per line
 draft: false
 ---
 
-A while back, Drew Brunig's [classification](https://www.dbreunig.com/2024/10/18/the-3-ai-use-cases-gods-interns-and-cogs.html) of AI capabilities as "Cogs, Interns, and Gods" went viral on [Twitter](https://x.com/dbreunig/status/1847382010551292232?s=61). I like it. It's punchy. It's powerful. I use it all the time, but I really dislike the Gods framing - even Brunig acknowledges these don't exist yet, so it's really redundant. You basically can't _do_ anything with it.
+A while back, Drew Brunig's [classification](https://www.dbreunig.com/2024/10/18/the-3-ai-use-cases-gods-interns-and-cogs.html) of AI capabilities as "Cogs, Interns, and Gods" went viral on [Twitter](https://x.com/dbreunig/status/1847382010551292232?s=61). I like it. It's punchy. It's powerful. I use it all the time, but I really dislike the Gods framing - even Brunig acknowledges these (superintelligent AI agents) don't exist yet, so it's really redundant.
 
-I also like Ethan Mollick's [framework](https://www.oneusefulthing.org/p/on-boarding-your-ai-intern) of "Automated", "Delegated", and "Just Me". But "Just Me" feels clumsy in professional contexts, and "Delegated" just doesn't capture the dynamic back-and-forth relationship between humans and AI systems.
+You basically can't _do_ anything with it.
 
-I'm using this framework now and I'm finding it really helpful. People understand it and it gives us nice buckets to put things into in order to plan a real practical transformation project.
+I also like Ethan Mollick's [framework](https://www.oneusefulthing.org/p/on-boarding-your-ai-intern) of "Automated", "Delegated", and "Just Me" as a way to talk about how we work with AI. But "Just Me" feels clumsy in professional contexts, and "Delegated" just doesn't capture the dynamic back-and-forth relationship between humans and AI systems.
+
+I'm using this blended framework now and I'm finding it really helpful. People understand it at face value and it gives us nice buckets to put things into in order to plan a real practical transformation project.
 
 - **Cogs**
   - Well-defined tasks that AI performs exceptionally well and can be trusted to do without supervision. Could be a simple ML type AI. Could be a full on Agent. Key thing is - v v v reliable, basically never fails. Full automation.
   - Brunig and Mollick have similar definitions. Brunig's word is better, so I use Cogs.
 - **AI Interns**
-  - Bundles of cogs and / or other more complicated tasks that are executed by AI Agents, supervised by responsible humans.
+  - Bundles of cogs and / or other more complicated tasks that are involve AI or are executed by AI Agents - supervised by responsible humans.
   - Borrowing here from both frameworks - "Intern" communicates perfectly the relationship between human and AI, but Ethan's "bundles of tasks" concept makes it clearer what exactly is happening here.
 - **Human-Only**
   - Leaning more on Mollick's framework here, there are two types of human-only tasks:
