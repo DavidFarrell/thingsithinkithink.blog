@@ -28,7 +28,7 @@ I'm using this blended framework now and I'm finding it really helpful. People u
   - Bundles of cogs and / or other more complicated tasks that are involve AI or are executed by AI Agents - supervised by responsible humans. These are things that AI helps with, does a bunch of the work for us but which we need to be involved in too. Think co-drafting a memo with ChatGPT. Think Deep Research doing a bunch of basic work for you, that you then take as a starting point for your own outputs.
   - Borrowing here from both frameworks - "Intern" communicates perfectly the relationship between human and AI, but Ethan's "bundles of tasks" concept makes it clearer what exactly is happening here.
 - **Human-Only**
-  - Leaning more on Mollick's framework here, there are two types of human-only tasks:
+  - Leaning more on Mollick's framework here ("Just me" - but with better wording), there are two types of human-only tasks:
     1. Tasks which AI just can't do very well, even with supervision. In practice, over time, these will move towards the intern level.
     2. Tasks which, for ethical or fundamentally _human_ reasons, we don't want AI to do.
 
