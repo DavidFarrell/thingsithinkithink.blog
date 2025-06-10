@@ -6,8 +6,15 @@
     <description>Recent content in Evaluation on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Jun 2025 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/evaluation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hamel &amp; Shreya&#39;s LLM Evals Course: Lesson 1</title>
+      <link>https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/</link>
+      <pubDate>Sun, 08 Jun 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve started taking Hamel Husain and Shreya Shankar&amp;rsquo;s course on evaluating LLM applications. The course attracted over 700 students from more than 300 companies, which gives you a sense of how much demand there is for systematic approaches to improving AI-driven products. As someone who has taught classes with a maximum of 120 students, I&amp;rsquo;m glad it&amp;rsquo;s not me having to monitor the lesson chat.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m writing these notes here for myself as a way to come back and check what I learned from the course.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Error Analysis for Improving LLM Applications</title>
       <link>https://thingsithinkithink.blog/posts/2025/04-13-error-analysis-for-improving-llm-applications/</link>

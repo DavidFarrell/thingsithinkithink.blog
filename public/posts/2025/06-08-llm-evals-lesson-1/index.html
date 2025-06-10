@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hamel &amp; Shreya&#39;s LLM Evals Course: Lesson 1 | thingsithinkithink</title>
+
+<meta name="description" content="Notes from the first lesson of Parlance Lab&#39;s Maven course on evaluating LLM applications - covering the Three Gulfs model and why eval is where most people get stuck.">
+      <link rel="stylesheet" href="/css/main.min.1188bca307f4eccd3ab4edf9c00e4545a2d7f5d0c3f98a288950746b92c49d73.css" integrity="sha256-EYi8owf07M06tO35wA5FRaLX9dDD&#43;YooiVB0a5LEnXM=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">Hamel &amp; Shreya&#39;s LLM Evals Course: Lesson 1</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Notes from the first lesson of Parlance Lab&#39;s Maven course on evaluating LLM applications - covering the Three Gulfs model and why eval is where most people get stuck. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-06-08T12:00:00&#43;00:00">June 8, 2025</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            11 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2025/parlancecourse/06-08-llm-evals-three-gulfs_hu_2b7fc72553d16778.png" alt="" width="750" height="365">
+        <figcaption class="text-center italic text-xs">The Three Gulfs Model showing the challenges developers face when building LLM applications</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>I&rsquo;ve started taking Hamel Husain and Shreya Shankar&rsquo;s course on evaluating LLM applications. The course attracted over 700 students from more than 300 companies, which gives you a sense of how much demand there is for systematic approaches to improving AI-driven products. As someone who has taught classes with a maximum of 120 students, I&rsquo;m glad it&rsquo;s not me having to monitor the lesson chat.</p>
+<p>I&rsquo;m writing these notes here for myself as a way to come back and check what I learned from the course.</p>
+<p>The core premise of the course strikes me as valuable: there are loads of tutorials on building basic AI applications/RAG applications/agents etc. But so many folk get stuck when they&rsquo;re trying to make their AI system better or go from POC to product. The course is hoping to tell us how do you iteratively improve your product systematically rather than just doing random things and hoping for the best.</p>
+<h2 id="the-problem-with-current-ai-development">The Problem with Current AI Development</h2>
+<p>Shreya opened with the observation that eval is where most people get stuck in developing LLM applications. There are countless tutorials showing you how to glue together APIs and use different tools, but where people struggle is understanding how to make their AI better - and specifically, how to iterate with confidence that they&rsquo;re making improvements rather than just guessing.</p>
+<p>In every LLM project I&rsquo;ve worked on, I&rsquo;ve had to develop custom ways of understanding how the system performs. Generic benchmarks like Humanity&rsquo;s Last Exam or LLM Arena don&rsquo;t capture what matters for specific applications. In fact, they&rsquo;re quite distracting. I&rsquo;ve been on projects where other members of the team propose using standard eval metrics. It&rsquo;s easy to lose an argument when there is a standard benchmark on the table, but I don&rsquo;t find them useful at all for any given project I&rsquo;m working on. The gap between these academic benchmarks and real world specific use case performance is huge.</p>
+<h2 id="what-i-care-about-when-i-use-llms">What I Care About When I Use LLMs</h2>
+<p>I rely on a mix of ChatGPT, Claude, and Gemini, each for different tasks, and my usage patterns tell me that <em>I</em> don&rsquo;t care about standard benchmarks that much.</p>
+<p>I have a lot of understanding about how to control ChatGPT and to get it to do specific things for me. For example, I use it sometimes for data analysis pipelines. I&rsquo;ll upload spreadsheets and have it compare datasets, write Python code that it runs in its own environment to extract details. I like reading the reasoning traces and then the rest of that paragraph as you&rsquo;ve got it. The ability to see how the AI arrived at conclusions helps me trust the outputs - though I always verify anything important.</p>
+<p>I use Claude mostly as an editor for my writing. I find ChatGPT&rsquo;s writing style absolutely rubbish. So when I&rsquo;m using AI to help me with a writing task, I typically work in Claude, iterating back and forth with the shared artifact to create the final text. I spend considerable time dictating to Claude, having it create edited transcripts, then co-creating the actual output. This way I get AI&rsquo;s ability to pull together different threads whilst ensuring the final result doesn&rsquo;t sound like AI wrote it (because AI didn&rsquo;t write it, AI helped me edit it).</p>
+<p>I use Gemini for its enormous context length and factual approach to communication. For example, I have a Python program that can recursively work through my Notion notes and combine them into one large text file. I can paste that single text file into Gemini if I need fact checking or if I want to tease out quotes or supporting arguments from my accumulated notes for some point I&rsquo;m looking to make on a project.</p>
+<p>This usage pattern really gets at that point about the difference between benchmarks and what actually matters for various use cases. And that&rsquo;s basically why I&rsquo;m looking forward to the course, because I really believe in what the course is stating, that the criteria we care about for any given LLM-based application are not the criteria that we care about with these academic benchmarks. It&rsquo;s about nuanced, often implicit factors like trustworthy reasoning traces, writing quality, whether the outputs correspond to certain taste preferences and so on. And relying on standard benchmarks just ain&rsquo;t going to cut it. So I&rsquo;m really looking forward to learning some best practice from the course.</p>
+<h2 id="the-three-gulfs-model">The Three Gulfs Model</h2>
+<p>The core of the first lesson was Shreya&rsquo;s &ldquo;Three Gulfs Model&rdquo; for understanding LLM development challenges. She framed this as the different hats developers must wear when building effective pipelines. It&rsquo;s clear that we&rsquo;re going to come back to this model throughout the rest of the course as we tackle each of the gulfs.</p>
+<p>![Three Gulfs Model diagram showing Developer, LLM Pipeline, and Data nodes with the gulfs between them]</p>
+<h3 id="gulf-of-specification-developer--llm-pipeline">Gulf of Specification (Developer ↔ LLM Pipeline)</h3>
+<p>This represents the challenge of communicating your intent to the LLM. Getting a great output once is relatively easy; crafting a prompt that consistently produces high-quality outputs is extraordinarily difficult, especially as applications grow more sophisticated.</p>
+<p>Shreya emphasised how hard communication actually is. She pointed to the leaked system prompts from major AI assistants - they&rsquo;re remarkably long because the providers understand the direct correlation between specification quality and performance. Given that every token costs money at scale, the fact that these companies use such extensive prompts demonstrates the relationship between specification and success.</p>
+<p>The example she used was asking a recipe bot for &ldquo;something easy to cook.&rdquo; What does &ldquo;easy&rdquo; mean? Fewer ingredients? Less time? Fewer steps? Equipment requirements? All of these need specifying in the prompt, or you need massive datasets to train on.</p>
+<p>This resonates with Ethan Mollick&rsquo;s observation that the skills required for effective AI use are fundamentally managerial: communication, clarity of specification, knowing what good looks like. These aren&rsquo;t traditional developer strengths (sorry developers, I know some of you are great at this - but it&rsquo;s not what we think of as the core dev skills). Having spent a decade teaching game design and software engineering, I learned communication by <em>doing</em> it with students - the immediate feedback cycle of saying something, seeing a student&rsquo;s eyes glaze over and trying a different tack - or having loads of questions after explaining an idea - that kind of feedback shows you when you&rsquo;re not communicating well and over time (if you pay attention and try) you get better at it. With LLMs, that feedback loop is much more opaque. It&rsquo;s much harder to know that you have sufficiently communicated what you want.</p>
+<h3 id="gulf-of-comprehension-developer--data">Gulf of Comprehension (Developer ↔ Data)</h3>
+<p>This gulf addresses the bandwidth challenge: you cannot manually review every input and output. You&rsquo;ve got too much data, and there will be errors and outliers that are hard to spot at scale.</p>
+<p>The data encompasses everything: initial problem understanding data, user-generated content that doesn&rsquo;t match your expectations, and system outputs you&rsquo;re trying to evaluate. As Shreya noted, &ldquo;you can&rsquo;t vibe check your way to understanding what&rsquo;s going on.&rdquo;</p>
+<p>Hamel shared an anecdote about an apartment leasing AI assistant where the client was convinced the system worked well based on limited testing. Only through systematic data analysis did they identify failure modes around appointment setting, date handling, and other issues that were invisible during casual evaluation.</p>
+<h3 id="gulf-of-generalisation-data--llm-pipeline">Gulf of Generalisation (Data ↔ LLM Pipeline)</h3>
+<p>Even with perfect specification, LLMs aren&rsquo;t humans. They&rsquo;re limited by capabilities and context windows, and their performance varies across inputs. This gulf requires understanding model capabilities, task decomposition, fine-tuning, RAG systems, and other architectural decisions.</p>
+<p>Shreya&rsquo;s insight here is that this goes beyond communication clarity. Even if you specify everything as well as any human would require, you still need mechanisms to help the LLM succeed across diverse inputs. This might mean RAG for context limitations, decomposition for complex tasks, or fine-tuning for capability gaps.</p>
+<p>In my largest LLM project, I spent considerable time on decomposition - trying to identify the top three problems in user submissions whilst knowing when to break out of rigid approaches. If someone reports being stabbed in the street, you can&rsquo;t stick to a &ldquo;find three questions&rdquo; framework. The LLM couldn&rsquo;t handle this nuance without significant architectural support.</p>
+<h2 id="the-evaluation-lifecycle-analyse-measure-improve">The Evaluation Lifecycle: Analyse, Measure, Improve</h2>
+<p>The course proposes a three-stage lifecycle for systematic improvement:</p>
+<p><img src="/images/2025/parlancecourse/06-08-llm-eval-lifcycle.png" alt="Evaluation lifecycle diagram showing Analyse → Measure → Improve cycle with common pitfalls listed"></p>
+<h3 id="analyse">Analyse</h3>
+<p>Collect representative examples and categorise failure modes. You must look at your data until you reach &ldquo;theoretical saturation&rdquo; - the point where reviewing additional examples reveals no new failure modes.</p>
+<p>Common pitfalls include outsourcing annotation (never do this - it must be done by domain experts) and not looking at enough examples (minimum 30, aim for at least 50, sometimes 100).</p>
+<h3 id="measure">Measure</h3>
+<p>Translate qualitative insights into quantitative metrics. This involves implementing automated evaluators, including LLM-as-judge approaches, whilst avoiding the trap of unaligned judges or overfitting. I have been quite sceptical of LLM as a judge, thinking of it as the best of a bunch of bad options. Hamel and Shreya have hinted at some more robust approaches when they spoke about error analysis previously, and I&rsquo;m looking forward to having a better understanding of how good we can make these.</p>
+<h3 id="improve">Improve</h3>
+<p>Refine prompts, models, and pipeline architecture based on insights. The crucial point: avoid premature improvement and jumping to complex solutions first. Don&rsquo;t fine-tune before exhausting simpler methods.</p>
+<h2 id="recipe-bot-the-course-project">Recipe Bot: The Course Project</h2>
+<p>To ground these concepts, the course uses a recipe bot that suggests recipes based on user requests (ingredients, dietary preferences, cooking time). This application can scale from simple to complex, incorporating RAG, multimodal capabilities, or agentic internet search.</p>
+<p>We can understand the problems we might face, viewing the recipe bot through the lens of each of the gulfs:</p>
+<ul>
+<li><strong>Comprehension</strong>: Understanding diverse queries from &ldquo;What can I make with these ingredients?&rdquo; to &ldquo;How do I create an amazing dessert for my party?&rdquo;</li>
+<li><strong>Specification</strong>: Defining what &ldquo;easy to cook&rdquo; means in precise, unambiguous terms</li>
+<li><strong>Generalisation</strong>: Ensuring consistent performance across varied inputs even with clear prompts</li>
+</ul>
+<h2 id="prompting-fundamentals-and-component-analysis">Prompting Fundamentals and Component Analysis</h2>
+<p>Shreya recommended considering these as essential prompting components:</p>
+<ol>
+<li><strong>Role and Objective</strong>: Define the LLM&rsquo;s persona (&ldquo;You are a helpful recipe assistant&rdquo;)</li>
+<li><strong>Instructions/Response Rules</strong>: Clear directives with always/never guidelines</li>
+<li><strong>Context</strong>: Relevant background (dietary restrictions, skill level)</li>
+<li><strong>Examples</strong>: Few-shot prompting demonstrating desired format</li>
+<li><strong>Reasoning Steps</strong>: Chain-of-thought for complex requests</li>
+<li><strong>Output Formatting</strong>: Structured responses (JSON, XML tags)</li>
+<li><strong>Delimiters</strong>: Clear section separation</li>
+</ol>
+<p>I&rsquo;ve given workshops on how to prompt LLMs to a general audience for ChatGPT and to developers for GitHub Copilot. At some point, I need to put mine online and contrast them with these, but these seem quite reasonable to me.</p>
+<p>The iterative nature of prompting was emphasised - finding the perfect prompt is rare and probably the result of a lot of hard work. Your first attempt is a starting point for refinement.</p>
+<h2 id="defining-good-vs-bad-starting-with-user-unhappiness">Defining Good vs Bad: Starting with User Unhappiness</h2>
+<p>Tying back to the way we opened this post, talking about how academic benchmarks are kind of useless and what good looks like really depends a lot on what we&rsquo;re trying to do. Shreya basically tried to figure out how can we go about understanding what good looks like in the context of our application. Rather than trying to define &ldquo;good&rdquo; directly, Shreya suggested starting with potential user unhappiness:</p>
+<ul>
+<li>Ingredients not commonly available</li>
+<li>Ignoring dietary restrictions or allergies</li>
+<li>Unclear instructions</li>
+<li>Inappropriate complexity for skill level</li>
+<li>Unhealthy suggestions when healthy was requested</li>
+</ul>
+<p>This &ldquo;unhappy paths&rdquo; approach helps define what good isn&rsquo;t - and the inverse provides a foundation for positive specifications.</p>
+<h2 id="llm-agency-levels">LLM Agency Levels</h2>
+<p>Shreya introduced the concept of LLM agency in a way that I haven&rsquo;t seen anybody frame it before, i.e. how much freedom the bot has to interpret user wants.</p>
+<p>Using the example &ldquo;I want a quick dinner using chicken and potatoes&rdquo; (although this probably should have been &ldquo;I want a quick dinner using roast chicken and potatoes&rdquo;) when roasting takes an hour:</p>
+<ul>
+<li><strong>High Agency</strong>: Suggests a different quick chicken recipe</li>
+<li><strong>Medium Agency</strong>: Asks &ldquo;Roasting takes 1 hour. Okay, or prefer something faster?&rdquo;</li>
+<li><strong>Low Agency</strong>: Gives the roasting recipe, ignoring the &ldquo;quick&rdquo; constraint</li>
+</ul>
+<p>Your prompt needs to define this agency level explicitly, as it fundamentally shapes user experience. This is interesting, this feels a little bit different to me and I&rsquo;m looking forward to seeing more as we go on.</p>
+<h2 id="reference-free-vs-reference-based-metrics">Reference-Free vs Reference-Based Metrics</h2>
+<p>To finish up the lesson, we discussed two different approaches to evaluation:</p>
+<h3 id="reference-free">Reference-Free</h3>
+<p>Checking output properties without comparing to perfect answers</p>
+<ul>
+<li>&ldquo;Does the output contain an &lsquo;Ingredients&rsquo; section?&rdquo;</li>
+<li>&ldquo;If user states an allergy, is the allergic ingredient absent?&rdquo;</li>
+</ul>
+<h3 id="reference-based">Reference-Based</h3>
+<p>Comparing generated answers against golden standards - useful for CI/CD workflows but less relevant for most production traces.</p>
+<h2 id="thingsithinkithink">thingsithinkithink</h2>
+<ul>
+<li>
+<p>The Three Gulfs looks useful. Thinking back to previous projects, I can now retrospectively identify which gulf caused specific failures. This might help me communicate to clients in the future.</p>
+</li>
+<li>
+<p>The agency concept is new (to me) and might be important. Mulling it over. Not sure what I think yet - but it&rsquo;s provocative.</p>
+</li>
+</ul>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/llm/">Llm</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/evaluation/">Evaluation</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/machine-learning/">Machine-Learning</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/course-notes/">Course-Notes</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/04-13-error-analysis-for-improving-llm-applications/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/hamel/error_analysis/motivation_hu_1e5556b0949b962.png" alt="Error Analysis for Improving LLM Applications" width="750" height="362">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-04-13T00:00:00&#43;00:00">Apr 13, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">Error Analysis for Improving LLM Applications</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">A systematic approach to analysing and improving large language model applications through error analysis.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/hamel/14_hu_c5aba18e16637e87.png" alt="Why we need Experiment-based Roadmaps in the AI Product Era" width="750" height="336">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-04-12T00:00:00&#43;00:00">Apr 12, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">Why we need Experiment-based Roadmaps in the AI Product Era</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Why evaluation-driven experimentation creates better roadmaps in AI products.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/06-08-llm-evals-three-gulfs_hu_20a266e86787d167.png" alt="Hamel &amp; Shreya&#39;s LLM Evals Course: Lesson 1" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Hamel &amp; Shreya&#39;s LLM Evals Course: Lesson 1</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/05/cogs_interns_humans_hu_37b8c67dd07413d9.png" alt="Cogs / Interns / Human Tasks, a practical framework for AI transformation" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Cogs / Interns / Human Tasks, a practical framework for AI transformation</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/05-04-synthesising-a-new-framework-for-ai-transformation/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/05/mollick_on_transformation_hu_768e4f85300b0f29.png" alt="Synthesising a new framework for AI Transformation" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Synthesising a new framework for AI Transformation</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/04-13-error-analysis-for-improving-llm-applications/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/hamel/error_analysis/motivation_hu_ab8598fd057c9763.png" alt="Error Analysis for Improving LLM Applications" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Error Analysis for Improving LLM Applications</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/hamel/14_hu_db7b55435fb32801.png" alt="Why we need Experiment-based Roadmaps in the AI Product Era" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Why we need Experiment-based Roadmaps in the AI Product Era</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+</body>
+</html>
