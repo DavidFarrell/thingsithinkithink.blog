@@ -6,8 +6,15 @@
     <description>Recent content in Posts on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Jun 2025 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Jun 2025 12:50:38 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM Evals Lesson 2 Error Analysis</title>
+      <link>https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/</link>
+      <pubDate>Sat, 21 Jun 2025 12:50:38 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/</guid>
+      <description>&lt;p&gt;The second lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s LLM evaluation course tackled the &amp;ldquo;Analyse&amp;rdquo; phase of their evaluation lifecycle. This session focused on systematic error analysis - moving beyond gut feelings and random fixes to understand precisely where and why LLM applications fail.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://thingsithinkithink.blog/images/2025/parlancecourse/05_21_analyse_measure_improve.png&#34; alt=&#34;The evaluation lifecycle showing Analyze, Measure, and Improve phases&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re going to make something better, you need to understand how it fails and error analysis focuses on that.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hamel &amp; Shreya&#39;s LLM Evals Course: Lesson 1</title>
       <link>https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/</link>

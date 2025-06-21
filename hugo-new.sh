@@ -88,8 +88,9 @@ hugo new "posts/$YEAR/$MONTH_DAY-$FILENAME.md"
 POST_PATH="content/posts/$YEAR/$MONTH_DAY-$FILENAME.md"
 
 # Replace the frontmatter with our custom version
-sed -i "s/+++/---/g" "$POST_PATH"  # Convert +++ to ---
-sed -i "s/title:.*$/title: \"$1\"/" "$POST_PATH"  # Preserve original title case
-sed -i "s/date:.*$/date: $CUSTOM_DATE/" "$POST_PATH"
+# Use -i '' for macOS compatibility
+sed -i '' 's/+++/---/g' "$POST_PATH" # Convert +++ to ---
+sed -i '' "s/title:.*$/title: \"$1\"/" "$POST_PATH" # Preserve original title case
+sed -i '' "s/date:.*$/date: $CUSTOM_DATE/" "$POST_PATH"
 
 echo "Post created at $POST_PATH"
