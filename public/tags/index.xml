@@ -44,7 +44,7 @@
       <description></description>
     </item>
     <item>
-      <title>AI</title>
+      <title>Ai</title>
       <link>https://thingsithinkithink.blog/tags/ai/</link>
       <pubDate>Mon, 05 May 2025 10:00:00 +0100</pubDate>
       <guid>https://thingsithinkithink.blog/tags/ai/</guid>
@@ -223,6 +223,20 @@
       <link>https://thingsithinkithink.blog/tags/thoughts/</link>
       <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/thoughts/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Books</title>
+      <link>https://thingsithinkithink.blog/tags/books/</link>
+      <pubDate>Sat, 22 Jun 2024 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/books/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Implementation</title>
+      <link>https://thingsithinkithink.blog/tags/implementation/</link>
+      <pubDate>Sat, 22 Jun 2024 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/implementation/</guid>
       <description></description>
     </item>
   </channel>
