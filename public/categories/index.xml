@@ -6,13 +6,20 @@
     <description>Recent content in Categories on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Jun 2025 12:50:38 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Jun 2025 05:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Artificial-Intelligence</title>
       <link>https://thingsithinkithink.blog/categories/artificial-intelligence/</link>
-      <pubDate>Sat, 21 Jun 2025 12:50:38 +0000</pubDate>
+      <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/categories/artificial-intelligence/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Business</title>
+      <link>https://thingsithinkithink.blog/categories/business/</link>
+      <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/categories/business/</guid>
       <description></description>
     </item>
     <item>
@@ -55,13 +62,6 @@
       <link>https://thingsithinkithink.blog/categories/til/</link>
       <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/categories/til/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Business</title>
-      <link>https://thingsithinkithink.blog/categories/business/</link>
-      <pubDate>Sat, 22 Jun 2024 05:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/categories/business/</guid>
       <description></description>
     </item>
   </channel>

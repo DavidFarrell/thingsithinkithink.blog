@@ -6,8 +6,43 @@
     <description>Recent content in Tags on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Jun 2025 12:50:38 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Jun 2025 05:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai</title>
+      <link>https://thingsithinkithink.blog/tags/ai/</link>
+      <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Books</title>
+      <link>https://thingsithinkithink.blog/tags/books/</link>
+      <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/books/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Feature</title>
+      <link>https://thingsithinkithink.blog/tags/feature/</link>
+      <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/feature/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Implementation</title>
+      <link>https://thingsithinkithink.blog/tags/implementation/</link>
+      <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/implementation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Strategy</title>
+      <link>https://thingsithinkithink.blog/tags/strategy/</link>
+      <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/strategy/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Course-Notes</title>
       <link>https://thingsithinkithink.blog/tags/course-notes/</link>
@@ -41,20 +76,6 @@
       <link>https://thingsithinkithink.blog/tags/machine-learning/</link>
       <pubDate>Sat, 21 Jun 2025 12:50:38 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AI</title>
-      <link>https://thingsithinkithink.blog/tags/ai/</link>
-      <pubDate>Mon, 05 May 2025 10:00:00 +0100</pubDate>
-      <guid>https://thingsithinkithink.blog/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Feature</title>
-      <link>https://thingsithinkithink.blog/tags/feature/</link>
-      <pubDate>Mon, 05 May 2025 10:00:00 +0100</pubDate>
-      <guid>https://thingsithinkithink.blog/tags/feature/</guid>
       <description></description>
     </item>
     <item>
@@ -111,13 +132,6 @@
       <link>https://thingsithinkithink.blog/tags/podcast/</link>
       <pubDate>Tue, 14 Jan 2025 12:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/podcast/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Strategy</title>
-      <link>https://thingsithinkithink.blog/tags/strategy/</link>
-      <pubDate>Tue, 14 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/tags/strategy/</guid>
       <description></description>
     </item>
     <item>
@@ -223,20 +237,6 @@
       <link>https://thingsithinkithink.blog/tags/thoughts/</link>
       <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/thoughts/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Books</title>
-      <link>https://thingsithinkithink.blog/tags/books/</link>
-      <pubDate>Sat, 22 Jun 2024 05:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/tags/books/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Implementation</title>
-      <link>https://thingsithinkithink.blog/tags/implementation/</link>
-      <pubDate>Sat, 22 Jun 2024 05:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/tags/implementation/</guid>
       <description></description>
     </item>
   </channel>

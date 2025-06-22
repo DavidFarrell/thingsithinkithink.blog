@@ -1,6 +1,6 @@
 ---
 title: "AI Demystified Book by Antonio Weiss"
-date: 2024-06-22T05:00:00Z
+date: 2025-06-22T05:00:00Z
 slug: /06-22-ai-demystified-book-by-antonio-weiss/
 description: "Pearson FT published AI Demystified offers a gentle introduction for business leaders who want to understand how AI might impact their field."
 image: /images/2025/06-22-ai-demystified-book-cover.png
