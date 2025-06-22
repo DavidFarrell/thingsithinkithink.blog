@@ -1,0 +1,43 @@
+---
+title: "LLM Evals Course: Lesson 2b (office hrs)"
+date: 2025-06-22T09:00:00Z
+slug: /06-22-llm-evals-course-lesson-2b-office-hrs/
+description: "A few things from Evals Course office hrs following lesson 2 of Hamel and Shreya's LLM evaluation course."
+categories:
+  - artificial-intelligence
+  - evals
+  - course-notes
+tags:
+  - llm
+  - evaluation
+  - machine-learning
+  - error-analysis
+  - course-notes
+draft: false
+---
+
+A few things I wanted to note down from the first office hours session following lesson 2 of Hamel and Shreya's LLM evals course.
+
+## Getting Teams to Actually Do Error Analysis
+
+Someone asked how to actually get your team to engage with error analysis? It's one thing to say "look at your data," but quite another to inspire people to do the work.
+
+Shreya's answer was straightforward: run training sessions. There's significant activation energy required to get people over the hump, but once they experience error analysis firsthand, they become self-fuelling. The process is so valuable that people understand its worth immediately after doing it properly once.
+
+Hamel added that clients often disappear after learning error analysis because they suddenly have everything they need to make real progress.
+
+## How Long Till Theoretical Saturation?
+
+The last lesson mentioned looping through your data multiple times until reaching theoretical saturation, but someone asked about the practical mechanics.
+
+Hamel pointed out that you needn't worry about getting everything perfect on your first pass. Once you identify failure modes, you'll work to fix them, which burns down those error categories and allows new failure modes to bubble up. You'll have plenty of opportunities to catch issues you missed initially.
+
+Hamel's real world experience usually involves three loops - but always at least 2 - of open coding + axial coding before reaching saturation.
+
+## Does Error Analysis Only Work at the Micro Level?
+
+Someone asked about evaluation tools that work at higher abstraction levels. Their concern was: if you tailor your error analysis to your current implementation's concrete structure, you lose all that evaluation work when you change architecture.
+
+Shreya hadn't seen tools that solve this problem directly, but had a bit of advice: design evaluations at the "trace level" rather than the "turn level." The turn level is what changes between architectures, whilst the trace level remains more stable.
+
+This suggests thinking about evaluation scaffolding in terms of overall system behaviour rather than specific implementation details - I'm not sure yet how this changes my own practice.

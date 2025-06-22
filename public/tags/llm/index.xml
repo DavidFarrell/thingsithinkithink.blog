@@ -6,8 +6,15 @@
     <description>Recent content in Llm on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Jun 2025 12:50:38 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Jun 2025 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM Evals Course: Lesson 2b (office hrs)</title>
+      <link>https://thingsithinkithink.blog/posts/2025/06-22-llm-evals-course-lesson-2b-office-hrs/</link>
+      <pubDate>Sun, 22 Jun 2025 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/06-22-llm-evals-course-lesson-2b-office-hrs/</guid>
+      <description>&lt;p&gt;A few things I wanted to note down from the first office hours session following &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/&#34;&gt;lesson 2&lt;/a&gt; of Hamel and Shreya&amp;rsquo;s &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/&#34;&gt;LLM evals course&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;getting-teams-to-actually-do-error-analysis&#34;&gt;Getting Teams to Actually Do Error Analysis&lt;/h2&gt;&#xA;&lt;p&gt;Someone asked how to actually get your team to engage with error analysis? It&amp;rsquo;s one thing to say &amp;ldquo;look at your data,&amp;rdquo; but quite another to inspire people to do the work.&lt;/p&gt;&#xA;&lt;p&gt;Shreya&amp;rsquo;s answer was straightforward: run training sessions. There&amp;rsquo;s significant activation energy required to get people over the hump, but once they experience error analysis firsthand, they become self-fuelling. The process is so valuable that people understand its worth immediately after doing it properly once.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LLM Evals Lesson 2 Error Analysis</title>
       <link>https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/</link>
