@@ -122,7 +122,7 @@
     </figure>
 
     <div id="content" class="mb-14">
-      <p>I learned three things from this interview with Hamel Husain and Kwindla Kramer, founder of PipeCat, an open-source framework for voice and multimodal conversation. As someone who hasn&rsquo;t worked much with voice agents, I found three things particularly interesting.</p>
+      <p>I learned three things from <a href="https://www.youtube.com/watch?v=I86dFivLzXY&amp;t=196s">this interview</a> with Hamel Husain and Kwindla Kramer, founder of PipeCat, an open-source framework for voice and multimodal conversation. As someone who hasn&rsquo;t worked much with voice agents, I found three things particularly interesting.</p>
 <h2 id="voice-agents-use-traditional-pipelines-not-fancy-models">Voice Agents Use Traditional Pipelines, Not Fancy Models</h2>
 <p>The first thing was learning that most production voice agents don&rsquo;t use the latest speech-to-speech models from OpenAI or Google (etc). Instead, they rely on a modular pipeline approach that breaks the process into discrete steps.</p>
 <p>The standard architecture works like this: audio comes in and gets processed through speech-to-text conversion whilst simultaneously running turn detection. Turn detection is what bridges the gap between a rubbish agent and something that feels modern - it determines when the agent should speak. The text goes through context management into an LLM, which generates a response. That response gets converted back to speech via text-to-speech and sent to the user, with the context updated for the next turn.</p>

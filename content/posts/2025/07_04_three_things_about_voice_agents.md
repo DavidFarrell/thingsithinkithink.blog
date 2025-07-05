@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-I learned three things from this interview with Hamel Husain and Kwindla Kramer, founder of PipeCat, an open-source framework for voice and multimodal conversation. As someone who hasn't worked much with voice agents, I found three things particularly interesting.
+I learned three things from [this interview](https://www.youtube.com/watch?v=I86dFivLzXY&t=196s) with Hamel Husain and Kwindla Kramer, founder of PipeCat, an open-source framework for voice and multimodal conversation. As someone who hasn't worked much with voice agents, I found three things particularly interesting.
 
 ## Voice Agents Use Traditional Pipelines, Not Fancy Models
 
