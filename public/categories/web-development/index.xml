@@ -6,8 +6,15 @@
     <description>Recent content in Web-Development on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Aug 2025 08:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Aug 2025 08:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/web-development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Isaac Flath&#39;s AI dev stack</title>
+      <link>http://localhost:1313/posts/2025/08-17-isaac_flaths_ai_dev_stack/</link>
+      <pubDate>Sun, 17 Aug 2025 08:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025/08-17-isaac_flaths_ai_dev_stack/</guid>
+      <description>&lt;p&gt;FastHTML apps are built on Starlette, which means they can run anywhere Starlette runs. Some options for hosting so I don&amp;rsquo;t need to look next time.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;simple-deployment-options&#34;&gt;Simple Deployment Options&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Railway&lt;/strong&gt;: go-to choice for simple deployment&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Plash&lt;/strong&gt;: Answer.ai&amp;rsquo;s new hosting service (currently in beta)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Modal&lt;/strong&gt;: Good option if you have free credits (like I do from the Hamel course)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;any-starlette-compatible-hosting&#34;&gt;Any Starlette-Compatible Hosting&lt;/h2&gt;&#xA;&lt;p&gt;Since FastHTML apps run on Starlette, they work with any hosting service that supports Starlette applications.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Where to Host Your FastHTML Apps</title>
       <link>http://localhost:1313/posts/2025/08-16-where-to-host-fasthtml-apps/</link>
