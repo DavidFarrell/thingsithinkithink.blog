@@ -269,3 +269,10 @@ Phoenix stores traces, annotations, datasets, experiments, and prompt versioning
 This integration pattern - temporary local storage flowing to permanent experiment storage - keeps the annotation interface uncluttered.
 
 ---
+
+## Resources:
+- [Isaac's Workshop Repository](https://github.com/ai-evals-course/isaac-fasthtml-workshop) 
+- [Workshop Slides](https://ai-evals-course.github.io/isaac-fasthtml-workshop/presentation/talk.html)
+- [Isaac's Blog Post on Agentic Coding](https://elite-ai-assisted-coding.dev/p/agentic-coding-fasthtml-app-evals)
+- [FastHTML Documentation](https://fastht.ml/)
+- [Monster UI Framework](https://monsterui.dev/)
