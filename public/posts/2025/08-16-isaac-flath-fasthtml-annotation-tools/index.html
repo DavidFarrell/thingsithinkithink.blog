@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Building Domain-Specific Annotation Tools with FastHTML: Lessons from Isaac Flath | thingsithinkithink</title>
+
+<meta name="description" content="How Isaac Flath built a medical flashcard annotation tool for AnkiHub using FastHTML, and why custom annotation tools beat generic ones for complex domains.">
+    <link rel="stylesheet" href="/css/main.css">
+
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="http://localhost:1313/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="http://localhost:1313/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">Building Domain-Specific Annotation Tools with FastHTML: Lessons from Isaac Flath</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">How Isaac Flath built a medical flashcard annotation tool for AnkiHub using FastHTML, and why custom annotation tools beat generic ones for complex domains. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="http://localhost:1313/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-08-16T08:00:00&#43;00:00">August 16, 2025</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            7 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="http://localhost:1313/images/2025/parlancecourse/08-16-isaac-fasthtml-hero_hu_ed932903a402d25f.png" alt="" width="750" height="411">
+        <figcaption class="text-center italic text-xs">Isaac Flath demonstrating FastHTML annotation tools in action</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>I&rsquo;m writing up my notes from <a href="https://maven.com/parlance-labs/evals">Hamel Husain and Shreya Shankar&rsquo;s excellent AI Evals course</a>. Today we have Isaac Flath&rsquo;s (cohort 1) session on building custom annotation tools. Isaac showed how he built a real-world medical flashcard annotation system for AnkiHub using FastHTML.  I&rsquo;ve written before about FastHTML (see <a href="/posts/2025/07-18-chrome-devtools-fasthtml-development/">FastHTML&rsquo;s Chrome DevTools integration</a>) and this builds on that with a bit of detil on FastLite db support and some htmx stuff.</p>
+<hr>
+<h2 id="the-ankihub-challenge-inverted-retrieval-at-scale">The AnkiHub Challenge: Inverted Retrieval at Scale</h2>
+<p>Isaac&rsquo;s use case centers on <a href="https://ankihab.net">AnkiHub</a>, a medical flashcard platform where students search for study materials.</p>
+<p>Their specific challenge is around an inversion of typical retrieval patterns:</p>
+<ul>
+<li><strong>Traditional retrieval</strong>: Short queries → long documents</li>
+<li><strong>AnkiHub&rsquo;s</strong>: Long queries → short flashcards</li>
+</ul>
+<p>Medical students might type two words or upload entire PowerPoint presentations and book chapters. The system then returns hundreds of flashcards - each containing just one or two sentences designed for memorisation.</p>
+<p><img src="/images/2025/parlancecourse/08-16-ankihub-dashboard.png" alt="AnkiHub main dashboard showing queries and evaluation status"></p>
+<p>The domain requirements make this particularly complex:</p>
+<ol>
+<li><strong>Technical precision matters</strong>: Similar isn&rsquo;t good enough. &ldquo;Purine&rdquo; and &ldquo;pyrimidine&rdquo; are related but distinct concepts that require different sets of flashcards.</li>
+<li><strong>Variable query lengths</strong>: From keywords to 50-page documents (i.e &ldquo;<em>give me flashcards for this talk</em>&rdquo;)</li>
+<li><strong>High volume evaluation</strong>: One query might return 400+ flashcards requiring individual assessment during the eval iteration loop</li>
+</ol>
+<hr>
+<h2 id="domain-specific-tools">Domain-Specific Tools</h2>
+<p>Generic annotation tools provide broad workflows, but they can&rsquo;t encode the specific business logic that makes evaluation efficient.</p>
+<p>It&rsquo;s always the case that whatever you&rsquo;re working on you have a bespoke specific business logic - so you&rsquo;ll always benefit from that bespoke design.</p>
+<p>AnkiHub&rsquo;s custom workflow includes:</p>
+<ul>
+<li><strong>Multi-stage annotation</strong>: Two annotators must review each query</li>
+<li><strong>Disagreement resolution</strong>: When annotators disagree, they re-evaluate and justify their decisions</li>
+<li><strong>Dual evaluation</strong>: They assess both result quality AND query quality (e.g., &ldquo;heart&rdquo; is too generic to be useful - how many thousands of flash cards would be returned - zero value there)</li>
+<li><strong>Status tracking</strong>: Clear visibility into annotation progress across the team</li>
+</ul>
+<p>Generic tools force you into their assumptions about how annotation should work. Custom tools let you encode your domain expertise directly into the interface.</p>
+<hr>
+<h2 id="fasthtml-staying-in-python-context">FastHTML: Staying in Python Context</h2>
+<p>I know that experienced web folks won&rsquo;t find the idea of a minimalist, python web app builder appealing, but I like how you don&rsquo;t have to switch langauge / framework context when you use FastHTML.</p>
+<p>As Isaac put it: &ldquo;If you&rsquo;re living in Python, it helps you stay in that context.&rdquo; No separate HTML files, CSS files, or wrestling with JavaScript frameworks.</p>
+<p>Here&rsquo;s his minimal example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fasthtml.common <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> monsterui.all <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app, rt <span style="color:#f92672">=</span> fast_app(hdrs<span style="color:#f92672">=</span>Theme<span style="color:#f92672">.</span>blue<span style="color:#f92672">.</span>headers())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Container(H1(<span style="color:#e6db74">&#34;Hello World&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>serve()
+</span></span></code></pre></div><p>You run <code>python main.py</code> and immediately have a server running at localhost. No build steps, no configuration files.</p>
+<hr>
+<h2 id="database-setup-with-fastlite">Database Setup with FastLite</h2>
+<p>Isaac uses FastLite for database access, which builds on python&rsquo;s in-build SQLite implementation and follows the same minimal-code philosophy as FastHTML. The annotation table schema is simple:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastlite <span style="color:#f92672">import</span> Database
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>db <span style="color:#f92672">=</span> Database(<span style="color:#e6db74">&#39;eval.db&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Annotation</span>:
+</span></span><span style="display:flex;"><span>    input_id: str
+</span></span><span style="display:flex;"><span>    document_id: int
+</span></span><span style="display:flex;"><span>    input: str <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    document: str <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    notes: str <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    eval_type: str <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><p>That&rsquo;s it. No ORM complexity, no Docker containers running PostgreSQL. Built-in SQLite handles everything for small annotation tools. As Isaac said: &ldquo;FastLite does the same thing for databases that FastHTML does for websites - minimum amount of code, maximum amount of productivity.&rdquo;</p>
+<hr>
+<h2 id="the-main-page-routes-and-tables">The Main Page: Routes and Tables</h2>
+<p>FastHTML&rsquo;s routing works differently from FastAPI. Instead of explicit route strings, it uses function names with a decorator:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():  <span style="color:#75715e"># Becomes the root route &#34;/&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Get unique queries from database</span>
+</span></span><span style="display:flex;"><span>    unique_inputs <span style="color:#f92672">=</span> list(db<span style="color:#f92672">.</span>annotations<span style="color:#f92672">.</span>rows_where(select<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;distinct input_id, input&#39;</span>))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    body <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> unique_input <span style="color:#f92672">in</span> unique_inputs:
+</span></span><span style="display:flex;"><span>        body<span style="color:#f92672">.</span>append({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Input&#39;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>unique_input[<span style="color:#e6db74">&#39;input&#39;</span>][:<span style="color:#ae81ff">125</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">...&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Action&#39;</span>: A(<span style="color:#e6db74">&#34;Evaluate&#34;</span>, 
+</span></span><span style="display:flex;"><span>                        cls<span style="color:#f92672">=</span>AT<span style="color:#f92672">.</span>primary, 
+</span></span><span style="display:flex;"><span>                        href<span style="color:#f92672">=</span>evaluate<span style="color:#f92672">.</span>to(input_id<span style="color:#f92672">=</span>unique_input[<span style="color:#e6db74">&#39;input_id&#39;</span>]))
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Container(
+</span></span><span style="display:flex;"><span>        H1(<span style="color:#e6db74">&#34;Evaluation Index&#34;</span>),
+</span></span><span style="display:flex;"><span>        TableFromDicts([<span style="color:#e6db74">&#39;Input&#39;</span>, <span style="color:#e6db74">&#39;Action&#39;</span>], body)
+</span></span><span style="display:flex;"><span>    )
+</span></span></code></pre></div><p>Also note the helper function <code>TableFromDicts</code> that generates HTML tables from Python dictionaries.</p>
+<p>Also note <code>evaluate.to()</code> which creates links to other Python functions with parameters. This is quite nice - instead of hardcoding URLs or manually building query strings, FastHTML generates the correct URLs based on the function signature. So <code>evaluate.to(input_id=&quot;123&quot;)</code> becomes <code>/evaluate?input_id=123</code> automatically, and you get type safety because it knows what parameters the function expects.</p>
+<p>These aren&rsquo;t heavy abstractions - they map directly to HTML elements. A button in FastHTML is an HTML button, just with Python syntax instead of angle brackets.</p>
+<hr>
+<h2 id="the-evaluation-page-htmx-integration">The Evaluation Page: HTMX Integration</h2>
+<p>The evaluation interface shows where FastHTML with HTMX integration - this is how you provide some of the modern, dynamic website functionality folk expect:</p>
+<p><img src="/images/2025/parlancecourse/08-16-evaluation-page.png" alt="Evaluation page showing flashcards with good/bad buttons and note fields"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">evaluate</span>(input_id: str):
+</span></span><span style="display:flex;"><span>    documents <span style="color:#f92672">=</span> list(db<span style="color:#f92672">.</span>annotations<span style="color:#f92672">.</span>rows_where(<span style="color:#e6db74">&#39;input_id=?&#39;</span>, [input_id]))
+</span></span><span style="display:flex;"><span>    body <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> doc <span style="color:#f92672">in</span> documents:
+</span></span><span style="display:flex;"><span>        body<span style="color:#f92672">.</span>append({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Output&#39;</span>: render_md(doc[<span style="color:#e6db74">&#39;document&#39;</span>]),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Notes&#39;</span>: Input(
+</span></span><span style="display:flex;"><span>                value<span style="color:#f92672">=</span>doc[<span style="color:#e6db74">&#39;notes&#39;</span>], 
+</span></span><span style="display:flex;"><span>                cls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;min-w-96&#39;</span>,
+</span></span><span style="display:flex;"><span>                name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;notes&#39;</span>,
+</span></span><span style="display:flex;"><span>                hx_post<span style="color:#f92672">=</span>update_notes<span style="color:#f92672">.</span>to(input_id<span style="color:#f92672">=</span>input_id, document_id<span style="color:#f92672">=</span>doc[<span style="color:#e6db74">&#39;document_id&#39;</span>]),
+</span></span><span style="display:flex;"><span>                hx_trigger<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;change&#39;</span>
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Evaluation&#39;</span>: eval_buttons(input_id, doc[<span style="color:#e6db74">&#39;document_id&#39;</span>])
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Container(
+</span></span><span style="display:flex;"><span>        H1(<span style="color:#e6db74">&#34;Evaluating Input&#34;</span>),
+</span></span><span style="display:flex;"><span>        Card(render_md(documents[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;input&#39;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>))),
+</span></span><span style="display:flex;"><span>        TableFromDicts([<span style="color:#e6db74">&#39;Output&#39;</span>, <span style="color:#e6db74">&#39;Notes&#39;</span>, <span style="color:#e6db74">&#39;Evaluation&#39;</span>], body)
+</span></span><span style="display:flex;"><span>    )
+</span></span></code></pre></div><p>Several useful bits and bobs here:</p>
+<p><strong>1. Markdown Rendering</strong>: <code>render_md()</code> uses Monster UI&rsquo;s component that calls mistletoe behind the scenes, then applies Tailwind classes for styling.</p>
+<p><strong>2. Tailwind Integration</strong>: <code>cls='min-w-96'</code> shows how you can use Tailwind classes when Monster UI doesn&rsquo;t provide exactly what you need.</p>
+<p><strong>3. HTMX Auto-Save</strong>: <code>hx_trigger='change'</code> means notes save automatically when users type, without submit buttons. The <code>hx_post</code> attribute calls a Python function that updates the database.</p>
+<p>Note that the <code>change</code> event fires when an input field loses focus AND its value has changed - this is different from <code>input</code> events which fire on every keystroke. So users finish typing and tab away, then the save happens automatically.</p>
+<hr>
+<h2 id="htmx-partial-page-updates">HTMX: Partial Page Updates</h2>
+<p>The <code>update_notes</code> shows HTMX&rsquo;s usefulness:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_notes</span>(input_id: str, document_id: int, notes: str):
+</span></span><span style="display:flex;"><span>    record <span style="color:#f92672">=</span> Annotation(input_id<span style="color:#f92672">=</span>input_id, document_id<span style="color:#f92672">=</span>document_id, notes<span style="color:#f92672">=</span>notes)
+</span></span><span style="display:flex;"><span>    db<span style="color:#f92672">.</span>annotations<span style="color:#f92672">.</span>update(record)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># No return value - just updates database</span>
+</span></span></code></pre></div><p>When users type in the notes field, HTMX automatically:</p>
+<ol>
+<li>Triggers on the <code>change</code> event</li>
+<li>Posts to the <code>update_notes</code> route</li>
+<li>Updates the database</li>
+<li>Requires no page refresh or JavaScript</li>
+</ol>
+<p>So with HTMX you can build interactive interfaces that feel like modern web apps while keeping all logic in Python and server side.</p>
+<hr>
+<h2 id="button-state-management">Button State Management</h2>
+<p>The evaluation buttons show state management being used to control the view:</p>
+<p><img src="/images/2025/parlancecourse/08-16-button-state-management.png" alt="Button state management showing good/bad buttons with primary/secondary styling"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">eval_buttons</span>(input_id: str, document_id: int <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    target_id <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;#eval-</span><span style="color:#e6db74">{</span>input_id<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">{</span>document_id<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    _annotation <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>annotations[input_id, document_id]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_eval_button</span>(label: str):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Button(label,
+</span></span><span style="display:flex;"><span>            hx_post<span style="color:#f92672">=</span>evaluate_doc<span style="color:#f92672">.</span>to(input_id<span style="color:#f92672">=</span>input_id, document_id<span style="color:#f92672">=</span>document_id, eval_type<span style="color:#f92672">=</span>label<span style="color:#f92672">.</span>lower()),
+</span></span><span style="display:flex;"><span>            hx_target<span style="color:#f92672">=</span>target_id,
+</span></span><span style="display:flex;"><span>            cls<span style="color:#f92672">=</span>ButtonT<span style="color:#f92672">.</span>primary <span style="color:#66d9ef">if</span> _annotation<span style="color:#f92672">.</span>eval_type <span style="color:#f92672">==</span> label<span style="color:#f92672">.</span>lower() <span style="color:#66d9ef">else</span> ButtonT<span style="color:#f92672">.</span>secondary,
+</span></span><span style="display:flex;"><span>            submit<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> DivLAligned(
+</span></span><span style="display:flex;"><span>        create_eval_button(<span style="color:#e6db74">&#34;Good&#34;</span>), 
+</span></span><span style="display:flex;"><span>        create_eval_button(<span style="color:#e6db74">&#34;Bad&#34;</span>),
+</span></span><span style="display:flex;"><span>        id<span style="color:#f92672">=</span>target_id[<span style="color:#ae81ff">1</span>:]
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">evaluate_doc</span>(input_id: str, document_id: int, eval_type: str):
+</span></span><span style="display:flex;"><span>    db<span style="color:#f92672">.</span>annotations<span style="color:#f92672">.</span>update(Annotation(input_id<span style="color:#f92672">=</span>input_id, document_id<span style="color:#f92672">=</span>document_id, eval_type<span style="color:#f92672">=</span>eval_type))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> eval_buttons(input_id, document_id)  <span style="color:#75715e"># Returns updated buttons</span>
+</span></span></code></pre></div><p>The logic here is:</p>
+<p>Each button checks if the database state matches its own label. The Good button asks &ldquo;Am I the one that&rsquo;s currently selected?&rdquo; by comparing <code>_annotation.eval_type</code> with <code>&quot;good&quot;</code>. If yes, it shows blue (primary styling). If no, it shows gray (secondary styling). Same logic for the Bad button with <code>&quot;bad&quot;</code>. So if a record is marked as &ldquo;good&rdquo; in the database, the Good button shows blue and the Bad button shows gray.</p>
+<p>When users click &ldquo;Good&rdquo; or &ldquo;Bad&rdquo;:</p>
+<ol>
+<li>HTMX posts to <code>evaluate_doc</code></li>
+<li>Database updates with the evaluation</li>
+<li>Function returns new button HTML with updated colors</li>
+<li>HTMX replaces just the button container (via <code>hx_target</code>)</li>
+<li>User sees immediate visual feedback</li>
+</ol>
+<p>What makes this work is using <code>hx_target</code> to replace both buttons together rather than just the clicked button. This way both buttons update their styling to reflect the new state - the clicked button becomes primary (blue) and the other becomes secondary (gray). No page refresh, no complex JavaScript state management.</p>
+<hr>
+<h2 id="keyboard-shortcuts">Keyboard Shortcuts</h2>
+<p>Isaac builds keyboard shortcuts for his data annotation tools.</p>
+<p>They&rsquo;re most valuable when individual tasks are quick. If you&rsquo;re reviewing 400 flashcards at 2 seconds each, removing mouse navigation saves significant time. If each review takes 5 minutes, keyboard shortcuts matter less.</p>
+<hr>
+<h2 id="phoenix-integration-clean-data-flow">Phoenix Integration: Clean Data Flow</h2>
+<p>The annotation system integrates with Phoenix (an AI experiment database) to maintain clean data flow:</p>
+<p>Phoenix stores traces, annotations, datasets, experiments, and prompt versioning.</p>
+<p>This integration pattern - temporary local storage flowing to permanent experiment storage - keeps the annotation interface uncluttered.</p>
+<hr>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/fasthtml/">Fasthtml</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/annotation/">Annotation</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/ai-evaluation/">Ai-Evaluation</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/htmx/">Htmx</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/python/">Python</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="http://localhost:1313/posts/2025/07-18-chrome-devtools-fasthtml-development/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/07-18-devtools-hero_hu_a29a54757dab79a7.png" alt="Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration" width="750" height="463">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-07-18T09:00:00&#43;00:00">Jul 18, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">How to connect Chrome DevTools to your FastHTML applications for fast CSS and HTML debugging and iteration during development.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="http://localhost:1313/posts/2024/12-28-improving-function-usability-a-practical-tip/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2024/12-28-function-usability_hu_c183fd7d802b2086.png" alt="Improving Python Function Usability with wrapping" width="750" height="750">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2024-12-27T12:00:00&#43;00:00">Dec 27, 2024</time>
+
+		<h3 class="my-4 text-2xl font-bold">Improving Python Function Usability with wrapping</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">A simple approach to modifying Python functions for better usability without altering their core behaviour.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2024/12-05-things-i-think-i-think/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2024/rustywaves_hu_b67302ab326d061c.png" alt="Things I Think I Think" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Things I Think I Think</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/08-16-isaac-fasthtml-hero_hu_3a855661f34ddb2d.png" alt="Building Domain-Specific Annotation Tools with FastHTML: Lessons from Isaac Flath" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Building Domain-Specific Annotation Tools with FastHTML: Lessons from Isaac Flath</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/07-18-chrome-devtools-fasthtml-development/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/07-18-devtools-hero_hu_5c00c41a946b70ea.png" alt="Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/07_06_llm_as_a_judge_lifecycle_hu_867bfebf996587c9.png" alt="LLM Evals Course Lesson 3: Building Automated Evaluators" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 3: Building Automated Evaluators</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/07-04-voiceagents_kwindla_hu_fe88a20c3af078a5.png" alt="Three Things I Learned About Voice Agents from Kwindla Kramer" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Three Things I Learned About Voice Agents from Kwindla Kramer</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="http://localhost:1313/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script src="/js/insertoggle.js"></script>
+</body>
+</html>

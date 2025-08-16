@@ -211,6 +211,8 @@ So with HTMX you can build interactive interfaces that feel like modern web apps
 
 The evaluation buttons show state management being used to control the view:
 
+![Button state management showing good/bad buttons with primary/secondary styling](/images/2025/parlancecourse/08-16-button-state-management.png)
+
 ```python
 def eval_buttons(input_id: str, document_id: int = None):
     target_id = f"#eval-{input_id}-{document_id}"
@@ -235,22 +237,26 @@ def evaluate_doc(input_id: str, document_id: int, eval_type: str):
     return eval_buttons(input_id, document_id)  # Returns updated buttons
 ```
 
+The logic here is: 
+
+Each button checks if the database state matches its own label. The Good button asks "Am I the one that's currently selected?" by comparing `_annotation.eval_type` with `"good"`. If yes, it shows blue (primary styling). If no, it shows gray (secondary styling). Same logic for the Bad button with `"bad"`. So if a record is marked as "good" in the database, the Good button shows blue and the Bad button shows gray.
+
 When users click "Good" or "Bad":
-1. HTMX posts to `evaluate_doc`
+1. HTMX posts to `evaluate_doc`  
 2. Database updates with the evaluation
 3. Function returns new button HTML with updated colors
 4. HTMX replaces just the button container (via `hx_target`)
 5. User sees immediate visual feedback
 
-The primary button (blue) indicates the current state, secondary (gray) shows the inactive option. No page refresh, no complex JavaScript state management.
+What makes this work is using `hx_target` to replace both buttons together rather than just the clicked button. This way both buttons update their styling to reflect the new state - the clicked button becomes primary (blue) and the other becomes secondary (gray). No page refresh, no complex JavaScript state management.
 
 ---
 
-## Keyboard Shortcuts: The Friction Factor
+## Keyboard Shortcuts
 
-Isaac made a crucial point about keyboard shortcuts that applies beyond annotation tools: they're most valuable when individual tasks are quick. If you're reviewing 400 flashcards at 2 seconds each, removing mouse navigation saves significant time. If each review takes 5 minutes, keyboard shortcuts matter less.
+Isaac builds keyboard shortcuts for his data annotation tools.
 
-Lab codes (Isaac's Brazilian collaborators) implemented keyboard navigation that lets annotators fly through hundreds of results. This kind of domain-specific optimisation is impossible with generic tools.
+They're most valuable when individual tasks are quick. If you're reviewing 400 flashcards at 2 seconds each, removing mouse navigation saves significant time. If each review takes 5 minutes, keyboard shortcuts matter less.
 
 ---
 
@@ -258,75 +264,8 @@ Lab codes (Isaac's Brazilian collaborators) implemented keyboard navigation that
 
 The annotation system integrates with Phoenix (an AI experiment database) to maintain clean data flow:
 
-```python
-# Push completed annotations to Phoenix
-# Remove from local database  
-# Keep annotation interface focused on active work
-```
+Phoenix stores traces, annotations, datasets, experiments, and prompt versioning. 
 
-Isaac described Phoenix as "kind of like a database for your AI experimentation" that stores traces, annotations, datasets, experiments, and prompt versioning. This integration pattern - temporary local storage flowing to permanent experiment storage - keeps the annotation interface focused while building a comprehensive evaluation dataset.
+This integration pattern - temporary local storage flowing to permanent experiment storage - keeps the annotation interface uncluttered.
 
 ---
-
-## AI-Assisted vs. Vibe Coding
-
-I initially thought about situating this in "vibe coding" territory - quick and dirty tools for personal use. But Isaac's talk clarified an important distinction: this is AI-assisted coding for robust tools that real users depend on.
-
-During the Q&A, Isaac addressed using AI with FastHTML. While AI doesn't know FastHTML as well as more established frameworks, he includes comprehensive cursor rules in the repository that provide FastHTML context and examples. As he noted: "If you give the model the right context, it does a lot better."
-
-The key insight: you can use newer frameworks effectively with AI assistance by providing good documentation and examples. This lets you stay in your preferred language (Python) while building sophisticated interfaces.
-
----
-
-## Deployment: Railway, Plash, and Modal
-
-Isaac mentioned several deployment options:
-
-- **Railway**: His go-to choice for simple deployment
-- **Plash**: Answer.ai's new hosting service (currently in beta)  
-- **Modal**: Good option if you have credits
-- **Any Starlette-compatible hosting**: FastHTML apps run anywhere Starlette runs
-
-The simplicity of deployment matches the development experience - no complex build processes or configuration management.
-
----
-
-## Code Accessibility
-
-Isaac's entire annotation application is about 70-80 lines of Python. This matters for maintainability and understanding:
-
-- Team members can read the entire codebase
-- Debugging is straightforward  
-- Adding features doesn't require framework expertise
-- The logic stays close to the domain problem
-
-Compare this to equivalent functionality in React + FastAPI, which would involve:
-- Separate frontend and backend codebases
-- API design and synchronization
-- State management across the boundary
-- Build processes for both sides
-
----
-
-## thingsithinkithink
-
-- **Domain expertise wins**: Generic annotation tools optimise for broad applicability. Custom tools optimise for your specific problem. The latter almost always produces better outcomes when you have the development capability.
-
-- **Context switching kills productivity**: a lot of mental overhead comes from jumping between Python, HTML, CSS, and JavaScript. Staying in one language ecosystem genuinely accelerates development.
-
-- **HTMX is underrated**: The ability to build interactive interfaces without JavaScript opens up web development to backend developers. 
-
-- **Keyboard shortcuts reveal your users**: If your annotation tasks are quick (seconds), keyboard shortcuts are essential. If they're slow (minutes), they're nice-to-have. This reveals something fundamental about your data and workflow.
-
-- **AI-assisted coding works with good context**: You don't need to stick with mainstream frameworks for AI assistance to work. You need good documentation, examples, and context management. Isaac's cursor rules demonstrate this perfectly.
-
-- **The Excel experience haunts me**: Every time I see elegant annotation interfaces like Isaac's, I remember those painful months of Excel spreadsheet annotation. 
-
----
-
-**Resources:**
-- [Isaac's Workshop Repository](https://github.com/ai-evals-course/isaac-fasthtml-workshop) 
-- [Workshop Slides](https://ai-evals-course.github.io/isaac-fasthtml-workshop/presentation/talk.html)
-- [Isaac's Blog Post on Agentic Coding](https://elite-ai-assisted-coding.dev/p/agentic-coding-fasthtml-app-evals)
-- [FastHTML Documentation](https://fastht.ml/)
-- [Monster UI Framework](https://monsterui.dev/)
