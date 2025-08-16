@@ -2,30 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/blog/</loc>
-    <lastmod>2028-12-05T14:33:22+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2028-12-05T14:33:22+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/feature/</loc>
-    <lastmod>2028-12-05T14:33:22+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2028-12-05T14:33:22+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2028-12-05T14:33:22+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-unaired/</loc>
-    <lastmod>2028-12-05T14:33:22+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2028-12-05T14:33:22+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/thoughts/</loc>
-    <lastmod>2028-12-05T14:33:22+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/ai-evaluation/</loc>
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
   </url><url>
@@ -38,6 +14,9 @@
     <loc>http://localhost:1313/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/</loc>
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-08-16T11:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/categories/coding/</loc>
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
   </url><url>
@@ -47,7 +26,16 @@
     <loc>http://localhost:1313/tags/htmx/</loc>
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-08-16T11:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/python/</loc>
+    <lastmod>2025-08-16T11:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-08-16T11:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/deployment/</loc>
@@ -128,6 +116,9 @@
     <loc>http://localhost:1313/categories/business/</loc>
     <lastmod>2025-06-22T05:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/feature/</loc>
+    <lastmod>2025-06-22T05:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/implementation/</loc>
     <lastmod>2025-06-22T05:00:00+00:00</lastmod>
   </url><url>
@@ -139,6 +130,9 @@
   </url><url>
     <loc>http://localhost:1313/posts/2025/06-08-llm-evals-lesson-1/</loc>
     <lastmod>2025-06-08T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/blog/</loc>
+    <lastmod>2025-05-05T10:00:00+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</loc>
     <lastmod>2025-05-05T10:00:00+01:00</lastmod>
@@ -264,6 +258,9 @@
     <lastmod>2024-12-21T12:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-blog/</loc>
+    <lastmod>2024-12-05T14:33:22+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/thoughts/</loc>
     <lastmod>2024-12-05T14:33:22+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
