@@ -2,66 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Feature on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/feature/</link>
+    <link>http://localhost:1313/tags/feature/</link>
     <description>Recent content in Feature on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Jun 2025 05:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/feature/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Dec 2028 14:33:22 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/feature/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Things I Think I Think</title>
+      <link>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-unaired/</link>
+      <pubDate>Tue, 05 Dec 2028 14:33:22 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-unaired/</guid>
+      <description>&lt;p&gt;I wantt to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because, during my PhD, I struggled significantly with writer&amp;rsquo;s block, and I had the most patient PhD supervisor, David Moffat. David was (is) excellent at helping me work through things.  He is very socratic in his approach and he helped me understand the reasons behind my writer&amp;rsquo;s block, much of which stemmed from a feeling of needing to be perfect.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI Demystified Book by Antonio Weiss</title>
-      <link>https://thingsithinkithink.blog/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/</link>
+      <link>http://localhost:1313/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/</link>
       <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/</guid>
+      <guid>http://localhost:1313/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/</guid>
       <description>&lt;p&gt;Because I&amp;rsquo;m obsessed with AI, I go to as many AI-related events in London as I can. I blagged a ticket to the launch of Antonio Weiss&amp;rsquo;s &amp;ldquo;AI Demystified,&amp;rdquo; which was held in the swanky Financial Times Pearson building on the Strand. After getting a copy of the book, I discovered that a project I&amp;rsquo;d worked on was featured in it. Naturally, that gave me an extra incentive to actually read the thing.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cogs / Interns / Human Tasks, a practical framework for AI transformation</title>
-      <link>https://thingsithinkithink.blog/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</link>
+      <link>http://localhost:1313/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</link>
       <pubDate>Mon, 05 May 2025 10:00:00 +0100</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</guid>
+      <guid>http://localhost:1313/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</guid>
       <description>&lt;p&gt;A while back, Drew Brunig&amp;rsquo;s &lt;a href=&#34;https://www.dbreunig.com/2024/10/18/the-3-ai-use-cases-gods-interns-and-cogs.html&#34;&gt;classification&lt;/a&gt; of AI capabilities as &amp;ldquo;Cogs, Interns, and Gods&amp;rdquo; went viral on &lt;a href=&#34;https://x.com/dbreunig/status/1847382010551292232?s=61&#34;&gt;Twitter&lt;/a&gt;. I like it. It&amp;rsquo;s punchy. It&amp;rsquo;s powerful. I use it all the time, but I really dislike the Gods framing - even Brunig acknowledges these (superintelligent AI agents) don&amp;rsquo;t exist yet, so it&amp;rsquo;s really redundant.&lt;/p&gt;&#xA;&lt;p&gt;You basically can&amp;rsquo;t &lt;em&gt;do&lt;/em&gt; anything with it.&lt;/p&gt;&#xA;&lt;p&gt;I also like Ethan Mollick&amp;rsquo;s &lt;a href=&#34;https://www.oneusefulthing.org/p/on-boarding-your-ai-intern&#34;&gt;framework&lt;/a&gt; of &amp;ldquo;Automated&amp;rdquo;, &amp;ldquo;Delegated&amp;rdquo;, and &amp;ldquo;Just Me&amp;rdquo; as a way to talk about how we work with AI. But &amp;ldquo;Just Me&amp;rdquo; feels clumsy in professional contexts, and &amp;ldquo;Delegated&amp;rdquo; just doesn&amp;rsquo;t capture the dynamic back-and-forth relationship between humans and AI systems.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why we need Experiment-based Roadmaps in the AI Product Era</title>
-      <link>https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</link>
+      <link>http://localhost:1313/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</link>
       <pubDate>Sat, 12 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</guid>
+      <guid>http://localhost:1313/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</guid>
       <description>&lt;p&gt;I recently &lt;a href=&#34;https://www.youtube.com/watch?v=R_HnI9oTv3c&#34;&gt;watched&lt;/a&gt; a good talk by &lt;a href=&#34;https://www.linkedin.com/in/bryan-bischof/&#34;&gt;Bryan Bischoff&lt;/a&gt;, Head of AI at Theory Ventures, on why traditional product roadmaps fail for AI development and how teams should approach building AI capabilities differently. The presentation provided a good mental model for shifting from rigid planning to experimental discovery.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem-with-traditional-roadmaps-in-ai&#34;&gt;The Problem with Traditional Roadmaps in AI&lt;/h2&gt;&#xA;&lt;p&gt;Traditional software roadmapping focuses on time estimates for when specific features will be ready for users. Product managers meticulously plan sprints, assign engineers to swim lanes, and establish checkpoints to track progress. When teams fall behind, they reassess, potentially cutting scope or adjusting timelines.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Three Ways I Think Frameworks are Good (actually)</title>
-      <link>https://thingsithinkithink.blog/posts/2025/250113-three-ways-i-think-frameworks-are-good-actually/</link>
+      <link>http://localhost:1313/posts/2025/250113-three-ways-i-think-frameworks-are-good-actually/</link>
       <pubDate>Mon, 13 Jan 2025 09:20:51 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/250113-three-ways-i-think-frameworks-are-good-actually/</guid>
+      <guid>http://localhost:1313/posts/2025/250113-three-ways-i-think-frameworks-are-good-actually/</guid>
       <description>&lt;p&gt;A recent conversation with my friend &lt;a href=&#34;https://www.linkedin.com/in/jonathan-sykes-a702b4/&#34;&gt;Dr Jon Sykes&lt;/a&gt; sparked some thoughts about where frameworks derive their value. The conversation started with a question: is the benefit of frameworks really just that they create a shared language? We were discussing my review of Chapter 2 of &amp;ldquo;How Big Things Get Done&amp;rdquo; and examining the framework that is emerging from my reading so far. This led us to identify three distinct sources of value in frameworks.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Is Psychology or Politics Behind Project Failures?</title>
-      <link>https://thingsithinkithink.blog/posts/2025/psychology-and-politics-behind-project-failures/</link>
+      <link>http://localhost:1313/posts/2025/psychology-and-politics-behind-project-failures/</link>
       <pubDate>Tue, 07 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/psychology-and-politics-behind-project-failures/</guid>
+      <guid>http://localhost:1313/posts/2025/psychology-and-politics-behind-project-failures/</guid>
       <description>&lt;p&gt;A key theme from Chapter 2 of &lt;a href=&#34;https://amzn.eu/d/ifrzA2p&#34;&gt;&amp;ldquo;How Big Things Get Done&amp;rdquo;&lt;/a&gt; is that while we know we should think slowly and act fast, people often do the exact opposite. The chapter explores the psychological and political forces driving this behaviour.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-rush-to-commit&#34;&gt;The Rush to Commit&lt;/h2&gt;&#xA;&lt;p&gt;The chapter introduces the concept of the commitment fallacy - a behavioural bias where we rush into decisions without proper consideration. The age-old advice &amp;ldquo;Act in haste, repent at leisure&amp;rdquo; captures this perfectly.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Think Slow, Act Fast: The Paradox of Project Planning</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-04-think-slow-act-fast-ch-1/</link>
+      <link>http://localhost:1313/posts/2025/01-04-think-slow-act-fast-ch-1/</link>
       <pubDate>Sat, 04 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-04-think-slow-act-fast-ch-1/</guid>
+      <guid>http://localhost:1313/posts/2025/01-04-think-slow-act-fast-ch-1/</guid>
       <description>&lt;p&gt;In the book &lt;em&gt;How Big Things Get Done&lt;/em&gt;, Bent Flyvbjerg and Dan Gardner presented an analysis of why large projects fail to meet their objectives. As someone who has witnessed the ups and downs of loads of projects, I&amp;rsquo;m very curious to learn what we can do better.&lt;/p&gt;&#xA;&lt;p&gt;One of the overarching themes of the first chapter is their thesis of &lt;strong&gt;“think slow, act fast.”&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-iron-law-of-megaprojects&#34;&gt;The Iron Law of Megaprojects&lt;/h2&gt;&#xA;&lt;p&gt;Flyvbjerg and Gardner share what they term the &lt;strong&gt;“iron law of megaprojects,”&lt;/strong&gt; highlighting an uncomfortable reality: projects are consistently over budget, over time, and under deliver on benefits. It&amp;rsquo;s backed by an extensive database of over 16,000 projects across 136 countries and 20 different fields. The statistics are quite convincing:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Off-the-Radar AI links for the End of the Year</title>
-      <link>https://thingsithinkithink.blog/posts/2024/off-the-radar-ai-links-for-2024/</link>
+      <link>http://localhost:1313/posts/2024/off-the-radar-ai-links-for-2024/</link>
       <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/off-the-radar-ai-links-for-2024/</guid>
+      <guid>http://localhost:1313/posts/2024/off-the-radar-ai-links-for-2024/</guid>
       <description>&lt;p&gt;Everyone has an exhaustive end of the year list.  I don&amp;rsquo;t but there were a couple of things I got value from that I havne&amp;rsquo;t seen anyone else posting about.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-civic-ai-observatory&#34;&gt;The Civic AI Observatory&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://civicai.uk/?utm_source=substack&amp;amp;utm_medium=email&amp;amp;utm_content=share&#34;&gt;&lt;strong&gt;Civic AI Observatory&lt;/strong&gt;&lt;/a&gt; is a community of civic-minded AI enthusiasts. It’s become one of my favourite spaces for fresh, thoughtful perspectives on AI. There are two reasons why I’m particularly glad I found this group:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Breadth of resources&lt;/strong&gt;: They share (and discuss) an incredible variety of articles, videos, and links on AI.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Civic-first mindset&lt;/strong&gt;: Unlike many tech-focused spaces, their primary lens is civic impact, with AI as a means rather than an end.  It&amp;rsquo;s not all positive discussion.  The risks and downsides of AI on society are taken very seriously here and with a more grounded perspective than you usually find online.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This mix of perspectives cuts through the hype bubble dominating other feeds. I’ve found that their discussions and resources offer a higher diversity of angles compared to almost any other information source I follow.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Things I Think I Think</title>
-      <link>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think-blog/</link>
+      <link>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-blog/</link>
       <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think-blog/</guid>
+      <guid>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-blog/</guid>
       <description>&lt;p&gt;I want to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because I want to be able to write stuff without having to definitely commit forever to holding whatever ideas I have shared.  Therefore these posts are just things I &lt;em&gt;think&lt;/em&gt; I think.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -1,7 +1,7 @@
 ---
 title: "Things I Think I Think"
 date: 2028-12-05T14:33:22Z
-slug: /12-05-things-i-think-i-think/
+slug: /12-05-things-i-think-i-think-unaired/
 description: "I need a space to think, learn, and work in public."
 image: images/2024/rustywaves.png
 caption: Abstract thinking waves from ChatGPT / DALL-E  
