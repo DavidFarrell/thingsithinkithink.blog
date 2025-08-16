@@ -1,6 +1,6 @@
 ---
 title: "Building Domain-Specific Annotation Tools with FastHTML: Lessons from Isaac Flath"
-date: 2025-08-16T08:00:00Z
+date: 2025-08-16T11:00:00Z
 slug: /08-16-isaac-flath-fasthtml-annotation-tools/
 description: "How Isaac Flath built a medical flashcard annotation tool for AnkiHub using FastHTML, and why custom annotation tools beat generic ones for complex domains."
 image: /images/2025/parlancecourse/08-16-isaac-fasthtml-hero.png

@@ -1,6 +1,6 @@
 ---
 title: "Where to Host Your FastHTML Apps"
-date: 2025-08-16T11:00:00Z
+date: 2025-08-16T08:00:00Z
 slug: /08-16-where-to-host-fasthtml-apps/
 description: "Deployment options for FastHTML applications."
 categories:
