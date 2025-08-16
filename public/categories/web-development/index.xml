@@ -2,31 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web-Development on thingsithinkithink</title>
-    <link>http://localhost:1313/categories/web-development/</link>
+    <link>https://thingsithinkithink.blog/categories/web-development/</link>
     <description>Recent content in Web-Development on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Aug 2025 08:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/web-development/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Isaac Flath&#39;s AI dev stack</title>
-      <link>http://localhost:1313/posts/2025/08-17-isaac_flaths_ai_dev_stack/</link>
-      <pubDate>Sun, 17 Aug 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025/08-17-isaac_flaths_ai_dev_stack/</guid>
-      <description>&lt;p&gt;FastHTML apps are built on Starlette, which means they can run anywhere Starlette runs. Some options for hosting so I don&amp;rsquo;t need to look next time.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;simple-deployment-options&#34;&gt;Simple Deployment Options&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Railway&lt;/strong&gt;: go-to choice for simple deployment&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Plash&lt;/strong&gt;: Answer.ai&amp;rsquo;s new hosting service (currently in beta)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Modal&lt;/strong&gt;: Good option if you have free credits (like I do from the Hamel course)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;any-starlette-compatible-hosting&#34;&gt;Any Starlette-Compatible Hosting&lt;/h2&gt;&#xA;&lt;p&gt;Since FastHTML apps run on Starlette, they work with any hosting service that supports Starlette applications.&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Sat, 16 Aug 2025 08:00:00 +0000</lastBuildDate>
+    <atom:link href="https://thingsithinkithink.blog/categories/web-development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Where to Host Your FastHTML Apps</title>
-      <link>http://localhost:1313/posts/2025/08-16-where-to-host-fasthtml-apps/</link>
+      <link>https://thingsithinkithink.blog/posts/2025/08-16-where-to-host-fasthtml-apps/</link>
       <pubDate>Sat, 16 Aug 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025/08-16-where-to-host-fasthtml-apps/</guid>
+      <guid>https://thingsithinkithink.blog/posts/2025/08-16-where-to-host-fasthtml-apps/</guid>
       <description>&lt;p&gt;FastHTML apps are built on Starlette, which means they can run anywhere Starlette runs. Some options for hosting so I don&amp;rsquo;t need to look next time.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;simple-deployment-options&#34;&gt;Simple Deployment Options&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Railway&lt;/strong&gt;: go-to choice for simple deployment&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Plash&lt;/strong&gt;: Answer.ai&amp;rsquo;s new hosting service (currently in beta)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Modal&lt;/strong&gt;: Good option if you have free credits (like I do from the Hamel course)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;any-starlette-compatible-hosting&#34;&gt;Any Starlette-Compatible Hosting&lt;/h2&gt;&#xA;&lt;p&gt;Since FastHTML apps run on Starlette, they work with any hosting service that supports Starlette applications.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration</title>
-      <link>http://localhost:1313/posts/2025/07-18-chrome-devtools-fasthtml-development/</link>
+      <link>https://thingsithinkithink.blog/posts/2025/07-18-chrome-devtools-fasthtml-development/</link>
       <pubDate>Fri, 18 Jul 2025 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025/07-18-chrome-devtools-fasthtml-development/</guid>
+      <guid>https://thingsithinkithink.blog/posts/2025/07-18-chrome-devtools-fasthtml-development/</guid>
       <description>&lt;p&gt;I learned a cool trick that I think will speed up the web development process for me.&lt;/p&gt;&#xA;&lt;p&gt;The process of editing CSS, saving it, refreshing the web browser page is quite annoying. And although you can edit the CSS inside the Chrome DevTools, having to then go back into your main IDE to make the changes is something that&amp;rsquo;s a bit of a pain.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been experimenting with FastHTML, which is a Python library for building HTML apps. And Jeremy from Answer.ai &lt;a href=&#34;https://www.youtube.com/watch?v=576ouCQ6mlk&#34;&gt;shared a nice wee trick&lt;/a&gt; that will speed up the iteration process. And I haven&amp;rsquo;t actually seen this before, so I thought I&amp;rsquo;d write about it here.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -8,7 +8,7 @@
     "dev:hugo": "hugo server",
     "dev": "run-p dev:*",
     "build:generate": "npx tailwindcss -i ./assets/input.css -o ./themes/pehtheme-hugo/static/assets/css/main.css",
-    "build:hugo": "hugo",
+    "build:hugo": "hugo --environment production",
     "build": "run-p build:*"
   },
   "keywords": ["hugo", "tailwindcss"],

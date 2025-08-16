@@ -2,339 +2,332 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on thingsithinkithink</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://thingsithinkithink.blog/tags/</link>
     <description>Recent content in Tags on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Aug 2025 11:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://thingsithinkithink.blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ai-Evaluation</title>
-      <link>http://localhost:1313/tags/ai-evaluation/</link>
+      <link>https://thingsithinkithink.blog/tags/ai-evaluation/</link>
       <pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/ai-evaluation/</guid>
+      <guid>https://thingsithinkithink.blog/tags/ai-evaluation/</guid>
       <description></description>
     </item>
     <item>
       <title>Annotation</title>
-      <link>http://localhost:1313/tags/annotation/</link>
+      <link>https://thingsithinkithink.blog/tags/annotation/</link>
       <pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/annotation/</guid>
+      <guid>https://thingsithinkithink.blog/tags/annotation/</guid>
       <description></description>
     </item>
     <item>
       <title>Fasthtml</title>
-      <link>http://localhost:1313/tags/fasthtml/</link>
+      <link>https://thingsithinkithink.blog/tags/fasthtml/</link>
       <pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/fasthtml/</guid>
+      <guid>https://thingsithinkithink.blog/tags/fasthtml/</guid>
       <description></description>
     </item>
     <item>
       <title>Htmx</title>
-      <link>http://localhost:1313/tags/htmx/</link>
+      <link>https://thingsithinkithink.blog/tags/htmx/</link>
       <pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/htmx/</guid>
+      <guid>https://thingsithinkithink.blog/tags/htmx/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>http://localhost:1313/tags/python/</link>
+      <link>https://thingsithinkithink.blog/tags/python/</link>
       <pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/python/</guid>
+      <guid>https://thingsithinkithink.blog/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Deployment</title>
-      <link>http://localhost:1313/tags/deployment/</link>
+      <link>https://thingsithinkithink.blog/tags/deployment/</link>
       <pubDate>Sat, 16 Aug 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/deployment/</guid>
+      <guid>https://thingsithinkithink.blog/tags/deployment/</guid>
       <description></description>
     </item>
     <item>
       <title>Hosting</title>
-      <link>http://localhost:1313/tags/hosting/</link>
+      <link>https://thingsithinkithink.blog/tags/hosting/</link>
       <pubDate>Sat, 16 Aug 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/hosting/</guid>
+      <guid>https://thingsithinkithink.blog/tags/hosting/</guid>
       <description></description>
     </item>
     <item>
       <title>Chrome-Devtools</title>
-      <link>http://localhost:1313/tags/chrome-devtools/</link>
+      <link>https://thingsithinkithink.blog/tags/chrome-devtools/</link>
       <pubDate>Fri, 18 Jul 2025 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/chrome-devtools/</guid>
+      <guid>https://thingsithinkithink.blog/tags/chrome-devtools/</guid>
       <description></description>
     </item>
     <item>
       <title>Css</title>
-      <link>http://localhost:1313/tags/css/</link>
+      <link>https://thingsithinkithink.blog/tags/css/</link>
       <pubDate>Fri, 18 Jul 2025 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/css/</guid>
+      <guid>https://thingsithinkithink.blog/tags/css/</guid>
       <description></description>
     </item>
     <item>
       <title>Debugging</title>
-      <link>http://localhost:1313/tags/debugging/</link>
+      <link>https://thingsithinkithink.blog/tags/debugging/</link>
       <pubDate>Fri, 18 Jul 2025 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/debugging/</guid>
+      <guid>https://thingsithinkithink.blog/tags/debugging/</guid>
       <description></description>
     </item>
     <item>
       <title>Development</title>
-      <link>http://localhost:1313/tags/development/</link>
+      <link>https://thingsithinkithink.blog/tags/development/</link>
       <pubDate>Fri, 18 Jul 2025 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/development/</guid>
+      <guid>https://thingsithinkithink.blog/tags/development/</guid>
       <description></description>
     </item>
     <item>
       <title>Automated-Testing</title>
-      <link>http://localhost:1313/tags/automated-testing/</link>
+      <link>https://thingsithinkithink.blog/tags/automated-testing/</link>
       <pubDate>Sun, 06 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/automated-testing/</guid>
+      <guid>https://thingsithinkithink.blog/tags/automated-testing/</guid>
       <description></description>
     </item>
     <item>
       <title>Course-Notes</title>
-      <link>http://localhost:1313/tags/course-notes/</link>
+      <link>https://thingsithinkithink.blog/tags/course-notes/</link>
       <pubDate>Sun, 06 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/course-notes/</guid>
+      <guid>https://thingsithinkithink.blog/tags/course-notes/</guid>
       <description></description>
     </item>
     <item>
       <title>Evaluation</title>
-      <link>http://localhost:1313/tags/evaluation/</link>
+      <link>https://thingsithinkithink.blog/tags/evaluation/</link>
       <pubDate>Sun, 06 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/evaluation/</guid>
+      <guid>https://thingsithinkithink.blog/tags/evaluation/</guid>
       <description></description>
     </item>
     <item>
       <title>Llm</title>
-      <link>http://localhost:1313/tags/llm/</link>
+      <link>https://thingsithinkithink.blog/tags/llm/</link>
       <pubDate>Sun, 06 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/llm/</guid>
+      <guid>https://thingsithinkithink.blog/tags/llm/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine-Learning</title>
-      <link>http://localhost:1313/tags/machine-learning/</link>
+      <link>https://thingsithinkithink.blog/tags/machine-learning/</link>
       <pubDate>Sun, 06 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/machine-learning/</guid>
+      <guid>https://thingsithinkithink.blog/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Ai</title>
-      <link>http://localhost:1313/tags/ai/</link>
+      <link>https://thingsithinkithink.blog/tags/ai/</link>
       <pubDate>Fri, 04 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/ai/</guid>
+      <guid>https://thingsithinkithink.blog/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Infrastructure</title>
-      <link>http://localhost:1313/tags/infrastructure/</link>
+      <link>https://thingsithinkithink.blog/tags/infrastructure/</link>
       <pubDate>Fri, 04 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/infrastructure/</guid>
+      <guid>https://thingsithinkithink.blog/tags/infrastructure/</guid>
       <description></description>
     </item>
     <item>
       <title>Voice-Agents</title>
-      <link>http://localhost:1313/tags/voice-agents/</link>
+      <link>https://thingsithinkithink.blog/tags/voice-agents/</link>
       <pubDate>Fri, 04 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/voice-agents/</guid>
+      <guid>https://thingsithinkithink.blog/tags/voice-agents/</guid>
       <description></description>
     </item>
     <item>
       <title>Error-Analysis</title>
-      <link>http://localhost:1313/tags/error-analysis/</link>
+      <link>https://thingsithinkithink.blog/tags/error-analysis/</link>
       <pubDate>Sun, 22 Jun 2025 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/error-analysis/</guid>
+      <guid>https://thingsithinkithink.blog/tags/error-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>Books</title>
-      <link>http://localhost:1313/tags/books/</link>
+      <link>https://thingsithinkithink.blog/tags/books/</link>
       <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/books/</guid>
+      <guid>https://thingsithinkithink.blog/tags/books/</guid>
       <description></description>
     </item>
     <item>
       <title>Feature</title>
-      <link>http://localhost:1313/tags/feature/</link>
+      <link>https://thingsithinkithink.blog/tags/feature/</link>
       <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/feature/</guid>
+      <guid>https://thingsithinkithink.blog/tags/feature/</guid>
       <description></description>
     </item>
     <item>
       <title>Implementation</title>
-      <link>http://localhost:1313/tags/implementation/</link>
+      <link>https://thingsithinkithink.blog/tags/implementation/</link>
       <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/implementation/</guid>
+      <guid>https://thingsithinkithink.blog/tags/implementation/</guid>
       <description></description>
     </item>
     <item>
       <title>Strategy</title>
-      <link>http://localhost:1313/tags/strategy/</link>
+      <link>https://thingsithinkithink.blog/tags/strategy/</link>
       <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/strategy/</guid>
+      <guid>https://thingsithinkithink.blog/tags/strategy/</guid>
       <description></description>
     </item>
     <item>
       <title>Framework</title>
-      <link>http://localhost:1313/tags/framework/</link>
+      <link>https://thingsithinkithink.blog/tags/framework/</link>
       <pubDate>Sun, 04 May 2025 12:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/framework/</guid>
+      <guid>https://thingsithinkithink.blog/tags/framework/</guid>
       <description></description>
     </item>
     <item>
       <title>Transformation</title>
-      <link>http://localhost:1313/tags/transformation/</link>
+      <link>https://thingsithinkithink.blog/tags/transformation/</link>
       <pubDate>Sun, 04 May 2025 12:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/transformation/</guid>
+      <guid>https://thingsithinkithink.blog/tags/transformation/</guid>
       <description></description>
     </item>
     <item>
       <title>Experimentation</title>
-      <link>http://localhost:1313/tags/experimentation/</link>
+      <link>https://thingsithinkithink.blog/tags/experimentation/</link>
       <pubDate>Sat, 12 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/experimentation/</guid>
+      <guid>https://thingsithinkithink.blog/tags/experimentation/</guid>
       <description></description>
     </item>
     <item>
       <title>Product-Management</title>
-      <link>http://localhost:1313/tags/product-management/</link>
+      <link>https://thingsithinkithink.blog/tags/product-management/</link>
       <pubDate>Sat, 12 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/product-management/</guid>
+      <guid>https://thingsithinkithink.blog/tags/product-management/</guid>
       <description></description>
     </item>
     <item>
       <title>Programming</title>
-      <link>http://localhost:1313/tags/programming/</link>
+      <link>https://thingsithinkithink.blog/tags/programming/</link>
       <pubDate>Tue, 08 Apr 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/programming/</guid>
+      <guid>https://thingsithinkithink.blog/tags/programming/</guid>
       <description></description>
     </item>
     <item>
       <title>Software-Architecture</title>
-      <link>http://localhost:1313/tags/software-architecture/</link>
+      <link>https://thingsithinkithink.blog/tags/software-architecture/</link>
       <pubDate>Tue, 08 Apr 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/software-architecture/</guid>
+      <guid>https://thingsithinkithink.blog/tags/software-architecture/</guid>
       <description></description>
     </item>
     <item>
       <title>System-Design</title>
-      <link>http://localhost:1313/tags/system-design/</link>
+      <link>https://thingsithinkithink.blog/tags/system-design/</link>
       <pubDate>Tue, 08 Apr 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/system-design/</guid>
+      <guid>https://thingsithinkithink.blog/tags/system-design/</guid>
       <description></description>
     </item>
     <item>
       <title>Podcast</title>
-      <link>http://localhost:1313/tags/podcast/</link>
+      <link>https://thingsithinkithink.blog/tags/podcast/</link>
       <pubDate>Tue, 14 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/podcast/</guid>
+      <guid>https://thingsithinkithink.blog/tags/podcast/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>http://localhost:1313/tags/blog/</link>
+      <link>https://thingsithinkithink.blog/tags/blog/</link>
       <pubDate>Mon, 13 Jan 2025 09:20:51 +0000</pubDate>
-      <guid>http://localhost:1313/tags/blog/</guid>
+      <guid>https://thingsithinkithink.blog/tags/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Frameworks</title>
-      <link>http://localhost:1313/tags/frameworks/</link>
+      <link>https://thingsithinkithink.blog/tags/frameworks/</link>
       <pubDate>Mon, 13 Jan 2025 09:20:51 +0000</pubDate>
-      <guid>http://localhost:1313/tags/frameworks/</guid>
+      <guid>https://thingsithinkithink.blog/tags/frameworks/</guid>
       <description></description>
     </item>
     <item>
       <title>Project Management</title>
-      <link>http://localhost:1313/tags/project-management/</link>
+      <link>https://thingsithinkithink.blog/tags/project-management/</link>
       <pubDate>Tue, 07 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/project-management/</guid>
+      <guid>https://thingsithinkithink.blog/tags/project-management/</guid>
       <description></description>
     </item>
     <item>
       <title>Psychology</title>
-      <link>http://localhost:1313/tags/psychology/</link>
+      <link>https://thingsithinkithink.blog/tags/psychology/</link>
       <pubDate>Tue, 07 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/psychology/</guid>
+      <guid>https://thingsithinkithink.blog/tags/psychology/</guid>
       <description></description>
     </item>
     <item>
       <title>Government</title>
-      <link>http://localhost:1313/tags/government/</link>
+      <link>https://thingsithinkithink.blog/tags/government/</link>
       <pubDate>Mon, 06 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/government/</guid>
+      <guid>https://thingsithinkithink.blog/tags/government/</guid>
       <description></description>
     </item>
     <item>
       <title>Planning</title>
-      <link>http://localhost:1313/tags/planning/</link>
+      <link>https://thingsithinkithink.blog/tags/planning/</link>
       <pubDate>Sat, 04 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/planning/</guid>
+      <guid>https://thingsithinkithink.blog/tags/planning/</guid>
       <description></description>
     </item>
     <item>
       <title>Til</title>
-      <link>http://localhost:1313/tags/til/</link>
+      <link>https://thingsithinkithink.blog/tags/til/</link>
       <pubDate>Mon, 30 Dec 2024 20:16:05 +0000</pubDate>
-      <guid>http://localhost:1313/tags/til/</guid>
+      <guid>https://thingsithinkithink.blog/tags/til/</guid>
       <description></description>
     </item>
     <item>
       <title>Open-Source</title>
-      <link>http://localhost:1313/tags/open-source/</link>
+      <link>https://thingsithinkithink.blog/tags/open-source/</link>
       <pubDate>Mon, 30 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/open-source/</guid>
+      <guid>https://thingsithinkithink.blog/tags/open-source/</guid>
       <description></description>
     </item>
     <item>
       <title>Coding</title>
-      <link>http://localhost:1313/tags/coding/</link>
+      <link>https://thingsithinkithink.blog/tags/coding/</link>
       <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/coding/</guid>
+      <guid>https://thingsithinkithink.blog/tags/coding/</guid>
       <description></description>
     </item>
     <item>
       <title>Regex</title>
-      <link>http://localhost:1313/tags/regex/</link>
+      <link>https://thingsithinkithink.blog/tags/regex/</link>
       <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/regex/</guid>
+      <guid>https://thingsithinkithink.blog/tags/regex/</guid>
       <description></description>
     </item>
     <item>
       <title>Case-Studies</title>
-      <link>http://localhost:1313/tags/case-studies/</link>
+      <link>https://thingsithinkithink.blog/tags/case-studies/</link>
       <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/case-studies/</guid>
+      <guid>https://thingsithinkithink.blog/tags/case-studies/</guid>
       <description></description>
     </item>
     <item>
       <title>Civic-Tech</title>
-      <link>http://localhost:1313/tags/civic-tech/</link>
+      <link>https://thingsithinkithink.blog/tags/civic-tech/</link>
       <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/civic-tech/</guid>
+      <guid>https://thingsithinkithink.blog/tags/civic-tech/</guid>
       <description></description>
     </item>
     <item>
       <title>Newsletters</title>
-      <link>http://localhost:1313/tags/newsletters/</link>
+      <link>https://thingsithinkithink.blog/tags/newsletters/</link>
       <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/newsletters/</guid>
+      <guid>https://thingsithinkithink.blog/tags/newsletters/</guid>
       <description></description>
     </item>
     <item>
       <title>Thoughts</title>
-      <link>http://localhost:1313/tags/thoughts/</link>
+      <link>https://thingsithinkithink.blog/tags/thoughts/</link>
       <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
-      <guid>http://localhost:1313/tags/thoughts/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Workshop</title>
-      <link>http://localhost:1313/tags/workshop/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/workshop/</guid>
+      <guid>https://thingsithinkithink.blog/tags/thoughts/</guid>
       <description></description>
     </item>
   </channel>

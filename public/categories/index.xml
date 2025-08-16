@@ -2,80 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on thingsithinkithink</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://thingsithinkithink.blog/categories/</link>
     <description>Recent content in Categories on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Aug 2025 11:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://thingsithinkithink.blog/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Artificial-Intelligence</title>
-      <link>http://localhost:1313/categories/artificial-intelligence/</link>
+      <link>https://thingsithinkithink.blog/categories/artificial-intelligence/</link>
       <pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/artificial-intelligence/</guid>
+      <guid>https://thingsithinkithink.blog/categories/artificial-intelligence/</guid>
       <description></description>
     </item>
     <item>
       <title>Coding</title>
-      <link>http://localhost:1313/categories/coding/</link>
+      <link>https://thingsithinkithink.blog/categories/coding/</link>
       <pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/coding/</guid>
+      <guid>https://thingsithinkithink.blog/categories/coding/</guid>
       <description></description>
     </item>
     <item>
       <title>Web-Development</title>
-      <link>http://localhost:1313/categories/web-development/</link>
+      <link>https://thingsithinkithink.blog/categories/web-development/</link>
       <pubDate>Sat, 16 Aug 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/web-development/</guid>
+      <guid>https://thingsithinkithink.blog/categories/web-development/</guid>
       <description></description>
     </item>
     <item>
       <title>Course-Notes</title>
-      <link>http://localhost:1313/categories/course-notes/</link>
+      <link>https://thingsithinkithink.blog/categories/course-notes/</link>
       <pubDate>Sun, 06 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/course-notes/</guid>
+      <guid>https://thingsithinkithink.blog/categories/course-notes/</guid>
       <description></description>
     </item>
     <item>
       <title>Evals</title>
-      <link>http://localhost:1313/categories/evals/</link>
+      <link>https://thingsithinkithink.blog/categories/evals/</link>
       <pubDate>Sun, 06 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/evals/</guid>
+      <guid>https://thingsithinkithink.blog/categories/evals/</guid>
       <description></description>
     </item>
     <item>
       <title>Business</title>
-      <link>http://localhost:1313/categories/business/</link>
+      <link>https://thingsithinkithink.blog/categories/business/</link>
       <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/business/</guid>
+      <guid>https://thingsithinkithink.blog/categories/business/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>http://localhost:1313/categories/blog/</link>
+      <link>https://thingsithinkithink.blog/categories/blog/</link>
       <pubDate>Mon, 05 May 2025 10:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/categories/blog/</guid>
+      <guid>https://thingsithinkithink.blog/categories/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Development</title>
-      <link>http://localhost:1313/categories/development/</link>
+      <link>https://thingsithinkithink.blog/categories/development/</link>
       <pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/development/</guid>
+      <guid>https://thingsithinkithink.blog/categories/development/</guid>
       <description></description>
     </item>
     <item>
       <title>Product-Management</title>
-      <link>http://localhost:1313/categories/product-management/</link>
+      <link>https://thingsithinkithink.blog/categories/product-management/</link>
       <pubDate>Sat, 12 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/product-management/</guid>
+      <guid>https://thingsithinkithink.blog/categories/product-management/</guid>
       <description></description>
     </item>
     <item>
       <title>Til</title>
-      <link>http://localhost:1313/categories/til/</link>
+      <link>https://thingsithinkithink.blog/categories/til/</link>
       <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/til/</guid>
+      <guid>https://thingsithinkithink.blog/categories/til/</guid>
       <description></description>
     </item>
   </channel>

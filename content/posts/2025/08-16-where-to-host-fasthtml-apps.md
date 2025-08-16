@@ -4,7 +4,7 @@ date: 2025-08-16T08:00:00Z
 slug: /08-16-where-to-host-fasthtml-apps/
 description: "Deployment options for FastHTML applications."
 image: /images/2025/08_16_fasthtml.png
-caption: "Isaac Flath demonstrating FastHTML annotation tools in action"
+caption: "FastHTML logo"
 categories:
   - coding
   - web-development
