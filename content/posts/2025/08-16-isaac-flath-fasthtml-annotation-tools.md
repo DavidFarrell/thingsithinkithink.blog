@@ -14,7 +14,7 @@ tags:
   - ai-evaluation
   - htmx
   - python
-draft: true
+draft: false
 ---
 
 I'm writing up my notes from [Hamel Husain and Shreya Shankar's excellent AI Evals course](https://maven.com/parlance-labs/evals). Today we have Isaac Flath's (cohort 1) session on building custom annotation tools. Isaac showed how he built a real-world medical flashcard annotation system for AnkiHub using FastHTML.  I've written before about FastHTML (see [FastHTML's Chrome DevTools integration]({{< relref "07-18-chrome-devtools-fasthtml-development" >}})) and this builds on that with a bit of detil on FastLite db support and some htmx stuff. 

@@ -2,185 +2,206 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Jul 2025 09:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Dec 2028 14:33:22 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Things I Think I Think</title>
+      <link>http://localhost:1313/posts/2024/12-05-things-i-think-i-think/</link>
+      <pubDate>Tue, 05 Dec 2028 14:33:22 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2024/12-05-things-i-think-i-think/</guid>
+      <description>&lt;p&gt;I wantt to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because, during my PhD, I struggled significantly with writer&amp;rsquo;s block, and I had the most patient PhD supervisor, David Moffat. David was (is) excellent at helping me work through things.  He is very socratic in his approach and he helped me understand the reasons behind my writer&amp;rsquo;s block, much of which stemmed from a feeling of needing to be perfect.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Where to Host Your FastHTML Apps</title>
+      <link>http://localhost:1313/posts/2025/08-16-where-to-host-fasthtml-apps/</link>
+      <pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025/08-16-where-to-host-fasthtml-apps/</guid>
+      <description>&lt;p&gt;FastHTML apps are built on Starlette, which means they can run anywhere Starlette runs. Some options for hosting so I don&amp;rsquo;t need to look next time.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;simple-deployment-options&#34;&gt;Simple Deployment Options&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Railway&lt;/strong&gt;: go-to choice for simple deployment&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Plash&lt;/strong&gt;: Answer.ai&amp;rsquo;s new hosting service (currently in beta)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Modal&lt;/strong&gt;: Good option if you have free credits (like I do from the Hamel course)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;any-starlette-compatible-hosting&#34;&gt;Any Starlette-Compatible Hosting&lt;/h2&gt;&#xA;&lt;p&gt;Since FastHTML apps run on Starlette, they work with any hosting service that supports Starlette applications.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building Domain-Specific Annotation Tools with FastHTML: Lessons from Isaac Flath</title>
+      <link>http://localhost:1313/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/</link>
+      <pubDate>Sat, 16 Aug 2025 08:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m writing up my notes from &lt;a href=&#34;https://maven.com/parlance-labs/evals&#34;&gt;Hamel Husain and Shreya Shankar&amp;rsquo;s excellent AI Evals course&lt;/a&gt;. Today we have Isaac Flath&amp;rsquo;s (cohort 1) session on building custom annotation tools. Isaac showed how he built a real-world medical flashcard annotation system for AnkiHub using FastHTML.  I&amp;rsquo;ve written before about FastHTML (see &lt;a href=&#34;http://localhost:1313/posts/2025/07-18-chrome-devtools-fasthtml-development/&#34;&gt;FastHTML&amp;rsquo;s Chrome DevTools integration&lt;/a&gt;) and this builds on that with a bit of detil on FastLite db support and some htmx stuff.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-ankihub-challenge-inverted-retrieval-at-scale&#34;&gt;The AnkiHub Challenge: Inverted Retrieval at Scale&lt;/h2&gt;&#xA;&lt;p&gt;Isaac&amp;rsquo;s use case centers on &lt;a href=&#34;https://ankihab.net&#34;&gt;AnkiHub&lt;/a&gt;, a medical flashcard platform where students search for study materials.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration</title>
-      <link>https://thingsithinkithink.blog/posts/2025/07-18-chrome-devtools-fasthtml-development/</link>
+      <link>http://localhost:1313/posts/2025/07-18-chrome-devtools-fasthtml-development/</link>
       <pubDate>Fri, 18 Jul 2025 09:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/07-18-chrome-devtools-fasthtml-development/</guid>
+      <guid>http://localhost:1313/posts/2025/07-18-chrome-devtools-fasthtml-development/</guid>
       <description>&lt;p&gt;I learned a cool trick that I think will speed up the web development process for me.&lt;/p&gt;&#xA;&lt;p&gt;The process of editing CSS, saving it, refreshing the web browser page is quite annoying. And although you can edit the CSS inside the Chrome DevTools, having to then go back into your main IDE to make the changes is something that&amp;rsquo;s a bit of a pain.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been experimenting with FastHTML, which is a Python library for building HTML apps. And Jeremy from Answer.ai &lt;a href=&#34;https://www.youtube.com/watch?v=576ouCQ6mlk&#34;&gt;shared a nice wee trick&lt;/a&gt; that will speed up the iteration process. And I haven&amp;rsquo;t actually seen this before, so I thought I&amp;rsquo;d write about it here.&lt;/p&gt;</description>
     </item>
     <item>
       <title>LLM Evals Course Lesson 3: Building Automated Evaluators</title>
-      <link>https://thingsithinkithink.blog/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/</link>
+      <link>http://localhost:1313/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/</link>
       <pubDate>Sun, 06 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/</guid>
-      <description>&lt;p&gt;The third lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/&#34;&gt;LLM evaluation course&lt;/a&gt; moved from manual error analysis into automated evaluation systems. This session focused on the &amp;ldquo;Measure&amp;rdquo; phase of their evaluation lifecycle - how to build evaluators that can automatically detect the failure modes we identified through error analysis.&lt;/p&gt;&#xA;&lt;p&gt;In terms of the Three Gulfs Model from lesson one, this lesson first helps us distinguish between specification failures (where we need to improve our prompts) and generalisation failures (where the LLM struggles despite clear instructions). The automated evaluators we build specifically target the Gulf of Generalisation, measuring how well our LLM applies instructions across diverse inputs.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/</guid>
+      <description>&lt;p&gt;The third lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s &lt;a href=&#34;http://localhost:1313/posts/2025/06-08-llm-evals-lesson-1/&#34;&gt;LLM evaluation course&lt;/a&gt; moved from manual error analysis into automated evaluation systems. This session focused on the &amp;ldquo;Measure&amp;rdquo; phase of their evaluation lifecycle - how to build evaluators that can automatically detect the failure modes we identified through error analysis.&lt;/p&gt;&#xA;&lt;p&gt;In terms of the Three Gulfs Model from lesson one, this lesson first helps us distinguish between specification failures (where we need to improve our prompts) and generalisation failures (where the LLM struggles despite clear instructions). The automated evaluators we build specifically target the Gulf of Generalisation, measuring how well our LLM applies instructions across diverse inputs.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Three Things I Learned About Voice Agents from Kwindla Kramer</title>
-      <link>https://thingsithinkithink.blog/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/</link>
+      <link>http://localhost:1313/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/</link>
       <pubDate>Fri, 04 Jul 2025 08:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/</guid>
+      <guid>http://localhost:1313/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/</guid>
       <description>&lt;p&gt;I learned three things from &lt;a href=&#34;https://www.youtube.com/watch?v=I86dFivLzXY&#34;&gt;this interview&lt;/a&gt; with Hamel Husain and Kwindla Kramer, founder of PipeCat, an open-source framework for voice and multimodal conversation. As someone who hasn&amp;rsquo;t worked much with voice agents, I found three things particularly interesting.&lt;/p&gt;&#xA;&lt;h2 id=&#34;voice-agents-use-traditional-pipelines-not-fancy-models&#34;&gt;Voice Agents Use Traditional Pipelines, Not Fancy Models&lt;/h2&gt;&#xA;&lt;p&gt;The first thing was learning that most production voice agents don&amp;rsquo;t use the latest speech-to-speech models from OpenAI or Google (etc). Instead, they rely on a modular pipeline approach that breaks the process into discrete steps.&lt;/p&gt;</description>
     </item>
     <item>
       <title>LLM Evals Course: Lesson 2b (office hrs)</title>
-      <link>https://thingsithinkithink.blog/posts/2025/06-22-llm-evals-course-lesson-2b-office-hrs/</link>
+      <link>http://localhost:1313/posts/2025/06-22-llm-evals-course-lesson-2b-office-hrs/</link>
       <pubDate>Sun, 22 Jun 2025 09:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/06-22-llm-evals-course-lesson-2b-office-hrs/</guid>
-      <description>&lt;p&gt;A few things I wanted to note down from the first office hours session following &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/&#34;&gt;lesson 2&lt;/a&gt; of Hamel and Shreya&amp;rsquo;s &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/&#34;&gt;LLM evals course&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;getting-teams-to-actually-do-error-analysis&#34;&gt;Getting Teams to Actually Do Error Analysis&lt;/h2&gt;&#xA;&lt;p&gt;Someone asked how to actually get your team to engage with error analysis? It&amp;rsquo;s one thing to say &amp;ldquo;look at your data,&amp;rdquo; but quite another to inspire people to do the work.&lt;/p&gt;&#xA;&lt;p&gt;Shreya&amp;rsquo;s answer was straightforward: run training sessions. There&amp;rsquo;s significant activation energy required to get people over the hump, but once they experience error analysis firsthand, they become self-fuelling. The process is so valuable that people understand its worth immediately after doing it properly once.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/2025/06-22-llm-evals-course-lesson-2b-office-hrs/</guid>
+      <description>&lt;p&gt;A few things I wanted to note down from the first office hours session following &lt;a href=&#34;http://localhost:1313/posts/2025/06-21-llm-evals-lesson-2-error-analysis/&#34;&gt;lesson 2&lt;/a&gt; of Hamel and Shreya&amp;rsquo;s &lt;a href=&#34;http://localhost:1313/posts/2025/06-08-llm-evals-lesson-1/&#34;&gt;LLM evals course&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;getting-teams-to-actually-do-error-analysis&#34;&gt;Getting Teams to Actually Do Error Analysis&lt;/h2&gt;&#xA;&lt;p&gt;Someone asked how to actually get your team to engage with error analysis? It&amp;rsquo;s one thing to say &amp;ldquo;look at your data,&amp;rdquo; but quite another to inspire people to do the work.&lt;/p&gt;&#xA;&lt;p&gt;Shreya&amp;rsquo;s answer was straightforward: run training sessions. There&amp;rsquo;s significant activation energy required to get people over the hump, but once they experience error analysis firsthand, they become self-fuelling. The process is so valuable that people understand its worth immediately after doing it properly once.&lt;/p&gt;</description>
     </item>
     <item>
       <title>AI Demystified Book by Antonio Weiss</title>
-      <link>https://thingsithinkithink.blog/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/</link>
+      <link>http://localhost:1313/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/</link>
       <pubDate>Sun, 22 Jun 2025 05:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/</guid>
+      <guid>http://localhost:1313/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/</guid>
       <description>&lt;p&gt;Because I&amp;rsquo;m obsessed with AI, I go to as many AI-related events in London as I can. I blagged a ticket to the launch of Antonio Weiss&amp;rsquo;s &amp;ldquo;AI Demystified,&amp;rdquo; which was held in the swanky Financial Times Pearson building on the Strand. After getting a copy of the book, I discovered that a project I&amp;rsquo;d worked on was featured in it. Naturally, that gave me an extra incentive to actually read the thing.&lt;/p&gt;</description>
     </item>
     <item>
       <title>LLM Evals Lesson 2 Error Analysis</title>
-      <link>https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/</link>
+      <link>http://localhost:1313/posts/2025/06-21-llm-evals-lesson-2-error-analysis/</link>
       <pubDate>Sat, 21 Jun 2025 12:50:38 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/</guid>
-      <description>&lt;p&gt;The second lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s LLM evaluation course tackled the &amp;ldquo;Analyse&amp;rdquo; phase of their evaluation lifecycle. This session focused on systematic error analysis - moving beyond gut feelings and random fixes to understand precisely where and why LLM applications fail.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://thingsithinkithink.blog/images/2025/parlancecourse/05_21_analyse_measure_improve.png&#34; alt=&#34;The evaluation lifecycle showing Analyze, Measure, and Improve phases&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re going to make something better, you need to understand how it fails and error analysis focuses on that.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/2025/06-21-llm-evals-lesson-2-error-analysis/</guid>
+      <description>&lt;p&gt;The second lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s LLM evaluation course tackled the &amp;ldquo;Analyse&amp;rdquo; phase of their evaluation lifecycle. This session focused on systematic error analysis - moving beyond gut feelings and random fixes to understand precisely where and why LLM applications fail.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/2025/parlancecourse/05_21_analyse_measure_improve.png&#34; alt=&#34;The evaluation lifecycle showing Analyze, Measure, and Improve phases&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re going to make something better, you need to understand how it fails and error analysis focuses on that.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hamel &amp; Shreya&#39;s LLM Evals Course: Lesson 1</title>
-      <link>https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/</link>
+      <link>http://localhost:1313/posts/2025/06-08-llm-evals-lesson-1/</link>
       <pubDate>Sun, 08 Jun 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/</guid>
+      <guid>http://localhost:1313/posts/2025/06-08-llm-evals-lesson-1/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve started taking Hamel Husain and Shreya Shankar&amp;rsquo;s course on evaluating LLM applications. The course attracted over 700 students from more than 300 companies, which gives you a sense of how much demand there is for systematic approaches to improving AI-driven products. As someone who has taught classes with a maximum of 120 students, I&amp;rsquo;m glad it&amp;rsquo;s not me having to monitor the lesson chat.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m writing these notes here for myself as a way to come back and check what I learned from the course.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cogs / Interns / Human Tasks, a practical framework for AI transformation</title>
-      <link>https://thingsithinkithink.blog/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</link>
+      <link>http://localhost:1313/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</link>
       <pubDate>Mon, 05 May 2025 10:00:00 +0100</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</guid>
+      <guid>http://localhost:1313/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</guid>
       <description>&lt;p&gt;A while back, Drew Brunig&amp;rsquo;s &lt;a href=&#34;https://www.dbreunig.com/2024/10/18/the-3-ai-use-cases-gods-interns-and-cogs.html&#34;&gt;classification&lt;/a&gt; of AI capabilities as &amp;ldquo;Cogs, Interns, and Gods&amp;rdquo; went viral on &lt;a href=&#34;https://x.com/dbreunig/status/1847382010551292232?s=61&#34;&gt;Twitter&lt;/a&gt;. I like it. It&amp;rsquo;s punchy. It&amp;rsquo;s powerful. I use it all the time, but I really dislike the Gods framing - even Brunig acknowledges these (superintelligent AI agents) don&amp;rsquo;t exist yet, so it&amp;rsquo;s really redundant.&lt;/p&gt;&#xA;&lt;p&gt;You basically can&amp;rsquo;t &lt;em&gt;do&lt;/em&gt; anything with it.&lt;/p&gt;&#xA;&lt;p&gt;I also like Ethan Mollick&amp;rsquo;s &lt;a href=&#34;https://www.oneusefulthing.org/p/on-boarding-your-ai-intern&#34;&gt;framework&lt;/a&gt; of &amp;ldquo;Automated&amp;rdquo;, &amp;ldquo;Delegated&amp;rdquo;, and &amp;ldquo;Just Me&amp;rdquo; as a way to talk about how we work with AI. But &amp;ldquo;Just Me&amp;rdquo; feels clumsy in professional contexts, and &amp;ldquo;Delegated&amp;rdquo; just doesn&amp;rsquo;t capture the dynamic back-and-forth relationship between humans and AI systems.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Synthesising a new framework for AI Transformation</title>
-      <link>https://thingsithinkithink.blog/posts/2025/05-04-synthesising-a-new-framework-for-ai-transformation/</link>
+      <link>http://localhost:1313/posts/2025/05-04-synthesising-a-new-framework-for-ai-transformation/</link>
       <pubDate>Sun, 04 May 2025 12:00:00 +0100</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/05-04-synthesising-a-new-framework-for-ai-transformation/</guid>
+      <guid>http://localhost:1313/posts/2025/05-04-synthesising-a-new-framework-for-ai-transformation/</guid>
       <description>&lt;p&gt;Sparked by &lt;a href=&#34;https://www.linkedin.com/posts/emollick_one-mistake-a-lot-of-companies-struggle-with-activity-7323721559481683969-j5Zm?utm_source=share&amp;amp;utm_medium=member_desktop&amp;amp;rcm=ACoAAAKU3ZoBTHvzXgiOPqYTeQuTbQUqniMdk48&#34;&gt;Ethan Mollick&amp;rsquo;s post about AI transformation&lt;/a&gt;, I&amp;rsquo;ve been thinking about how we frame AI&amp;rsquo;s role in workplace transformation. My current role involves doing this kind of work, and Ethan is correct to say we&amp;rsquo;re all figuring it out at the same time. Therefore, in that light, here are some things I&amp;rsquo;ve been thinking about lately.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been considering two frameworks: &lt;a href=&#34;https://www.dbreunig.com/2024/10/18/the-3-ai-use-cases-gods-interns-and-cogs.html&#34;&gt;Drew Brunig&amp;rsquo;s categorisation of AI use cases&lt;/a&gt; as &lt;strong&gt;Cogs, Interns,&lt;/strong&gt; and &lt;strong&gt;Gods&lt;/strong&gt;, and &lt;a href=&#34;https://www.oneusefulthing.org/p/on-boarding-your-ai-intern&#34;&gt;Ethan Mollick&amp;rsquo;s organisation of tasks&lt;/a&gt; into &lt;strong&gt;Automated, Delegated,&lt;/strong&gt; and &lt;strong&gt;Just-Me&lt;/strong&gt; categories.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Error Analysis for Improving LLM Applications</title>
-      <link>https://thingsithinkithink.blog/posts/2025/04-13-error-analysis-for-improving-llm-applications/</link>
+      <link>http://localhost:1313/posts/2025/04-13-error-analysis-for-improving-llm-applications/</link>
       <pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/04-13-error-analysis-for-improving-llm-applications/</guid>
+      <guid>http://localhost:1313/posts/2025/04-13-error-analysis-for-improving-llm-applications/</guid>
       <description>&lt;p&gt;I recently &lt;a href=&#34;https://www.youtube.com/watch?v=qH1dZ8JLLdU&#34;&gt;watched&lt;/a&gt; a talk by &lt;a href=&#34;https://www.linkedin.com/in/hamelhusain/&#34;&gt;Hamel Husain&lt;/a&gt; and &lt;a href=&#34;https://www.linkedin.com/in/shrshnk/&#34;&gt;Shreya Shankar&lt;/a&gt; on error analysis for LLM applications. The approach they presented offers a systematic way to improve AI systems that rely on large language models.&lt;/p&gt;&#xA;&lt;p&gt;Building LLM applications presents unique challenges since outputs are typically text-based and difficult to evaluate with traditional metrics. While many developers focus on frameworks and tools (which RAG database to use, which agentic framework to implement), Hamel and Shreya emphasise the value of looking at your data closely.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why we need Experiment-based Roadmaps in the AI Product Era</title>
-      <link>https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</link>
+      <link>http://localhost:1313/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</link>
       <pubDate>Sat, 12 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</guid>
+      <guid>http://localhost:1313/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</guid>
       <description>&lt;p&gt;I recently &lt;a href=&#34;https://www.youtube.com/watch?v=R_HnI9oTv3c&#34;&gt;watched&lt;/a&gt; a good talk by &lt;a href=&#34;https://www.linkedin.com/in/bryan-bischof/&#34;&gt;Bryan Bischoff&lt;/a&gt;, Head of AI at Theory Ventures, on why traditional product roadmaps fail for AI development and how teams should approach building AI capabilities differently. The presentation provided a good mental model for shifting from rigid planning to experimental discovery.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem-with-traditional-roadmaps-in-ai&#34;&gt;The Problem with Traditional Roadmaps in AI&lt;/h2&gt;&#xA;&lt;p&gt;Traditional software roadmapping focuses on time estimates for when specific features will be ready for users. Product managers meticulously plan sprints, assign engineers to swim lanes, and establish checkpoints to track progress. When teams fall behind, they reassess, potentially cutting scope or adjusting timelines.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The M×N Problem in Software Architecture</title>
-      <link>https://thingsithinkithink.blog/posts/2025/04-08-the-m-x-n-problem-in-software-architecture/</link>
+      <link>http://localhost:1313/posts/2025/04-08-the-m-x-n-problem-in-software-architecture/</link>
       <pubDate>Tue, 08 Apr 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/04-08-the-m-x-n-problem-in-software-architecture/</guid>
+      <guid>http://localhost:1313/posts/2025/04-08-the-m-x-n-problem-in-software-architecture/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve heard about the &amp;ldquo;M×N problem&amp;rdquo; a couple of times lately. After watching Swyx on the Latent Space podcast interviewing the creators of MCP from Anthropic, where he mentioned this problem again, I decided to figure out what it actually meant. According to Swyx, it&amp;rsquo;s a problem he&amp;rsquo;s had to solve repeatedly in his career because of his work on developer tooling.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-mn-problem-defined&#34;&gt;The M×N Problem Defined&lt;/h2&gt;&#xA;&lt;p&gt;The M×N problem occurs in software architecture when you have M components that need to interact with N other components, with each interaction handled individually. This creates a tangled web of connections where the total number of integrations grows to M × N.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Jackie Bavaro on Strategy</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-14-three-parts-of-strategy-with-jackie-bavaro/</link>
+      <link>http://localhost:1313/posts/2025/01-14-three-parts-of-strategy-with-jackie-bavaro/</link>
       <pubDate>Tue, 14 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-14-three-parts-of-strategy-with-jackie-bavaro/</guid>
+      <guid>http://localhost:1313/posts/2025/01-14-three-parts-of-strategy-with-jackie-bavaro/</guid>
       <description>&lt;p&gt;Jackie Bavaro’s breakdown of strategy in her &lt;a href=&#34;https://www.lennysnewsletter.com/p/jackie-bavaro-on-how-to-build-product&#34;&gt;recent podcast interview&lt;/a&gt; really stuck with me. She shared a simple (but I think, pretty good) framework that highlights three key components of strategy: &lt;strong&gt;Vision&lt;/strong&gt;, &lt;strong&gt;Strategic Framework&lt;/strong&gt;, and &lt;strong&gt;Roadmap&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-vision-this-is-where-we-want-to-go&#34;&gt;1. Vision: “This is where we want to go”&lt;/h2&gt;&#xA;&lt;p&gt;The vision is an inspiring picture of what the future looks like. Jackie framed it:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;“Hey everyone, this is where we want to get to—don’t you want to build this future with me?”&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Three Ways I Think Frameworks are Good (actually)</title>
-      <link>https://thingsithinkithink.blog/posts/2025/250113-three-ways-i-think-frameworks-are-good-actually/</link>
+      <link>http://localhost:1313/posts/2025/250113-three-ways-i-think-frameworks-are-good-actually/</link>
       <pubDate>Mon, 13 Jan 2025 09:20:51 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/250113-three-ways-i-think-frameworks-are-good-actually/</guid>
+      <guid>http://localhost:1313/posts/2025/250113-three-ways-i-think-frameworks-are-good-actually/</guid>
       <description>&lt;p&gt;A recent conversation with my friend &lt;a href=&#34;https://www.linkedin.com/in/jonathan-sykes-a702b4/&#34;&gt;Dr Jon Sykes&lt;/a&gt; sparked some thoughts about where frameworks derive their value. The conversation started with a question: is the benefit of frameworks really just that they create a shared language? We were discussing my review of Chapter 2 of &amp;ldquo;How Big Things Get Done&amp;rdquo; and examining the framework that is emerging from my reading so far. This led us to identify three distinct sources of value in frameworks.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The challenges of mastering LLMs, and their role as cyborg enhancement</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</link>
+      <link>http://localhost:1313/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</link>
       <pubDate>Wed, 08 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</guid>
+      <guid>http://localhost:1313/posts/2025/01-08-a-good-interview-with-simon-willison-on-around-the-prompt/</guid>
       <description>&lt;p&gt;I recently watched a good &lt;a href=&#34;https://www.youtube.com/watch?v=rLcKbvmegag&#34;&gt;interview&lt;/a&gt; with Simon Willison on Logan Kilpatrick&amp;rsquo;s podcast, hosted for Google. Simon is known for building &lt;a href=&#34;https://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; (the Python web framework), &lt;a href=&#34;https://datasette.io/&#34;&gt;Datasette&lt;/a&gt; (a data tool for journalists), and the &lt;a href=&#34;https://github.com/simonw/llm&#34;&gt;LLM command line tool&lt;/a&gt; (which lets you run large language models from the command prompt). I used LLM for months until recently &lt;a href=&#34;https://www.answer.ai/posts/2024-12-05-introducing-shell-sage.html&#34;&gt;Shell Sage&lt;/a&gt; became my daily tool.&lt;/p&gt;&#xA;&lt;h2 id=&#34;takeaways&#34;&gt;takeaways:&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Simon&amp;rsquo;s take that generative AI is best thought of today as a cyborg enhancement to our capabilities. I feel this way. These things make me so impactful and able to do what I already do, but better.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;However, he noted that these technologies don&amp;rsquo;t benefit everyone universally and threaten some  livelihoods.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;For instance, illustrators who rely on commissions may find their work threatened as individuals opt for generating assets using tools like Stable Diffusion or Flux.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Simon&amp;rsquo;s take that LLMs are hard to master. Yes, most people have had an amazing experience that shows the power of LLMs, but it&amp;rsquo;s hard to get consistent high value results. And to do so, requires building a lot of intuition:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The notion that a powerful computer program, such as a large language model, cannot perform basic tasks like multiplication seems absurd to many.&lt;/li&gt;&#xA;&lt;li&gt;People have to build a mental model of LLMs, understanding their strengths and weaknesses, and recognising concepts like training cut-offs, hallucinations, and the probabilistic nature of outputs.&lt;/li&gt;&#xA;&lt;li&gt;One he didn&amp;rsquo;t mention but that I&amp;rsquo;m thinking about these days is around RAG systems. Users need to understand that even when LLMs are provided with legitimate sources, those sources compete with the model&amp;rsquo;s training data, which can introduce bias against the sources.  The idea is totally foreign to most people. RAG doesn&amp;rsquo;t &lt;em&gt;fix&lt;/em&gt; anything - it has value - but it doesn&amp;rsquo;t stop the LLM saying something incorrect.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Some people think there is no longer any value to a computer science degree since LLMs can code.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;But there is much more to creating great software than merely inputting a prompt and receiving functional code.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Legitimate uses of uncensored LLMs.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;He shared an example of using Claude to extract campaign finance data from a report, where the AI declined to assist due to concerns about sharing personal financial information. This is absurd.&lt;/li&gt;&#xA;&lt;li&gt;In another instance, a group analysing police body cam footage had to convince the LLM that dogs can bite people, as the model was biased towards pro-dog information based on its training data (the internet!).&#xA;&lt;ul&gt;&#xA;&lt;li&gt;and yet foundation model providers are understandably hesitant to share unfiltered models due to the (extremely high) likelihood that a news institution would (of course) publish scare articles about the LLM sharing unethical content.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;thingsithinkithink&#34;&gt;thingsithinkithink&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The thing about AI being a threat to many:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;I feel this.  I&amp;rsquo;ve worked a lot with artists, musicians, and writers.  I &lt;em&gt;know&lt;/em&gt; many of their clients would be perfectly happy with some AI &amp;lsquo;filler&amp;rsquo; assets and a lot of entry level positions in particular are at risk in these fields.&lt;/li&gt;&#xA;&lt;li&gt;I hope people in these fields are able to use AI to amplify &lt;em&gt;their&lt;/em&gt; abilities to be more impactful too - but it&amp;rsquo;s definitely going to hurt folk.  It makes me very self-conscious whenever I get excited about these things.  It&amp;rsquo;s easy to overlook the negative impacts.&lt;/li&gt;&#xA;&lt;li&gt;it does seem particularly unjust that rich silicon valley types train these tools on the work of the relatively underpaid creatives and the result is a massive threat to those already underempowered fields&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;The thing about LLMs being hard to master:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;I couldn&amp;rsquo;t agree more.  I think there is a parallel between the examples he shares about individuals having challenges to master GenAI and the organisational challenges I&amp;rsquo;ve seen over the last couple of years.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The initial wave of generative AI adoption has produced impressive proof of concepts that often fail to evolve into viable products. This challenge arises partly from the technology stack (POCs are often built on independent systems that lack integration with organisational data pipelines etc).&lt;/li&gt;&#xA;&lt;li&gt;additionally though, a significant part of the issue specifically pertains to the challenge of mastering these tools.  A POC shows what&amp;rsquo;s possible - but bringing a product to market that brings that value without causing a disaster in a multitude of edge cases is a much harder challenge.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Is Psychology or Politics Behind Project Failures?</title>
-      <link>https://thingsithinkithink.blog/posts/2025/psychology-and-politics-behind-project-failures/</link>
+      <link>http://localhost:1313/posts/2025/psychology-and-politics-behind-project-failures/</link>
       <pubDate>Tue, 07 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/psychology-and-politics-behind-project-failures/</guid>
+      <guid>http://localhost:1313/posts/2025/psychology-and-politics-behind-project-failures/</guid>
       <description>&lt;p&gt;A key theme from Chapter 2 of &lt;a href=&#34;https://amzn.eu/d/ifrzA2p&#34;&gt;&amp;ldquo;How Big Things Get Done&amp;rdquo;&lt;/a&gt; is that while we know we should think slowly and act fast, people often do the exact opposite. The chapter explores the psychological and political forces driving this behaviour.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-rush-to-commit&#34;&gt;The Rush to Commit&lt;/h2&gt;&#xA;&lt;p&gt;The chapter introduces the concept of the commitment fallacy - a behavioural bias where we rush into decisions without proper consideration. The age-old advice &amp;ldquo;Act in haste, repent at leisure&amp;rdquo; captures this perfectly.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How AI is making its way into Government</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</link>
+      <link>http://localhost:1313/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</link>
       <pubDate>Mon, 06 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</guid>
+      <guid>http://localhost:1313/posts/2025/01-06-podcast-interview-with-prof-alan-brown-about-uses-of-ai-in-government/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been thinking recently about how to frame the ways that (generative) AI is going to make its way into enterprise and the public sector.  A &lt;a href=&#34;https://www.youtube.com/watch?v=KOyovrkEhlk&amp;amp;list=PLWovoZxDVoYMQJzx9zpNjeJ3UNGuCwYLt&amp;amp;index=6&#34;&gt;recent podcast interview&lt;/a&gt; between &lt;a href=&#34;https://www.alanbrown.net/&#34;&gt;&lt;strong&gt;Professor Alan Brown&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;https://thinktankproduction.co.uk/&#34;&gt;&lt;strong&gt;Think Tank&lt;/strong&gt;&lt;/a&gt; touched upon this.&lt;/p&gt;&#xA;&lt;p&gt;Alan spent nearly two decades in the USA driving large-scale software programmes and leading R&amp;amp;D teams. After roles at Carnegie Mellon University and as an IBM Distinguished Engineer, he&amp;rsquo;s now focused on digital transformation. In addition to his research at &lt;a href=&#34;https://experts.exeter.ac.uk/27811-alan-brown&#34;&gt;Exeter&lt;/a&gt;, he&amp;rsquo;s recently published &lt;a href=&#34;https://surviveaibook.com/&#34;&gt;&lt;em&gt;&amp;ldquo;Surviving and Thriving in the Age of AI&amp;rdquo;&lt;/em&gt;&lt;/a&gt; which aims to help digital leaders navigate the challenges and opportunities of AI.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Does OpenAI&#39;s loss on ChatGPT Pro mean they&#39;re doomed?</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-06-does-openai-s-loss-on-chatgpt-pro-mean-they-re-doomed-/</link>
+      <link>http://localhost:1313/posts/2025/01-06-does-openai-s-loss-on-chatgpt-pro-mean-they-re-doomed-/</link>
       <pubDate>Mon, 06 Jan 2025 01:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-06-does-openai-s-loss-on-chatgpt-pro-mean-they-re-doomed-/</guid>
+      <guid>http://localhost:1313/posts/2025/01-06-does-openai-s-loss-on-chatgpt-pro-mean-they-re-doomed-/</guid>
       <description>&lt;p&gt;A WhatsApp group that I&amp;rsquo;m part of has been discussing whether or not OpenAI is overvalued and in trouble as a result of this recent &lt;a href=&#34;https://techcrunch.com/2025/01/05/openai-is-losing-money-on-its-pricey-chatgpt-pro-plan-ceo-sam-altman-says/&#34;&gt;TechCrunch article&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The key point here is that they believe OpenAI is targeting a traditional mass market product with this £200-a-month offering. Several individuals in the group argue similarly, viewing this as a traditional tech start-up with a product that costs a significant amount to run, raising questions about scalability versus costs. Some members of the group discuss adverts as the natural evolution of any scaling tech platform. One person states, &amp;ldquo;Every platform, when it moves from being a tool to an infrastructure for discovery, ends up running ads.&amp;rdquo;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Think Slow, Act Fast: The Paradox of Project Planning</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-04-think-slow-act-fast-ch-1/</link>
+      <link>http://localhost:1313/posts/2025/01-04-think-slow-act-fast-ch-1/</link>
       <pubDate>Sat, 04 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-04-think-slow-act-fast-ch-1/</guid>
+      <guid>http://localhost:1313/posts/2025/01-04-think-slow-act-fast-ch-1/</guid>
       <description>&lt;p&gt;In the book &lt;em&gt;How Big Things Get Done&lt;/em&gt;, Bent Flyvbjerg and Dan Gardner presented an analysis of why large projects fail to meet their objectives. As someone who has witnessed the ups and downs of loads of projects, I&amp;rsquo;m very curious to learn what we can do better.&lt;/p&gt;&#xA;&lt;p&gt;One of the overarching themes of the first chapter is their thesis of &lt;strong&gt;“think slow, act fast.”&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-iron-law-of-megaprojects&#34;&gt;The Iron Law of Megaprojects&lt;/h2&gt;&#xA;&lt;p&gt;Flyvbjerg and Gardner share what they term the &lt;strong&gt;“iron law of megaprojects,”&lt;/strong&gt; highlighting an uncomfortable reality: projects are consistently over budget, over time, and under deliver on benefits. It&amp;rsquo;s backed by an extensive database of over 16,000 projects across 136 countries and 20 different fields. The statistics are quite convincing:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Two AI things from Kent Hendricks&#39; annual &#39;Things I learned&#39; blog</title>
-      <link>https://thingsithinkithink.blog/posts/2024/12-30-two-ai-things-from-kent-hendrick-s-annual-things-i-learned-blog/</link>
+      <link>http://localhost:1313/posts/2024/12-30-two-ai-things-from-kent-hendrick-s-annual-things-i-learned-blog/</link>
       <pubDate>Mon, 30 Dec 2024 20:16:05 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/12-30-two-ai-things-from-kent-hendrick-s-annual-things-i-learned-blog/</guid>
+      <guid>http://localhost:1313/posts/2024/12-30-two-ai-things-from-kent-hendrick-s-annual-things-i-learned-blog/</guid>
       <description>&lt;p&gt;Two AI things I learned reading Kent Hendricks&amp;rsquo; annual &lt;a href=&#34;https://kenthendricks.com/52-things-i-learned-in-2024/&#34;&gt;&amp;ldquo;Things I learned&amp;rdquo;&lt;/a&gt; blog post:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;The introduction of ChatGPT led to a 2% decrease in freelance job postings on Upwork.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;While humans emit 27g of CO₂ when writing 300 words, ChatGPT accomplishes this in 4.4 seconds, producing only 2.2g of CO₂.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;I’m relieved that using an LLM for grunt work doesn’t automatically force us to sacrifice caring about the climate. However, the notion of valuing people based on their carbon output feels dystopian ( like something out of Black Mirror).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Open Models in 2024: Progress and Challenges</title>
-      <link>https://thingsithinkithink.blog/posts/2024/12-30-open-models-2024-progress-and-challenges/</link>
+      <link>http://localhost:1313/posts/2024/12-30-open-models-2024-progress-and-challenges/</link>
       <pubDate>Mon, 30 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/12-30-open-models-2024-progress-and-challenges/</guid>
+      <guid>http://localhost:1313/posts/2024/12-30-open-models-2024-progress-and-challenges/</guid>
       <description>&lt;p&gt;I recently watched a talk from &lt;a href=&#34;https://www.youtube.com/watch?v=jX1nuoTs2WU&#34;&gt;LatentSpace Live (NeurIPS 2024)&lt;/a&gt; by &lt;a href=&#34;https://soldaini.net/&#34;&gt;Luca Soldaini&lt;/a&gt; a research scientist at the AI Institute, on the state of open models in 2024. His reflections on how far we&amp;rsquo;ve come—and the challenges ahead—offer a good perspective on where (actually-open)AI might be heading.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-leap-forward&#34;&gt;The Leap Forward&lt;/h2&gt;&#xA;&lt;p&gt;2024 marked a significant shift in open model capabilities. Compared to 2023 (which introduced models like Llama 1 and 2, Mistral, and Falcon), 2024 brought a new class of open models that rival frontier-level closed models. Releases like Qwen, Deep Seek, and Llama 3 show how much ground open-source AI has gained in a relatively short time.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Regular Expression Basics</title>
-      <link>https://thingsithinkithink.blog/posts/2024/12-28-regular-expressions/</link>
+      <link>http://localhost:1313/posts/2024/12-28-regular-expressions/</link>
       <pubDate>Sat, 28 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/12-28-regular-expressions/</guid>
-      <description>&lt;h3 id=&#34;regular-expressions&#34;&gt;&lt;strong&gt;Regular Expressions&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Regular expressions have always been a pain in the arse for me. I usually use online generators, or more recently AI to create them.  On a recent Solveit tutorial, I finally got my head around some basics.&lt;/p&gt;&#xA;&lt;p&gt;A thing to note: I’m using the &lt;a href=&#34;https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/&#34;&gt;wrapped version of &lt;code&gt;finditer&lt;/code&gt;&lt;/a&gt; here, so it always returns a list.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;finding-a-simple-char-using-regex&#34;&gt;Finding a Simple Char Using Regex&lt;/h3&gt;&#xA;&lt;p&gt;If I have a string like this:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ss &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;467...114...35...633...#...617...+...58...592...755...$...664...598.&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then this regex finds &lt;code&gt;7&lt;/code&gt;s in the string.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/2024/12-28-regular-expressions/</guid>
+      <description>&lt;h3 id=&#34;regular-expressions&#34;&gt;&lt;strong&gt;Regular Expressions&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Regular expressions have always been a pain in the arse for me. I usually use online generators, or more recently AI to create them.  On a recent Solveit tutorial, I finally got my head around some basics.&lt;/p&gt;&#xA;&lt;p&gt;A thing to note: I’m using the &lt;a href=&#34;http://localhost:1313/posts/2024/12-28-improving-function-usability-a-practical-tip/&#34;&gt;wrapped version of &lt;code&gt;finditer&lt;/code&gt;&lt;/a&gt; here, so it always returns a list.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;finding-a-simple-char-using-regex&#34;&gt;Finding a Simple Char Using Regex&lt;/h3&gt;&#xA;&lt;p&gt;If I have a string like this:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ss &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;467...114...35...633...#...617...+...58...592...755...$...664...598.&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then this regex finds &lt;code&gt;7&lt;/code&gt;s in the string.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Improving Python Function Usability with wrapping</title>
-      <link>https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/</link>
+      <link>http://localhost:1313/posts/2024/12-28-improving-function-usability-a-practical-tip/</link>
       <pubDate>Fri, 27 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/12-28-improving-function-usability-a-practical-tip/</guid>
+      <guid>http://localhost:1313/posts/2024/12-28-improving-function-usability-a-practical-tip/</guid>
       <description>&lt;h3 id=&#34;improving-function-usability-a-practical-tip&#34;&gt;&lt;strong&gt;Improving Function Usability: A Practical Tip&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Today I was doing a Solveit tutorial and it touched on a simple way to improve the usability of functions without altering their core behaviour.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;wrapping-functions-for-easier-use&#34;&gt;Wrapping Functions for Easier Use&lt;/h3&gt;&#xA;&lt;p&gt;Take Python’s &lt;code&gt;re.finditer&lt;/code&gt;, for example. It returns an iterator, which you might often need to convert into a list for processing. Instead of repeating &lt;code&gt;list(re.finditer(...))&lt;/code&gt; all over your code, you can wrap it in a helper function:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Off-the-Radar AI links for the End of the Year</title>
-      <link>https://thingsithinkithink.blog/posts/2024/off-the-radar-ai-links-for-2024/</link>
+      <link>http://localhost:1313/posts/2024/off-the-radar-ai-links-for-2024/</link>
       <pubDate>Sat, 21 Dec 2024 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/off-the-radar-ai-links-for-2024/</guid>
+      <guid>http://localhost:1313/posts/2024/off-the-radar-ai-links-for-2024/</guid>
       <description>&lt;p&gt;Everyone has an exhaustive end of the year list.  I don&amp;rsquo;t but there were a couple of things I got value from that I havne&amp;rsquo;t seen anyone else posting about.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-civic-ai-observatory&#34;&gt;The Civic AI Observatory&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://civicai.uk/?utm_source=substack&amp;amp;utm_medium=email&amp;amp;utm_content=share&#34;&gt;&lt;strong&gt;Civic AI Observatory&lt;/strong&gt;&lt;/a&gt; is a community of civic-minded AI enthusiasts. It’s become one of my favourite spaces for fresh, thoughtful perspectives on AI. There are two reasons why I’m particularly glad I found this group:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Breadth of resources&lt;/strong&gt;: They share (and discuss) an incredible variety of articles, videos, and links on AI.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Civic-first mindset&lt;/strong&gt;: Unlike many tech-focused spaces, their primary lens is civic impact, with AI as a means rather than an end.  It&amp;rsquo;s not all positive discussion.  The risks and downsides of AI on society are taken very seriously here and with a more grounded perspective than you usually find online.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This mix of perspectives cuts through the hype bubble dominating other feeds. I’ve found that their discussions and resources offer a higher diversity of angles compared to almost any other information source I follow.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Things I Think I Think</title>
-      <link>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think-blog/</link>
+      <link>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-blog/</link>
       <pubDate>Thu, 05 Dec 2024 14:33:22 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2024/12-05-things-i-think-i-think-blog/</guid>
+      <guid>http://localhost:1313/posts/2024/12-05-things-i-think-i-think-blog/</guid>
       <description>&lt;p&gt;I want to use this blog to think, learn, and work in public..&lt;/p&gt;&#xA;&lt;p&gt;I chose this name because I want to be able to write stuff without having to definitely commit forever to holding whatever ideas I have shared.  Therefore these posts are just things I &lt;em&gt;think&lt;/em&gt; I think.&lt;/p&gt;</description>
     </item>
   </channel>

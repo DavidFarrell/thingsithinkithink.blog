@@ -10,7 +10,7 @@ tags:
   - fasthtml
   - deployment
   - hosting
-draft: true
+draft: false
 ---
 
 FastHTML apps are built on Starlette, which means they can run anywhere Starlette runs. Some options for hosting so I don't need to look next time.
