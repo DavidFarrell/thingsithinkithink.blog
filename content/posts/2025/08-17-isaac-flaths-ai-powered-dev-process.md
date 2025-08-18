@@ -14,7 +14,7 @@ tags:
 draft: true
 ---
 
-I watched [Isaac Flath's second talk](https://www.youtube.com/watch?v=fA4pe9bE0LY) for the AI Evals course. This time he rebuilt the same annotation app from his [first talk]({{< relref "08-16-isaac-flath-fasthtml-annotation-tools" >}}), but using AI agents instead of manual coding.
+I watched [Isaac Flath's second talk](https://www.youtube.com/watch?v=fA4pe9bE0LY) for the AI Evals course. This time he rebuilt the same annotation app from his [first talk]({{< relref "08-16-isaac-flath-fasthtml-annotation-tools" >}}), but using AI agents instead of manual coding. 
 
 
 The technical content was light, but I picked up some useful process insights that most AI-assisted coding tutorials skip.
