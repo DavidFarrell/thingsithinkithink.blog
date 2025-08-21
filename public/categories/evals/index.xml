@@ -6,8 +6,15 @@
     <description>Recent content in Evals on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Jul 2025 08:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Aug 2025 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/categories/evals/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM Evals Course Lesson 4: Multi-turn and Collaborative Evaluation</title>
+      <link>https://thingsithinkithink.blog/posts/2025/08-21-llm-evals-course-lesson-4-multiturn-collaborative-evaluation/</link>
+      <pubDate>Thu, 21 Aug 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/08-21-llm-evals-course-lesson-4-multiturn-collaborative-evaluation/</guid>
+      <description>&lt;p&gt;The fourth lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/&#34;&gt;LLM evaluation course&lt;/a&gt; covered two distinct challenges: evaluating multi-turn conversations and building evaluation criteria through collaboration.&lt;/p&gt;&#xA;&lt;h2 id=&#34;part-one-multi-turn-evaluation-beyond-single-exchanges&#34;&gt;Part One: Multi-turn Evaluation Beyond Single Exchanges&lt;/h2&gt;&#xA;&lt;p&gt;Multi-turn evaluation presents unique challenges compared to single-turn interactions. The same analyse-measure-improve lifecycle applies, and binary criteria remain a good starting point. But conversations introduce new dimensions to consider.&lt;/p&gt;&#xA;&lt;h3 id=&#34;what-changes-with-multi-turn&#34;&gt;What Changes with Multi-turn&lt;/h3&gt;&#xA;&lt;p&gt;When evaluating multi-turn conversations, three aspects come into play that don&amp;rsquo;t matter as much with individual turns:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LLM Evals Course Lesson 3: Building Automated Evaluators</title>
       <link>https://thingsithinkithink.blog/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/</link>

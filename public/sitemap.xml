@@ -2,11 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://thingsithinkithink.blog/categories/artificial-intelligence/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/collaboration/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/course-notes/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/course-notes/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/evals/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/evaluation/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/llm/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/posts/2025/08-21-llm-evals-course-lesson-4-multiturn-collaborative-evaluation/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/machine-learning/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/multi-turn/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://thingsithinkithink.blog/posts/</loc>
-    <lastmod>2025-08-17T06:00:00+00:00</lastmod>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/</loc>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/</loc>
-    <lastmod>2025-08-17T06:00:00+00:00</lastmod>
+    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/ai-evaluation/</loc>
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
@@ -14,13 +50,7 @@
     <loc>https://thingsithinkithink.blog/tags/annotation/</loc>
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thingsithinkithink.blog/categories/artificial-intelligence/</loc>
-    <lastmod>2025-08-16T11:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://thingsithinkithink.blog/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/</loc>
-    <lastmod>2025-08-16T11:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/categories/</loc>
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/categories/coding/</loc>
@@ -33,9 +63,6 @@
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/python/</loc>
-    <lastmod>2025-08-16T11:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/</loc>
     <lastmod>2025-08-16T11:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/deployment/</loc>
@@ -68,25 +95,7 @@
     <loc>https://thingsithinkithink.blog/tags/automated-testing/</loc>
     <lastmod>2025-07-06T08:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thingsithinkithink.blog/categories/course-notes/</loc>
-    <lastmod>2025-07-06T08:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/course-notes/</loc>
-    <lastmod>2025-07-06T08:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/categories/evals/</loc>
-    <lastmod>2025-07-06T08:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/evaluation/</loc>
-    <lastmod>2025-07-06T08:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/llm/</loc>
-    <lastmod>2025-07-06T08:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://thingsithinkithink.blog/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/</loc>
-    <lastmod>2025-07-06T08:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/machine-learning/</loc>
     <lastmod>2025-07-06T08:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/ai/</loc>
