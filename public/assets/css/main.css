@@ -1109,12 +1109,20 @@ video {
   visibility: hidden;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
 
 .relative {
   position: relative;
+}
+
+.isolate {
+  isolation: isolate;
 }
 
 .mx-2 {

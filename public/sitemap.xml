@@ -2,11 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://thingsithinkithink.blog/tags/agents/</loc>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/ai/</loc>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://thingsithinkithink.blog/categories/artificial-intelligence/</loc>
-    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/blog/</loc>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/categories/</loc>
-    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/infrastructure/</loc>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/posts/</loc>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/</loc>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/posts/2025/09-23-decade-of-agents-swyx-keynote/</loc>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/</loc>
+    <lastmod>2025-09-23T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/collaboration/</loc>
     <lastmod>2025-08-21T12:00:00+00:00</lastmod>
@@ -33,15 +57,6 @@
     <lastmod>2025-08-21T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/multi-turn/</loc>
-    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/posts/</loc>
-    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/</loc>
-    <lastmod>2025-08-21T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/</loc>
     <lastmod>2025-08-21T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/ai-evaluation/</loc>
@@ -98,12 +113,6 @@
     <loc>https://thingsithinkithink.blog/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/</loc>
     <lastmod>2025-07-06T08:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thingsithinkithink.blog/tags/ai/</loc>
-    <lastmod>2025-07-04T08:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/infrastructure/</loc>
-    <lastmod>2025-07-04T08:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://thingsithinkithink.blog/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/</loc>
     <lastmod>2025-07-04T08:00:00+00:00</lastmod>
   </url><url>
@@ -139,9 +148,6 @@
   </url><url>
     <loc>https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/</loc>
     <lastmod>2025-06-08T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/categories/blog/</loc>
-    <lastmod>2025-05-05T10:00:00+01:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/posts/2025/05-05-cogs-intern-agents-and-human-tasks--a-practical-framework-for-ai-transformation/</loc>
     <lastmod>2025-05-05T10:00:00+01:00</lastmod>
