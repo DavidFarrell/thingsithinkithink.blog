@@ -6,27 +6,48 @@
     <description>Recent content in Tags on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Oct 2025 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Oct 2025 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agents</title>
+      <link>https://thingsithinkithink.blog/tags/agents/</link>
+      <pubDate>Sun, 12 Oct 2025 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/agents/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ci-Cd</title>
+      <link>https://thingsithinkithink.blog/tags/ci-cd/</link>
+      <pubDate>Sun, 12 Oct 2025 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/ci-cd/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Course-Notes</title>
       <link>https://thingsithinkithink.blog/tags/course-notes/</link>
-      <pubDate>Sat, 11 Oct 2025 12:00:00 +0000</pubDate>
+      <pubDate>Sun, 12 Oct 2025 09:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/course-notes/</guid>
       <description></description>
     </item>
     <item>
       <title>Evaluation</title>
       <link>https://thingsithinkithink.blog/tags/evaluation/</link>
-      <pubDate>Sat, 11 Oct 2025 12:00:00 +0000</pubDate>
+      <pubDate>Sun, 12 Oct 2025 09:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/evaluation/</guid>
       <description></description>
     </item>
     <item>
       <title>Llm</title>
       <link>https://thingsithinkithink.blog/tags/llm/</link>
-      <pubDate>Sat, 11 Oct 2025 12:00:00 +0000</pubDate>
+      <pubDate>Sun, 12 Oct 2025 09:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine-Learning</title>
+      <link>https://thingsithinkithink.blog/tags/machine-learning/</link>
+      <pubDate>Sun, 12 Oct 2025 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
@@ -41,13 +62,6 @@
       <link>https://thingsithinkithink.blog/tags/retrieval/</link>
       <pubDate>Sat, 11 Oct 2025 12:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/retrieval/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Agents</title>
-      <link>https://thingsithinkithink.blog/tags/agents/</link>
-      <pubDate>Tue, 23 Sep 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/tags/agents/</guid>
       <description></description>
     </item>
     <item>
@@ -76,13 +90,6 @@
       <link>https://thingsithinkithink.blog/tags/collaboration/</link>
       <pubDate>Thu, 21 Aug 2025 12:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/collaboration/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Machine-Learning</title>
-      <link>https://thingsithinkithink.blog/tags/machine-learning/</link>
-      <pubDate>Thu, 21 Aug 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>

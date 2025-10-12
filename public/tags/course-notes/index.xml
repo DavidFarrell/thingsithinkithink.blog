@@ -6,8 +6,15 @@
     <description>Recent content in Course-Notes on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Oct 2025 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Oct 2025 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/course-notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM Evals Course Lesson 6: Complex Pipelines and CI/CD</title>
+      <link>https://thingsithinkithink.blog/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/</link>
+      <pubDate>Sun, 12 Oct 2025 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/</guid>
+      <description>&lt;p&gt;The sixth lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/&#34;&gt;LLM evaluation course&lt;/a&gt; wrapped up unfinished material from lesson 5 (evaluating complex architectures like RAG systems and tool calling) before moving into production concerns. We covered debugging agentic pipelines, handling complex data modalities, and implementing CI/CD for LLM applications.&lt;/p&gt;&#xA;&lt;h2 id=&#34;debugging-multi-step-and-agentic-pipelines&#34;&gt;Debugging Multi-Step and Agentic Pipelines&lt;/h2&gt;&#xA;&lt;p&gt;Complex agentic applications have specific kinds of debugging challenges. You don&amp;rsquo;t know where to begin with error analysis when you have no idea what your agent is doing. It&amp;rsquo;s calling tools, invoking functions, making plans - and you need to figure out where to focus your efforts.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LLM Evals Course Lesson 5: How to Evaluate Complex Architectures</title>
       <link>https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/</link>
