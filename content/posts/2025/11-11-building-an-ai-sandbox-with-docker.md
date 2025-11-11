@@ -14,6 +14,7 @@ tags:
   - claude-code
   - development
   - tooling
+  - feature
 draft: false
 ---
 
