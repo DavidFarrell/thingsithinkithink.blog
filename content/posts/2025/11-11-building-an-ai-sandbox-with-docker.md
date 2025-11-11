@@ -167,4 +167,6 @@ When you exit the container, it gets removed automatically. No accumulation of d
 
 - I mentioned above that you should get Claude to do this for you - you don't need my files. What I'd actually recommend is that you just copy this entire blog post, paste it into Claude and say "Claude, hey, do this for me."
 
+- If you really do want to just grab my version, you can clone it from [GitHub here](https://github.com/DavidFarrell/ai-development-sandbox).
+
 - I'm surprised there's not a better or more standard way of doing this that somebody else has already figured out. I'm assuming that there is and I've just missed it. If anybody knows of one, please email me or get in touch.
