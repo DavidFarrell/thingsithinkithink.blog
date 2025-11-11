@@ -6,8 +6,15 @@
     <description>Recent content in Development on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Jul 2025 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Nov 2025 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building an AI Sandbox with Docker</title>
+      <link>https://thingsithinkithink.blog/posts/2025/11-11-building-an-ai-sandbox-with-docker/</link>
+      <pubDate>Tue, 11 Nov 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/11-11-building-an-ai-sandbox-with-docker/</guid>
+      <description>&lt;p&gt;I love Claude Code. I enjoy using coding agents, especially for quick and dirty things that I just need to get working for myself. I use them for all sorts of things, from writing my blog to using Claude Code as a &lt;a href=&#34;https://www.linkedin.com/posts/davidfarrell81_huge-thanks-to-eddie-forson-wilfred-kasekende-activity-7393335244239634432-e2Cw?utm_source=share&amp;amp;utm_medium=member_desktop&amp;amp;rcm=ACoAAAKU3ZoBTHvzXgiOPqYTeQuTbQUqniMdk48&#34;&gt;personal stylist&lt;/a&gt; to dress me for a wedding I was attending. But when I&amp;rsquo;m doing coding things, I&amp;rsquo;m always wary of the potential ways that coding agents could mess up my system.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration</title>
       <link>https://thingsithinkithink.blog/posts/2025/07-18-chrome-devtools-fasthtml-development/</link>

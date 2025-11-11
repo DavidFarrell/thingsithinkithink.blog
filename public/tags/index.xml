@@ -6,8 +6,36 @@
     <description>Recent content in Tags on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Oct 2025 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Nov 2025 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude-Code</title>
+      <link>https://thingsithinkithink.blog/tags/claude-code/</link>
+      <pubDate>Tue, 11 Nov 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/claude-code/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Development</title>
+      <link>https://thingsithinkithink.blog/tags/development/</link>
+      <pubDate>Tue, 11 Nov 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://thingsithinkithink.blog/tags/docker/</link>
+      <pubDate>Tue, 11 Nov 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tooling</title>
+      <link>https://thingsithinkithink.blog/tags/tooling/</link>
+      <pubDate>Tue, 11 Nov 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/tooling/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Agents</title>
       <link>https://thingsithinkithink.blog/tags/agents/</link>
@@ -167,13 +195,6 @@
       <link>https://thingsithinkithink.blog/tags/debugging/</link>
       <pubDate>Fri, 18 Jul 2025 09:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/debugging/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Development</title>
-      <link>https://thingsithinkithink.blog/tags/development/</link>
-      <pubDate>Fri, 18 Jul 2025 09:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/tags/development/</guid>
       <description></description>
     </item>
     <item>
