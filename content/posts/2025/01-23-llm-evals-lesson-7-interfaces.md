@@ -2,7 +2,7 @@
 title: "LLM Evals Course Lesson 7: Interfaces for Human Review"
 date: 2025-11-23T12:00:00Z
 slug: /01-23-llm-evals-lesson-7-interfaces-for-human-review/
-description: "Notes from lesson 7 of Hamel and Shreya's LLM evaluation course - interface design principles, strategic sampling, and closing the feedback loop."
+description: "Notes from lesson 7 of Hamel and Shreya's LLM evaluation course - interface design principles and strategic sampling."
 image: /images/2025/parlancecourse/01_23_lesson7_hero_progress_bar_impact.png
 caption: "The impact of progress bars on review completion"
 categories:
