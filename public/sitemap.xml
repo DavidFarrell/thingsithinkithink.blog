@@ -2,40 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://thingsithinkithink.blog/posts/</loc>
+    <lastmod>2025-12-22T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/</loc>
+    <lastmod>2025-12-22T09:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://thingsithinkithink.blog/categories/artificial-intelligence/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/categories/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/cost-optimisation/</loc>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/categories/course-notes/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/course-notes/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/categories/evals/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/evaluation/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/feature/</loc>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/llm/</loc>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/</loc>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/machine-learning/</loc>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/</loc>
+    <lastmod>2025-12-21T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/interface-design/</loc>
     <lastmod>2025-11-23T12:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thingsithinkithink.blog/tags/llm/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://thingsithinkithink.blog/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/posts/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/</loc>
-    <lastmod>2025-11-23T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/</loc>
     <lastmod>2025-11-23T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/usability/</loc>
@@ -56,9 +68,6 @@
     <loc>https://thingsithinkithink.blog/tags/docker/</loc>
     <lastmod>2025-11-11T12:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thingsithinkithink.blog/tags/feature/</loc>
-    <lastmod>2025-11-11T12:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://thingsithinkithink.blog/tags/tooling/</loc>
     <lastmod>2025-11-11T12:00:00+00:00</lastmod>
   </url><url>
@@ -72,9 +81,6 @@
     <lastmod>2025-10-12T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/</loc>
-    <lastmod>2025-10-12T09:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/machine-learning/</loc>
     <lastmod>2025-10-12T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/</loc>

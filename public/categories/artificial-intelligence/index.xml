@@ -6,8 +6,15 @@
     <description>Recent content in Artificial-Intelligence on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Nov 2025 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Dec 2025 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/categories/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM Evals Lesson 8: Improving LLM Products</title>
+      <link>https://thingsithinkithink.blog/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/</link>
+      <pubDate>Sun, 21 Dec 2025 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/</guid>
+      <description>&lt;p&gt;The final lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/&#34;&gt;LLM evaluation course&lt;/a&gt; covered practical strategies for the &amp;ldquo;Improve&amp;rdquo; phase of the evaluation lifecycle. This post focuses on that lesson content in detail.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;improving-llm-based-systems&#34;&gt;Improving LLM-Based Systems&lt;/h2&gt;&#xA;&lt;p&gt;With analysis and measurement complete, we can finally focus on improving our system. The lesson covered two areas: accuracy optimisation and cost reduction.&lt;/p&gt;&#xA;&lt;h3 id=&#34;improving-accuracy-quick-wins&#34;&gt;Improving Accuracy: Quick Wins&lt;/h3&gt;&#xA;&lt;p&gt;Quick wins close the Gulf of Specification. If you&amp;rsquo;ve done error analysis properly, you&amp;rsquo;ll probably find a bunch of quick wins. You thought the system worked a certain way, you discovered it doesn&amp;rsquo;t, and often the fix is straightforward.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LLM Evals Course Lesson 7: Interfaces for Human Review</title>
       <link>https://thingsithinkithink.blog/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/</link>
