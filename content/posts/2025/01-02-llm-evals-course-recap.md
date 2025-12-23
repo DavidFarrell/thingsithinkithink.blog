@@ -1,7 +1,7 @@
 ---
 title: "LLM Evals Course: Complete Course Recap"
-date: 2025-12-23T08:00:00Z
-slug: /12-23-llm-evals-course-recap/
+date: 2026-01-02T08:00:00Z
+slug: /01-02-llm-evals-course-recap/
 description: "This is my recap of Hamel and Shreya's LLM evaluation course. I'm hoping I come back here in the future every time I need to remind myself of how to do this the right way."
 image: /images/2025/parlancecourse/12-22-hamel-shreya-course-promo.png
 caption: Hamel Husain and Shreya Shankar's LLM Evaluation Course
