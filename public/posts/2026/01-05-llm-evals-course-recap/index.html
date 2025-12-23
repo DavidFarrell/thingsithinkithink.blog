@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LLM Evals Course: Complete Course Recap | thingsithinkithink</title>
+
+<meta name="description" content="This is my recap of Hamel and Shreya&#39;s LLM evaluation course. I&#39;m hoping I come back here in the future every time I need to remind myself of how to do this the right way.">
+    <link rel="stylesheet" href="/css/main.css">
+
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="http://localhost:1313/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="http://localhost:1313/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">LLM Evals Course: Complete Course Recap</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">This is my recap of Hamel and Shreya&#39;s LLM evaluation course. I&#39;m hoping I come back here in the future every time I need to remind myself of how to do this the right way. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="http://localhost:1313/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-01-05T09:00:00&#43;00:00">January 5, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            11 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="http://localhost:1313/images/2025/parlancecourse/12-22-hamel-shreya-course-promo_hu_2913f174ada02958.png" alt="" width="750" height="432">
+        <figcaption class="text-center italic text-xs">Hamel Husain and Shreya Shankar&#39;s LLM Evaluation Course</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>I&rsquo;ve finally finished writing up my notes from Hamel Husain and Shreya Shankar&rsquo;s <a href="https://maven.com/parlance-labs/evals">LLM evaluation course</a>. It took me longer to write up my notes than it took to actually do the course, but it gave me a good excuse to revisit everything a second time, which is a great way to help cement my learnings. I&rsquo;m going to do one post here to finally capture the key things from each of the lessons, with the hope that I can refer back to this in the future to help me find the detail that I&rsquo;m looking for.</p>
+<hr>
+<h2 id="course-overview">Course Overview</h2>
+<p>The course covered eight lessons over several weeks. In this post, I&rsquo;m going to give an overall reflection, but first here are links and summaries of each of the lessons:</p>
+<ol>
+<li>
+<p><strong><a href="http://localhost:1313/posts/2025/06-08-llm-evals-lesson-1/">The Three Gulfs Model &amp; Evaluation Fundamentals</a></strong> - Introduces the core framework for understanding LLM development challenges and establishes the analyse-measure-improve cycle.</p>
+</li>
+<li>
+<p><strong><a href="http://localhost:1313/posts/2025/06-21-llm-evals-lesson-2-error-analysis/">Error Analysis &amp; Systematic Failure Identification</a></strong> - Teaches open and axial coding techniques from qualitative research to systematically discover and categorise failure modes.</p>
+</li>
+<li>
+<p><strong><a href="http://localhost:1313/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/">Building Automated Evaluators</a></strong> - Covers creating reliable LLM-as-judge systems with proper data splits, bias correction, and calibration techniques.</p>
+</li>
+<li>
+<p><strong><a href="http://localhost:1313/posts/2025/08-21-llm-evals-course-lesson-4-multiturn-collaborative-evaluation/">Multi-turn and Collaborative Evaluation</a></strong> - Addresses conversation-level evaluation and building evaluation criteria through collaborative annotation with Cohen&rsquo;s Kappa.</p>
+</li>
+<li>
+<p><strong><a href="http://localhost:1313/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/">Evaluating Complex Architectures</a></strong> - Focuses on RAG systems, retrieval metrics (Recall@K, NDCG), and tool calling evaluation strategies.</p>
+</li>
+<li>
+<p><strong><a href="http://localhost:1313/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/">Complex Pipelines and CI/CD</a></strong> - Covers debugging agentic systems with transition failure matrices and implementing continuous integration for LLM applications.</p>
+</li>
+<li>
+<p><strong><a href="http://localhost:1313/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/">Interfaces for Human Review</a></strong> - Applies HCI principles to build custom review interfaces with strategic sampling approaches for efficient annotation.</p>
+</li>
+<li>
+<p><strong><a href="http://localhost:1313/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/">Improving LLM Products</a></strong> - Provides practical strategies for accuracy improvement and cost reduction through prompt refinement, architecture changes, and model cascades.</p>
+</li>
+</ol>
+<hr>
+<h2 id="the-three-gulfs-model">The Three Gulfs Model</h2>
+<p>The course&rsquo;s central premise is that building good LLM pipelines is hard because of three fundamental challenges.</p>
+<p><img src="/images/2025/parlancecourse/12-21-three-gulfs.png" alt="The Three Gulfs Model showing Developer, LLM Pipeline, and Data nodes"></p>
+<p><strong>The Gulf of Comprehension</strong> sits between the developer and the data. It&rsquo;s hard to understand everything in your data: real user queries, system outputs, synthetic test cases. We end up with a partial model of what&rsquo;s actually happening in our system. As Shreya put it, you can&rsquo;t vibe check your way to understanding what&rsquo;s going on.</p>
+<p><strong>The Gulf of Specification</strong> sits between us and the instructions we give the LLM. We&rsquo;re trying to describe what we want, but much of our intent is latent. We only realise what we actually mean when we see outputs that inform us we need to specify better.</p>
+<p><strong>The Gulf of Generalisation</strong> sits between the LLM and the data. Even after specifying everything in detail, the model isn&rsquo;t always good enough. When it encounters data outside its training distribution, it struggles to execute our specification. This requires different strategies: fine-tuning, task decomposition, RAG improvements.</p>
+<h3 id="llm-agency-levels">LLM Agency Levels</h3>
+<p>A nice framing from <a href="http://localhost:1313/posts/2025/06-08-llm-evals-lesson-1/">Lesson 1</a> is to consider LLM agency - how much freedom you give the model to reinterpret user intent. High agency means the LLM actively reinterprets what users ask for. Medium agency means it asks clarifying questions. Low agency means it takes requests literally. You need to decide this explicitly in your prompts because it changes how users interact with your system.</p>
+<h3 id="the-analyse-measure-improve-cycle">The Analyse-Measure-Improve Cycle</h3>
+<p>The course structured everything around a three-phase cycle, each with its own common pitfalls.</p>
+<p><img src="/images/2025/parlancecourse/12-21-analyse-measure-improve.png" alt="The Analyse-Measure-Improve cycle with pitfalls"></p>
+<p><strong>Analyse Phase</strong>: The goal is qualitative understanding. You&rsquo;re looking at your data, identifying failure patterns, and building a taxonomy of what&rsquo;s going wrong.</p>
+<p>Pitfalls:</p>
+<ul>
+<li>Outsourcing annotation to the wrong people instead of owning it yourself</li>
+<li>Not looking at enough examples to reach theoretical saturation</li>
+<li>Using annotators without domain expertise - technically correct responses can still fail business objectives (<a href="http://localhost:1313/posts/2025/08-21-llm-evals-course-lesson-4-multiturn-collaborative-evaluation/">Lesson 4</a>)</li>
+</ul>
+<p>Shreya repeated throughout the course that no matter the size of your company or product, you always have to do error analysis. The ease of doing error analysis now, and the specific process for doing it well, is probably the single most valuable thing to get from this course. The bang for buck on systematic error analysis is very high. When defining evaluation criteria, start with what makes users unhappy, then invert it - that gives you a practical foundation for what good looks like.</p>
+<p><strong>Measure Phase</strong>: The goal is quantification. Once you know your failure modes qualitatively, you need to measure how prevalent they are so you can prioritise and track improvement.</p>
+<p>Pitfalls:</p>
+<ul>
+<li>Unaligned LLM judges that don&rsquo;t reflect your informed perspective</li>
+<li>Data leakage by putting failure traces directly into your judge&rsquo;s prompt, then testing on those exact traces</li>
+</ul>
+<p>The second mistake surprises me that people make it, but apparently they do. If you put examples in the prompt and then test on those same examples, of course your judge performs well. That&rsquo;s not overfitting so much as leakage.</p>
+<p><strong>Improve Phase</strong>: The goal is targeted fixes. With analysis and measurement complete, you can finally make changes with confidence that you&rsquo;re addressing real problems and can verify whether you&rsquo;ve made things better.</p>
+<p>Pitfalls:</p>
+<ul>
+<li>Premature improvement before proper analysis and measurement</li>
+<li>Jumping to the most complex technical solution first</li>
+</ul>
+<p>In my line of work, I meet lots of different clients who want help with some LLM-based solution. Those that know something about AI often demonstrate that second pitfall. It seems to me that the more people know, the more inclined they are to have an opinion about one of these complex technical solutions. Fine-tuning is a common example. They&rsquo;ve heard of it, they can see a pattern match between their understanding of it and the problem at hand, and they want to go straight to it. But it&rsquo;s usually far easier and cheaper to start with the smallest intervention, which is often just working on the prompts. Medium-effort options (<a href="http://localhost:1313/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/">Lesson 8</a>) include task decomposition (breaking complex calls into focused chains) and fixing tool descriptions. Structure prompts with static content first and dynamic content last to maximize cache hits - providers offer roughly 90% discounts on cached tokens, and batching adds another 50% on top. Model cascades (<a href="http://localhost:1313/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/">Lesson 8</a>) route queries between cheap and expensive models based on confidence thresholds, though reliability depends on correlation between confidence and correctness - which may not hold for generative tasks.</p>
+<h3 id="the-analyse-phase-understanding-whats-broken">The Analyse Phase: Understanding What&rsquo;s Broken</h3>
+<p>The analyse phase focuses on qualitative understanding through systematic error analysis:</p>
+<ol>
+<li><strong>Bootstrap a dataset</strong> (real or synthetic). For synthetic data, use dimensional sampling (<a href="http://localhost:1313/posts/2025/06-21-llm-evals-lesson-2-error-analysis/">Lesson 2</a>): identify dimensions that vary meaningfully (user intent, persona, query complexity), generate combinations across those dimensions, then convert each combination into realistic queries. This structured approach prevents the &ldquo;procedurally generated soup&rdquo; problem where you get lots of variation that all looks the same.</li>
+<li><strong>Open coding</strong>: Read traces and apply descriptive labels to find failure patterns</li>
+<li><strong>Axial coding</strong>: Cluster those labels into a structured taxonomy of failure modes</li>
+</ol>
+<p>Your understanding evolves as you review more data - this is called evaluation criteria drift (<a href="http://localhost:1313/posts/2025/06-21-llm-evals-lesson-2-error-analysis/">Lesson 2</a>). The person who finishes labelling sees the data differently from the person who started (even though they&rsquo;re the same human being). This means you have to go back and re-label from the beginning, iterating until you reach theoretical saturation where new examples reveal no new failure modes.</p>
+<p>For subjective criteria, collaborative evaluation with multiple annotators helps. The focus isn&rsquo;t on figuring out who&rsquo;s correct when there&rsquo;s disagreement. It&rsquo;s on improving your description of the criteria until everyone becomes aligned. Cohen&rsquo;s Kappa measures agreement; alignment sessions refine the rubrics. When refining rubrics (<a href="http://localhost:1313/posts/2025/08-21-llm-evals-course-lesson-4-multiturn-collaborative-evaluation/">Lesson 4</a>), clarify vague criteria into concrete requirements, add illustrative examples, create decision rules for edge cases, and split criteria when one measure tries to do two jobs. Use binary yes/no evaluations for failure modes rather than Likert scales - it&rsquo;s much harder to reliably distinguish between a 2 and a 3 than to answer whether something failed or not.</p>
+<h3 id="the-measure-phase-quantifying-failures">The Measure Phase: Quantifying Failures</h3>
+<p>Once you know your failure modes, you quantify their prevalence through automated evaluators. Evaluations fall into two categories (<a href="http://localhost:1313/posts/2025/06-08-llm-evals-lesson-1/">Lesson 1</a>): reference-free (checking properties without comparing to perfect answers) and reference-based (comparing against golden standards).</p>
+<p><strong>Programmatic evaluators</strong> are fast, cheap, and objective. If you&rsquo;re checking whether your system used a tool, you don&rsquo;t need an LLM judge. Just check if the tool object is populated. Regex, schema validation, keyword matching all fit here. For agentic systems with tool calling (<a href="http://localhost:1313/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/">Lesson 5</a>), check each stage separately: tool selection, argument generation, execution success, and output processing.</p>
+<p><strong>LLM-as-judge</strong> handles subjective or nuanced criteria. But a trustworthy judge isn&rsquo;t automatic. You have to build and validate it.</p>
+<p>Judges aren&rsquo;t perfect, and their imperfections create bias in your metrics (<a href="http://localhost:1313/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/">Lesson 3</a>). Use bootstrapping to calculate confidence intervals around your success rate estimates. The <code>judgy</code> library (<a href="https://github.com/ai-evals-course/judgy">Hamel and Shreya&rsquo;s open-source library</a>) implements bias correction formulas that adjust for known judge tendencies.</p>
+<p><em>The judgy library helps you calibrate an LLM judge when you know it sometimes mislabels things. You run the judge on a small human-labelled calibration set, estimate its false positive and false negative rates, and then apply a correction so your reported pass rate is closer to the truth. It is most useful for binary pass/fail style metrics and assumes the judge&rsquo;s error rates stay broadly stable, so it will not fix broader issues like preference for certain writing styles, position bias, or shifts in behaviour over time.</em></p>
+<p>To build and validate your judge, the approach mirrors ML training: split your labelled data into train, dev, and test sets. Don&rsquo;t leak data between them. The analogy is slightly forced since these don&rsquo;t map exactly to how you&rsquo;d use them in a traditional ML pipeline, but the principle holds. The &ldquo;training set&rdquo; here means a handful of few-shot examples in your prompt. The dev set is what you iterate on while refining the judge. The test set stays sealed: you know the human labels, you run your judge, you measure TPR and TNR, but you don&rsquo;t peek inside to improve the prompt. Poor TPR means you underestimate your system&rsquo;s performance; poor TNR creates false confidence (<a href="http://localhost:1313/posts/2025/07-06-llm-evals-course-lesson-3-automated-evaluators/">Lesson 3</a>).</p>
+<h3 id="multi-turn-evaluation">Multi-turn Evaluation</h3>
+<p>For conversational systems, freeze the messages array at failure points to create test baselines (<a href="http://localhost:1313/posts/2025/08-21-llm-evals-course-lesson-4-multiturn-collaborative-evaluation/">Lesson 4</a>). Test perturbations like intent switches and added constraints to check robustness. Include conversations of varying lengths in your test set - performance often degrades over longer exchanges.</p>
+<h3 id="rag-and-tool-calling">RAG and Tool Calling</h3>
+<p>For RAG systems, evaluate retrieval and generation separately before end-to-end testing (<a href="http://localhost:1313/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/">Lesson 5</a>). Check retrieval with Recall@K - is the right context available? Then evaluate generation for faithfulness to retrieved context and relevance to the original query.</p>
+<h3 id="operationalising-evaluation">Operationalising Evaluation</h3>
+<p>Making evaluation part of daily workflow borrows from CI/CD thinking.</p>
+<p><strong>Continuous Integration</strong>: Create a golden dataset of critical examples and known failure modes. Every time you change something, run evaluators to create a regression safety net. If you accidentally made something worse, you&rsquo;ll know. For agentic systems, use a transition failure matrix to identify which state transitions fail most - this reveals debugging priorities (<a href="http://localhost:1313/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/">Lesson 6</a>).</p>
+<p><em>I recently heard on <a href="https://www.youtube.com/watch?v=wQg5JtmoZXA">Latent Space</a> that in practice, most teams now don&rsquo;t handcraft golden datasets from the start. They put systems in the wild and collect traces as they go. Either way, you end up with something to test against.</em></p>
+<p><strong>Continuous Deployment</strong>: Monitor a sample of production data continuously. Track performance. Try to uncover unknown unknowns before they cause problems. This might mean floating thumbs up/down on a percentage of uses, with too many thumbs downs immediately flagging something for people to look at. Or it could be grabbing a percentage of production data, human-labelling it, comparing it against system performance, and checking whether you&rsquo;re broadly in line with where you&rsquo;d expect to be. The goal is to make sure things are on track and you haven&rsquo;t drifted too much. Distinguish between async evaluations (slower, diagnostic, sample-based) and guardrails (fast, reliable, real-time intervention) - they serve different purposes (<a href="http://localhost:1313/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/">Lesson 6</a>).</p>
+<p>LLM judges drift as models and user behavior evolve - re-evaluate every few weeks (<a href="http://localhost:1313/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/">Lesson 6</a>).</p>
+<h3 id="human-review-interfaces">Human Review Interfaces</h3>
+<p>The course made a big deal of building custom interfaces for reviewing LLM output data. Spreadsheets and generic log viewers don&rsquo;t account for the specific shape of your data. Custom interfaces provide roughly 10x review throughput - 200 traces per hour versus 20 in spreadsheets (<a href="http://localhost:1313/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/">Lesson 7</a>). Apply Jakob Nielsen&rsquo;s usability heuristics: progress bars motivate completion, single keypress for pass/fail speeds review, pre-filled failure mode options reduce cognitive load (recognition over recall), and allowing deferral of uncertain cases prevents getting stuck. Blend random sampling (health check), uncertainty sampling (low-confidence cases), and failure-driven sampling (violations, bugs) - aim for around 100 traces per week.</p>
+<p>I really love this, and I&rsquo;ve been doing it ever since. Before the course, I used to do this the hard way, evaluating all of my data in spreadsheets. It was a total pain in the butt, and I really appreciate how much better a custom interface can be. It&rsquo;s one of my big takeaways from the course alongside the error analysis methodology.</p>
+<hr>
+<h2 id="thingsithinkithink">thingsithinkithink</h2>
+<ul>
+<li>
+<p>The error analysis methodology and custom review interfaces are my two biggest takeaways from this course. I was doing versions of both before, but without the mature perspective the course provides. It was a pain in the arse the way I used to do it. This is better.</p>
+</li>
+<li>
+<p>The Three Gulfs model gives a useful vocabulary for diagnosing where things are going wrong. Is it comprehension (I don&rsquo;t understand my data)? Specification (my prompts aren&rsquo;t clear enough)? Generalisation (the model just can&rsquo;t do it)? Having that language helps.</p>
+</li>
+<li>
+<p>This was some of the best money I&rsquo;ve spent on a course in recent memory. The downside is it took forever to write up blog posts about each lesson. I haven&rsquo;t had time to write up notes from two other courses I enjoyed this year: <a href="https://maven.com/kentro/context-engineering-for-coding">Elite AI Assisted Coding</a> by Eleanor Berger and Isaac Flath, and <a href="https://solve.it.com/">How to Solve it With Code</a> by fast.ai/Answer.AI, led by Jeremy Howard with Eric Ries.</p>
+</li>
+</ul>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/llm/">Llm</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/evaluation/">Evaluation</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/machine-learning/">Machine-Learning</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/course-notes/">Course-Notes</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="http://localhost:1313/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/12-21-improve-phase-intro_hu_7e3853880223e050.png" alt="LLM Evals Lesson 8: Improving LLM Products" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-12-21T09:00:00&#43;00:00">Dec 21, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">LLM Evals Lesson 8: Improving LLM Products</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Notes from the final lesson of Hamel and Shreya&#39;s LLM evaluation course - practical strategies for improving accuracy and reducing costs through prompt refinement, architecture changes, fine-tuning, and model cascades.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="http://localhost:1313/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/10_12_lesson6_transition_failure_matrix_hu_a92d5ddba1ed610c.png" alt="LLM Evals Course Lesson 6: Complex Pipelines and CI/CD" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-10-12T09:00:00&#43;00:00">Oct 12, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">LLM Evals Course Lesson 6: Complex Pipelines and CI/CD</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Notes from lesson 6 of Hamel and Shreya&#39;s LLM evaluation course - debugging agentic systems, handling complex data modalities, and implementing CI/CD for production LLM applications.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2026/01-12-exploring-claude-agent-sdk/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/12-23-claude-agent-sdk_hu_883a97b3799b7307.png" alt="Exploring the Claude Agent SDK" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Exploring the Claude Agent SDK</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2026/01-05-llm-evals-course-recap/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/12-22-hamel-shreya-course-promo_hu_612a5ca27ce3de11.png" alt="LLM Evals Course: Complete Course Recap" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course: Complete Course Recap</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/12-21-improve-phase-intro_hu_ec498da3562301b9.png" alt="LLM Evals Lesson 8: Improving LLM Products" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Lesson 8: Improving LLM Products</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/01_23_lesson7_hero_progress_bar_impact_hu_b5b7ccc3f854dbf8.png" alt="LLM Evals Course Lesson 7: Interfaces for Human Review" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 7: Interfaces for Human Review</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/11-11-building-an-ai-sandbox-with-docker/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/11-11-docker-sandbox_hu_65f06efcade2b75d.png" alt="Building an AI Sandbox with Docker" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Building an AI Sandbox with Docker</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="http://localhost:1313/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script src="/js/insertoggle.js"></script>
+</body>
+</html>

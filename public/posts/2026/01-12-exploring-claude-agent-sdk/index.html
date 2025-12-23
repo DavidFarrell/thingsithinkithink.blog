@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Exploring the Claude Agent SDK | thingsithinkithink</title>
+
+<meta name="description" content="Learning in public: experimenting with Anthropic&#39;s Agent SDK after hearing that anything Claude Code can do, you can do with the SDK.">
+    <link rel="stylesheet" href="/css/main.css">
+
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="http://localhost:1313/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="http://localhost:1313/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">Exploring the Claude Agent SDK</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Learning in public: experimenting with Anthropic&#39;s Agent SDK after hearing that anything Claude Code can do, you can do with the SDK. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="http://localhost:1313/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-01-12T09:00:00&#43;00:00">January 12, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            9 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="http://localhost:1313/images/2025/12-23-claude-agent-sdk_hu_d70798accc3aa2f5.png" alt="" width="750" height="419">
+        <figcaption class="text-center italic text-xs">Claude teaching David about the Agent SDK, with Bowie (the cat) supervising</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>At a recent Claude Code meetup, one of the Anthropic staff mentioned that anything Claude Code can do, you can do using the Agent SDK. That caught my attention. I&rsquo;ve been using Claude Code heavily, but I hadn&rsquo;t really understood what was happening under the hood. So I&rsquo;ve decided to dig in and document what I learn as I go.</p>
+<p>I like the idea of having a specialised version of Claude that understands my writing process, the tools I use, and the way I like to work. So as a toy experiment, I&rsquo;m working on a writing agent built on the Claude Agent SDK.</p>
+<h2 id="claude-agent-sdk">Claude Agent SDK</h2>
+<p>I downloaded the Claude Agent SDK and noticed it has a dependency on Claude Code, which I thought was unusual. Turns out the Claude Agent SDK is not an alternative to Claude Code. It&rsquo;s not something you use from the ground up to build your own version of Claude Code. It&rsquo;s a programmatic wrapper <em>around</em> Claude Code.</p>
+<p>There&rsquo;s a separate <a href="https://github.com/anthropics/anthropic-sdk-python">Anthropic SDK Python</a> you can use if you want to interact directly with the Anthropic API. But if you&rsquo;re building with the Claude Agent SDK, you are building on top of Claude Code itself.</p>
+<p>Here&rsquo;s how it fits together:</p>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────┐
+│  Your Terminal                                          │
+│  $ python -m writing_agent.main /path/to/blog           │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│  main.py  (my code)                                     │
+│                                                         │
+│  main()                                                 │
+│    └─→ asyncio.run(run_agent(blog_path))                │
+│                                                         │
+│  run_agent()                                            │
+│    ├─→ options = ClaudeAgentOptions(...)                │
+│    └─→ async with ClaudeSDKClient(options):             │
+└────────────────────┬────────────────────────────────────┘
+                     │ ClaudeSDKClient spawns subprocess
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│  Claude Code CLI Binary (bundled with SDK or uses       │
+│                          pre-existing install)          │
+│  claude --print --output-format stream-json ...         │
+│                                                         │
+│  - Receives prompts via stdin (JSON)                    │
+│  - Runs agentic loop                                    │
+│  - Executes tools (Read, Bash, etc.)                    │
+│  - Streams responses via stdout (JSON)                  │
+└────────────────────┬────────────────────────────────────┘
+                     │ HTTPS
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│  Anthropic API                                          │
+│  api.anthropic.com                                      │
+└─────────────────────────────────────────────────────────┘
+</code></pre><p>Note: <code>allowed_tools</code> controls which tools can run without asking for permission. To restrict which tools are available at all, you&rsquo;d use the <code>tools</code> option instead.</p>
+<h2 id="using-claude-code-to-learn-claude-code">Using Claude Code to Learn Claude Code</h2>
+<p>There&rsquo;s something pleasingly recursive about using Claude Code to help me understand the Agent SDK that powers it. I&rsquo;ve been running Claude Code with the output style set to &ldquo;learning&rdquo;, which means it explains what it&rsquo;s doing as it goes. This gives me contextual support as I work through tutorials and examples.</p>
+<p>For example, when I was looking at some example code, I noticed this configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
+</span></span><span style="display:flex;"><span>    system_prompt<span style="color:#f92672">=</span>SYSTEM_PROMPT,
+</span></span><span style="display:flex;"><span>    allowed_tools<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Read&#34;</span>, <span style="color:#e6db74">&#34;Write&#34;</span>, <span style="color:#e6db74">&#34;Edit&#34;</span>, <span style="color:#e6db74">&#34;Bash&#34;</span>, <span style="color:#e6db74">&#34;Glob&#34;</span>, <span style="color:#e6db74">&#34;Grep&#34;</span>],
+</span></span><span style="display:flex;"><span>    cwd<span style="color:#f92672">=</span>str(cwd),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>My first question: why have Grep as a separate tool when I could just run grep from inside Bash?</p>
+<p>To which Claude responded:</p>
+<blockquote>
+<p>The dedicated tools are Claude Code&rsquo;s internal implementations, not wrappers around bash. They&rsquo;re designed for agentic use, meaning the output is formatted so Claude can reliably parse and act on it. Raw bash output is messy and unpredictable. The dedicated tools give Claude structured, consistent results.</p></blockquote>
+<p>Which made perfect sense to me. It&rsquo;s nice working with Claude as a teaching assistant.</p>
+<h2 id="what-tools-are-available">What Tools Are Available?</h2>
+<p>The <a href="https://code.claude.com/docs/en/settings#tools-available-to-claude">official Claude Code documentation</a> lists the available tools, and <a href="https://www.vtrivedy.com/posts/claudecode-tools-reference">this guide from vtrivedy.com</a> has nice examples of parameters and usage patterns.</p>
+<h3 id="officially-documented-tools">Officially Documented Tools</h3>
+<ol>
+<li><strong>Read</strong> - Read files from filesystem (supports images, PDFs, notebooks)</li>
+<li><strong>Write</strong> - Create/overwrite files</li>
+<li><strong>Edit</strong> - Perform targeted string replacements in files</li>
+<li><strong>Bash</strong> - Execute shell commands with timeout support</li>
+<li><strong>Glob</strong> - Fast file pattern matching using glob syntax</li>
+<li><strong>Grep</strong> - Content search using regular expressions (ripgrep-based)</li>
+<li><strong>NotebookEdit</strong> - Modify Jupyter notebook cells</li>
+<li><strong>WebFetch</strong> - Fetch and analyse URL content with AI processing</li>
+<li><strong>WebSearch</strong> - Search the web for current information</li>
+<li><strong>TodoWrite</strong> - Create and manage structured task lists</li>
+<li><strong>Task</strong> - Launch autonomous sub-agents for complex tasks</li>
+<li><strong>Skill</strong> - Execute skills in the main conversation</li>
+<li><strong>SlashCommand</strong> - Execute available slash commands</li>
+<li><strong>AskUserQuestion</strong> - Ask user questions during execution</li>
+<li><strong>ExitPlanMode</strong> - Exit plan mode after presenting a plan</li>
+<li><strong>KillShell</strong> - Terminate running background bash shells</li>
+<li><strong>BashOutput</strong> - Retrieve output from background bash shells</li>
+</ol>
+<h3 id="undocumented-tools">Undocumented Tools</h3>
+<p>I also found references to additional tools by poking around the SDK, other Anthropic repos, and various online resources:</p>
+<ol>
+<li><strong>MultiEdit</strong> - Apply multiple sequential edits to a file atomically (<a href="https://github.com/anthropics/claude-agent-sdk-demos/blob/main/hello-world/hello-world.ts">claude-agent-sdk-demos repo</a>)</li>
+<li><strong>LS</strong> - List directory contents (<a href="https://github.com/anthropics/claude-code/blob/main/plugins/feature-dev/agents/code-explorer.md">claude-code plugins</a>)</li>
+<li><strong>NotebookRead</strong> - Read Jupyter notebook files (<a href="https://github.com/anthropics/claude-code/blob/main/plugins/feature-dev/agents/code-explorer.md">claude-code plugin</a>)</li>
+<li><strong>EnterPlanMode</strong> - Enter plan mode for exploration and design (<a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-enterplanmode.md">Piebald-AI extracted system prompts</a>)</li>
+<li><strong>Computer</strong> - Chrome browser automation tool (<a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-computer.md">Piebald-AI extracted system prompts</a>)</li>
+<li><strong>LSP</strong> - Interact with Language Server Protocol servers (<a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">claude-code CHANGELOG</a>)</li>
+<li><strong>MCPSearch</strong> - Search MCP (Model Context Protocol) resources (<a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-mcpsearch.md">Piebald-AI extracted system prompts</a>)</li>
+</ol>
+<h2 id="super-basic-writing-agent">Super Basic Writing Agent</h2>
+<p>This is a more or less minimal implementation of an agent based on the Claude Agent SDK. Here&rsquo;s the full code, but I&rsquo;ll break down a couple of interesting bits below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;Writing Agent - A Claude-powered writing assistant.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">A CLI tool for working with your blog/writing projects.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pathlib <span style="color:#f92672">import</span> Path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> claude_agent_sdk <span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    AssistantMessage,
+</span></span><span style="display:flex;"><span>    ClaudeAgentOptions,
+</span></span><span style="display:flex;"><span>    ClaudeSDKClient,
+</span></span><span style="display:flex;"><span>    ResultMessage,
+</span></span><span style="display:flex;"><span>    TextBlock,
+</span></span><span style="display:flex;"><span>    ToolUseBlock,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Default system prompt - customize this for your writing style</span>
+</span></span><span style="display:flex;"><span>SYSTEM_PROMPT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;You are a writing assistant helping with blog content.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You have access to the user&#39;s blog folder and can:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Read existing posts to understand their style and topics
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Help draft, edit, and improve content
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Run shell commands when needed (e.g., for git operations)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Be concise but helpful. When reading files, summarize what you find rather than
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">dumping entire contents unless asked.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_agent</span>(blog_path: Path <span style="color:#f92672">|</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Run the interactive writing agent.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Determine working directory</span>
+</span></span><span style="display:flex;"><span>    cwd <span style="color:#f92672">=</span> blog_path <span style="color:#f92672">or</span> Path<span style="color:#f92672">.</span>cwd()
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Writing Agent starting...&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Working directory: </span><span style="color:#e6db74">{</span>cwd<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Type &#39;quit&#39; or &#39;exit&#39; to stop, &#39;clear&#39; to reset conversation</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    options <span style="color:#f92672">=</span> ClaudeAgentOptions(
+</span></span><span style="display:flex;"><span>        system_prompt<span style="color:#f92672">=</span>SYSTEM_PROMPT,
+</span></span><span style="display:flex;"><span>        allowed_tools<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Read&#34;</span>, <span style="color:#e6db74">&#34;Write&#34;</span>, <span style="color:#e6db74">&#34;Edit&#34;</span>, <span style="color:#e6db74">&#34;Bash&#34;</span>, <span style="color:#e6db74">&#34;Glob&#34;</span>, <span style="color:#e6db74">&#34;Grep&#34;</span>],
+</span></span><span style="display:flex;"><span>        cwd<span style="color:#f92672">=</span>str(cwd),
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> ClaudeSDKClient(options<span style="color:#f92672">=</span>options) <span style="color:#66d9ef">as</span> client:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Get user input</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>                user_input <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">You: &#34;</span>)<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span> (<span style="color:#a6e22e">KeyboardInterrupt</span>, <span style="color:#a6e22e">EOFError</span>):
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Goodbye!&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> user_input:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> user_input<span style="color:#f92672">.</span>lower() <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#34;quit&#34;</span>, <span style="color:#e6db74">&#34;exit&#34;</span>):
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;Goodbye!&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> user_input<span style="color:#f92672">.</span>lower() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;clear&#34;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Reconnect to start fresh</span>
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;(Conversation cleared)&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Send to Claude</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> client<span style="color:#f92672">.</span>query(user_input)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Stream the response</span>
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Assistant: &#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, flush<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">for</span> msg <span style="color:#f92672">in</span> client<span style="color:#f92672">.</span>receive_response():
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> isinstance(msg, AssistantMessage):
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">for</span> block <span style="color:#f92672">in</span> msg<span style="color:#f92672">.</span>content:
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> isinstance(block, TextBlock):
+</span></span><span style="display:flex;"><span>                            print(block<span style="color:#f92672">.</span>text, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, flush<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">elif</span> isinstance(block, ToolUseBlock):
+</span></span><span style="display:flex;"><span>                            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">[Using </span><span style="color:#e6db74">{</span>block<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">...]&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, flush<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">elif</span> isinstance(msg, ResultMessage):
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> msg<span style="color:#f92672">.</span>total_cost_usd <span style="color:#f92672">and</span> msg<span style="color:#f92672">.</span>total_cost_usd <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">(Cost: $</span><span style="color:#e6db74">{</span>msg<span style="color:#f92672">.</span>total_cost_usd<span style="color:#e6db74">:</span><span style="color:#e6db74">.4f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                        print()  <span style="color:#75715e"># Newline after response</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Entry point.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Simple arg parsing - just an optional path</span>
+</span></span><span style="display:flex;"><span>    blog_path <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        blog_path <span style="color:#f92672">=</span> Path(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>])<span style="color:#f92672">.</span>resolve()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> blog_path<span style="color:#f92672">.</span>exists():
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error: Path does not exist: </span><span style="color:#e6db74">{</span>blog_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>            sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        asyncio<span style="color:#f92672">.</span>run(run_agent(blog_path))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">KeyboardInterrupt</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Interrupted&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><p>I&rsquo;ve already discussed the relationship between the Agent SDK and Claude Code above, as well as some of the tools. The interesting stuff really happens in that async block.</p>
+<p>Notice that it&rsquo;s essentially a very thin wrapper around Claude Code. We listen for user input, and when we get it, we send it to the ClaudeSDKClient, which passes it to the Claude Code CLI running as a subprocess. Claude Code handles everything from there: talking to the Anthropic API, executing tools, running the agentic loop, and streaming back what happened. From our Python code&rsquo;s perspective, Claude Code is a black box. We can&rsquo;t see inside it; we just receive a stream of typed messages describing what occurred.</p>
+<p>The response can be of various types:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">for</span> msg <span style="color:#f92672">in</span> client<span style="color:#f92672">.</span>receive_response():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isinstance(msg, AssistantMessage):        <span style="color:#75715e"># Claude&#39;s response</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> block <span style="color:#f92672">in</span> msg<span style="color:#f92672">.</span>content:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> isinstance(block, TextBlock):     <span style="color:#75715e"># Actual words</span>
+</span></span><span style="display:flex;"><span>                print(block<span style="color:#f92672">.</span>text)                <span style="color:#75715e"># ← .text attribute</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">elif</span> isinstance(block, ToolUseBlock): <span style="color:#75715e"># Tool notification</span>
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;[Using </span><span style="color:#e6db74">{</span>block<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">]&#34;</span>)   <span style="color:#75715e"># ← .name attribute</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> isinstance(msg, ResultMessage):         <span style="color:#75715e"># Metadata</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Cost: </span><span style="color:#e6db74">{</span>msg<span style="color:#f92672">.</span>total_cost_usd<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)     <span style="color:#75715e"># ← .total_cost_usd attribute</span>
+</span></span></code></pre></div><p>The SDK gives you typed messages so you can handle each appropriately. You could simplify to just print everything, but then you&rsquo;d lose the ability to show tool usage differently, track costs, or filter certain content.</p>
+<p>Here&rsquo;s an example of what the message stream might look like:</p>
+<pre tabindex="0"><code>1. AssistantMessage(content=[TextBlock(text=&#34;I&#39;ll look for files...&#34;)])
+2. AssistantMessage(content=[ToolUseBlock(name=&#34;Glob&#34;, input={...})])
+3. AssistantMessage(content=[TextBlock(text=&#34;Found 5 markdown files:&#34;)])
+4. AssistantMessage(content=[TextBlock(text=&#34;- post1.md\n- post2.md...&#34;)])
+5. ResultMessage(total_cost_usd=0.0023)
+</code></pre><p>Each message type tells you something different about what happened:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>What It Contains</th>
+          <th>How We Access It</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>TextBlock</td>
+          <td>Claude&rsquo;s words</td>
+          <td>block.text</td>
+      </tr>
+      <tr>
+          <td>ToolUseBlock</td>
+          <td>Tool name + inputs</td>
+          <td>block.name, block.input</td>
+      </tr>
+      <tr>
+          <td>ResultMessage</td>
+          <td>Cost, status</td>
+          <td>msg.total_cost_usd</td>
+      </tr>
+  </tbody>
+</table>
+<p>A note on <code>total_cost_usd</code>: because we&rsquo;re using the Agent SDK on top of Claude Code, it inherits whichever authentication method you use for Claude Code. If you authenticated with an API key, this shows your actual spend. But if you authenticated using your Claude account with a monthly subscription that includes Claude Code usage, this cost isn&rsquo;t what you&rsquo;re actually paying. Your subscription covers it. The cost figure tells you what it <em>would</em> cost if you deployed this with an API key behind it.</p>
+<h2 id="the-agent-running">The Agent Running</h2>
+<p>Here is a copy from my terminal of the agent running.</p>
+<pre tabindex="0"><code>(.venv) david@Davids-MacBook-Pro blog_one % writing-agent ../../../../websites/thingsithinkithink.blog
+Writing Agent starting...
+Working directory: /Users/david/git/ai-sandbox/projects/websites/thingsithinkithink.blog
+Type &#39;quit&#39; or &#39;exit&#39; to stop, &#39;clear&#39; to reset conversation
+
+
+You: Can you please find and then summarise in two sentences my most recent blog post?
+
+Assistant:
+[Using Glob...]Let me search more specifically in the content folder for blog posts:
+[Using Glob...]Based on the file dates, the most recent post appears to be from December 21, 2025. Let me read it:
+[Using Read...]**Summary:** Your most recent blog post (December 21, 2025) covers the final lesson of Hamel Husain and Shreya Shankar&#39;s LLM evaluation course, focusing on practical strategies for improving LLM-based systems through prompt refinement, architecture changes, fine-tuning, and tool optimization—as well as cost reduction techniques like model swapping, token reduction, caching, and model cascades.
+
+You share your own experience and some skepticism, particularly about log-probability-based confidence measures for model cascades and the practical need for fine-tuning, noting that architecture and prompting have always been sufficient in your real-world projects.
+(Cost: $0.1905)
+
+You:
+</code></pre><p>You can see the different message types in action here: the <code>[Using Glob...]</code> and <code>[Using Read...]</code> lines come from ToolUseBlock messages, the text responses are TextBlock messages, and the <code>(Cost: $0.1905)</code> at the end is from the ResultMessage.</p>
+<p>As you can see, nothing that Claude Code wouldn&rsquo;t do out of the box - but this one is my agent at least, and is a good starting point :)</p>
+<h2 id="thingsithinkithink">thingsithinkithink</h2>
+<ul>
+<li>One of the best things about having a couple of weeks off during the break was getting to poke around and try some things just for fun again. It&rsquo;s been a minute.</li>
+</ul>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/claude/">Claude</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/agent-sdk/">Agent-Sdk</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/python/">Python</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/learning/">Learning</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="http://localhost:1313/posts/2026/01-05-llm-evals-course-recap/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/12-22-hamel-shreya-course-promo_hu_2913f174ada02958.png" alt="LLM Evals Course: Complete Course Recap" width="750" height="432">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-01-05T09:00:00&#43;00:00">Jan 05, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">LLM Evals Course: Complete Course Recap</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">This is my recap of Hamel and Shreya&#39;s LLM evaluation course. I&#39;m hoping I come back here in the future every time I need to remind myself of how to do this the right way.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="http://localhost:1313/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/12-21-improve-phase-intro_hu_7e3853880223e050.png" alt="LLM Evals Lesson 8: Improving LLM Products" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-12-21T09:00:00&#43;00:00">Dec 21, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">LLM Evals Lesson 8: Improving LLM Products</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Notes from the final lesson of Hamel and Shreya&#39;s LLM evaluation course - practical strategies for improving accuracy and reducing costs through prompt refinement, architecture changes, fine-tuning, and model cascades.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2026/01-12-exploring-claude-agent-sdk/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/12-23-claude-agent-sdk_hu_883a97b3799b7307.png" alt="Exploring the Claude Agent SDK" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Exploring the Claude Agent SDK</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2026/01-05-llm-evals-course-recap/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/12-22-hamel-shreya-course-promo_hu_612a5ca27ce3de11.png" alt="LLM Evals Course: Complete Course Recap" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course: Complete Course Recap</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/12-21-improve-phase-intro_hu_ec498da3562301b9.png" alt="LLM Evals Lesson 8: Improving LLM Products" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Lesson 8: Improving LLM Products</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/parlancecourse/01_23_lesson7_hero_progress_bar_impact_hu_b5b7ccc3f854dbf8.png" alt="LLM Evals Course Lesson 7: Interfaces for Human Review" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 7: Interfaces for Human Review</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2025/11-11-building-an-ai-sandbox-with-docker/"></a>
+	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2025/11-11-docker-sandbox_hu_65f06efcade2b75d.png" alt="Building an AI Sandbox with Docker" width="250" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Building an AI Sandbox with Docker</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="http://localhost:1313/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script src="/js/insertoggle.js"></script>
+</body>
+</html>

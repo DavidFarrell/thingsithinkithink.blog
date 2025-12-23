@@ -2,7 +2,7 @@
 
 <!-- Feature post by tag = "feature" -->
 
-{{- range where .Site.RegularPages "Params.tags" "intersect" (slice "feature" ) | first 1 -}}
+{{- range (where .Site.RegularPages "Params.tags" "intersect" (slice "feature")).ByDate.Reverse | first 1 -}}
 <section class="block md:flex relative group p-6 lg:p-10 space-y-6 md:space-x-6 my-14 bg-zinc-100 rounded-3xl hover:bg-blue-100">
   <figure class="basis-1/2 w-full aspect-video overflow-hidden rounded-2xl border">
 

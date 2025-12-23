@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Feature on thingsithinkithink</title>
+    <link>http://localhost:1313/categories/feature/</link>
+    <description>Recent content in Feature on thingsithinkithink</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 Jan 2026 09:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/feature/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploring the Claude Agent SDK</title>
+      <link>http://localhost:1313/posts/2026/01-12-exploring-claude-agent-sdk/</link>
+      <pubDate>Mon, 12 Jan 2026 09:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2026/01-12-exploring-claude-agent-sdk/</guid>
+      <description>&lt;p&gt;At a recent Claude Code meetup, one of the Anthropic staff mentioned that anything Claude Code can do, you can do using the Agent SDK. That caught my attention. I&amp;rsquo;ve been using Claude Code heavily, but I hadn&amp;rsquo;t really understood what was happening under the hood. So I&amp;rsquo;ve decided to dig in and document what I learn as I go.&lt;/p&gt;&#xA;&lt;p&gt;I like the idea of having a specialised version of Claude that understands my writing process, the tools I use, and the way I like to work. So as a toy experiment, I&amp;rsquo;m working on a writing agent built on the Claude Agent SDK.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LLM Evals Course: Complete Course Recap</title>
+      <link>http://localhost:1313/posts/2026/01-05-llm-evals-course-recap/</link>
+      <pubDate>Mon, 05 Jan 2026 09:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2026/01-05-llm-evals-course-recap/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve finally finished writing up my notes from Hamel Husain and Shreya Shankar&amp;rsquo;s &lt;a href=&#34;https://maven.com/parlance-labs/evals&#34;&gt;LLM evaluation course&lt;/a&gt;. It took me longer to write up my notes than it took to actually do the course, but it gave me a good excuse to revisit everything a second time, which is a great way to help cement my learnings. I&amp;rsquo;m going to do one post here to finally capture the key things from each of the lessons, with the hope that I can refer back to this in the future to help me find the detail that I&amp;rsquo;m looking for.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

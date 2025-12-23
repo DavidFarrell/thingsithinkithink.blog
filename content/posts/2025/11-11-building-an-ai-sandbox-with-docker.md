@@ -3,7 +3,7 @@ title: "Building an AI Sandbox with Docker"
 date: 2025-11-11T12:00:00Z
 slug: /11-11-building-an-ai-sandbox-with-docker/
 description: "How to set up a persistent Docker environment for AI coding tools without losing your authentication every time you restart the container."
-image: /images/2025/11-11-docker-sandbox.png
+image: images/2025/11-11-docker-sandbox.png
 caption: "Claude can do whatever it likes inside the sandbox"
 categories:
   - coding
