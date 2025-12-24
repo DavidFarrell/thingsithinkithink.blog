@@ -1,22 +1,477 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>LLM Evals Course Lesson 3: Building Automated Evaluators | thingsithinkithink</title><meta name=description content="Notes from lesson 3 of Hamel and Shreya's LLM evaluation course - implementing automated evaluators, building reliable LLM-as-judge systems, and avoiding common pitfalls."><link rel=stylesheet href=/css/main.min.80f29fb74d530136f20bd8f3c36d75c8a96e2026e849229670727aa4d68f7fbc.css integrity="sha256-gPKft01TATbyC9jzw211yKluICboSSKWcHJ6pNaPf7w=" crossorigin=anonymous><link rel=icon type=image/svg+xml href=https://thingsithinkithink.blog/favicon.svg><link rel=icon type=image/x-icon href=https://thingsithinkithink.blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://thingsithinkithink.blog/favicon.png><link rel=icon type=image/png sizes=32x32 href=https://thingsithinkithink.blog/favicon-32.png><link rel=icon type=image/png sizes=64x64 href=https://thingsithinkithink.blog/favicon-64.png></head><body><header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col"><div class="flex items-center"><div class="flex items-center"><button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=menu-bar>
-<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5.0 01.5-.5h10a.5.5.0 010 1H3a.5.5.0 01-.5-.5zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 8zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 4z"/></svg>
-<span class="bg-blue-500 fill-white rounded-full p-1.5"><svg width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg></span></button><div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2"><h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href=https://thingsithinkithink.blog/>thingsithinkithink</a></h2></div></div><div class="flex items-center ml-auto"><button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=search-bar>
-<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/><path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5.0 11.708-.708L8 7.293l5.146-5.147a.5.5.0 01.708.708L8.707 8l5.147 5.146a.5.5.0 01-.708.708L8 8.707l-5.146 5.147a.5.5.0 01-.708-.708L7.293 8 2.146 2.854z"/></svg></button></div></div><nav id=menu-bar class="block mt-3 close"><ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4"><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/>Home</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/about/>About</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/tags/>Tags</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/categories/>Taxonomy</a></li></ul></nav><div id=search-bar class="block mt-3 close"><form id=search class="flex items-stretch"><input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type=text placeholder=Search...>
-<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200">
-<svg width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/></svg></button></form></div></div></header><main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id=breadcrumb class="max-w-7xl mx-auto py-8"><ul class="flex space-x-4 text-sm text-zinc-500"><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/>thingsithinkithink</a></li><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/posts/>Posts</a></li></ul></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"><article class="md:col-span-2 prose lg:prose-lg"><header class=not-prose><h1 id=title class="text-4xl font-bold leading-normal">LLM Evals Course Lesson 3: Building Automated Evaluators</h1><div id=lead class=my-6><p class=font-bold>Notes from lesson 3 of Hamel and Shreya's LLM evaluation course - implementing automated evaluators, building reliable LLM-as-judge systems, and avoiding common pitfalls.</p></div><div id=writer class="flex items-center space-x-4"><img class="w-12 h-12 bg-black rounded-full" src=https://thingsithinkithink.blog/images/goldfinch.jpg alt="David Gérouville-Farrell avatar" width=1000 height=1000><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-2">David Gérouville-Farrell</li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime=2025-07-06T08:00:00+00:00>July 6, 2025</time></li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">9 min read</li></ul></div></header><figure id=featureimage class="rounded-xl aspect-video"><img class=rounded-lg src=https://thingsithinkithink.blog/images/2025/parlancecourse/07_06_llm_as_a_judge_lifecycle_hu_c9378dbf5f2352bd.png alt width=750 height=515><figcaption class="text-center italic text-xs">The LLM-as-Judge lifecycle that forms the core of automated evaluation</figcaption></figure><div id=content class=mb-14><p>The third lesson of Hamel Husain and Shreya Shankar&rsquo;s <a href=https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/>LLM evaluation course</a> moved from manual error analysis into automated evaluation systems. This session focused on the &ldquo;Measure&rdquo; phase of their evaluation lifecycle - how to build evaluators that can automatically detect the failure modes we identified through error analysis.</p><p>In terms of the Three Gulfs Model from lesson one, this lesson first helps us distinguish between specification failures (where we need to improve our prompts) and generalisation failures (where the LLM struggles despite clear instructions). The automated evaluators we build specifically target the Gulf of Generalisation, measuring how well our LLM applies instructions across diverse inputs.</p><p>They continued using NurtureBoss (an AI leasing agent for apartment complexes) as their running example. Through error analysis in the previous lesson, they&rsquo;d identified failure modes like hallucinated tool invocations, missing visual information for amenities, and unhelpful responses to ambiguous queries.</p><h2 id=specification-vs-generalisation-failures>Specification vs Generalisation Failures</h2><p><img src=/images/2025/parlancecourse/07_06_specification_vs_generalisation_errors.png alt="Specification vs Generalization failures explained"></p><p><strong>Specification failures</strong> occur when your prompt didn&rsquo;t include sufficient instructions. For example, Shreya realised during error analysis that when advertising a flat with a pool, the system should include photographs. But she&rsquo;d never specified this in the prompt - the LLM wasn&rsquo;t failing, it simply hadn&rsquo;t been told to do this.</p><p><strong>Generalisation failures</strong> happen when you did provide clear instructions but the LLM fails to apply them correctly across diverse inputs. If you told it to use specific tools and it hallucinates non-existent ones, or if you specified SQL constraints that it ignores, those are generalisation failures.</p><p>Specification failures are easy to fix (or at least easy to respond to) - you just update your prompts. It&rsquo;s not worth building automated evaluators for them. You should build automated evaluators only for generalisation failures, where the LLM genuinely struggles despite clear instructions.</p><h2 id=code-based-vs-llm-as-judge-evaluators>Code-Based vs LLM-as-Judge Evaluators</h2><p>The course presents two approaches to automated evaluation:</p><h3 id=code-based-evaluators>Code-Based Evaluators</h3><p>These are straightforward programmatic checks for objective, rule-based criteria. They&rsquo;re fast, cheap, deterministic, and interpretable.</p><p><img src=/images/2025/parlancecourse/07_06_example_code_eval_hallucinated_tools.png alt="Code example for detecting hallucinated tool invocations"></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># Somewhere in your pipeline trace, you log the tool call</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># attempted_tool_call = {&#34;name&#34;: &#34;reschedule_tour&#34;, &#34;args&#34;: {...}}</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>VALID_TOOLS <span style=color:#f92672>=</span> {<span style=color:#e6db74>&#34;schedule_new_tour&#34;</span>, <span style=color:#e6db74>&#34;cancel_tour&#34;</span>, <span style=color:#e6db74>&#34;check_availability&#34;</span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>check_tool_hallucination</span>(attempted_tool_name):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> attempted_tool_name <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> VALID_TOOLS:
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;FAIL_HALLUCINATED_TOOL&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;PASS&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># eval_result = check_tool_hallucination(attempted_tool_call[&#34;name&#34;])</span>
-</span></span></code></pre></div><p>I.e., the above code can detect hallucinations, deterministically and cheaply with no LLMs.</p><p>Common use cases include:</p><ul><li>Parsing structure (JSON validity, SQL syntax)</li><li>Regex/string matching for keywords</li><li>Structural constraints (exactly three bullet points)</li><li>Tool execution errors</li></ul><p>Hamel emphasised pushing yourself to use code-based evaluators wherever possible. Folk love reaching for LLM-as-judge for everything but code-based checks avoid the complexity and cost of validating a judge model.</p><h3 id=llm-as-judge-evaluators>LLM-as-Judge Evaluators</h3><p>When your failure modes involve subjectivity, nuance, or complex interpretation that code can&rsquo;t handle, you need LLM-as-judge. This means using another LLM to evaluate your main pipeline&rsquo;s outputs.</p><p>You should focus each judge on a single, narrowly defined failure mode. Don&rsquo;t ask &ldquo;is this good?&rdquo; or try to evaluate multiple criteria at once. Binary pass/fail decisions on specific aspects make judges more reliable.</p><h2 id=building-a-reliable-llm-judge>Building a Reliable LLM Judge</h2><p>The process mirrors building any LLM application, but it&rsquo;s easier because you&rsquo;ve scoped the task narrowly. Here&rsquo;s the lifecycle:</p><h3 id=1-write-the-prompt-template>1. Write the Prompt Template</h3><p>Your judge prompt needs four key components:</p><ol><li><strong>Clear task and evaluation criterion</strong> - Focus on one specific failure mode</li><li><strong>Precise pass/fail definitions</strong> - Explicitly define what constitutes each outcome</li><li><strong>Few-shot examples</strong> - Crucial for calibrating the judge with clear pass and fail cases</li><li><strong>Structured output format</strong> - JSON or XML for easy parsing</li></ol><p><img src=/images/2025/parlancecourse/07_06_llm_as_a_judge_fail_and_pass_example.png alt="Example of pass and fail definitions for unhelpful responses"></p><p>For the &ldquo;unhelpful response&rdquo; failure mode, they defined:</p><ul><li><strong>FAIL</strong>: Response is generic, passive, provides minimal new information despite ambiguity</li><li><strong>PASS</strong>: Response acknowledges ambiguity and proactively attempts to clarify needs</li></ul><h3 id=2-split-your-labelled-data>2. Split Your Labelled Data</h3><p>This is where many people go wrong. You need proper data hygiene with three distinct splits:</p><p><img src=/images/2025/parlancecourse/07_06_split_your_labelled_data.png alt="Train, dev, and test split requirements"></p><ul><li><strong>&ldquo;Training set&rdquo; (10-20%)</strong>: Few-shot examples that go directly in your prompt (it&rsquo;s not <em>real</em> training - but it&rsquo;s doing the same job basically)</li><li><strong>Development set (40%)</strong>: For iteratively refining your judge</li><li><strong>Test set (40%)</strong>: Final unbiased evaluation - never look at this during development</li></ul><p>Shreya said that 90% of people make the mistake of including dev set examples in their judge prompt, which makes accuracy metrics meaningless. I want to think that&rsquo;s an exaggeration.</p><h3 id=3-iteratively-refine-the-prompt>3. Iteratively Refine the Prompt</h3><p>The refinement process focuses on aligning your judge with human labels on the dev set:</p><p><img src=/images/2025/parlancecourse/07_06_the_real_llm_as_a_judge_iterative_rpompt_refinement_loop.png alt="The iterative refinement process for LLM judges"></p><ol><li>Write baseline prompt with task, definitions, and training examples</li><li>Evaluate on dev set</li><li>Measure True Positive Rate (TPR) and True Negative Rate (TNR)</li><li>Inspect disagreements between judge and human labels</li><li>Refine prompt - clarify definitions, swap examples</li><li>Repeat until TPR and TNR exceed 90%</li></ol><p>It may not be immediately obvious why we use TPR and TNR instead of raw accuracy. Raw accuracy seems intuitively to capture what we&rsquo;re looking for but it can be skewed by the actual characteristics of your data. For example, if your data has only 10% failures and you always predict &ldquo;pass&rdquo;, you&rsquo;d have 90% accuracy but zero ability to detect actual problems.</p><h3 id=4-estimate-and-correct-success-rates>4. Estimate and Correct Success Rates</h3><p>Even good judges aren&rsquo;t perfect. Their imperfections create bias in the metrics they produce.</p><p>The lesson attempted to teach a statistical approach to correct for this bias but I think it got tied up and muddled a bit - it was a bit of a jump to go from high level discussion to stats and formulas with no theoretical grounding in the base concepts.</p><p>I found the explanations weren&rsquo;t particularly clear - here&rsquo;s my best attempt to explain it. Imagine you want to know what percentage of your AI&rsquo;s outputs are actually good. You build an LLM judge to evaluate thousands of outputs automatically. But your judge isn&rsquo;t perfect - maybe when a human would say &ldquo;this is good&rdquo;, your judge only agrees 90% of the time (90% TPR), and when a human would say &ldquo;this is bad&rdquo;, your judge agrees 85% of the time (85% TNR).</p><p>If you run this imperfect judge on 10,000 outputs and it says 82% are good, can you trust that number? Not directly - your judge has systematic biases. The bias correction formula essentially adjusts for these known tendencies, like calibrating a scale that always reads 2kg too heavy.</p><p>The confidence intervals tell you the range where the true value likely sits. Instead of falsely claiming &ldquo;exactly 82% of outputs are good&rdquo;, you can say &ldquo;we&rsquo;re 95% confident it&rsquo;s between 83% and 87%&rdquo;. This matters when you&rsquo;re trying to hit quality targets or measure whether changes actually improved your system.</p><p><img src=/images/2025/parlancecourse/07_06_estimating_true_success_rate.png alt="Process for estimating true success rates with imperfect judges"></p><p>The four-step process:</p><ol><li>Measure final judge accuracy (TPR/TNR) on test set</li><li>Run judge on unlabelled production data</li><li>Apply bias correction formula using known TPR/TNR</li><li>Calculate confidence intervals through bootstrapping</li></ol><p>In this context, bootstrapping is a statistical technique for estimating uncertainty.</p><p><strong>Specifically for the LLM judge:</strong></p><p>You have a test set where you know both:</p><ul><li>What your judge said (pass/fail)</li><li>What the human labels were (pass/fail)</li></ul><p><strong>Bootstrapping means:</strong></p><ol><li>Randomly resample your test set with replacement (so some examples might appear twice, others not at all)</li><li>Recalculate TPR and TNR for this resampled set</li><li>Apply the bias correction formula using these new TPR/TNR values</li><li>Repeat this process many times (say 1000 times)</li></ol><p>You end up with 1000 different estimates of the true success rate. The spread of these estimates tells you about uncertainty:</p><ul><li>Take the 2.5th percentile and 97.5th percentile of all these estimates</li><li>This gives you a 95% confidence interval</li></ul><p><strong>Why &ldquo;bootstrapping&rdquo;?</strong></p><p>It&rsquo;s called &ldquo;bootstrapping&rdquo; because you&rsquo;re using your existing data to simulate what would happen if you collected new test sets many times. You&rsquo;re &ldquo;pulling yourself up by your bootstraps&rdquo; - using the data you have to understand the variability in your estimates.</p><p>Instead of just saying &ldquo;our success rate is 85%&rdquo;, you can say &ldquo;we&rsquo;re 95% confident it&rsquo;s between 83% and 87%&rdquo;, which is much more honest about the uncertainty in your measurement.</p><p>Judge errors primarily inflate uncertainty (wider confidence intervals) rather than shifting the estimate itself. To get tighter bounds, focus on improving TPR - the judge&rsquo;s ability to correctly identify successes.</p><h2 id=real-world-impact-of-judge-quality>Real-World Impact of Judge Quality</h2><p>The course included several visualisations showing how judge quality affects estimates in different scenarios:</p><h3 id=scenario-1-good-judge-but-limited-labels>Scenario 1: Good Judge but Limited Labels</h3><p><img src=/images/2025/parlancecourse/07_06_examples_for_true_actual_success_rate.png alt="Impact of label size on estimates with a good judge"></p><p>When you have a decent judge (90% TPR, 85% TNR) but varying amounts of labelled data, two things happen. First, the raw judge estimates (red dots) consistently underestimate the true 80% success rate because the judge is slightly too critical. Second, as you add more labelled examples, the confidence intervals narrow dramatically. They found 100 labels to be the sweet spot - enough to get reliable estimates without excessive labelling effort.</p><h3 id=scenario-2-poor-at-identifying-success>Scenario 2: Poor at Identifying Success</h3><p><img src=/images/2025/parlancecourse/07_06_examples_for_true_actual_success_rate2.png alt="Impact of poor TPR on success rate estimates"></p><p>This shows what happens when your judge struggles to recognise successes (varying TPR) but perfectly identifies failures (100% TNR). The gap between raw estimates and reality is massive when TPR is low - if your judge only recognises 60% of successes, it will dramatically underestimate your system&rsquo;s performance. The bias correction helps, but the key lesson is that improving your judge&rsquo;s ability to recognise successes has the biggest impact on accuracy.</p><h3 id=scenario-3-poor-at-identifying-failures>Scenario 3: Poor at Identifying Failures</h3><p><img src=/images/2025/parlancecourse/07_06_examples_for_true_actual_success_rate3.png alt="Impact of poor TNR on success rate estimates"></p><p>When judges are overly lenient (poor TNR), they systematically overestimate success rates. Shreya warned this is a common failure mode - judges biased to think everything is good, inflating success metrics that end up in dashboards and drive business decisions. If your judge has 60% TNR, you might see a 10% inflation in success rates, which could lead to false confidence in your system&rsquo;s performance.</p><p>They&rsquo;ve open-sourced a Python library called <a href=https://github.com/ai-evals-course/judgy><code>judgy</code></a> that implements the bias correction mathematics, making it straightforward to apply these techniques.</p><h2 id=common-pitfalls>Common Pitfalls</h2><p>The lesson concluded with pitfalls to avoid:</p><ol><li><strong>Misaligned metrics</strong> - Evaluators that don&rsquo;t actually measure what users care about</li><li><strong>Over-confidence in scores</strong> - High automated test scores creating false security</li><li><strong>Evaluator drift</strong> - Both model updates and changing quality definitions affect judges over time</li><li><strong>Poor judge design</strong> - Missing few-shot examples or overly broad criteria</li><li><strong>Skipping validation</strong> - The number one error: data leakage from using dev/test examples in prompts</li></ol><h2 id=thingsithinkithink>thingsithinkithink</h2><ul><li><p>The emphasis on narrow, single-purpose judges makes sense. It&rsquo;s the same principle as unit testing - test one thing at a time so you know exactly what&rsquo;s broken.</p></li><li><p>The data hygiene requirements feel like overkill until you&rsquo;ve been burned by meaningless metrics. I&rsquo;ve heard of projects celebrating 95% accuracy that turned out to be testing on their training data. I can&rsquo;t quite believe people do this, but I guess they do.</p></li><li><p>Code-based evaluators deserve more credit. The reflex to throw an LLM at every evaluation problem wastes resources when simple checks would suffice.</p></li></ul><ul id=taxonomy class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-4">Tags:</li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/llm/>Llm</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/evaluation/>Evaluation</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/machine-learning/>Machine-Learning</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/automated-testing/>Automated-Testing</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/course-notes/>Course-Notes</a></li></ul></div><footer id=content-footer class=not-prose><div id=related-post><h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/06-22-llm-evals-course-lesson-2b-office-hrs/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/06-22-llm-evals-course-lesson-2b-office-hrs_hu_4dc522b49194fd95.png alt="LLM Evals Course: Lesson 2b (office hrs)" width=750 height=1125></figure><div class=p-6><time datetime=2025-06-22T09:00:00+00:00>Jun 22, 2025</time><h3 class="my-4 text-2xl font-bold">LLM Evals Course: Lesson 2b (office hrs)</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">A few things from Evals Course office hrs following lesson 2 of Hamel and Shreya's LLM evaluation course.</p></div></article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/05_21_axial_coding_2_hu_f8fc19420245dbb4.png alt="LLM Evals Lesson 2 Error Analysis" width=750 height=380></figure><div class=p-6><time datetime=2025-06-21T12:50:38+00:00>Jun 21, 2025</time><h3 class="my-4 text-2xl font-bold">LLM Evals Lesson 2 Error Analysis</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Notes from lesson 2 of Hamel and Shreya's LLM evaluation course - covering error analysis, open and axial coding, and systematic approaches to understanding where AI systems fail.</p></div></article></div></div></footer></article><aside class=md:col-span-1><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10"><img class="aspect-video rounded" src=/images/2024/infinite_archive.png alt="things i think i think abstract image of waves and a stick figure"><p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p></div><div class=space-y-6><h2 class="font-bold text-xl mb-8">Recent Post</h2><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/12-21-improve-phase-intro_hu_5a79eaecd33c5c31.png alt="LLM Evals Lesson 8: Improving LLM Products" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Lesson 8: Improving LLM Products</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/01_23_lesson7_hero_progress_bar_impact_hu_f11f90458c120dfd.png alt="LLM Evals Course Lesson 7: Interfaces for Human Review" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 7: Interfaces for Human Review</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/11-11-building-an-ai-sandbox-with-docker/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/11-11-docker-sandbox_hu_e0fe1009a70249c7.png alt="Building an AI Sandbox with Docker" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Building an AI Sandbox with Docker</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/10_12_lesson6_transition_failure_matrix_hu_4bdd8783c85df9a5.png alt="LLM Evals Course Lesson 6: Complex Pipelines and CI/CD" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 6: Complex Pipelines and CI/CD</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/10_11_lesson5_generation_quality_hu_3171d8d586d283d3.png alt="LLM Evals Course Lesson 5: How to Evaluate Complex Architectures" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 5: How to Evaluate Complex Architectures</h3></div></article></div></div></aside></div></main><footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div class="flex flex-wrap space-y-6 mb-4"><div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10"><a class="flex items-center group" href=https://thingsithinkithink.blog/><svg width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg>
-<span class="text-2xl font-semibold uppercase">thingsithinkithink</span></a><p class=font-semibold></p></div><div class="self-center flex flex-col w-full md:w-2/5"><ul id=social-media class="flex items-center space-x-4"><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://linkedin.com/in/davidfarrell81 target=_blank rel="noopener noreferrer"><img src=/images/linkedin-color-svgrepo-com.svg alt="LinkedIn Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://github.com/DavidFarrell/ target=_blank rel="noopener noreferrer"><img src=/images/github-mark.svg alt="GitHub Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://bsky.app/profile/dgerouvillefarrell.bsky.social target=_blank rel="noopener noreferrer"><img src=/images/Bluesky_Logo.svg alt="Bluesky Logo" class="w-8 h-8"></a></li></ul></div></div><div class=my-8><ul class="flex items-center space-x-4"><li><a class="decoration-auto hover:underline font-semibold" href=/>Home</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/about/>About</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/tags/>Tags</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/categories/>Taxonomy</a></li></ul></div><div class="border-t pt-4"><p class=text-sm>Powered by
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>,
-<a href=https://pages.github.com/ target=_blank rel=noopener>GitHub Pages</a>
-and based on the
-<a href=https://pehtheme-hugo.netlify.app/ target=_blank rel=noopener>pehtheme</a> theme.</p></div></div></footer><script defer src=/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js integrity="sha256-R0+bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin=anonymous></script></body></html>
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LLM Evals Course Lesson 3: Building Automated Evaluators | thingsithinkithink</title>
+
+<meta name="description" content="Notes from lesson 3 of Hamel and Shreya&#39;s LLM evaluation course - implementing automated evaluators, building reliable LLM-as-judge systems, and avoiding common pitfalls.">
+      <link rel="stylesheet" href="/css/main.min.80f29fb74d530136f20bd8f3c36d75c8a96e2026e849229670727aa4d68f7fbc.css" integrity="sha256-gPKft01TATbyC9jzw211yKluICboSSKWcHJ6pNaPf7w=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">LLM Evals Course Lesson 3: Building Automated Evaluators</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Notes from lesson 3 of Hamel and Shreya&#39;s LLM evaluation course - implementing automated evaluators, building reliable LLM-as-judge systems, and avoiding common pitfalls. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-07-06T08:00:00&#43;00:00">July 6, 2025</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            9 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2025/parlancecourse/07_06_llm_as_a_judge_lifecycle_hu_c9378dbf5f2352bd.png" alt="" width="750" height="515">
+        <figcaption class="text-center italic text-xs">The LLM-as-Judge lifecycle that forms the core of automated evaluation</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>The third lesson of Hamel Husain and Shreya Shankar&rsquo;s <a href="https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/">LLM evaluation course</a> moved from manual error analysis into automated evaluation systems. This session focused on the &ldquo;Measure&rdquo; phase of their evaluation lifecycle - how to build evaluators that can automatically detect the failure modes we identified through error analysis.</p>
+<p>In terms of the Three Gulfs Model from lesson one, this lesson first helps us distinguish between specification failures (where we need to improve our prompts) and generalisation failures (where the LLM struggles despite clear instructions). The automated evaluators we build specifically target the Gulf of Generalisation, measuring how well our LLM applies instructions across diverse inputs.</p>
+<p>They continued using NurtureBoss (an AI leasing agent for apartment complexes) as their running example. Through error analysis in the previous lesson, they&rsquo;d identified failure modes like hallucinated tool invocations, missing visual information for amenities, and unhelpful responses to ambiguous queries.</p>
+<h2 id="specification-vs-generalisation-failures">Specification vs Generalisation Failures</h2>
+<p><img src="/images/2025/parlancecourse/07_06_specification_vs_generalisation_errors.png" alt="Specification vs Generalization failures explained"></p>
+<p><strong>Specification failures</strong> occur when your prompt didn&rsquo;t include sufficient instructions. For example, Shreya realised during error analysis that when advertising a flat with a pool, the system should include photographs. But she&rsquo;d never specified this in the prompt - the LLM wasn&rsquo;t failing, it simply hadn&rsquo;t been told to do this.</p>
+<p><strong>Generalisation failures</strong> happen when you did provide clear instructions but the LLM fails to apply them correctly across diverse inputs. If you told it to use specific tools and it hallucinates non-existent ones, or if you specified SQL constraints that it ignores, those are generalisation failures.</p>
+<p>Specification failures are easy to fix (or at least easy to respond to) - you just update your prompts. It&rsquo;s not worth building automated evaluators for them. You should build automated evaluators only for generalisation failures, where the LLM genuinely struggles despite clear instructions.</p>
+<h2 id="code-based-vs-llm-as-judge-evaluators">Code-Based vs LLM-as-Judge Evaluators</h2>
+<p>The course presents two approaches to automated evaluation:</p>
+<h3 id="code-based-evaluators">Code-Based Evaluators</h3>
+<p>These are straightforward programmatic checks for objective, rule-based criteria. They&rsquo;re fast, cheap, deterministic, and interpretable.</p>
+<p><img src="/images/2025/parlancecourse/07_06_example_code_eval_hallucinated_tools.png" alt="Code example for detecting hallucinated tool invocations"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Somewhere in your pipeline trace, you log the tool call</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># attempted_tool_call = {&#34;name&#34;: &#34;reschedule_tour&#34;, &#34;args&#34;: {...}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>VALID_TOOLS <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;schedule_new_tour&#34;</span>, <span style="color:#e6db74">&#34;cancel_tour&#34;</span>, <span style="color:#e6db74">&#34;check_availability&#34;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_tool_hallucination</span>(attempted_tool_name):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> attempted_tool_name <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> VALID_TOOLS:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;FAIL_HALLUCINATED_TOOL&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PASS&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># eval_result = check_tool_hallucination(attempted_tool_call[&#34;name&#34;])</span>
+</span></span></code></pre></div><p>I.e., the above code can detect hallucinations, deterministically and cheaply with no LLMs.</p>
+<p>Common use cases include:</p>
+<ul>
+<li>Parsing structure (JSON validity, SQL syntax)</li>
+<li>Regex/string matching for keywords</li>
+<li>Structural constraints (exactly three bullet points)</li>
+<li>Tool execution errors</li>
+</ul>
+<p>Hamel emphasised pushing yourself to use code-based evaluators wherever possible. Folk love reaching for LLM-as-judge for everything but code-based checks avoid the complexity and cost of validating a judge model.</p>
+<h3 id="llm-as-judge-evaluators">LLM-as-Judge Evaluators</h3>
+<p>When your failure modes involve subjectivity, nuance, or complex interpretation that code can&rsquo;t handle, you need LLM-as-judge. This means using another LLM to evaluate your main pipeline&rsquo;s outputs.</p>
+<p>You should focus each judge on a single, narrowly defined failure mode. Don&rsquo;t ask &ldquo;is this good?&rdquo; or try to evaluate multiple criteria at once. Binary pass/fail decisions on specific aspects make judges more reliable.</p>
+<h2 id="building-a-reliable-llm-judge">Building a Reliable LLM Judge</h2>
+<p>The process mirrors building any LLM application, but it&rsquo;s easier because you&rsquo;ve scoped the task narrowly. Here&rsquo;s the lifecycle:</p>
+<h3 id="1-write-the-prompt-template">1. Write the Prompt Template</h3>
+<p>Your judge prompt needs four key components:</p>
+<ol>
+<li><strong>Clear task and evaluation criterion</strong> - Focus on one specific failure mode</li>
+<li><strong>Precise pass/fail definitions</strong> - Explicitly define what constitutes each outcome</li>
+<li><strong>Few-shot examples</strong> - Crucial for calibrating the judge with clear pass and fail cases</li>
+<li><strong>Structured output format</strong> - JSON or XML for easy parsing</li>
+</ol>
+<p><img src="/images/2025/parlancecourse/07_06_llm_as_a_judge_fail_and_pass_example.png" alt="Example of pass and fail definitions for unhelpful responses"></p>
+<p>For the &ldquo;unhelpful response&rdquo; failure mode, they defined:</p>
+<ul>
+<li><strong>FAIL</strong>: Response is generic, passive, provides minimal new information despite ambiguity</li>
+<li><strong>PASS</strong>: Response acknowledges ambiguity and proactively attempts to clarify needs</li>
+</ul>
+<h3 id="2-split-your-labelled-data">2. Split Your Labelled Data</h3>
+<p>This is where many people go wrong. You need proper data hygiene with three distinct splits:</p>
+<p><img src="/images/2025/parlancecourse/07_06_split_your_labelled_data.png" alt="Train, dev, and test split requirements"></p>
+<ul>
+<li><strong>&ldquo;Training set&rdquo; (10-20%)</strong>: Few-shot examples that go directly in your prompt (it&rsquo;s not <em>real</em> training - but it&rsquo;s doing the same job basically)</li>
+<li><strong>Development set (40%)</strong>: For iteratively refining your judge</li>
+<li><strong>Test set (40%)</strong>: Final unbiased evaluation - never look at this during development</li>
+</ul>
+<p>Shreya said that 90% of people make the mistake of including dev set examples in their judge prompt, which makes accuracy metrics meaningless. I want to think that&rsquo;s an exaggeration.</p>
+<h3 id="3-iteratively-refine-the-prompt">3. Iteratively Refine the Prompt</h3>
+<p>The refinement process focuses on aligning your judge with human labels on the dev set:</p>
+<p><img src="/images/2025/parlancecourse/07_06_the_real_llm_as_a_judge_iterative_rpompt_refinement_loop.png" alt="The iterative refinement process for LLM judges"></p>
+<ol>
+<li>Write baseline prompt with task, definitions, and training examples</li>
+<li>Evaluate on dev set</li>
+<li>Measure True Positive Rate (TPR) and True Negative Rate (TNR)</li>
+<li>Inspect disagreements between judge and human labels</li>
+<li>Refine prompt - clarify definitions, swap examples</li>
+<li>Repeat until TPR and TNR exceed 90%</li>
+</ol>
+<p>It may not be immediately obvious why we use TPR and TNR instead of raw accuracy. Raw accuracy seems intuitively to capture what we&rsquo;re looking for but it can be skewed by the actual characteristics of your data. For example, if your data has only 10% failures and you always predict &ldquo;pass&rdquo;, you&rsquo;d have 90% accuracy but zero ability to detect actual problems.</p>
+<h3 id="4-estimate-and-correct-success-rates">4. Estimate and Correct Success Rates</h3>
+<p>Even good judges aren&rsquo;t perfect. Their imperfections create bias in the metrics they produce.</p>
+<p>The lesson attempted to teach a statistical approach to correct for this bias but I think it got tied up and muddled a bit - it was a bit of a jump to go from high level discussion to stats and formulas with no theoretical grounding in the base concepts.</p>
+<p>I found the explanations weren&rsquo;t particularly clear - here&rsquo;s my best attempt to explain it. Imagine you want to know what percentage of your AI&rsquo;s outputs are actually good. You build an LLM judge to evaluate thousands of outputs automatically. But your judge isn&rsquo;t perfect - maybe when a human would say &ldquo;this is good&rdquo;, your judge only agrees 90% of the time (90% TPR), and when a human would say &ldquo;this is bad&rdquo;, your judge agrees 85% of the time (85% TNR).</p>
+<p>If you run this imperfect judge on 10,000 outputs and it says 82% are good, can you trust that number? Not directly - your judge has systematic biases. The bias correction formula essentially adjusts for these known tendencies, like calibrating a scale that always reads 2kg too heavy.</p>
+<p>The confidence intervals tell you the range where the true value likely sits. Instead of falsely claiming &ldquo;exactly 82% of outputs are good&rdquo;, you can say &ldquo;we&rsquo;re 95% confident it&rsquo;s between 83% and 87%&rdquo;. This matters when you&rsquo;re trying to hit quality targets or measure whether changes actually improved your system.</p>
+<p><img src="/images/2025/parlancecourse/07_06_estimating_true_success_rate.png" alt="Process for estimating true success rates with imperfect judges"></p>
+<p>The four-step process:</p>
+<ol>
+<li>Measure final judge accuracy (TPR/TNR) on test set</li>
+<li>Run judge on unlabelled production data</li>
+<li>Apply bias correction formula using known TPR/TNR</li>
+<li>Calculate confidence intervals through bootstrapping</li>
+</ol>
+<p>In this context, bootstrapping is a statistical technique for estimating uncertainty.</p>
+<p><strong>Specifically for the LLM judge:</strong></p>
+<p>You have a test set where you know both:</p>
+<ul>
+<li>What your judge said (pass/fail)</li>
+<li>What the human labels were (pass/fail)</li>
+</ul>
+<p><strong>Bootstrapping means:</strong></p>
+<ol>
+<li>Randomly resample your test set with replacement (so some examples might appear twice, others not at all)</li>
+<li>Recalculate TPR and TNR for this resampled set</li>
+<li>Apply the bias correction formula using these new TPR/TNR values</li>
+<li>Repeat this process many times (say 1000 times)</li>
+</ol>
+<p>You end up with 1000 different estimates of the true success rate. The spread of these estimates tells you about uncertainty:</p>
+<ul>
+<li>Take the 2.5th percentile and 97.5th percentile of all these estimates</li>
+<li>This gives you a 95% confidence interval</li>
+</ul>
+<p><strong>Why &ldquo;bootstrapping&rdquo;?</strong></p>
+<p>It&rsquo;s called &ldquo;bootstrapping&rdquo; because you&rsquo;re using your existing data to simulate what would happen if you collected new test sets many times. You&rsquo;re &ldquo;pulling yourself up by your bootstraps&rdquo; - using the data you have to understand the variability in your estimates.</p>
+<p>Instead of just saying &ldquo;our success rate is 85%&rdquo;, you can say &ldquo;we&rsquo;re 95% confident it&rsquo;s between 83% and 87%&rdquo;, which is much more honest about the uncertainty in your measurement.</p>
+<p>Judge errors primarily inflate uncertainty (wider confidence intervals) rather than shifting the estimate itself. To get tighter bounds, focus on improving TPR - the judge&rsquo;s ability to correctly identify successes.</p>
+<h2 id="real-world-impact-of-judge-quality">Real-World Impact of Judge Quality</h2>
+<p>The course included several visualisations showing how judge quality affects estimates in different scenarios:</p>
+<h3 id="scenario-1-good-judge-but-limited-labels">Scenario 1: Good Judge but Limited Labels</h3>
+<p><img src="/images/2025/parlancecourse/07_06_examples_for_true_actual_success_rate.png" alt="Impact of label size on estimates with a good judge"></p>
+<p>When you have a decent judge (90% TPR, 85% TNR) but varying amounts of labelled data, two things happen. First, the raw judge estimates (red dots) consistently underestimate the true 80% success rate because the judge is slightly too critical. Second, as you add more labelled examples, the confidence intervals narrow dramatically. They found 100 labels to be the sweet spot - enough to get reliable estimates without excessive labelling effort.</p>
+<h3 id="scenario-2-poor-at-identifying-success">Scenario 2: Poor at Identifying Success</h3>
+<p><img src="/images/2025/parlancecourse/07_06_examples_for_true_actual_success_rate2.png" alt="Impact of poor TPR on success rate estimates"></p>
+<p>This shows what happens when your judge struggles to recognise successes (varying TPR) but perfectly identifies failures (100% TNR). The gap between raw estimates and reality is massive when TPR is low - if your judge only recognises 60% of successes, it will dramatically underestimate your system&rsquo;s performance. The bias correction helps, but the key lesson is that improving your judge&rsquo;s ability to recognise successes has the biggest impact on accuracy.</p>
+<h3 id="scenario-3-poor-at-identifying-failures">Scenario 3: Poor at Identifying Failures</h3>
+<p><img src="/images/2025/parlancecourse/07_06_examples_for_true_actual_success_rate3.png" alt="Impact of poor TNR on success rate estimates"></p>
+<p>When judges are overly lenient (poor TNR), they systematically overestimate success rates. Shreya warned this is a common failure mode - judges biased to think everything is good, inflating success metrics that end up in dashboards and drive business decisions. If your judge has 60% TNR, you might see a 10% inflation in success rates, which could lead to false confidence in your system&rsquo;s performance.</p>
+<p>They&rsquo;ve open-sourced a Python library called <a href="https://github.com/ai-evals-course/judgy"><code>judgy</code></a> that implements the bias correction mathematics, making it straightforward to apply these techniques.</p>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<p>The lesson concluded with pitfalls to avoid:</p>
+<ol>
+<li><strong>Misaligned metrics</strong> - Evaluators that don&rsquo;t actually measure what users care about</li>
+<li><strong>Over-confidence in scores</strong> - High automated test scores creating false security</li>
+<li><strong>Evaluator drift</strong> - Both model updates and changing quality definitions affect judges over time</li>
+<li><strong>Poor judge design</strong> - Missing few-shot examples or overly broad criteria</li>
+<li><strong>Skipping validation</strong> - The number one error: data leakage from using dev/test examples in prompts</li>
+</ol>
+<h2 id="thingsithinkithink">thingsithinkithink</h2>
+<ul>
+<li>
+<p>The emphasis on narrow, single-purpose judges makes sense. It&rsquo;s the same principle as unit testing - test one thing at a time so you know exactly what&rsquo;s broken.</p>
+</li>
+<li>
+<p>The data hygiene requirements feel like overkill until you&rsquo;ve been burned by meaningless metrics. I&rsquo;ve heard of projects celebrating 95% accuracy that turned out to be testing on their training data. I can&rsquo;t quite believe people do this, but I guess they do.</p>
+</li>
+<li>
+<p>Code-based evaluators deserve more credit. The reflex to throw an LLM at every evaluation problem wastes resources when simple checks would suffice.</p>
+</li>
+</ul>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/llm/">Llm</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/evaluation/">Evaluation</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/machine-learning/">Machine-Learning</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/automated-testing/">Automated-Testing</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/course-notes/">Course-Notes</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/06-22-llm-evals-course-lesson-2b-office-hrs/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/06-22-llm-evals-course-lesson-2b-office-hrs_hu_4dc522b49194fd95.png" alt="LLM Evals Course: Lesson 2b (office hrs)" width="750" height="1125">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-06-22T09:00:00&#43;00:00">Jun 22, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">LLM Evals Course: Lesson 2b (office hrs)</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">A few things from Evals Course office hrs following lesson 2 of Hamel and Shreya&#39;s LLM evaluation course.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/05_21_axial_coding_2_hu_f8fc19420245dbb4.png" alt="LLM Evals Lesson 2 Error Analysis" width="750" height="380">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-06-21T12:50:38&#43;00:00">Jun 21, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">LLM Evals Lesson 2 Error Analysis</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Notes from lesson 2 of Hamel and Shreya&#39;s LLM evaluation course - covering error analysis, open and axial coding, and systematic approaches to understanding where AI systems fail.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/12-21-improve-phase-intro_hu_5a79eaecd33c5c31.png" alt="LLM Evals Lesson 8: Improving LLM Products" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Lesson 8: Improving LLM Products</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/01_23_lesson7_hero_progress_bar_impact_hu_f11f90458c120dfd.png" alt="LLM Evals Course Lesson 7: Interfaces for Human Review" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 7: Interfaces for Human Review</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/11-11-building-an-ai-sandbox-with-docker/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/11-11-docker-sandbox_hu_e0fe1009a70249c7.png" alt="Building an AI Sandbox with Docker" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Building an AI Sandbox with Docker</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/10_12_lesson6_transition_failure_matrix_hu_4bdd8783c85df9a5.png" alt="LLM Evals Course Lesson 6: Complex Pipelines and CI/CD" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 6: Complex Pipelines and CI/CD</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/10_11_lesson5_generation_quality_hu_3171d8d586d283d3.png" alt="LLM Evals Course Lesson 5: How to Evaluate Complex Architectures" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 5: How to Evaluate Complex Architectures</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,5 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Infrastructure on thingsithinkithink</title><link>https://thingsithinkithink.blog/tags/infrastructure/</link><description>Recent content in Infrastructure on thingsithinkithink</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 23 Sep 2025 12:00:00 +0000</lastBuildDate><atom:link href="https://thingsithinkithink.blog/tags/infrastructure/index.xml" rel="self" type="application/rss+xml"/><item><title>The Decade of Agents: Swyx's AI Engineer Paris Keynote</title><link>https://thingsithinkithink.blog/posts/2025/09-23-decade-of-agents-swyx-keynote/</link><pubDate>Tue, 23 Sep 2025 12:00:00 +0000</pubDate><guid>https://thingsithinkithink.blog/posts/2025/09-23-decade-of-agents-swyx-keynote/</guid><description>&lt;h2 id="the-decade-of-agents-swyxs-ai-engineer-paris-keynote"&gt;The Decade of Agents: Swyx&amp;rsquo;s AI Engineer Paris Keynote&lt;/h2&gt;
-&lt;p&gt;At AI Engineer Paris, &lt;a href="https://swyx.io/aie-paris"&gt;Swyx (Shawn Wang)&lt;/a&gt; laid out his case for why we&amp;rsquo;re entering not just the year of AI agents, but an entire decade of agent-driven transformation from 2025 to 2035. His keynote updated his earlier AI World Fair talk with several converging trends that make this more than typical Silicon Valley optimism.&lt;/p&gt;
-&lt;p&gt;I wanted to capture the things that stuck with me from the talk. These stood out:&lt;/p&gt;</description></item><item><title>Three Things I Learned About Voice Agents from Kwindla Kramer</title><link>https://thingsithinkithink.blog/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/</link><pubDate>Fri, 04 Jul 2025 08:00:00 +0000</pubDate><guid>https://thingsithinkithink.blog/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/</guid><description>&lt;p&gt;I learned three things from &lt;a href="https://www.youtube.com/watch?v=I86dFivLzXY"&gt;this interview&lt;/a&gt; with Hamel Husain and Kwindla Kramer, founder of PipeCat, an open-source framework for voice and multimodal conversation. As someone who hasn&amp;rsquo;t worked much with voice agents, I found three things particularly interesting.&lt;/p&gt;
-&lt;h2 id="voice-agents-use-traditional-pipelines-not-fancy-models"&gt;Voice Agents Use Traditional Pipelines, Not Fancy Models&lt;/h2&gt;
-&lt;p&gt;The first thing was learning that most production voice agents don&amp;rsquo;t use the latest speech-to-speech models from OpenAI or Google (etc). Instead, they rely on a modular pipeline approach that breaks the process into discrete steps.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Infrastructure on thingsithinkithink</title>
+    <link>https://thingsithinkithink.blog/tags/infrastructure/</link>
+    <description>Recent content in Infrastructure on thingsithinkithink</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Sep 2025 12:00:00 +0000</lastBuildDate>
+    <atom:link href="https://thingsithinkithink.blog/tags/infrastructure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Decade of Agents: Swyx&#39;s AI Engineer Paris Keynote</title>
+      <link>https://thingsithinkithink.blog/posts/2025/09-23-decade-of-agents-swyx-keynote/</link>
+      <pubDate>Tue, 23 Sep 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/09-23-decade-of-agents-swyx-keynote/</guid>
+      <description>&lt;h2 id=&#34;the-decade-of-agents-swyxs-ai-engineer-paris-keynote&#34;&gt;The Decade of Agents: Swyx&amp;rsquo;s AI Engineer Paris Keynote&lt;/h2&gt;&#xA;&lt;p&gt;At AI Engineer Paris, &lt;a href=&#34;https://swyx.io/aie-paris&#34;&gt;Swyx (Shawn Wang)&lt;/a&gt; laid out his case for why we&amp;rsquo;re entering not just the year of AI agents, but an entire decade of agent-driven transformation from 2025 to 2035. His keynote updated his earlier AI World Fair talk with several converging trends that make this more than typical Silicon Valley optimism.&lt;/p&gt;&#xA;&lt;p&gt;I wanted to capture the things that stuck with me from the talk. These stood out:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Three Things I Learned About Voice Agents from Kwindla Kramer</title>
+      <link>https://thingsithinkithink.blog/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/</link>
+      <pubDate>Fri, 04 Jul 2025 08:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/07-04-voice-agents-three-insights-from-kwindla-kramer/</guid>
+      <description>&lt;p&gt;I learned three things from &lt;a href=&#34;https://www.youtube.com/watch?v=I86dFivLzXY&#34;&gt;this interview&lt;/a&gt; with Hamel Husain and Kwindla Kramer, founder of PipeCat, an open-source framework for voice and multimodal conversation. As someone who hasn&amp;rsquo;t worked much with voice agents, I found three things particularly interesting.&lt;/p&gt;&#xA;&lt;h2 id=&#34;voice-agents-use-traditional-pipelines-not-fancy-models&#34;&gt;Voice Agents Use Traditional Pipelines, Not Fancy Models&lt;/h2&gt;&#xA;&lt;p&gt;The first thing was learning that most production voice agents don&amp;rsquo;t use the latest speech-to-speech models from OpenAI or Google (etc). Instead, they rely on a modular pipeline approach that breaks the process into discrete steps.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
