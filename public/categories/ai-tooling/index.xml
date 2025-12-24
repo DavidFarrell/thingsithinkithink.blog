@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ai-Tooling on thingsithinkithink</title>
-    <link>http://localhost:1313/categories/ai-tooling/</link>
+    <link>http://localhost:55647/categories/ai-tooling/</link>
     <description>Recent content in Ai-Tooling on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 17 Aug 2025 06:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/ai-tooling/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:55647/categories/ai-tooling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Isaac Flath&#39;s AI dev stack</title>
-      <link>http://localhost:1313/posts/2025/08-17-isaac_flaths_ai_dev_stack/</link>
+      <link>http://localhost:55647/posts/2025/08-17-isaac_flaths_ai_dev_stack/</link>
       <pubDate>Sun, 17 Aug 2025 06:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025/08-17-isaac_flaths_ai_dev_stack/</guid>
-      <description>&lt;p&gt;I watched &lt;a href=&#34;https://www.youtube.com/watch?v=fA4pe9bE0LY&#34;&gt;Isaac Flath&amp;rsquo;s second talk&lt;/a&gt; for the AI Evals course. This time he rebuilt the same annotation app from his &lt;a href=&#34;http://localhost:1313/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/&#34;&gt;first talk&lt;/a&gt;, but using AI agents instead of manual coding.&lt;/p&gt;&#xA;&lt;p&gt;The technical content was light, but I picked up some useful process insights that most AI-assisted coding tutorials skip.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-context-phase-gets-real-time&#34;&gt;The Context Phase Gets Real Time&lt;/h2&gt;&#xA;&lt;p&gt;Isaac spends way more time on context setup than most people I&amp;rsquo;ve seen do this. He uses &lt;a href=&#34;https://github.com/ruler-ai/ruler&#34;&gt;Ruler&lt;/a&gt; to create portable context files that work across Claude Code, Cursor, and any other AI coding assistant. I always have to rebuild the context for my AI-driven dev, so I think I might look into that.&lt;/p&gt;</description>
+      <guid>http://localhost:55647/posts/2025/08-17-isaac_flaths_ai_dev_stack/</guid>
+      <description>&lt;p&gt;I watched &lt;a href=&#34;https://www.youtube.com/watch?v=fA4pe9bE0LY&#34;&gt;Isaac Flath&amp;rsquo;s second talk&lt;/a&gt; for the AI Evals course. This time he rebuilt the same annotation app from his &lt;a href=&#34;http://localhost:55647/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/&#34;&gt;first talk&lt;/a&gt;, but using AI agents instead of manual coding.&lt;/p&gt;&#xA;&lt;p&gt;The technical content was light, but I picked up some useful process insights that most AI-assisted coding tutorials skip.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-context-phase-gets-real-time&#34;&gt;The Context Phase Gets Real Time&lt;/h2&gt;&#xA;&lt;p&gt;Isaac spends way more time on context setup than most people I&amp;rsquo;ve seen do this. He uses &lt;a href=&#34;https://github.com/ruler-ai/ruler&#34;&gt;Ruler&lt;/a&gt; to create portable context files that work across Claude Code, Cursor, and any other AI coding assistant. I always have to rebuild the context for my AI-driven dev, so I think I might look into that.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

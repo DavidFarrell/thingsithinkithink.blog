@@ -1,452 +1,84 @@
-<!DOCTYPE html>
-<html lang="en-us" dir="ltr">
-<head>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Building an AI Sandbox with Docker | thingsithinkithink</title>
-
-<meta name="description" content="How to set up a persistent Docker environment for AI coding tools without losing your authentication every time you restart the container.">
-      <link rel="stylesheet" href="/css/main.min.80f29fb74d530136f20bd8f3c36d75c8a96e2026e849229670727aa4d68f7fbc.css" integrity="sha256-gPKft01TATbyC9jzw211yKluICboSSKWcHJ6pNaPf7w=" crossorigin="anonymous">
-
-<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
-<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
-<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
-<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
-<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
-
-</head>
-<body>
-  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
-	<div class="flex items-center">
-		<div class="flex items-center">
-			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
-				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
-				</svg>
-				<span class="bg-blue-500 fill-white rounded-full p-1.5">
-					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
-						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
-					</svg>
-				</span>
-			</button>
-			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
-				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
-			</div>
-		</div>
-		<div class="flex items-center ml-auto">
-			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
-				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
-				</svg>
-			</button>
-		</div>
-	</div>
-  <nav id="menu-bar" class="block mt-3 close">
-    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
-    <li class="my-2">
-      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
-    </li>
-    <li class="my-2">
-      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
-    </li>
-    <li class="my-2">
-      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
-    </li>
-    <li class="my-2">
-      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
-    </li>
-    </ul>
-  </nav>
-<div id="search-bar" class="block mt-3 close">
-	<form id="search" class="flex items-stretch">
-		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
-		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
-			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
-				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-			</svg>
-		</button>
-	</form>
-</div>
-</div></header>
-  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
-	<ul class="flex space-x-4 text-sm text-zinc-500">
-		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
-			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
-		</li>
-		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
-			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
-		</li>
-	</ul>
-</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-
-  <article class="md:col-span-2 prose lg:prose-lg">
-
-    <header class="not-prose">
-      
-      <h1 id="title" class="text-4xl font-bold leading-normal">Building an AI Sandbox with Docker</h1>
-
-      <div id="lead" class="my-6">
-
-        <p class="font-bold">How to set up a persistent Docker environment for AI coding tools without losing your authentication every time you restart the container. </p>
-
-      </div>
-      
-      <div id="writer" class="flex items-center space-x-4">
-
-        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
-
-        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
-          
-          <li class="font-semibold my-2">David Gérouville-Farrell</li>
-          
-          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-11-11T12:00:00&#43;00:00">November 11, 2025</time>
-          </li>
-
-          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            7 min read
-          </li>
-
-        </ul>
-
-      </div>
-      
-    </header>
-
-    <figure id="featureimage" class="rounded-xl aspect-video">
-            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2025/11-11-docker-sandbox_hu_423d01e026b98a3e.png" alt="" width="750" height="419">
-        <figcaption class="text-center italic text-xs">Claude can do whatever it likes inside the sandbox</figcaption>
-
-    </figure>
-
-    <div id="content" class="mb-14">
-      <p>I love Claude Code. I enjoy using coding agents, especially for quick and dirty things that I just need to get working for myself. I use them for all sorts of things, from writing my blog to using Claude Code as a <a href="https://www.linkedin.com/posts/davidfarrell81_huge-thanks-to-eddie-forson-wilfred-kasekende-activity-7393335244239634432-e2Cw?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAKU3ZoBTHvzXgiOPqYTeQuTbQUqniMdk48">personal stylist</a> to dress me for a wedding I was attending. But when I&rsquo;m doing coding things, I&rsquo;m always wary of the potential ways that coding agents could mess up my system.</p>
-<p>There was one instance where I was using Claude Code and it didn&rsquo;t respect my desire to always use the virtual environment. It installed a whole bunch of pip packages into my default Python and broke some things. Since then I&rsquo;ve always been wary of running Claude Code without some mechanisms in place to protect me. I know that Claude is quite respectful of the project working directory, but it&rsquo;s still possible for it to do things you don&rsquo;t really like with your machine. Especially when you accidentally hit 2 instead of 1 and give it all its permissions.</p>
-<p>So I started thinking it would be good to run it inside a sandbox, and the easiest way I know to create a sandbox is inside a Docker container. I thought this was the kind of thing that everybody does, and in fact when I was at the <a href="https://www.ai.engineer/paris">AI Engineer conference in Paris</a>, I asked the folks at the Docker stand if they had a recommendation. They didn&rsquo;t have a recommendation for me and they didn&rsquo;t seem to have heard anybody asking for anything like it before. So maybe I&rsquo;m doing something silly here actually. I&rsquo;m not 100% sure that I haven&rsquo;t missed something important.</p>
-<p>However, on Friday last week I was showing something off to people at the <a href="https://www.linkedin.com/feed/update/urn:li:activity:7393619147105923073/">Claude Code meetup in London</a>, and people seemed interested in my little Docker sandbox. So I thought I would write a blog post about it here.</p>
-<h2 id="the-basic-idea">The Basic Idea</h2>
-<p>You basically need three things:</p>
-<ul>
-<li>A Docker container that sets up a development environment</li>
-<li>A docker-compose file that mounts various folders between my real PC (in my case a Mac) and the Docker image so that when I&rsquo;m working on stuff inside the Docker container, it&rsquo;s mapped onto a specific folder on my hard drive</li>
-<li>A bash script that updates my tools so that every time I run the container, I&rsquo;ve always got the latest version of Claude Code</li>
-</ul>
-<p>I used Claude Code to create these files for me, and I&rsquo;d recommend you do the same. This is well within Claude&rsquo;s comfortable capabilities - you don&rsquo;t need my actual files, just ask it to set up a Docker sandbox for AI coding tools.</p>
-<p>There were a few wee snags I had along the way, mostly around getting Claude authenticated automatically each time I enter a new sandbox, saving me having to create auth for GitHub, and how to tear down the Docker image automatically every time I use it. I&rsquo;m going to share those here.</p>
-<h2 id="the-docker-compose-file">The docker-compose File</h2>
-<p>The docker-compose file handles the volume mounts between your host machine and the container. Here&rsquo;s what mine looks like:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dev-sandbox</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Your actual project code</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./projects:/workspace/projects:rw</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Claude settings and auth (stays persistent!)</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./claude-settings:/home/dev/.claude:rw</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Git config and SSH keys (read-only for safety)</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">~/.gitconfig:/home/dev/.gitconfig:ro</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">~/.ssh:/home/dev/.ssh:ro</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">working_dir</span>: <span style="color:#ae81ff">/workspace/projects</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">stdin_open</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tty</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;3000:3000&#34;</span>
-</span></span></code></pre></div><p>The line <code>./claude-settings:/home/dev/.claude:rw</code> fixes the authentication problem. By mounting a local folder to where Claude Code stores its config, your authentication persists across container restarts. I use the same method to have OpenCode persist its authentication too.</p>
-<p>The lines with <code>~/.gitconfig</code> and <code>~/.ssh</code> handle the GitHub authentication. By mounting your git config and SSH keys as read-only (<code>:ro</code>), you don&rsquo;t have to set up SSH keys inside the container. It just works.</p>
-<p>The <code>working_dir: /workspace/projects</code> line sets your working directory so when the container starts, you&rsquo;re already in the right place.</p>
-<p>The <code>ports</code> line maps port 3000 from inside the container to port 3000 on your host machine. This means if you run a server on port 3000 inside the container (like a FastHTML app or an MCP server you&rsquo;re testing), you can access it from your browser on your main machine. Sometimes I run multiple servers - FastHTML, a couple of MCP servers to test them out - and I have to map each port. It works, but it&rsquo;s just enough friction that sometimes I write code in Claude Code inside Docker but then actually run the server on my main Mac because I&rsquo;m too lazy to think about port mappings.</p>
-<h2 id="the-dockerfile">The Dockerfile</h2>
-<p>Nothing particularly clever here:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">ubuntu:22.04</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install basics</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    git curl build-essential python3 nodejs npm <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Create non-root user with sudo access</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> useradd -m -s /bin/bash dev <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    usermod -aG sudo dev <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    echo <span style="color:#e6db74">&#39;dev ALL=(ALL) NOPASSWD:ALL&#39;</span> &gt;&gt; /etc/sudoers<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span> <span style="color:#e6db74">dev</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span> <span style="color:#e6db74">/workspace</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install Claude Code</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> curl -fsSL https://claude.ai/install.sh | bash<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;export PATH=&#34;$HOME/.local/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bashrc<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy entrypoint script</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --chown<span style="color:#f92672">=</span>dev:dev docker-entrypoint.sh /home/dev/docker-entrypoint.sh<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chmod +x /home/dev/docker-entrypoint.sh<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;/home/dev/docker-entrypoint.sh&#34;</span>]<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/bin/bash&#34;</span>]<span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>The lines with <code>useradd</code> and <code>usermod</code> create a non-root user with passwordless sudo. This means you can install packages inside the container if you need to, but you&rsquo;re not running everything as root by default.</p>
-<p>The <code>curl -fsSL https://claude.ai/install.sh | bash</code> line installs Claude Code at build time. The entrypoint script (which we&rsquo;ll get to) keeps it updated at runtime.</p>
-<h2 id="the-entrypoint-script">The Entrypoint Script</h2>
-<p>This runs every time the container starts:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/.local/bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;========================================&#34;</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Checking for updates...&#34;</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;========================================&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Auto-update Claude Code if it exists, otherwise install it</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> command -v claude &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Claude found at: </span><span style="color:#66d9ef">$(</span>which claude<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Current version: </span><span style="color:#66d9ef">$(</span>claude --version 2&gt;/dev/null <span style="color:#f92672">||</span> echo <span style="color:#e6db74">&#39;version check failed&#39;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Updating Claude Code...&#34;</span>
-</span></span><span style="display:flex;"><span>    claude update <span style="color:#f92672">||</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        echo <span style="color:#e6db74">&#34;Built-in update failed, reinstalling...&#34;</span>
-</span></span><span style="display:flex;"><span>        curl -fsSL https://claude.ai/install.sh | bash
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Installing Claude Code...&#34;</span>
-</span></span><span style="display:flex;"><span>    curl -fsSL https://claude.ai/install.sh | bash
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;========================================&#34;</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Claude Code: </span><span style="color:#66d9ef">$(</span>claude --version<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;========================================&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>exec <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
-</span></span></code></pre></div><p>The <code>if command -v claude</code> section handles the update logic. It tries Claude&rsquo;s built-in <code>claude update</code> command first (faster), and falls back to a fresh install if that fails. Your Dockerfile installs it at build time, but this keeps it current without rebuilding the entire image.</p>
-<h2 id="running-it">Running It</h2>
-<p>You need to use <code>--rm</code> when you run the container. Without it, you&rsquo;ll end up collecting a bunch of Docker containers that aren&rsquo;t running and it&rsquo;s messy - you&rsquo;ll have all this cruft inside your system.</p>
-<p>I created a little bash script called <code>dev.sh</code> that sets it up for me, so I just do <code>./dev</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># Quick script to start the AI development sandbox</span>
-</span></span><span style="display:flex;"><span>docker-compose run --rm dev-sandbox bash
-</span></span></code></pre></div><p>When you exit the container, it gets removed automatically. No accumulation of dead containers cluttering your Docker.</p>
-<h2 id="a-few-things-that-caught-me-out">A Few Things That Caught Me Out</h2>
-<p><strong>Create the mounted directories first.</strong> Before you run the container for the first time, create <code>./claude-settings</code> on your host machine. If you don&rsquo;t, Docker will create it with root permissions and you&rsquo;ll have to fix the permissions manually.</p>
-<p><strong>Mount sensitive files as read-only.</strong> Your <code>.gitconfig</code> and <code>.ssh</code> keys get mounted with <code>:ro</code> so AI tools can&rsquo;t accidentally modify them. Your project files and AI tool configs get <code>:rw</code> because those need to change.</p>
-<h2 id="thingsithinkithink">thingsithinkithink</h2>
-<ul>
-<li>
-<p>I mentioned above that you should get Claude to do this for you - you don&rsquo;t need my files. What I&rsquo;d actually recommend is that you just copy this entire blog post, paste it into Claude and say &ldquo;Claude, hey, do this for me.&rdquo;</p>
-</li>
-<li>
-<p>If you really do want to just grab my version, you can clone it from <a href="https://github.com/DavidFarrell/ai-development-sandbox">GitHub here</a>.</p>
-</li>
-<li>
-<p>I&rsquo;m surprised there&rsquo;s not a better or more standard way of doing this that somebody else has already figured out. I&rsquo;m assuming that there is and I&rsquo;ve just missed it. If anybody knows of one, please email me or get in touch.</p>
-</li>
-</ul>
-
-
-    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
-
-      <li class="font-semibold my-4">Tags:</li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/docker/">Docker</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/claude-code/">Claude-Code</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/development/">Development</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/tooling/">Tooling</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
-    </ul>
-</div>
-
-    <footer id="content-footer" class="not-prose">
-
-      
-
-      
-      <div id="related-post" class="">
-
-        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
-	
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/09-23-decade-of-agents-swyx-keynote/"></a>
-
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/swyx-decade-agents/09-23-swyx-decade-agents_hu_18918c2ec4f11380.png" alt="The Decade of Agents: Swyx&#39;s AI Engineer Paris Keynote" width="750" height="392">
-
-	  </figure>
-
-	<div class="p-6">
-
-		<time datetime="2025-09-23T12:00:00&#43;00:00">Sep 23, 2025</time>
-
-		<h3 class="my-4 text-2xl font-bold">The Decade of Agents: Swyx&#39;s AI Engineer Paris Keynote</h3>
-
-		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Swyx argues for 2025-2035 as the decade of AI agents, backed by unprecedented infrastructure investment and converging technical definitions.</p>
-
-	</div>
-</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
-	
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/07-18-chrome-devtools-fasthtml-development/"></a>
-
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/07-18-devtools-hero_hu_a29a54757dab79a7.png" alt="Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration" width="750" height="463">
-
-	  </figure>
-
-	<div class="p-6">
-
-		<time datetime="2025-07-18T09:00:00&#43;00:00">Jul 18, 2025</time>
-
-		<h3 class="my-4 text-2xl font-bold">Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration</h3>
-
-		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">How to connect Chrome DevTools to your FastHTML applications for fast CSS and HTML debugging and iteration during development.</p>
-
-	</div>
-</article>
-          
-        </div>
-      </div>
-
-    </footer>
-
-  </article>
-
-  
-  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
-
-		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
-
-		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
-
-</div><div class="space-y-6">
-
-		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
-
-		<article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/"></a>
-	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/12-21-improve-phase-intro_hu_ec498da3562301b9.png" alt="LLM Evals Lesson 8: Improving LLM Products" width="250" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Lesson 8: Improving LLM Products</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/"></a>
-	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/01_23_lesson7_hero_progress_bar_impact_hu_b5b7ccc3f854dbf8.png" alt="LLM Evals Course Lesson 7: Interfaces for Human Review" width="250" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 7: Interfaces for Human Review</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/11-11-building-an-ai-sandbox-with-docker/"></a>
-	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/11-11-docker-sandbox_hu_65f06efcade2b75d.png" alt="Building an AI Sandbox with Docker" width="250" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Building an AI Sandbox with Docker</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/"></a>
-	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/10_12_lesson6_transition_failure_matrix_hu_fa8c2320a25745dd.png" alt="LLM Evals Course Lesson 6: Complex Pipelines and CI/CD" width="250" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 6: Complex Pipelines and CI/CD</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/"></a>
-	<figure class="basis-1/3 aspect-square overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/10_11_lesson5_generation_quality_hu_352591116163bd21.png" alt="LLM Evals Course Lesson 5: How to Evaluate Complex Architectures" width="250" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 5: How to Evaluate Complex Architectures</h3>
-	</div>
-</article>
-		
-	</div>
-
-</div>
-</aside>
-
-</div>
-  
-</main>
-  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-
-  <div class="flex flex-wrap space-y-6 mb-4">
-
-    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
-
-      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
-          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
-        </svg>
-        
-        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
-      </a>
-
-      <p class="font-semibold">
-        
-      </p>
-
-      
-
-    </div>
-
-    <div class="self-center flex flex-col w-full md:w-2/5">
-
-<ul id="social-media" class="flex items-center space-x-4">
-	
-	
-	<li> 
-		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
-		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
-			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
-		</a>
-	</li>
-	
-	<li> 
-		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
-		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
-			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
-		</a>
-	</li>
-	<li> 
-		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
-		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
-			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
-		</a>
-	</li>
-	
-	
-</ul>
-
-    </div>
-    
-  </div>
-
-  <div class="my-8">
-    <ul class="flex items-center space-x-4">
-      
-        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
-      
-        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
-      
-        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
-      
-        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
-      
-    </ul>
-  </div>
-
-  <div class="border-t pt-4">
-
-    <p class="text-sm">
-      Powered by 
-      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
-      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
-      and based on the 
-      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
-    </p>
-
-  </div>
-  
-</div>
-</footer>
-      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
-</body>
-</html>
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Building an AI Sandbox with Docker | thingsithinkithink</title><meta name=description content="How to set up a persistent Docker environment for AI coding tools without losing your authentication every time you restart the container."><link rel=stylesheet href=/css/main.min.80f29fb74d530136f20bd8f3c36d75c8a96e2026e849229670727aa4d68f7fbc.css integrity="sha256-gPKft01TATbyC9jzw211yKluICboSSKWcHJ6pNaPf7w=" crossorigin=anonymous><link rel=icon type=image/svg+xml href=https://thingsithinkithink.blog/favicon.svg><link rel=icon type=image/x-icon href=https://thingsithinkithink.blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://thingsithinkithink.blog/favicon.png><link rel=icon type=image/png sizes=32x32 href=https://thingsithinkithink.blog/favicon-32.png><link rel=icon type=image/png sizes=64x64 href=https://thingsithinkithink.blog/favicon-64.png></head><body><header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col"><div class="flex items-center"><div class="flex items-center"><button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=menu-bar>
+<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5.0 01.5-.5h10a.5.5.0 010 1H3a.5.5.0 01-.5-.5zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 8zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 4z"/></svg>
+<span class="bg-blue-500 fill-white rounded-full p-1.5"><svg width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg></span></button><div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2"><h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href=https://thingsithinkithink.blog/>thingsithinkithink</a></h2></div></div><div class="flex items-center ml-auto"><button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=search-bar>
+<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/><path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5.0 11.708-.708L8 7.293l5.146-5.147a.5.5.0 01.708.708L8.707 8l5.147 5.146a.5.5.0 01-.708.708L8 8.707l-5.146 5.147a.5.5.0 01-.708-.708L7.293 8 2.146 2.854z"/></svg></button></div></div><nav id=menu-bar class="block mt-3 close"><ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4"><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/>Home</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/about/>About</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/tags/>Tags</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/categories/>Taxonomy</a></li></ul></nav><div id=search-bar class="block mt-3 close"><form id=search class="flex items-stretch"><input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type=text placeholder=Search...>
+<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200">
+<svg width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/></svg></button></form></div></div></header><main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id=breadcrumb class="max-w-7xl mx-auto py-8"><ul class="flex space-x-4 text-sm text-zinc-500"><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/>thingsithinkithink</a></li><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/posts/>Posts</a></li></ul></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"><article class="md:col-span-2 prose lg:prose-lg"><header class=not-prose><h1 id=title class="text-4xl font-bold leading-normal">Building an AI Sandbox with Docker</h1><div id=lead class=my-6><p class=font-bold>How to set up a persistent Docker environment for AI coding tools without losing your authentication every time you restart the container.</p></div><div id=writer class="flex items-center space-x-4"><img class="w-12 h-12 bg-black rounded-full" src=https://thingsithinkithink.blog/images/goldfinch.jpg alt="David Gérouville-Farrell avatar" width=1000 height=1000><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-2">David Gérouville-Farrell</li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime=2025-11-11T12:00:00+00:00>November 11, 2025</time></li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">7 min read</li></ul></div></header><figure id=featureimage class="rounded-xl aspect-video"><img class=rounded-lg src=https://thingsithinkithink.blog/images/2025/11-11-docker-sandbox_hu_423d01e026b98a3e.png alt width=750 height=419><figcaption class="text-center italic text-xs">Claude can do whatever it likes inside the sandbox</figcaption></figure><div id=content class=mb-14><p>I love Claude Code. I enjoy using coding agents, especially for quick and dirty things that I just need to get working for myself. I use them for all sorts of things, from writing my blog to using Claude Code as a <a href="https://www.linkedin.com/posts/davidfarrell81_huge-thanks-to-eddie-forson-wilfred-kasekende-activity-7393335244239634432-e2Cw?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAKU3ZoBTHvzXgiOPqYTeQuTbQUqniMdk48">personal stylist</a> to dress me for a wedding I was attending. But when I&rsquo;m doing coding things, I&rsquo;m always wary of the potential ways that coding agents could mess up my system.</p><p>There was one instance where I was using Claude Code and it didn&rsquo;t respect my desire to always use the virtual environment. It installed a whole bunch of pip packages into my default Python and broke some things. Since then I&rsquo;ve always been wary of running Claude Code without some mechanisms in place to protect me. I know that Claude is quite respectful of the project working directory, but it&rsquo;s still possible for it to do things you don&rsquo;t really like with your machine. Especially when you accidentally hit 2 instead of 1 and give it all its permissions.</p><p>So I started thinking it would be good to run it inside a sandbox, and the easiest way I know to create a sandbox is inside a Docker container. I thought this was the kind of thing that everybody does, and in fact when I was at the <a href=https://www.ai.engineer/paris>AI Engineer conference in Paris</a>, I asked the folks at the Docker stand if they had a recommendation. They didn&rsquo;t have a recommendation for me and they didn&rsquo;t seem to have heard anybody asking for anything like it before. So maybe I&rsquo;m doing something silly here actually. I&rsquo;m not 100% sure that I haven&rsquo;t missed something important.</p><p>However, on Friday last week I was showing something off to people at the <a href=https://www.linkedin.com/feed/update/urn:li:activity:7393619147105923073/>Claude Code meetup in London</a>, and people seemed interested in my little Docker sandbox. So I thought I would write a blog post about it here.</p><h2 id=the-basic-idea>The Basic Idea</h2><p>You basically need three things:</p><ul><li>A Docker container that sets up a development environment</li><li>A docker-compose file that mounts various folders between my real PC (in my case a Mac) and the Docker image so that when I&rsquo;m working on stuff inside the Docker container, it&rsquo;s mapped onto a specific folder on my hard drive</li><li>A bash script that updates my tools so that every time I run the container, I&rsquo;ve always got the latest version of Claude Code</li></ul><p>I used Claude Code to create these files for me, and I&rsquo;d recommend you do the same. This is well within Claude&rsquo;s comfortable capabilities - you don&rsquo;t need my actual files, just ask it to set up a Docker sandbox for AI coding tools.</p><p>There were a few wee snags I had along the way, mostly around getting Claude authenticated automatically each time I enter a new sandbox, saving me having to create auth for GitHub, and how to tear down the Docker image automatically every time I use it. I&rsquo;m going to share those here.</p><h2 id=the-docker-compose-file>The docker-compose File</h2><p>The docker-compose file handles the volume mounts between your host machine and the container. Here&rsquo;s what mine looks like:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>dev-sandbox</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>build</span>: <span style=color:#ae81ff>.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      <span style=color:#75715e># Your actual project code</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./projects:/workspace/projects:rw</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># Claude settings and auth (stays persistent!)</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./claude-settings:/home/dev/.claude:rw</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># Git config and SSH keys (read-only for safety)</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>~/.gitconfig:/home/dev/.gitconfig:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>~/.ssh:/home/dev/.ssh:ro</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>working_dir</span>: <span style=color:#ae81ff>/workspace/projects</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>stdin_open</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>tty</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;3000:3000&#34;</span>
+</span></span></code></pre></div><p>The line <code>./claude-settings:/home/dev/.claude:rw</code> fixes the authentication problem. By mounting a local folder to where Claude Code stores its config, your authentication persists across container restarts. I use the same method to have OpenCode persist its authentication too.</p><p>The lines with <code>~/.gitconfig</code> and <code>~/.ssh</code> handle the GitHub authentication. By mounting your git config and SSH keys as read-only (<code>:ro</code>), you don&rsquo;t have to set up SSH keys inside the container. It just works.</p><p>The <code>working_dir: /workspace/projects</code> line sets your working directory so when the container starts, you&rsquo;re already in the right place.</p><p>The <code>ports</code> line maps port 3000 from inside the container to port 3000 on your host machine. This means if you run a server on port 3000 inside the container (like a FastHTML app or an MCP server you&rsquo;re testing), you can access it from your browser on your main machine. Sometimes I run multiple servers - FastHTML, a couple of MCP servers to test them out - and I have to map each port. It works, but it&rsquo;s just enough friction that sometimes I write code in Claude Code inside Docker but then actually run the server on my main Mac because I&rsquo;m too lazy to think about port mappings.</p><h2 id=the-dockerfile>The Dockerfile</h2><p>Nothing particularly clever here:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#66d9ef>FROM</span> <span style=color:#e6db74>ubuntu:22.04</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Install basics</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> apt-get update <span style=color:#f92672>&amp;&amp;</span> apt-get install -y <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    git curl build-essential python3 nodejs npm <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> rm -rf /var/lib/apt/lists/*<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Create non-root user with sudo access</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> useradd -m -s /bin/bash dev <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    usermod -aG sudo dev <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    echo <span style=color:#e6db74>&#39;dev ALL=(ALL) NOPASSWD:ALL&#39;</span> &gt;&gt; /etc/sudoers<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>USER</span> <span style=color:#e6db74>dev</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>WORKDIR</span> <span style=color:#e6db74>/workspace</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Install Claude Code</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> curl -fsSL https://claude.ai/install.sh | bash<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> echo <span style=color:#e6db74>&#39;export PATH=&#34;$HOME/.local/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bashrc<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Copy entrypoint script</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> --chown<span style=color:#f92672>=</span>dev:dev docker-entrypoint.sh /home/dev/docker-entrypoint.sh<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> chmod +x /home/dev/docker-entrypoint.sh<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>ENTRYPOINT</span> [<span style=color:#e6db74>&#34;/home/dev/docker-entrypoint.sh&#34;</span>]<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>CMD</span> [<span style=color:#e6db74>&#34;/bin/bash&#34;</span>]<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><p>The lines with <code>useradd</code> and <code>usermod</code> create a non-root user with passwordless sudo. This means you can install packages inside the container if you need to, but you&rsquo;re not running everything as root by default.</p><p>The <code>curl -fsSL https://claude.ai/install.sh | bash</code> line installs Claude Code at build time. The entrypoint script (which we&rsquo;ll get to) keeps it updated at runtime.</p><h2 id=the-entrypoint-script>The Entrypoint Script</h2><p>This runs every time the container starts:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>export PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$HOME<span style=color:#e6db74>/.local/bin:</span>$PATH<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;========================================&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;Checking for updates...&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;========================================&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Auto-update Claude Code if it exists, otherwise install it</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> command -v claude &amp;&gt; /dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Claude found at: </span><span style=color:#66d9ef>$(</span>which claude<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Current version: </span><span style=color:#66d9ef>$(</span>claude --version 2&gt;/dev/null <span style=color:#f92672>||</span> echo <span style=color:#e6db74>&#39;version check failed&#39;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Updating Claude Code...&#34;</span>
+</span></span><span style=display:flex><span>    claude update <span style=color:#f92672>||</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        echo <span style=color:#e6db74>&#34;Built-in update failed, reinstalling...&#34;</span>
+</span></span><span style=display:flex><span>        curl -fsSL https://claude.ai/install.sh | bash
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Installing Claude Code...&#34;</span>
+</span></span><span style=display:flex><span>    curl -fsSL https://claude.ai/install.sh | bash
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;========================================&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;Claude Code: </span><span style=color:#66d9ef>$(</span>claude --version<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;========================================&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>exec <span style=color:#e6db74>&#34;</span>$@<span style=color:#e6db74>&#34;</span>
+</span></span></code></pre></div><p>The <code>if command -v claude</code> section handles the update logic. It tries Claude&rsquo;s built-in <code>claude update</code> command first (faster), and falls back to a fresh install if that fails. Your Dockerfile installs it at build time, but this keeps it current without rebuilding the entire image.</p><h2 id=running-it>Running It</h2><p>You need to use <code>--rm</code> when you run the container. Without it, you&rsquo;ll end up collecting a bunch of Docker containers that aren&rsquo;t running and it&rsquo;s messy - you&rsquo;ll have all this cruft inside your system.</p><p>I created a little bash script called <code>dev.sh</code> that sets it up for me, so I just do <code>./dev</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e># Quick script to start the AI development sandbox</span>
+</span></span><span style=display:flex><span>docker-compose run --rm dev-sandbox bash
+</span></span></code></pre></div><p>When you exit the container, it gets removed automatically. No accumulation of dead containers cluttering your Docker.</p><h2 id=a-few-things-that-caught-me-out>A Few Things That Caught Me Out</h2><p><strong>Create the mounted directories first.</strong> Before you run the container for the first time, create <code>./claude-settings</code> on your host machine. If you don&rsquo;t, Docker will create it with root permissions and you&rsquo;ll have to fix the permissions manually.</p><p><strong>Mount sensitive files as read-only.</strong> Your <code>.gitconfig</code> and <code>.ssh</code> keys get mounted with <code>:ro</code> so AI tools can&rsquo;t accidentally modify them. Your project files and AI tool configs get <code>:rw</code> because those need to change.</p><h2 id=thingsithinkithink>thingsithinkithink</h2><ul><li><p>I mentioned above that you should get Claude to do this for you - you don&rsquo;t need my files. What I&rsquo;d actually recommend is that you just copy this entire blog post, paste it into Claude and say &ldquo;Claude, hey, do this for me.&rdquo;</p></li><li><p>If you really do want to just grab my version, you can clone it from <a href=https://github.com/DavidFarrell/ai-development-sandbox>GitHub here</a>.</p></li><li><p>I&rsquo;m surprised there&rsquo;s not a better or more standard way of doing this that somebody else has already figured out. I&rsquo;m assuming that there is and I&rsquo;ve just missed it. If anybody knows of one, please email me or get in touch.</p></li></ul><ul id=taxonomy class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-4">Tags:</li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/docker/>Docker</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/claude-code/>Claude-Code</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/development/>Development</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/tooling/>Tooling</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/feature/>Feature</a></li></ul></div><footer id=content-footer class=not-prose><div id=related-post><h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/09-23-decade-of-agents-swyx-keynote/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/swyx-decade-agents/09-23-swyx-decade-agents_hu_18918c2ec4f11380.png alt="The Decade of Agents: Swyx's AI Engineer Paris Keynote" width=750 height=392></figure><div class=p-6><time datetime=2025-09-23T12:00:00+00:00>Sep 23, 2025</time><h3 class="my-4 text-2xl font-bold">The Decade of Agents: Swyx's AI Engineer Paris Keynote</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Swyx argues for 2025-2035 as the decade of AI agents, backed by unprecedented infrastructure investment and converging technical definitions.</p></div></article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/07-18-chrome-devtools-fasthtml-development/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/07-18-devtools-hero_hu_a29a54757dab79a7.png alt="Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration" width=750 height=463></figure><div class=p-6><time datetime=2025-07-18T09:00:00+00:00>Jul 18, 2025</time><h3 class="my-4 text-2xl font-bold">Connecting Chrome DevTools to FastHTML Apps for Rapid Style Iteration</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">How to connect Chrome DevTools to your FastHTML applications for fast CSS and HTML debugging and iteration during development.</p></div></article></div></div></footer></article><aside class=md:col-span-1><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10"><img class="aspect-video rounded" src=/images/2024/infinite_archive.png alt="things i think i think abstract image of waves and a stick figure"><p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p></div><div class=space-y-6><h2 class="font-bold text-xl mb-8">Recent Post</h2><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/12-21-improve-phase-intro_hu_5a79eaecd33c5c31.png alt="LLM Evals Lesson 8: Improving LLM Products" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Lesson 8: Improving LLM Products</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/01-23-llm-evals-lesson-7-interfaces-for-human-review/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/01_23_lesson7_hero_progress_bar_impact_hu_f11f90458c120dfd.png alt="LLM Evals Course Lesson 7: Interfaces for Human Review" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 7: Interfaces for Human Review</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/11-11-building-an-ai-sandbox-with-docker/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/11-11-docker-sandbox_hu_e0fe1009a70249c7.png alt="Building an AI Sandbox with Docker" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Building an AI Sandbox with Docker</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/10_12_lesson6_transition_failure_matrix_hu_4bdd8783c85df9a5.png alt="LLM Evals Course Lesson 6: Complex Pipelines and CI/CD" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 6: Complex Pipelines and CI/CD</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/10_11_lesson5_generation_quality_hu_3171d8d586d283d3.png alt="LLM Evals Course Lesson 5: How to Evaluate Complex Architectures" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course Lesson 5: How to Evaluate Complex Architectures</h3></div></article></div></div></aside></div></main><footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div class="flex flex-wrap space-y-6 mb-4"><div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10"><a class="flex items-center group" href=https://thingsithinkithink.blog/><svg width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg>
+<span class="text-2xl font-semibold uppercase">thingsithinkithink</span></a><p class=font-semibold></p></div><div class="self-center flex flex-col w-full md:w-2/5"><ul id=social-media class="flex items-center space-x-4"><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://linkedin.com/in/davidfarrell81 target=_blank rel="noopener noreferrer"><img src=/images/linkedin-color-svgrepo-com.svg alt="LinkedIn Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://github.com/DavidFarrell/ target=_blank rel="noopener noreferrer"><img src=/images/github-mark.svg alt="GitHub Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://bsky.app/profile/dgerouvillefarrell.bsky.social target=_blank rel="noopener noreferrer"><img src=/images/Bluesky_Logo.svg alt="Bluesky Logo" class="w-8 h-8"></a></li></ul></div></div><div class=my-8><ul class="flex items-center space-x-4"><li><a class="decoration-auto hover:underline font-semibold" href=/>Home</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/about/>About</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/tags/>Tags</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/categories/>Taxonomy</a></li></ul></div><div class="border-t pt-4"><p class=text-sm>Powered by
+<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>,
+<a href=https://pages.github.com/ target=_blank rel=noopener>GitHub Pages</a>
+and based on the
+<a href=https://pehtheme-hugo.netlify.app/ target=_blank rel=noopener>pehtheme</a> theme.</p></div></div></footer><script defer src=/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js integrity="sha256-R0+bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin=anonymous></script></body></html>

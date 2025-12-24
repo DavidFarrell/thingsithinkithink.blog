@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Annotation on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/annotation/</link>
-    <description>Recent content in Annotation on thingsithinkithink</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 16 Aug 2025 11:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/annotation/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Building Domain-Specific Annotation Tools with FastHTML: Lessons from Isaac Flath</title>
-      <link>https://thingsithinkithink.blog/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/</link>
-      <pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m writing up my notes from &lt;a href=&#34;https://maven.com/parlance-labs/evals&#34;&gt;Hamel Husain and Shreya Shankar&amp;rsquo;s excellent AI Evals course&lt;/a&gt;. Today we have Isaac Flath&amp;rsquo;s (cohort 1) session on building custom annotation tools. Isaac showed how he built a real-world medical flashcard annotation system for AnkiHub using FastHTML.  I&amp;rsquo;ve written before about FastHTML (see &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/07-18-chrome-devtools-fasthtml-development/&#34;&gt;FastHTML&amp;rsquo;s Chrome DevTools integration&lt;/a&gt;) and this builds on that with a bit of detil on FastLite db support and some htmx stuff.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-ankihub-challenge-inverted-retrieval-at-scale&#34;&gt;The AnkiHub Challenge: Inverted Retrieval at Scale&lt;/h2&gt;&#xA;&lt;p&gt;Isaac&amp;rsquo;s use case centers on &lt;a href=&#34;https://ankihab.net&#34;&gt;AnkiHub&lt;/a&gt;, a medical flashcard platform where students search for study materials.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Annotation on thingsithinkithink</title><link>https://thingsithinkithink.blog/tags/annotation/</link><description>Recent content in Annotation on thingsithinkithink</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 16 Aug 2025 11:00:00 +0000</lastBuildDate><atom:link href="https://thingsithinkithink.blog/tags/annotation/index.xml" rel="self" type="application/rss+xml"/><item><title>Building Domain-Specific Annotation Tools with FastHTML: Lessons from Isaac Flath</title><link>https://thingsithinkithink.blog/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/</link><pubDate>Sat, 16 Aug 2025 11:00:00 +0000</pubDate><guid>https://thingsithinkithink.blog/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/</guid><description>&lt;p&gt;I&amp;rsquo;m writing up my notes from &lt;a href="https://maven.com/parlance-labs/evals"&gt;Hamel Husain and Shreya Shankar&amp;rsquo;s excellent AI Evals course&lt;/a&gt;. Today we have Isaac Flath&amp;rsquo;s (cohort 1) session on building custom annotation tools. Isaac showed how he built a real-world medical flashcard annotation system for AnkiHub using FastHTML. I&amp;rsquo;ve written before about FastHTML (see &lt;a href="https://thingsithinkithink.blog/posts/2025/07-18-chrome-devtools-fasthtml-development/"&gt;FastHTML&amp;rsquo;s Chrome DevTools integration&lt;/a&gt;) and this builds on that with a bit of detil on FastLite db support and some htmx stuff.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="the-ankihub-challenge-inverted-retrieval-at-scale"&gt;The AnkiHub Challenge: Inverted Retrieval at Scale&lt;/h2&gt;
+&lt;p&gt;Isaac&amp;rsquo;s use case centers on &lt;a href="https://ankihab.net"&gt;AnkiHub&lt;/a&gt;, a medical flashcard platform where students search for study materials.&lt;/p&gt;</description></item></channel></rss>
