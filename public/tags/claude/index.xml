@@ -6,8 +6,22 @@
     <description>Recent content in Claude on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Jan 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Feb 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/claude/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude Agent SDK Part 4: Implementing Context Profiles</title>
+      <link>http://localhost:1313/posts/2026/02-02-claude-agent-sdk-part-4/</link>
+      <pubDate>Mon, 02 Feb 2026 09:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2026/02-02-claude-agent-sdk-part-4/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;http://localhost:1313/01-26-claude-agent-sdk-part-3/&#34;&gt;Part 3&lt;/a&gt;, I discovered I couldn&amp;rsquo;t have perfect control over the conversation history with the Agent SDK. Today I&amp;rsquo;m implementing the compromise: a &lt;strong&gt;context profile&lt;/strong&gt; that lives outside the conversation and gets injected fresh on reset.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-plan&#34;&gt;The Plan&lt;/h2&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s what we&amp;rsquo;re building:&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-simplify-the-contextstore&#34;&gt;1. Simplify the ContextStore&lt;/h3&gt;&#xA;&lt;p&gt;Strip out the failed token-counting experiment. The new &lt;code&gt;ContextStore&lt;/code&gt; needs:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;items: list[ContextItem]&lt;/code&gt; - the profile&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;add(path)&lt;/code&gt; - add a file to the profile&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;remove(index)&lt;/code&gt; - remove by index&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;toggle(index)&lt;/code&gt; - toggle enabled/disabled&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;list()&lt;/code&gt; - display the profile&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;get_enabled_content()&lt;/code&gt; - build the injection block&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;For token counting, we&amp;rsquo;ll use rough estimates for now (character count / 4 is a decent approximation for English text).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Claude Agent SDK Part 3: The Context Control Problem</title>
+      <link>http://localhost:1313/posts/2026/01-26-claude-agent-sdk-part-3/</link>
+      <pubDate>Mon, 26 Jan 2026 09:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2026/01-26-claude-agent-sdk-part-3/</guid>
+      <description>&lt;p&gt;Building on &lt;a href=&#34;http://localhost:1313/01-12-exploring-claude-agent-sdk/&#34;&gt;Part 1&lt;/a&gt; and &lt;a href=&#34;http://localhost:1313/01-19-claude-agent-sdk-part-2/&#34;&gt;Part 2&lt;/a&gt;, today I wanted to add context management to the writing agent. What I discovered instead was a slightly annoying fundamental trade-off in the SDK&amp;rsquo;s design.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-context-control-comes-first&#34;&gt;Why Context Control Comes First&lt;/h2&gt;&#xA;&lt;p&gt;When I use AI-supported writing, I&amp;rsquo;m not trying to get it to do most of the writing. I&amp;rsquo;m trying to get it to help me with cleanup, editing, gap analysis, and checking details. So what I&amp;rsquo;m really looking for is control over the context so that AI is more like an expert editor / sounding board.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Claude Agent SDK: Part 2</title>
       <link>http://localhost:1313/posts/2026/01-19-claude-agent-sdk-part-2/</link>
