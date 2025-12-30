@@ -68,24 +68,35 @@ OpenAI publishes `tiktoken`, a fast local tokenizer. It's what everyone uses for
 
 The Anthropic API has a `/v1/messages/count_tokens` endpoint that returns exact Claude token counts. Perfect! Except... it requires an `ANTHROPIC_API_KEY` environment variable because it's the Anthropic api - not the Agents SDK.
 
-Our writing agent uses the Claude Agent SDK, which authenticates through Claude Code's existing credentials (stored in `~/.claude/.credentials.json`). Users don't need a separate API key - that's part of the appeal. Adding a requirement for a separate API key just for token counting feels a wee bit wrong.
+Our writing agent uses the Claude Agent SDK, which I'm authenticating through Claude Code's existing credentials (stored in `~/.claude/.credentials.json`). You can also use an `ANTHROPIC_API_KEY` if you prefer, but it's nice that users with a subscription don't need a separate API key. Adding a requirement for a separate API key just for token counting feels a wee bit wrong.
 
-I searched the SDK for a `count_tokens` method and came up empty. The SDK doesn't expose token counting.
+I searched the SDK for a `count_tokens` method and came up empty. There's no way to count tokens *before* sending content.
 
-**Attempt 3: The fork_session trick**
+**ResultMessage.usage: Token Counts After Submission**
 
-The SDK does give you token usage in `ResultMessage.usage` after each query. I briefly explored a (stupid) idea - create a baseline session, then fork it with your content and measure the delta in `input_tokens`.
+After each query, the SDK returns a `ResultMessage` with a `usage` dict containing detailed token breakdowns:
 
 ```python
-# The theory:
-# 1. Create baseline session, record input_tokens (say, 50)
-# 2. Fork baseline, inject file content, record input_tokens (say, 550)
-# 3. File tokens = 550 - 50 = 500
+{
+    'input_tokens': 3,
+    'output_tokens': 72,
+    'cache_creation_input_tokens': 2065,
+    'cache_read_input_tokens': 12834,
+    'service_tier': 'standard',
+    ...
+}
 ```
 
-It's a bad idea though - wasting compute and tokens just to get token counts. 
+This gives you accurate counts *after* each turn - you just can't count *before* sending like the `count_tokens` API would let you do.
 
-But additionally, the whole token count thing was just a step of my plan to have full context control and actually - with the Agent SDK you have to accept tradeoffs that kind of rule my plan out.
+For my use case (knowing roughly how much context I'm using), this is actually fine. I can:
+- Track cumulative token usage across a session
+- See how much each turn added
+- Monitor costs in real-time
+
+And since adding a file to the context profile immediately injects it into the current conversation anyway, I get the exact token count back right away.
+
+However, the bigger issue is context control, not specifically counting the tokens. With the Agent SDK there are some larger trade-offs that affect my original plan.
 
 ## A Bigger Issue with Context Control
 
@@ -169,7 +180,7 @@ The rules:
 
 What this means in practice:
 - Context builds up naturally as I work
-- I can curate what matters (toggle off the noise)
+- I can curate what matters (toggling things on and off, depending what I'm wanting the agent to do)
 - When I start a new conversation, my curation is respected
 - I have perfect control at the *beginning* of each conversation, even if I can't edit mid-conversation
 
@@ -179,7 +190,7 @@ It's not exactly what I originally planned. But it's a reasonable compromise tha
 
 In the next post, I'll implement this meta-context system:
 - The `ContextStore` class with add, toggle, remove
-- Token counting (probably just rough estimates for now, exact counts when we can get them)
+- Usage tracking with exact token counts from the SDK after each turn
 - Injecting enabled context on conversation reset
 - Maybe persisting the context profile to disk
 

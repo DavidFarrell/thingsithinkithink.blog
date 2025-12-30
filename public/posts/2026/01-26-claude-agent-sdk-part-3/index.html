@@ -175,16 +175,27 @@
 <p>OpenAI publishes <code>tiktoken</code>, a fast local tokenizer. It&rsquo;s what everyone uses for GPT token counting. But Claude uses a different tokenizer - and Anthropic doesn&rsquo;t publish theirs. Using tiktoken with <code>cl100k_base</code> gives you estimates, but they would be something 10-15% off (guess - due to tokenizer differences). So this is a dead end for me since I&rsquo;m trying to manage a context budget.</p>
 <p><strong>Attempt 2: Anthropic&rsquo;s count_tokens API</strong></p>
 <p>The Anthropic API has a <code>/v1/messages/count_tokens</code> endpoint that returns exact Claude token counts. Perfect! Except&hellip; it requires an <code>ANTHROPIC_API_KEY</code> environment variable because it&rsquo;s the Anthropic api - not the Agents SDK.</p>
-<p>Our writing agent uses the Claude Agent SDK, which authenticates through Claude Code&rsquo;s existing credentials (stored in <code>~/.claude/.credentials.json</code>). Users don&rsquo;t need a separate API key - that&rsquo;s part of the appeal. Adding a requirement for a separate API key just for token counting feels a wee bit wrong.</p>
-<p>I searched the SDK for a <code>count_tokens</code> method and came up empty. The SDK doesn&rsquo;t expose token counting.</p>
-<p><strong>Attempt 3: The fork_session trick</strong></p>
-<p>The SDK does give you token usage in <code>ResultMessage.usage</code> after each query. I briefly explored a (stupid) idea - create a baseline session, then fork it with your content and measure the delta in <code>input_tokens</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># The theory:</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. Create baseline session, record input_tokens (say, 50)</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. Fork baseline, inject file content, record input_tokens (say, 550)</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. File tokens = 550 - 50 = 500</span>
-</span></span></code></pre></div><p>It&rsquo;s a bad idea though - wasting compute and tokens just to get token counts.</p>
-<p>But additionally, the whole token count thing was just a step of my plan to have full context control and actually - with the Agent SDK you have to accept tradeoffs that kind of rule my plan out.</p>
+<p>Our writing agent uses the Claude Agent SDK, which I&rsquo;m authenticating through Claude Code&rsquo;s existing credentials (stored in <code>~/.claude/.credentials.json</code>). You can also use an <code>ANTHROPIC_API_KEY</code> if you prefer, but it&rsquo;s nice that users with a subscription don&rsquo;t need a separate API key. Adding a requirement for a separate API key just for token counting feels a wee bit wrong.</p>
+<p>I searched the SDK for a <code>count_tokens</code> method and came up empty. There&rsquo;s no way to count tokens <em>before</em> sending content.</p>
+<p><strong>ResultMessage.usage: Token Counts After Submission</strong></p>
+<p>After each query, the SDK returns a <code>ResultMessage</code> with a <code>usage</code> dict containing detailed token breakdowns:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;input_tokens&#39;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;output_tokens&#39;</span>: <span style="color:#ae81ff">72</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;cache_creation_input_tokens&#39;</span>: <span style="color:#ae81ff">2065</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;cache_read_input_tokens&#39;</span>: <span style="color:#ae81ff">12834</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;service_tier&#39;</span>: <span style="color:#e6db74">&#39;standard&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This gives you accurate counts <em>after</em> each turn - you just can&rsquo;t count <em>before</em> sending like the <code>count_tokens</code> API would let you do.</p>
+<p>For my use case (knowing roughly how much context I&rsquo;m using), this is actually fine. I can:</p>
+<ul>
+<li>Track cumulative token usage across a session</li>
+<li>See how much each turn added</li>
+<li>Monitor costs in real-time</li>
+</ul>
+<p>And since adding a file to the context profile immediately injects it into the current conversation anyway, I get the exact token count back right away.</p>
+<p>However, the bigger issue is context control, not specifically counting the tokens. With the Agent SDK there are some larger trade-offs that affect my original plan.</p>
 <h2 id="a-bigger-issue-with-context-control">A Bigger Issue with Context Control</h2>
 <p>The token counting problem led me to a bigger question: what control do I actually have over the conversation history?</p>
 <p>With the standard Anthropic API, you control everything. Every API call, you send the complete messages array:</p>
@@ -257,7 +268,7 @@
 <p>What this means in practice:</p>
 <ul>
 <li>Context builds up naturally as I work</li>
-<li>I can curate what matters (toggle off the noise)</li>
+<li>I can curate what matters (toggling things on and off, depending what I&rsquo;m wanting the agent to do)</li>
 <li>When I start a new conversation, my curation is respected</li>
 <li>I have perfect control at the <em>beginning</em> of each conversation, even if I can&rsquo;t edit mid-conversation</li>
 </ul>
@@ -266,7 +277,7 @@
 <p>In the next post, I&rsquo;ll implement this meta-context system:</p>
 <ul>
 <li>The <code>ContextStore</code> class with add, toggle, remove</li>
-<li>Token counting (probably just rough estimates for now, exact counts when we can get them)</li>
+<li>Usage tracking with exact token counts from the SDK after each turn</li>
 <li>Injecting enabled context on conversation reset</li>
 <li>Maybe persisting the context profile to disk</li>
 </ul>
@@ -349,7 +360,7 @@
 
 		<article class="relative group flex flex-row">
 	<a class="insert-link" href="http://localhost:1313/posts/2026/02-02-claude-agent-sdk-part-4/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100">
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2026/02-02-claude-agent-sdk-part-4_hu_615a266d9efd0d24.jpg" alt="Claude Agent SDK Part 4: Implementing Context Profiles" width="444" height="250">
 
 	</figure>
 	<div class="basis-2/3 self-center ml-4">
