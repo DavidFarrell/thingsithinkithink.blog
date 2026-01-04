@@ -3,7 +3,7 @@ title: "Claude Agent SDK Part 5: Editing Files with Checkpointing"
 date: 2026-02-09T09:00:00Z
 slug: /02-09-claude-agent-sdk-part-5/
 description: "Adding the ability for the agent to create posts that follow my templates, with the ability to recover from mistakes."
-image: images/2026/02-09-claude-agent-sdk-part-5.png
+image: images/2026/02-09-claude-agent-sdk-part-5.jpg
 caption: "David and Claude digging through the wastepaper basket, looking for the right checkpoint"
 categories:
   - coding
