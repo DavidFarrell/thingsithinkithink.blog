@@ -6,8 +6,15 @@
     <description>Recent content in Learning on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Feb 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Feb 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude Agent SDK Part 5: Editing Files with Checkpointing</title>
+      <link>http://localhost:1313/posts/2026/02-09-claude-agent-sdk-part-5/</link>
+      <pubDate>Mon, 09 Feb 2026 09:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2026/02-09-claude-agent-sdk-part-5/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;http://localhost:1313/02-02-claude-agent-sdk-part-4/&#34;&gt;Part 4&lt;/a&gt;, I built context profiles and usage tracking. Today the writing agent becomes actually useful: I want it to create posts that follow my templates - right folder, right front matter, right conventions etc. And since the agent will be editing my files, I want the ability to recover from mistakes.&lt;/p&gt;&#xA;&lt;p&gt;To get there, I&amp;rsquo;m using &lt;a href=&#34;https://platform.claude.com/docs/en/agent-sdk/slash-commands&#34;&gt;slash commands&lt;/a&gt; to define the templated workflow, and &lt;a href=&#34;https://platform.claude.com/docs/en/agent-sdk/file-checkpointing&#34;&gt;file checkpointing&lt;/a&gt; to enable rewind.&lt;/p&gt;&#xA;&lt;h2 id=&#34;slash-commands-adding-custom-workflows&#34;&gt;Slash Commands: Adding Custom Workflows&lt;/h2&gt;&#xA;&lt;p&gt;Claude Code has a concept of &amp;ldquo;slash commands&amp;rdquo; - markdown files that become &lt;code&gt;/command-name&lt;/code&gt; shortcuts. I wanted to create a &lt;code&gt;/new-post&lt;/code&gt; command that would set up a new blog post with the right front matter, in the right folder, following my conventions.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Claude Agent SDK Part 4: Implementing Context Profiles</title>
       <link>http://localhost:1313/posts/2026/02-02-claude-agent-sdk-part-4/</link>

@@ -15,6 +15,7 @@ tags:
   - python
   - learning
   - feature
+draft: false
 ---
 
 At a recent Claude Code meetup, one of the Anthropic staff mentioned that anything Claude Code can do, you can do using the Agent SDK. That caught my attention. I've been using Claude Code heavily, but I hadn't really understood what was happening under the hood. So I've decided to dig in and document what I learn as I go.

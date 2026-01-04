@@ -4,7 +4,7 @@ date: 2026-02-09T09:00:00Z
 slug: /02-09-claude-agent-sdk-part-5/
 description: "Adding the ability for the agent to create posts that follow my templates, with the ability to recover from mistakes."
 image: images/2026/02-09-claude-agent-sdk-part-5.png
-caption: "TBD"
+caption: "David and Claude digging through the wastepaper basket, looking for the right checkpoint"
 categories:
   - coding
   - artificial-intelligence

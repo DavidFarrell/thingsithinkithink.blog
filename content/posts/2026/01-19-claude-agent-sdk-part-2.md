@@ -15,6 +15,7 @@ tags:
   - python
   - learning
   - feature
+draft: false
 ---
 
 My goal today is to make the minimal writing agent from [Part 1](/12-23-exploring-claude-agent-sdk/) a bit more user-friendly. I'm starting with making the tool calls more descriptive.
