@@ -6,8 +6,15 @@
     <description>Recent content in Feature on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Dec 2025 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Jan 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/feature/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM Evals Course: Complete Course Recap</title>
+      <link>https://thingsithinkithink.blog/posts/2026/01-05-llm-evals-course-recap/</link>
+      <pubDate>Mon, 05 Jan 2026 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/01-05-llm-evals-course-recap/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve finally finished writing up my notes from Hamel Husain and Shreya Shankar&amp;rsquo;s &lt;a href=&#34;https://maven.com/parlance-labs/evals&#34;&gt;LLM evaluation course&lt;/a&gt;. It took me longer to write up my notes than it took to actually do the course, but it gave me a good excuse to revisit everything a second time, which is a great way to help cement my learnings. I&amp;rsquo;m going to do one post here to finally capture the key things from each of the lessons, with the hope that I can refer back to this in the future to help me find the detail that I&amp;rsquo;m looking for.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LLM Evals Lesson 8: Improving LLM Products</title>
       <link>https://thingsithinkithink.blog/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/</link>
