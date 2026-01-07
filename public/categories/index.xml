@@ -6,8 +6,22 @@
     <description>Recent content in Categories on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Jan 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jan 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coding</title>
+      <link>https://thingsithinkithink.blog/categories/coding/</link>
+      <pubDate>Wed, 07 Jan 2026 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/categories/coding/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Personal</title>
+      <link>https://thingsithinkithink.blog/categories/personal/</link>
+      <pubDate>Wed, 07 Jan 2026 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/categories/personal/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Artificial-Intelligence</title>
       <link>https://thingsithinkithink.blog/categories/artificial-intelligence/</link>
@@ -34,13 +48,6 @@
       <link>https://thingsithinkithink.blog/categories/feature/</link>
       <pubDate>Mon, 05 Jan 2026 09:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/categories/feature/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Coding</title>
-      <link>https://thingsithinkithink.blog/categories/coding/</link>
-      <pubDate>Tue, 11 Nov 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/categories/coding/</guid>
       <description></description>
     </item>
     <item>

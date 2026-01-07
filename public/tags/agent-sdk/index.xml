@@ -2,53 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Agent-Sdk on thingsithinkithink</title>
-    <link>http://localhost:1313/tags/agent-sdk/</link>
+    <link>https://thingsithinkithink.blog/tags/agent-sdk/</link>
     <description>Recent content in Agent-Sdk on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Feb 2026 09:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/agent-sdk/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Claude Agent SDK Part 5: Editing Files with Checkpointing</title>
-      <link>http://localhost:1313/posts/2026/02-09-claude-agent-sdk-part-5/</link>
-      <pubDate>Mon, 09 Feb 2026 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2026/02-09-claude-agent-sdk-part-5/</guid>
-      <description>&lt;p&gt;In &lt;a href=&#34;http://localhost:1313/02-02-claude-agent-sdk-part-4/&#34;&gt;Part 4&lt;/a&gt;, I built context profiles and usage tracking. Today the writing agent becomes actually useful: I want it to create posts that follow my templates - right folder, right front matter, right conventions etc. And since the agent will be editing my files, I want the ability to recover from mistakes.&lt;/p&gt;&#xA;&lt;p&gt;To get there, I&amp;rsquo;m using &lt;a href=&#34;https://platform.claude.com/docs/en/agent-sdk/slash-commands&#34;&gt;slash commands&lt;/a&gt; to define the templated workflow, and &lt;a href=&#34;https://platform.claude.com/docs/en/agent-sdk/file-checkpointing&#34;&gt;file checkpointing&lt;/a&gt; to enable rewind.&lt;/p&gt;&#xA;&lt;h2 id=&#34;slash-commands-adding-custom-workflows&#34;&gt;Slash Commands: Adding Custom Workflows&lt;/h2&gt;&#xA;&lt;p&gt;Claude Code has a concept of &amp;ldquo;slash commands&amp;rdquo; - markdown files that become &lt;code&gt;/command-name&lt;/code&gt; shortcuts. I wanted to create a &lt;code&gt;/new-post&lt;/code&gt; command that would set up a new blog post with the right front matter, in the right folder, following my conventions.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Claude Agent SDK Part 4: Implementing Context Profiles</title>
-      <link>http://localhost:1313/posts/2026/02-02-claude-agent-sdk-part-4/</link>
-      <pubDate>Mon, 02 Feb 2026 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2026/02-02-claude-agent-sdk-part-4/</guid>
-      <description>&lt;p&gt;In &lt;a href=&#34;http://localhost:1313/01-26-claude-agent-sdk-part-3/&#34;&gt;Part 3&lt;/a&gt;, I discovered I couldn&amp;rsquo;t have perfect control over the conversation history with the Agent SDK. Today I&amp;rsquo;m implementing two things: a &lt;strong&gt;context profile&lt;/strong&gt; that persists across conversations, and &lt;strong&gt;usage tracking&lt;/strong&gt; so I can see exactly what&amp;rsquo;s happening with tokens.&lt;/p&gt;&#xA;&lt;h2 id=&#34;understanding-the-usage-dict&#34;&gt;Understanding the Usage Dict&lt;/h2&gt;&#xA;&lt;p&gt;Before building anything, I needed to understand what the SDK actually tells us about token usage. After each query, &lt;code&gt;ResultMessage.usage&lt;/code&gt; contains:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;input_tokens&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;output_tokens&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;72&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cache_creation_input_tokens&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;6065&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cache_read_input_tokens&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;12834&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;service_tier&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;standard&amp;#39;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cache_creation&amp;#39;&lt;/span&gt;: {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ephemeral_1h_input_tokens&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ephemeral_5m_input_tokens&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;6065&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here&amp;rsquo;s what each field means:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Claude Agent SDK Part 3: The Context Control Problem</title>
-      <link>http://localhost:1313/posts/2026/01-26-claude-agent-sdk-part-3/</link>
-      <pubDate>Mon, 26 Jan 2026 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2026/01-26-claude-agent-sdk-part-3/</guid>
-      <description>&lt;p&gt;Building on &lt;a href=&#34;http://localhost:1313/01-12-exploring-claude-agent-sdk/&#34;&gt;Part 1&lt;/a&gt; and &lt;a href=&#34;http://localhost:1313/01-19-claude-agent-sdk-part-2/&#34;&gt;Part 2&lt;/a&gt;, today I wanted to add context management to the writing agent. What I discovered instead was a slightly annoying fundamental trade-off in the SDK&amp;rsquo;s design.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-context-control-comes-first&#34;&gt;Why Context Control Comes First&lt;/h2&gt;&#xA;&lt;p&gt;When I use AI-supported writing, I&amp;rsquo;m not trying to get it to do most of the writing. I&amp;rsquo;m trying to get it to help me with cleanup, editing, gap analysis, and checking details. So what I&amp;rsquo;m really looking for is control over the context so that AI is more like an expert editor / sounding board.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Claude Agent SDK: Part 2</title>
-      <link>http://localhost:1313/posts/2026/01-19-claude-agent-sdk-part-2/</link>
-      <pubDate>Mon, 19 Jan 2026 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2026/01-19-claude-agent-sdk-part-2/</guid>
-      <description>&lt;p&gt;My goal today is to make the minimal writing agent from &lt;a href=&#34;http://localhost:1313/12-23-exploring-claude-agent-sdk/&#34;&gt;Part 1&lt;/a&gt; a bit more user-friendly. I&amp;rsquo;m starting with making the tool calls more descriptive.&lt;/p&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s what they currently look like:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Assistant:&#xA;[Using Glob...]Let me search more specifically in the content folder for blog posts:&#xA;[Using Glob...]Based on the file dates, the most recent post appears to be from December 21, 2025. Let me read it:&#xA;[Using Read...]&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can see tool usage happening (&lt;code&gt;[Using Glob...]&lt;/code&gt;, &lt;code&gt;[Using Read...]&lt;/code&gt;), but there&amp;rsquo;s no information about &lt;em&gt;what&lt;/em&gt; the tool is actually doing. What pattern is Glob searching for? What file is Read opening?&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Exploring the Claude Agent SDK</title>
-      <link>http://localhost:1313/posts/2026/01-12-exploring-claude-agent-sdk/</link>
-      <pubDate>Mon, 12 Jan 2026 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2026/01-12-exploring-claude-agent-sdk/</guid>
-      <description>&lt;p&gt;At a recent Claude Code meetup, one of the Anthropic staff mentioned that anything Claude Code can do, you can do using the Agent SDK. That caught my attention. I&amp;rsquo;ve been using Claude Code heavily, but I hadn&amp;rsquo;t really understood what was happening under the hood. So I&amp;rsquo;ve decided to dig in and document what I learn as I go.&lt;/p&gt;&#xA;&lt;p&gt;I like the idea of having a specialised version of Claude that understands my writing process, the tools I use, and the way I like to work. So as a toy experiment, I&amp;rsquo;m working on a writing agent built on the Claude Agent SDK.&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Wed, 07 Jan 2026 09:00:00 +0000</lastBuildDate>
+    <atom:link href="https://thingsithinkithink.blog/tags/agent-sdk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Three Things I Did Over Christmas</title>
-      <link>http://localhost:1313/posts/2026/01-07-christmas-break-projects/</link>
+      <link>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</link>
       <pubDate>Wed, 07 Jan 2026 09:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2026/01-07-christmas-break-projects/</guid>
-      <description>&lt;p&gt;One of the nice things about not having work over the Christmas break is that it gives me a chance to play a little.&lt;/p&gt;&#xA;&lt;p&gt;This year I had three main projects.&lt;/p&gt;&#xA;&lt;h2 id=&#34;finishing-my-llm-evals-course-notes&#34;&gt;Finishing My LLM Evals Course Notes&lt;/h2&gt;&#xA;&lt;p&gt;I finally wrote up the last of my notes on the &lt;a href=&#34;http://localhost:1313/01-05-llm-evals-course-recap/&#34;&gt;LLM Evals course&lt;/a&gt;, including an overall summary and an index page pulling together all eight lessons. It felt good to close the loop on something I&amp;rsquo;d been chipping away at for months.&lt;/p&gt;</description>
+      <guid>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</guid>
+      <description>&lt;p&gt;One of the nice things about not having work over the Christmas break is that it gives me a chance to play a little.&lt;/p&gt;&#xA;&lt;p&gt;This year I had three main projects.&lt;/p&gt;&#xA;&lt;h2 id=&#34;finishing-my-llm-evals-course-notes&#34;&gt;Finishing My LLM Evals Course Notes&lt;/h2&gt;&#xA;&lt;p&gt;I finally wrote up the last of my notes on the &lt;a href=&#34;https://thingsithinkithink.blog/01-05-llm-evals-course-recap/&#34;&gt;LLM Evals course&lt;/a&gt;, including an overall summary and an index page pulling together all eight lessons. It felt good to close the loop on something I&amp;rsquo;d been chipping away at for months.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -6,8 +6,15 @@
     <description>Recent content on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Jan 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jan 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Three Things I Did Over Christmas</title>
+      <link>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</link>
+      <pubDate>Wed, 07 Jan 2026 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</guid>
+      <description>&lt;p&gt;One of the nice things about not having work over the Christmas break is that it gives me a chance to play a little.&lt;/p&gt;&#xA;&lt;p&gt;This year I had three main projects.&lt;/p&gt;&#xA;&lt;h2 id=&#34;finishing-my-llm-evals-course-notes&#34;&gt;Finishing My LLM Evals Course Notes&lt;/h2&gt;&#xA;&lt;p&gt;I finally wrote up the last of my notes on the &lt;a href=&#34;https://thingsithinkithink.blog/01-05-llm-evals-course-recap/&#34;&gt;LLM Evals course&lt;/a&gt;, including an overall summary and an index page pulling together all eight lessons. It felt good to close the loop on something I&amp;rsquo;d been chipping away at for months.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LLM Evals Course: Complete Course Recap</title>
       <link>https://thingsithinkithink.blog/posts/2026/01-05-llm-evals-course-recap/</link>
