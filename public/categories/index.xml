@@ -6,13 +6,27 @@
     <description>Recent content in Categories on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Jan 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Jan 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Artificial-Intelligence</title>
+      <link>https://thingsithinkithink.blog/categories/artificial-intelligence/</link>
+      <pubDate>Mon, 12 Jan 2026 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/categories/artificial-intelligence/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Coding</title>
       <link>https://thingsithinkithink.blog/categories/coding/</link>
-      <pubDate>Wed, 07 Jan 2026 09:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Jan 2026 09:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/categories/coding/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Feature</title>
+      <link>https://thingsithinkithink.blog/categories/feature/</link>
+      <pubDate>Mon, 12 Jan 2026 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/categories/feature/</guid>
       <description></description>
     </item>
     <item>
@@ -20,13 +34,6 @@
       <link>https://thingsithinkithink.blog/categories/personal/</link>
       <pubDate>Wed, 07 Jan 2026 09:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/categories/personal/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Artificial-Intelligence</title>
-      <link>https://thingsithinkithink.blog/categories/artificial-intelligence/</link>
-      <pubDate>Mon, 05 Jan 2026 09:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/categories/artificial-intelligence/</guid>
       <description></description>
     </item>
     <item>
@@ -41,13 +48,6 @@
       <link>https://thingsithinkithink.blog/categories/evals/</link>
       <pubDate>Mon, 05 Jan 2026 09:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/categories/evals/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Feature</title>
-      <link>https://thingsithinkithink.blog/categories/feature/</link>
-      <pubDate>Mon, 05 Jan 2026 09:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/categories/feature/</guid>
       <description></description>
     </item>
     <item>
