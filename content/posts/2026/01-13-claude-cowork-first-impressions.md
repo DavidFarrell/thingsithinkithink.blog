@@ -3,8 +3,8 @@ title: "First Impressions of Claude Cowork Mode"
 date: 2026-01-13T10:00:00Z
 slug: /01-13-claude-cowork-first-impressions/
 description: "Trying out Anthropic's new Claude Cowork mode."
-image: images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-58-21_-_PT2_Final_summary_10_blog_post_ideas_provocative_tensions.png
-caption: "Claude suggesting blog post ideas based on contrasting my views with Lenny's podcast guests"
+image: images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox.png
+caption: "The initial prompt. I gave Claude a link to Lenny's Dropbox folder."
 categories:
   - artificial-intelligence
   - product-management
@@ -29,8 +29,6 @@ Here's how it went.
 ## Part 1: Getting the Transcripts
 
 I started by pointing Claude at my Obsidian folder and asking it to grab the transcripts from Dropbox. Obsidian is where I store all of my work notes, resources, and things I like to keep track of. I don't really use its advanced features, I just like having markdown-based notes and Obsidian is a good viewer.
-
-{{< figure src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox.png" caption="The initial prompt. I gave Claude a link to Lenny's Dropbox folder." >}}
 
 The first hurdle was getting Claude to actually access the files. The t.co URL shortener wouldn't resolve properly through Claude's web tools, and Dropbox was blocked by domain restrictions.
 
