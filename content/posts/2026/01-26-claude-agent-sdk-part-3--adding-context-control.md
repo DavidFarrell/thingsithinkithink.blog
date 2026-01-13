@@ -1,6 +1,6 @@
 ---
 title: "Claude Agent SDK Part 3: The Context Control Problem"
-date: 2026-01-26T09:00:00Z
+date: 2026-01-21T09:00:00Z
 slug: /01-26-claude-agent-sdk-part-3/
 description: "Discovering the trade-offs between agency and control when building on the Claude Agent SDK."
 image: images/2026/01-26-claude-agent-sdk-part-3.png

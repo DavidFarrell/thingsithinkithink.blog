@@ -6,8 +6,15 @@
     <description>Recent content on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jan 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Jan 2026 10:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First Impressions of Claude Cowork Mode</title>
+      <link>https://thingsithinkithink.blog/posts/2026/01-13-claude-cowork-first-impressions/</link>
+      <pubDate>Tue, 13 Jan 2026 10:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/01-13-claude-cowork-first-impressions/</guid>
+      <description>&lt;p&gt;Anthropic recently released &lt;a href=&#34;https://www.anthropic.com/news/cowork&#34;&gt;Cowork mode&lt;/a&gt; for Claude. It&amp;rsquo;s similar to Claude Code in that it&amp;rsquo;s highly agentic, has access to skills, and can make changes to files on your computer. But it has a nicer interface than Claude Code and is aimed at non-programmers, giving them access to the kind of general agent that all of us technical folk have been enjoying for a while now.&lt;/p&gt;&#xA;&lt;p&gt;You select a folder from your hard drive, give Claude a task, and it spins up a little virtual computer of its own that can read and edit those files. It&amp;rsquo;s allowed to browse the web, produce outputs, write its own code, and stuff like this.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Exploring the Claude Agent SDK</title>
       <link>https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/</link>

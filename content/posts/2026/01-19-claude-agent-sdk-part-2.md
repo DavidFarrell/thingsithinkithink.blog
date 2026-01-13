@@ -1,6 +1,6 @@
 ---
 title: "Claude Agent SDK: Part 2"
-date: 2026-01-19T09:00:00Z
+date: 2026-01-16T09:00:00Z
 slug: /01-19-claude-agent-sdk-part-2/
 description: "Continuing to explore Anthropic's Agent SDK - making tool calls more descriptive and learning about Python introspection."
 image: images/2026/01-19-claude-agent-sdk-part-2.png

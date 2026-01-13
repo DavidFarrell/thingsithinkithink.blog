@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>First Impressions of Claude Cowork Mode | thingsithinkithink</title>
+
+<meta name="description" content="Trying out Anthropic&#39;s new Claude Cowork mode.">
+      <link rel="stylesheet" href="/css/main.min.80f29fb74d530136f20bd8f3c36d75c8a96e2026e849229670727aa4d68f7fbc.css" integrity="sha256-gPKft01TATbyC9jzw211yKluICboSSKWcHJ6pNaPf7w=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">First Impressions of Claude Cowork Mode</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Trying out Anthropic&#39;s new Claude Cowork mode. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-01-13T10:00:00&#43;00:00">January 13, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            7 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-58-21_-_PT2_Final_summary_10_blog_post_ideas_provocative_tensions_hu_38eaf38e632d28f4.png" alt="" width="750" height="737">
+        <figcaption class="text-center italic text-xs">Claude suggesting blog post ideas based on contrasting my views with Lenny&#39;s podcast guests</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>Anthropic recently released <a href="https://www.anthropic.com/news/cowork">Cowork mode</a> for Claude. It&rsquo;s similar to Claude Code in that it&rsquo;s highly agentic, has access to skills, and can make changes to files on your computer. But it has a nicer interface than Claude Code and is aimed at non-programmers, giving them access to the kind of general agent that all of us technical folk have been enjoying for a while now.</p>
+<p>You select a folder from your hard drive, give Claude a task, and it spins up a little virtual computer of its own that can read and edit those files. It&rsquo;s allowed to browse the web, produce outputs, write its own code, and stuff like this.</p>
+<p>To give it a test, I thought it&rsquo;d be interesting to try a real task, something I&rsquo;ve been wanting to do. I noticed the other day that Lenny Rachitsky of Lenny&rsquo;s Podcast fame <a href="https://x.com/lennysan/status/2010858195435339851">releases his transcripts</a>. I thought it&rsquo;d be good to use Claude Cowork to grab all the transcripts, get them on my computer so I can use them for future reference, and also to see whether there have been any interesting interviews with guests that might counter the positions I&rsquo;ve taken on my blog. Anytime there&rsquo;s a difference of opinion, there&rsquo;s usually something interesting to learn there.</p>
+<p>I tried to do it in one session and wasn&rsquo;t able to, for reasons I&rsquo;ll explain in a moment. But it was actually a really positive experience, and although I think the <a href="https://thingsithinkithink.blog/posts/2025/05-04-synthesising-a-new-framework-for-ai-transformation/">&ldquo;jagged frontier&rdquo;</a> of AI is still a problem, I do think that this is a step towards the way we will all be working in the not too distant future.</p>
+<p>Here&rsquo;s how it went.</p>
+<h2 id="part-1-getting-the-transcripts">Part 1: Getting the Transcripts</h2>
+<p>I started by pointing Claude at my Obsidian folder and asking it to grab the transcripts from Dropbox. Obsidian is where I store all of my work notes, resources, and things I like to keep track of. I don&rsquo;t really use its advanced features, I just like having markdown-based notes and Obsidian is a good viewer.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox.png"
+    alt="The initial prompt. I gave Claude a link to Lenny&rsquo;s Dropbox folder."><figcaption>
+      <p>The initial prompt. I gave Claude a link to Lenny&rsquo;s Dropbox folder.</p>
+    </figcaption>
+</figure>
+
+<p>The first hurdle was getting Claude to actually access the files. The t.co URL shortener wouldn&rsquo;t resolve properly through Claude&rsquo;s web tools, and Dropbox was blocked by domain restrictions.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-04_-_PT1_Claude_explains_Dropbox_domain_restrictions.png"
+    alt="Domain restrictions prevented direct access to Dropbox."><figcaption>
+      <p>Domain restrictions prevented direct access to Dropbox.</p>
+    </figcaption>
+</figure>
+
+<p>Claude noticed it was struggling and pivoted to using the Chrome browser to do this manually.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-05_-_PT1_Chrome_permissions_dialog_navigate_to_tco.png"
+    alt="Claude for Chrome requesting permission to navigate to the shortened URL."><figcaption>
+      <p>Claude for Chrome requesting permission to navigate to the shortened URL.</p>
+    </figcaption>
+</figure>
+
+<p>This worked. Claude got into the Dropbox folder and could see all the transcript files. It scrolled down the page until it understood the size of the request, that there were several hundred files in there. I was worried it was going to try to download them one at a time, but instead it was smart enough to scroll back to the top and use the download all button.</p>
+<p>However, this led to the next problem. Claude could see that the download process had started, as shown in the image below, but it didn&rsquo;t seem to see the dialogue asking where to save the file.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-07_-_PT1_Claude_attempting_download_explaining_VM_limitation.png"
+    alt="Claude realising that browser downloads don&rsquo;t land where it can access them."><figcaption>
+      <p>Claude realising that browser downloads don&rsquo;t land where it can access them.</p>
+    </figcaption>
+</figure>
+
+<p>I let it try for a minute to see if it could spot that it had to click save, but in the end I just saved the file myself and dragged it into the chat.</p>
+<p>The reason I had to drag the file in is a bit convoluted. I had started Claude Cowork pointing at my Obsidian folder. Due to the nature of the sandbox, Claude Cowork can only see files inside the folder you selected at the start. It couldn&rsquo;t see my Mac&rsquo;s Downloads folder. So even though the browser downloaded the zip file successfully, Claude had no way to access it. Dragging the file into the chat was the workaround, as that uploads it directly into Claude&rsquo;s VM where it can work with it.</p>
+<p>Claude extracted everything to my Resources folder and verified the contents.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-11_-_PT1_Task_complete_verification_results_all_transcripts_ready.png"
+    alt="321 transcript files, all verified and ready to use."><figcaption>
+      <p>321 transcript files, all verified and ready to use.</p>
+    </figcaption>
+</figure>
+
+<p>So far so good, but now I hit the folder context problem again.</p>
+<h2 id="the-folder-context-problem">The Folder Context Problem</h2>
+<p>As I mentioned with the downloads thing above, I had pointed Claude at my Obsidian folder. The transcripts were there now, but my blog lives in a completely different location on my filesystem. When I asked Claude to analyse my blog posts and compare them to the transcripts, it couldn&rsquo;t find the blog, even when I pointed it to the exact folder location.</p>
+<p>Claude Code is able to add folders to the context. If you&rsquo;re using Claude Code, it is similarly sandboxed to Claude Cowork, but with Claude Code you can add a second folder, a third folder, as many folders as you like. One Claude Code agent can access several folders scattered across different locations on your disk. At present, Claude Cowork really just wants to work from one folder.</p>
+<p>So I couldn&rsquo;t complete this task in the first session. I had to start a new session and point Claude at a folder higher up in the hierarchy, under which both my blog and the Obsidian vault with the transcripts sit.</p>
+<h2 id="part-2-the-analysis">Part 2: The Analysis</h2>
+<p>On my Mac, my Obsidian vault and my blog are both at various locations underneath my user folder. So if you look at the image below, you&rsquo;ll see I&rsquo;ve added &ldquo;david&rdquo; to the Claude Cowork prompt and now it&rsquo;s able to access everything under my home directory. This does defeat the purpose of a sandbox a bit, since I&rsquo;ve basically given it access to everything, but it was the only way to get both locations in scope.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-58-12_-_PT2_New_session_david_folder_full_contrasting_analysis_prompt.png"
+    alt="The second session. This time with access to both the transcripts and my blog."><figcaption>
+      <p>The second session. This time with access to both the transcripts and my blog.</p>
+    </figcaption>
+</figure>
+
+<p>With the right folder context, things moved quickly.</p>
+<p>Claude found my blog by searching for references to &ldquo;thingsithinkithink&rdquo;, then located the Lenny transcripts in my Resources folder.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-58-14_-_PT2_Claude_finding_thingsithinkithink_blog_reference.png"
+    alt="Claude finding the blog by searching the filesystem."><figcaption>
+      <p>Claude finding the blog by searching the filesystem.</p>
+    </figcaption>
+</figure>
+
+<p>Once Claude had found both the transcripts and the blog, it spawned several sub-agents to read and summarise my blog posts and to read and analyse the podcast transcripts.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-58-15_-_PT2_Claude_launching_parallel_agents_blog_and_transcript_analysis.png"
+    alt="Parallel agents working on the blog and transcript analysis simultaneously."><figcaption>
+      <p>Parallel agents working on the blog and transcript analysis simultaneously.</p>
+    </figcaption>
+</figure>
+
+<p>You can see in the image below that it&rsquo;s doing several different commands and reading several different files at the same time. These were all kicked off in parallel.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-58-18_-_PT2_Multiple_file_reading_operations_in_progress.png"
+    alt="A lot of file reading happening in parallel."><figcaption>
+      <p>A lot of file reading happening in parallel.</p>
+    </figcaption>
+</figure>
+
+<p>The blog agent read through my posts from 2024 to 2026, extracting my key positions on things like AI evaluation, project management, frameworks, and open source AI. The transcript agent similarly read through Lenny&rsquo;s transcripts and pulled out their main arguments. I&rsquo;m not 100% sure it read every single blog post, and I&rsquo;m not 100% sure it read every single transcript. That&rsquo;s something I&rsquo;d want to pay more attention to if there were a lot riding on this.</p>
+<p>Then Claude synthesised everything into a set of contrasting positions and suggested ten blog post ideas where my views could be put in tension with perspectives from Lenny&rsquo;s guests.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-58-20_-_PT2_Summary_table_contrasting_positions.png"
+    alt="The summary table of contrasting positions."><figcaption>
+      <p>The summary table of contrasting positions.</p>
+    </figcaption>
+</figure>
+
+<p>That table is really cool. Looking at it, I&rsquo;m actually quite motivated to visit those interviews and maybe even write those articles. So I think this was overall a pretty good success.</p>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-58-21_-_PT2_Final_summary_10_blog_post_ideas_provocative_tensions.png"
+    alt="The final output: ten blog post ideas with specific contrasts identified."><figcaption>
+      <p>The final output: ten blog post ideas with specific contrasts identified.</p>
+    </figcaption>
+</figure>
+
+<h2 id="thingsithinkithink">thingsithinkithink</h2>
+<ul>
+<li>
+<p>It&rsquo;s dead exciting to see agents coming to a wider audience. I think anyone who&rsquo;s a heavy user of Claude Code feels like they&rsquo;re living in the future, and I think to some extent we are. This is what everybody will be doing in a year or so. I think Claude Cowork is the first step in that direction.</p>
+</li>
+<li>
+<p>The jagged frontier is still very real. The paper cuts here, the little things I stumbled upon and that tripped me up, those are basically fatal for enterprise adoption today.</p>
+</li>
+<li>
+<p>However, according to <a href="https://x.com/altryne/status/2010811222409756707">Felix Rieseberg</a> (an Anthropic employee), Cowork was thrown together in about a week and a half. It&rsquo;s excellent already, albeit with all these stumbling blocks, and I have no doubt that the experience will mature over time.</p>
+</li>
+</ul>
+<figure><img src="/images/2026/Claude_Cowork_First_Impressions/2025-01-13_10-13-00_-_Alex_Volkov_tweet_Cowork_built_in_week_and_half.png"
+    alt="Alex Volkov&rsquo;s tweet thread confirming Cowork was built in a week and a half, entirely with Claude Code."><figcaption>
+      <p>Alex Volkov&rsquo;s tweet thread confirming Cowork was built in a week and a half, entirely with Claude Code.</p>
+    </figcaption>
+</figure>
+
+<ul>
+<li>
+<p>Until we&rsquo;re able to add multiple folders, the power of this is going to be relatively limited for me personally. Most of the work I do requires synthesising things across different places on my hard drive. That&rsquo;s sort of an accident of the way I work, but I suspect it&rsquo;s not super uncommon.</p>
+</li>
+<li>
+<p>I kind of almost take it for granted now how agentic AI is. I&rsquo;m used to it, I love it, it&rsquo;s amazing, and I very much benefit from it. I think anybody who hasn&rsquo;t been playing with Claude Code is going to have their mind blown by this.</p>
+</li>
+</ul>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/claude/">Claude</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/cowork/">Cowork</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/ai-tools/">Ai-Tools</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/12-23-claude-agent-sdk_hu_d70798accc3aa2f5.png" alt="Exploring the Claude Agent SDK" width="750" height="419">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-01-12T09:00:00&#43;00:00">Jan 12, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Exploring the Claude Agent SDK</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Learning in public: experimenting with Anthropic&#39;s Agent SDK after hearing that anything Claude Code can do, you can do with the SDK.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-07-christmas-game-welcome_hu_8e2cf405db533662.png" alt="Three Things I Did Over Christmas" width="750" height="419">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-01-07T09:00:00&#43;00:00">Jan 07, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Three Things I Did Over Christmas</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">One of the nice things about time off is the chance to play a little.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-13-claude-cowork-first-impressions/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-58-21_-_PT2_Final_summary_10_blog_post_ideas_provocative_tensions_hu_827adc98ce297837.png" alt="First Impressions of Claude Cowork Mode" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">First Impressions of Claude Cowork Mode</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/12-23-claude-agent-sdk_hu_38c7b10161ff92dc.png" alt="Exploring the Claude Agent SDK" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Exploring the Claude Agent SDK</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-07-christmas-game-welcome_hu_c0626d4427d544f3.png" alt="Three Things I Did Over Christmas" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Three Things I Did Over Christmas</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-05-llm-evals-course-recap/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/12-22-hamel-shreya-course-promo_hu_8dcbf9d1ac3cf478.png" alt="LLM Evals Course: Complete Course Recap" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Course: Complete Course Recap</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/12-21-llm-evals-lesson-8-improving-llm-products/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/12-21-improve-phase-intro_hu_5a79eaecd33c5c31.png" alt="LLM Evals Lesson 8: Improving LLM Products" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">LLM Evals Lesson 8: Improving LLM Products</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+</body>
+</html>
