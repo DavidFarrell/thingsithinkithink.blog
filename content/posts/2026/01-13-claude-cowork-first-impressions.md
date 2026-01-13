@@ -16,13 +16,13 @@ tags:
 draft: false
 ---
 
-Anthropic recently released [Cowork mode](https://www.anthropic.com/news/cowork) for Claude. It's similar to Claude Code in that it's highly agentic, has access to skills, and can make changes to files on your computer. But it has a nicer interface than Claude Code and is aimed at non-programmers, giving them access to the kind of general agent that all of us technical folk have been enjoying for a while now.
+Anthropic recently released [Cowork mode](https://claude.com/blog/cowork-research-preview) for Claude. It's similar to Claude Code in that it's highly agentic, has access to skills, and can make changes to files on your computer. But it has a nicer interface than Claude Code and is aimed at non-programmers, giving them access to the kind of general agent that all of us technical folk have been enjoying for a while now.
 
 You select a folder from your hard drive, give Claude a task, and it spins up a little virtual computer of its own that can read and edit those files. It's allowed to browse the web, produce outputs, write its own code, and stuff like this.
 
 To give it a test, I thought it'd be interesting to try a real task, something I've been wanting to do. I noticed the other day that Lenny Rachitsky of Lenny's Podcast fame [releases his transcripts](https://x.com/lennysan/status/2010858195435339851). I thought it'd be good to use Claude Cowork to grab all the transcripts, get them on my computer so I can use them for future reference, and also to see whether there have been any interesting interviews with guests that might counter the positions I've taken on my blog. Anytime there's a difference of opinion, there's usually something interesting to learn there.
 
-I tried to do it in one session and wasn't able to, for reasons I'll explain in a moment. But it was actually a really positive experience, and although I think the ["jagged frontier"]({{< ref "posts/2025/05-04-synthesising-a-new-framework-for-ai-transformation" >}}) of AI is still a problem, I do think that this is a step towards the way we will all be working in the not too distant future.
+I tried to do it in one session and wasn't able to, for reasons I'll explain in a moment. But it was actually a really positive experience, and although I think the ["jagged frontier"](https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged) of AI is still a problem, I do think that this is a step towards the way we will all be working in the not too distant future.
 
 Here's how it went.
 
