@@ -18,7 +18,7 @@ tags:
 draft: false
 ---
 
-In [Part 3](/01-26-claude-agent-sdk-part-3/), I discovered I couldn't have perfect control over the conversation history with the Agent SDK. Today I'm implementing two things: a **context profile** that persists across conversations, and **usage tracking** so I can see exactly what's happening with tokens.
+In [Part 3](/posts/2026/01-26-claude-agent-sdk-part-3/), I discovered I couldn't have perfect control over the conversation history with the Agent SDK. Today I'm implementing two things: a **context profile** that persists across conversations, and **usage tracking** so I can see exactly what's happening with tokens.
 
 ## Understanding the Usage Dict
 
@@ -215,4 +215,4 @@ The Agent SDK has file checkpoint features that let you roll back changes to pre
 
 ---
 
-*This is Part 4 of my series on learning the Claude Agent SDK. [Part 1](/01-12-exploring-claude-agent-sdk/) covers initial exploration, [Part 2](/01-19-claude-agent-sdk-part-2/) builds the first working agent, and [Part 3](/01-26-claude-agent-sdk-part-3/) dives into conversation history.*
+*This is Part 4 of my series on learning the Claude Agent SDK. [Part 1](/posts/2026/01-12-exploring-claude-agent-sdk/) covers initial exploration, [Part 2](/posts/2026/01-19-claude-agent-sdk-part-2/) builds the first working agent, and [Part 3](/posts/2026/01-26-claude-agent-sdk-part-3/) dives into conversation history.*

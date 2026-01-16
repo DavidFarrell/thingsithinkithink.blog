@@ -18,7 +18,7 @@ tags:
 draft: false
 ---
 
-In [Part 4](/02-02-claude-agent-sdk-part-4/), I built context profiles and usage tracking. Today the writing agent becomes actually useful: I want it to create posts that follow my templates - right folder, right front matter, right conventions etc. And since the agent will be editing my files, I want the ability to recover from mistakes.
+In [Part 4](/posts/2026/02-02-claude-agent-sdk-part-4/), I built context profiles and usage tracking. Today the writing agent becomes actually useful: I want it to create posts that follow my templates - right folder, right front matter, right conventions etc. And since the agent will be editing my files, I want the ability to recover from mistakes.
 
 To get there, I'm using [slash commands](https://platform.claude.com/docs/en/agent-sdk/slash-commands) to define the templated workflow, and [file checkpointing](https://platform.claude.com/docs/en/agent-sdk/file-checkpointing) to enable rewind.
 
@@ -306,4 +306,4 @@ Next time I want to dig into MCP tools. I've got a few things I want to expose t
 
 ---
 
-*This is Part 5 of my series on learning the Claude Agent SDK. [Part 1](/01-12-exploring-claude-agent-sdk/) covers initial exploration, [Part 2](/01-19-claude-agent-sdk-part-2/) builds the first working agent, [Part 3](/01-26-claude-agent-sdk-part-3/) explores context control, and [Part 4](/02-02-claude-agent-sdk-part-4/) adds usage tracking and context profiles.*
+*This is Part 5 of my series on learning the Claude Agent SDK. [Part 1](/posts/2026/01-12-exploring-claude-agent-sdk/) covers initial exploration, [Part 2](/posts/2026/01-19-claude-agent-sdk-part-2/) builds the first working agent, [Part 3](/posts/2026/01-26-claude-agent-sdk-part-3/) explores context control, and [Part 4](/posts/2026/02-02-claude-agent-sdk-part-4/) adds usage tracking and context profiles.*

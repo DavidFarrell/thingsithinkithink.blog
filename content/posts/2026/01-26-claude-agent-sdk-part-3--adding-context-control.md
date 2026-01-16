@@ -18,7 +18,7 @@ tags:
 draft: false
 ---
 
-Building on [Part 1](/01-12-exploring-claude-agent-sdk/) and [Part 2](/01-19-claude-agent-sdk-part-2/), today I wanted to add context management to the writing agent. What I discovered instead was a slightly annoying fundamental trade-off in the SDK's design.
+Building on [Part 1](/posts/2026/01-12-exploring-claude-agent-sdk/) and [Part 2](/posts/2026/01-19-claude-agent-sdk-part-2/), today I wanted to add context management to the writing agent. What I discovered instead was a slightly annoying fundamental trade-off in the SDK's design.
 
 ## Why Context Control Comes First
 
@@ -198,4 +198,4 @@ The individual conversation remains ephemeral. The context profile evolves with 
 
 ---
 
-*This is Part 3 of my series on building with the Claude Agent SDK. [Part 1](/01-12-exploring-claude-agent-sdk/) covers the basics, [Part 2](/01-19-claude-agent-sdk-part-2/) adds multi-line input and streaming output.*
+*This is Part 3 of my series on building with the Claude Agent SDK. [Part 1](/posts/2026/01-12-exploring-claude-agent-sdk/) covers the basics, [Part 2](/posts/2026/01-19-claude-agent-sdk-part-2/) adds multi-line input and streaming output.*
