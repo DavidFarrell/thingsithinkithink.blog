@@ -1,6 +1,6 @@
 ---
 title: "Three Things I Did Over Christmas"
-date: 2026-01-07T09:00:00Z
+date: 2026-01-07T06:00:00Z
 slug: /01-07-christmas-break-projects/
 description: "One of the nice things about time off is the chance to play a little."
 image: images/2026/01-07-christmas-game-welcome.png

@@ -1,6 +1,6 @@
 ---
 title: "First Impressions of Claude Cowork Mode"
-date: 2026-01-13T10:00:00Z
+date: 2026-01-13T06:00:00Z
 slug: /01-13-claude-cowork-first-impressions/
 description: "Trying out Anthropic's new Claude Cowork mode."
 image: images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox.png

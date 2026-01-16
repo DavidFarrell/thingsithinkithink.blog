@@ -1,6 +1,6 @@
 ---
 title: "Claude Agent SDK Part 4: Implementing Context Profiles"
-date: 2026-01-27T09:00:00Z
+date: 2026-01-27T06:00:00Z
 slug: /02-02-claude-agent-sdk-part-4/
 description: "Building context profiles and usage tracking that works with the SDK's design."
 image: images/2026/02-02-claude-agent-sdk-part-4.jpg

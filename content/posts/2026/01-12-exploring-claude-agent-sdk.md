@@ -1,6 +1,6 @@
 ---
 title: "Exploring the Claude Agent SDK"
-date: 2026-01-12T09:00:00Z
+date: 2026-01-12T06:00:00Z
 slug: /01-12-exploring-claude-agent-sdk/
 description: "Learning in public: experimenting with Anthropic's Agent SDK after hearing that anything Claude Code can do, you can do with the SDK."
 image: images/2026/12-23-claude-agent-sdk.png

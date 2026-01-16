@@ -6,19 +6,26 @@
     <description>Recent content in Agent-Sdk on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jan 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Jan 2026 06:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/agent-sdk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude Agent SDK: Part 2</title>
+      <link>https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/</link>
+      <pubDate>Fri, 16 Jan 2026 06:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/</guid>
+      <description>&lt;p&gt;My goal today is to make the minimal writing agent from &lt;a href=&#34;https://thingsithinkithink.blog/12-23-exploring-claude-agent-sdk/&#34;&gt;Part 1&lt;/a&gt; a bit more user-friendly. I&amp;rsquo;m starting with making the tool calls more descriptive.&lt;/p&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s what they currently look like:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Assistant:&#xA;[Using Glob...]Let me search more specifically in the content folder for blog posts:&#xA;[Using Glob...]Based on the file dates, the most recent post appears to be from December 21, 2025. Let me read it:&#xA;[Using Read...]&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can see tool usage happening (&lt;code&gt;[Using Glob...]&lt;/code&gt;, &lt;code&gt;[Using Read...]&lt;/code&gt;), but there&amp;rsquo;s no information about &lt;em&gt;what&lt;/em&gt; the tool is actually doing. What pattern is Glob searching for? What file is Read opening?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Exploring the Claude Agent SDK</title>
       <link>https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/</link>
-      <pubDate>Mon, 12 Jan 2026 09:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Jan 2026 06:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/</guid>
       <description>&lt;p&gt;At a recent Claude Code meetup, one of the Anthropic staff mentioned that anything Claude Code can do, you can do using the Agent SDK. That caught my attention. I&amp;rsquo;ve been using Claude Code heavily, but I hadn&amp;rsquo;t really understood what was happening under the hood. So I&amp;rsquo;ve decided to dig in and document what I learn as I go.&lt;/p&gt;&#xA;&lt;p&gt;I like the idea of having a specialised version of Claude that understands my writing process, the tools I use, and the way I like to work. So as a toy experiment, I&amp;rsquo;m working on a writing agent built on the Claude Agent SDK.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Three Things I Did Over Christmas</title>
       <link>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</link>
-      <pubDate>Wed, 07 Jan 2026 09:00:00 +0000</pubDate>
+      <pubDate>Wed, 07 Jan 2026 06:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</guid>
       <description>&lt;p&gt;One of the nice things about not having work over the Christmas break is that it gives me a chance to play a little.&lt;/p&gt;&#xA;&lt;p&gt;This year I had three main projects.&lt;/p&gt;&#xA;&lt;h2 id=&#34;finishing-my-llm-evals-course-notes&#34;&gt;Finishing My LLM Evals Course Notes&lt;/h2&gt;&#xA;&lt;p&gt;I finally wrote up the last of my notes on the &lt;a href=&#34;https://thingsithinkithink.blog/01-05-llm-evals-course-recap/&#34;&gt;LLM Evals course&lt;/a&gt;, including an overall summary and an index page pulling together all eight lessons. It felt good to close the loop on something I&amp;rsquo;d been chipping away at for months.&lt;/p&gt;</description>
     </item>
