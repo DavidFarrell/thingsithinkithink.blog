@@ -18,7 +18,7 @@ tags:
 draft: false
 ---
 
-My goal today is to make the minimal writing agent from [Part 1](/12-23-exploring-claude-agent-sdk/) a bit more user-friendly. I'm starting with making the tool calls more descriptive.
+My goal today is to make the minimal writing agent from [Part 1](/posts/2026/01-12-exploring-claude-agent-sdk/) a bit more user-friendly. I'm starting with making the tool calls more descriptive.
 
 Here's what they currently look like:
 
