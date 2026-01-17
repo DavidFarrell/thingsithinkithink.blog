@@ -67,7 +67,7 @@ Here's how it fits together:
 └─────────────────────────────────────────────────────────┘
 ```
 
-Note: `allowed_tools` controls which tools can run without asking for permission. To restrict which tools are available at all, you'd use the `tools` option instead.
+Note: `allowed_tools` controls which tools can run without asking for permission. To completely block tools, use `disallowed_tools`.
 
 ## Using Claude Code to Learn Claude Code
 

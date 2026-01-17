@@ -1,0 +1,94 @@
+<svg width="800" height="260" viewBox="0 0 800 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#666"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="260" fill="#FAFAF8"/>
+
+  <!-- Execute outcome (top bar) -->
+  <rect x="120" y="10" width="670" height="36" rx="6" fill="#D4E4D8" stroke="#4A7C59" stroke-width="1"/>
+  <text x="455" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#2D5A3D">Execute</text>
+
+  <!-- Blocked outcome (bottom bar) -->
+  <rect x="120" y="214" width="670" height="36" rx="6" fill="#E8D4D4" stroke="#994444" stroke-width="1"/>
+  <text x="455" y="237" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#773333">Blocked</text>
+
+  <!-- Tool request -->
+  <rect x="10" y="112" width="90" height="36" rx="6" fill="#E4E9F0" stroke="#7A8BA8" stroke-width="1.5"/>
+  <text x="55" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1E1E1E">Tool request</text>
+
+  <!-- Arrow to Step 1 -->
+  <line x1="100" y1="130" x2="125" y2="130" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 1: Hooks -->
+  <rect x="135" y="100" width="140" height="60" rx="6" fill="#fff" stroke="#D0D0CC" stroke-width="1"/>
+  <circle cx="152" cy="130" r="10" fill="#E8E8E4"/>
+  <text x="152" y="134" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#555">1</text>
+  <text x="170" y="122" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1E1E1E">Hooks</text>
+  <text x="170" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#666">PreToolUse can</text>
+  <text x="170" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#666">allow, deny, or skip</text>
+
+  <!-- Hooks allow arrow (up) -->
+  <line x1="205" y1="100" x2="205" y2="52" stroke="#4A7C59" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="215" y="78" font-family="system-ui, sans-serif" font-size="8" fill="#4A7C59">allow</text>
+
+  <!-- Hooks deny arrow (down) -->
+  <line x1="205" y1="160" x2="205" y2="208" stroke="#994444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="215" y="188" font-family="system-ui, sans-serif" font-size="8" fill="#994444">deny</text>
+
+  <!-- Arrow to Step 2 -->
+  <line x1="275" y1="130" x2="300" y2="130" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: Permission rules -->
+  <rect x="310" y="100" width="140" height="60" rx="6" fill="#fff" stroke="#D0D0CC" stroke-width="1"/>
+  <circle cx="327" cy="130" r="10" fill="#E8E8E4"/>
+  <text x="327" y="134" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#555">2</text>
+  <text x="345" y="122" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1E1E1E">Permission rules</text>
+  <text x="345" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#666">allow / deny rules</text>
+  <text x="345" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#666">in settings.json</text>
+
+  <!-- Rules allow arrow (up) -->
+  <line x1="380" y1="100" x2="380" y2="52" stroke="#4A7C59" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="390" y="78" font-family="system-ui, sans-serif" font-size="8" fill="#4A7C59">allow</text>
+
+  <!-- Rules deny arrow (down) -->
+  <line x1="380" y1="160" x2="380" y2="208" stroke="#994444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="390" y="188" font-family="system-ui, sans-serif" font-size="8" fill="#994444">deny</text>
+
+  <!-- Arrow to Step 3 -->
+  <line x1="450" y1="130" x2="475" y2="130" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: Permission mode -->
+  <rect x="485" y="100" width="140" height="60" rx="6" fill="#fff" stroke="#D0D0CC" stroke-width="1"/>
+  <circle cx="502" cy="130" r="10" fill="#E8E8E4"/>
+  <text x="502" y="134" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#555">3</text>
+  <text x="520" y="122" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1E1E1E">Permission mode</text>
+  <text x="520" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#666">bypassPermissions</text>
+  <text x="520" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#666">auto-allows</text>
+
+  <!-- Mode allow arrow (up) - only bypass, no deny -->
+  <line x1="555" y1="100" x2="555" y2="52" stroke="#4A7C59" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="565" y="78" font-family="system-ui, sans-serif" font-size="8" fill="#4A7C59">bypass</text>
+
+  <!-- Arrow to Step 4 -->
+  <line x1="625" y1="130" x2="650" y2="130" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 4: canUseTool -->
+  <rect x="660" y="100" width="130" height="60" rx="6" fill="#fff" stroke="#D0D0CC" stroke-width="1"/>
+  <circle cx="677" cy="130" r="10" fill="#E8E8E4"/>
+  <text x="677" y="134" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#555">4</text>
+  <text x="695" y="122" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1E1E1E">canUseTool</text>
+  <text x="695" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#666">Your code decides</text>
+  <text x="695" y="150" font-family="system-ui, sans-serif" font-size="9" fill="#666">(prompt user, etc.)</text>
+
+  <!-- canUseTool allow arrow (up) -->
+  <line x1="725" y1="100" x2="725" y2="52" stroke="#4A7C59" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="735" y="78" font-family="system-ui, sans-serif" font-size="8" fill="#4A7C59">allow</text>
+
+  <!-- canUseTool deny arrow (down) -->
+  <line x1="725" y1="160" x2="725" y2="208" stroke="#994444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="735" y="188" font-family="system-ui, sans-serif" font-size="8" fill="#994444">deny</text>
+
+</svg>
