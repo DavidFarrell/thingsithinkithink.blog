@@ -1,6 +1,6 @@
 ---
 title: "Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions"
-date: 2026-02-16T09:00:00Z
+date: 2026-01-29T06:30:00Z
 slug: /02-16-claude-agent-sdk-part-6/
 description: "Closing the checkpointing loophole and getting to know the SDK's permission system."
 image: images/2026/02-16-claude-agent-sdk-part-6.png
