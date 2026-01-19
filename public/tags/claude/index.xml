@@ -6,8 +6,15 @@
     <description>Recent content in Claude on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Jan 2026 06:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Jan 2026 05:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/claude/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude Agent SDK Part 3: The Context Control Problem</title>
+      <link>https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/</link>
+      <pubDate>Mon, 19 Jan 2026 05:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/</guid>
+      <description>&lt;p&gt;Building on &lt;a href=&#34;https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/&#34;&gt;Part 1&lt;/a&gt; and &lt;a href=&#34;https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/&#34;&gt;Part 2&lt;/a&gt;, today I wanted to add context management to the writing agent. What I discovered instead was a slightly annoying fundamental trade-off in the SDK&amp;rsquo;s design.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-context-control-comes-first&#34;&gt;Why Context Control Comes First&lt;/h2&gt;&#xA;&lt;p&gt;When I use AI-supported writing, I&amp;rsquo;m not trying to get it to do most of the writing. I&amp;rsquo;m trying to get it to help me with cleanup, editing, gap analysis, and checking details. So what I&amp;rsquo;m really looking for is control over the context so that AI is more like an expert editor / sounding board.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Claude Agent SDK: Part 2</title>
       <link>https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/</link>
