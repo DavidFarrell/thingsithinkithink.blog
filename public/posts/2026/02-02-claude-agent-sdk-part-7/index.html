@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Claude Agent SDK Part 7: Creating Custom MCP Tools | thingsithinkithink</title>
+
+<meta name="description" content="Exposing Python functions as tools Claude can call directly">
+    <link rel="stylesheet" href="/css/main.css">
+
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="http://localhost:1313/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="http://localhost:1313/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">Claude Agent SDK Part 7: Creating Custom MCP Tools</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Exposing Python functions as tools Claude can call directly </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="http://localhost:1313/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-02-02T05:00:00&#43;00:00">February 2, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            7 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+        <figcaption class="text-center italic text-xs">TBD</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>In <a href="/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a>, I added file checkpointing with a <code>/rewind</code> command. But <code>/rewind</code> isn&rsquo;t a real slash command - it&rsquo;s just my Python code pattern-matching on the input string. Claude has no idea the capability exists.</p>
+<p>Although I&rsquo;m happy to use <code>/rewind</code> myself, I also like the idea of being able to say &ldquo;hey Claude, could you rewind back to this version?&rdquo; or &ldquo;would you mind undoing that thing you just did?&rdquo; I want Claude to be able to access the rewind and checkpointing features itself. To do that, I need to expose the function as a tool that Claude can call directly - and that means implementing a basic MCP server.</p>
+<h2 id="what-mcp-tools-are-and-arent">What MCP Tools Are (And Aren&rsquo;t)</h2>
+<p>MCP stands for Model Context Protocol. MCP servers aren&rsquo;t always separate processes or microservices listening on ports - though they can be. They can also be code on your local machine that gets invoked and writes to stdout. Or, if you&rsquo;re using the Claude Agent SDK, they can be in-process collections of tool definitions that get registered with Claude.</p>
+<p>The pattern:</p>
+<ol>
+<li>Define functions with the <code>@tool</code> decorator</li>
+<li>Bundle them into a &ldquo;server&rdquo; with <code>create_sdk_mcp_server()</code></li>
+<li>Pass the server to <code>ClaudeAgentOptions</code></li>
+<li>Claude can now call your functions like any other tool</li>
+</ol>
+<h2 id="the-rewind-tool">The Rewind Tool</h2>
+<p>Quick reminder of how rewind works from <a href="/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a>: the agent tracks checkpoints as it goes. Each checkpoint has a UUID (from the SDK), a turn number, a timestamp, and a Haiku-generated summary of what happened. The <code>/rewind</code> command lets users pick a checkpoint by index, looks up the UUID, and calls the SDK&rsquo;s <code>client.rewind_files(uuid)</code> method to restore the files. Our MCP tool will wrap this same logic and expose it to Claude.</p>
+<p>Tools are defined using the <code>@tool</code> decorator, which takes three arguments:</p>
+<ul>
+<li><strong>Name</strong>: How Claude refers to the tool (<code>&quot;rewind_files&quot;</code>)</li>
+<li><strong>Description</strong>: Helps Claude understand when to use it. Make this detailed enough that Claude knows what phrases and situations should trigger the tool - don&rsquo;t be stingy with the description.</li>
+<li><strong>Schema</strong>: The expected arguments - here just <code>{&quot;checkpoint_index&quot;: int}</code></li>
+</ul>
+<p>The return format is specific to MCP - a dict with a <code>content</code> array containing text blocks. This is how tool results get passed back to Claude.</p>
+<p>Here&rsquo;s the tool definition:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> claude_agent_sdk <span style="color:#f92672">import</span> tool, create_sdk_mcp_server
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Any
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@tool</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;rewind_files&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Rewind edited files to a previous checkpoint. Use when the user asks to undo, revert, or roll back file changes. Takes a checkpoint_index (0 = oldest). Call this tool when user says things like &#39;undo that&#39;, &#39;rewind&#39;, &#39;go back to the previous version&#39;, or &#39;revert the changes&#39;.&#34;</span>,
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;checkpoint_index&#34;</span>: int}
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rewind_files_tool</span>(args: dict[str, Any]) <span style="color:#f92672">-&gt;</span> dict[str, Any]:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Rewind to a specific checkpoint.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    index <span style="color:#f92672">=</span> args[<span style="color:#e6db74">&#34;checkpoint_index&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> index <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> index <span style="color:#f92672">&gt;=</span> len(state<span style="color:#f92672">.</span>checkpoints):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;content&#34;</span>: [{
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;text&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Invalid checkpoint index. Available: 0-</span><span style="color:#e6db74">{</span>len(state<span style="color:#f92672">.</span>checkpoints)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>            }]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    target <span style="color:#f92672">=</span> state<span style="color:#f92672">.</span>checkpoints[index]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> state<span style="color:#f92672">.</span>client<span style="color:#f92672">.</span>rewind_files(target<span style="color:#f92672">.</span>uuid)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;content&#34;</span>: [{
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;text&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Rewound to checkpoint </span><span style="color:#e6db74">{</span>index<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>target<span style="color:#f92672">.</span>summary<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>            }]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;content&#34;</span>: [{
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;text&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Rewind failed: </span><span style="color:#e6db74">{</span>str(e)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>            }]
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>A few things to note:</p>
+<ul>
+<li>
+<p><strong>Arguments come in a dict</strong>: The function receives <code>args: dict[str, Any]</code> and we extract <code>checkpoint_index</code> from it. This matches the schema we defined in the decorator.</p>
+</li>
+<li>
+<p><strong>Validation first</strong>: We check if the index is valid before trying to use it. If Claude passes a bad index, we return an error message rather than crashing.</p>
+</li>
+<li>
+<p><strong><code>state.checkpoints</code> and <code>state.client</code></strong>: These reference a module-level state object. I&rsquo;ll explain why this is necessary in the &ldquo;Scope Problem&rdquo; section below.</p>
+</li>
+<li>
+<p><strong>The return format</strong>: I mentioned already that MCP tools must return a dict with a <code>content</code> array. Every return path follows this pattern - success, validation error, and exception all return <code>{&quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;...&quot;}]}</code>. This is how the tool&rsquo;s response gets passed back to Claude. In this case, we return a message confirming which checkpoint we rewound to (including the summary), or an error explaining what went wrong.</p>
+</li>
+</ul>
+<h2 id="creating-the-server">Creating the Server</h2>
+<p>This is the simplest server you can create:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>writing_agent_server <span style="color:#f92672">=</span> create_sdk_mcp_server(
+</span></span><span style="display:flex;"><span>    name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;writing-agent-tools&#34;</span>,
+</span></span><span style="display:flex;"><span>    version<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    tools<span style="color:#f92672">=</span>[rewind_files_tool]
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>I give it a name, a version number, and add in the tool we just wrote. The name <code>writing-agent-tools</code> is how Claude addresses this server - it&rsquo;s a namespace unique to your server, and all your tools are available underneath it. Claude will see our tool as <code>mcp__writing-agent-tools__rewind_files</code>.</p>
+<h2 id="wiring-it-up">Wiring It Up</h2>
+<p>Add the server to your agent options:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
+</span></span><span style="display:flex;"><span>    system_prompt<span style="color:#f92672">=</span>system_prompt,
+</span></span><span style="display:flex;"><span>    mcp_servers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;writing-agent-tools&#34;</span>: writing_agent_server},
+</span></span><span style="display:flex;"><span>    allowed_tools<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Read&#34;</span>, <span style="color:#e6db74">&#34;Write&#34;</span>, <span style="color:#e6db74">&#34;Edit&#34;</span>, <span style="color:#e6db74">&#34;Glob&#34;</span>, <span style="color:#e6db74">&#34;Grep&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;mcp__writing-agent-tools__rewind_files&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ... other options</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>The <code>mcp_servers</code> parameter is a dictionary mapping server names to server objects. The <code>allowed_tools</code> list now includes our custom tool using the <code>mcp__server-name__tool-name</code> format.</p>
+<p>With this in place, I can ask Claude to rewind and it uses the tool:</p>
+<p><img src="/images/2026/02-02-rewind-tool-no-permission.png" alt="Rewind tool working - but no permission prompt">
+<em>The tool works! But notice it rewound to checkpoint 0 without asking first.</em></p>
+<p>It works - but there&rsquo;s a problem. Claude rewound to checkpoint 0 (the very first checkpoint) when I only wanted to go back one step. And it didn&rsquo;t ask for confirmation before making a destructive change.</p>
+<h2 id="adding-permission-control">Adding Permission Control</h2>
+<p>Rewind is destructive - it overwrites files. I don&rsquo;t want Claude auto-rewinding without asking. Using the same hook pattern from <a href="/posts/2026/02-16-claude-agent-sdk-part-6/">Part 6</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rewind_permission_hook</span>(
+</span></span><span style="display:flex;"><span>    input_data: HookInput,
+</span></span><span style="display:flex;"><span>    tool_use_id: str <span style="color:#f92672">|</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    context: HookContext
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> HookJSONOutput:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Prompt user before rewinding.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> input_data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;hook_event_name&#34;</span>) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;PreToolUse&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> input_data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;tool_name&#34;</span>) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;mcp__writing-agent-tools__rewind_files&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    tool_input <span style="color:#f92672">=</span> input_data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;tool_input&#34;</span>, {})
+</span></span><span style="display:flex;"><span>    index <span style="color:#f92672">=</span> tool_input<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;checkpoint_index&#34;</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> index <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> index <span style="color:#f92672">&gt;=</span> len(state<span style="color:#f92672">.</span>checkpoints):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{</span>ERROR<span style="color:#e6db74">}</span><span style="color:#e6db74">Invalid checkpoint index: </span><span style="color:#e6db74">{</span>index<span style="color:#e6db74">}{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;continue_&#34;</span>: <span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;stopReason&#34;</span>: <span style="color:#e6db74">&#34;Invalid checkpoint&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    target <span style="color:#f92672">=</span> state<span style="color:#f92672">.</span>checkpoints[index]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{</span>META<span style="color:#e6db74">}</span><span style="color:#e6db74">Rewind requested:</span><span style="color:#e6db74">{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>CODE<span style="color:#e6db74">}</span><span style="color:#e6db74">  Checkpoint </span><span style="color:#e6db74">{</span>index<span style="color:#e6db74">}</span><span style="color:#e6db74">: Turn </span><span style="color:#e6db74">{</span>target<span style="color:#f92672">.</span>turn<span style="color:#e6db74">}</span><span style="color:#e6db74"> @ </span><span style="color:#e6db74">{</span>target<span style="color:#f92672">.</span>timestamp<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%H:%M:%S&#39;</span>)<span style="color:#e6db74">}{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>CODE<span style="color:#e6db74">}</span><span style="color:#e6db74">  Summary: </span><span style="color:#e6db74">{</span>target<span style="color:#f92672">.</span>summary<span style="color:#e6db74">}{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> input(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>USER<span style="color:#e6db74">}</span><span style="color:#e6db74">Allow rewind? [y/n]: </span><span style="color:#e6db74">{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>lower() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;y&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;hookSpecificOutput&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;hookEventName&#34;</span>: <span style="color:#e6db74">&#34;PreToolUse&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;permissionDecision&#34;</span>: <span style="color:#e6db74">&#34;allow&#34;</span>,
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>META<span style="color:#e6db74">}</span><span style="color:#e6db74">(Rewind denied - returning to prompt)</span><span style="color:#e6db74">{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;continue_&#34;</span>: <span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;stopReason&#34;</span>: <span style="color:#e6db74">&#34;User denied rewind&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>And add it to the hooks configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>hooks<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;PreToolUse&#34;</span>: [
+</span></span><span style="display:flex;"><span>        HookMatcher(
+</span></span><span style="display:flex;"><span>            matcher<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Bash&#34;</span>,
+</span></span><span style="display:flex;"><span>            hooks<span style="color:#f92672">=</span>[bash_permission_hook],
+</span></span><span style="display:flex;"><span>            timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">120</span>
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        HookMatcher(
+</span></span><span style="display:flex;"><span>            matcher<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mcp__writing-agent-tools__rewind_files&#34;</span>,
+</span></span><span style="display:flex;"><span>            hooks<span style="color:#f92672">=</span>[rewind_permission_hook],
+</span></span><span style="display:flex;"><span>            timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">120</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now when Claude decides to rewind, the user sees exactly which checkpoint it&rsquo;s targeting - including the Haiku-generated summary - and can approve or deny.</p>
+<p><img src="/images/2026/02-02-rewind-with-permission.png" alt="Rewind with permission prompt">
+<em>The permission hook shows the checkpoint details. After approval, the rewind completes.</em></p>
+<h2 id="the-scope-problem">The Scope Problem</h2>
+<p>There&rsquo;s an issue with my implementation above. The <code>rewind_files_tool</code> function references <code>checkpoints</code> and <code>client</code> - but those are defined inside <code>run_agent()</code>, not at module scope where the tool is decorated.</p>
+<p>The <code>@tool</code> decorator runs at module load time. The function body runs later when Claude calls the tool. At that point, it can only see module-level names - not local variables inside <code>run_agent()</code>.</p>
+<p>The fix is a state object that lives at module level but gets populated at runtime:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass, field
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AgentState</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Runtime state accessible to MCP tools.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    checkpoints: list[Checkpoint] <span style="color:#f92672">=</span> field(default_factory<span style="color:#f92672">=</span>list)
+</span></span><span style="display:flex;"><span>    client: ClaudeSDKClient <span style="color:#f92672">|</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    session_id: str <span style="color:#f92672">|</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>state <span style="color:#f92672">=</span> AgentState()
+</span></span></code></pre></div><p>Now the tool function references <code>state.checkpoints</code> and <code>state.client</code>. Inside <code>run_agent()</code>, we populate the state:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_agent</span>():
+</span></span><span style="display:flex;"><span>    state<span style="color:#f92672">.</span>checkpoints <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    state<span style="color:#f92672">.</span>session_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> ClaudeSDKClient(options<span style="color:#f92672">=</span>options) <span style="color:#66d9ef">as</span> client:
+</span></span><span style="display:flex;"><span>        state<span style="color:#f92672">.</span>client <span style="color:#f92672">=</span> client
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ... rest of the code uses state.checkpoints instead of checkpoints</span>
+</span></span></code></pre></div><p>This avoids raw globals (no <code>global</code> keyword needed) and makes it clear what&rsquo;s runtime state versus constants.</p>
+<h2 id="whats-next">What&rsquo;s Next</h2>
+<p>This is coming together and is almost ready to use. The same pattern works for any Python function I want to expose to Claude. Still to do:</p>
+<ul>
+<li>Starting/stopping the Hugo dev server</li>
+<li>Running the build script to deploy</li>
+<li>A tool to generate images for blog posts</li>
+<li>Working on the system prompt to help Claude understand how I write, how to edit my posts, and what &ldquo;good&rdquo; looks like for my blog</li>
+</ul>
+<p>The first two are straightforward - same MCP tool pattern. The prompt work is where the real value will come from. Once that&rsquo;s dialled in, I&rsquo;ll have a writing agent that actually understands my style and can help improve my posts. Nearly there.</p>
+<hr>
+<p><em>This is Part 7 of my series on learning the Claude Agent SDK. <a href="/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> covers initial exploration, <a href="/posts/2026/01-19-claude-agent-sdk-part-2/">Part 2</a> builds the first working agent, <a href="/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a> tackles context control, <a href="/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a> adds usage tracking, <a href="/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a> introduces checkpointing, and <a href="/posts/2026/02-16-claude-agent-sdk-part-6/">Part 6</a> fixes the Bash bypass problem.</em></p>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/claude/">Claude</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/agent-sdk/">Agent-Sdk</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/python/">Python</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/learning/">Learning</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="http://localhost:1313/posts/2026/02-16-claude-agent-sdk-part-6/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-01-29T06:30:00&#43;00:00">Jan 29, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Closing the checkpointing loophole and getting to know the SDK&#39;s permission system.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="http://localhost:1313/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2026/02-09-claude-agent-sdk-part-5_hu_22ee875ce0605ca8.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="750" height="419">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-01-26T06:30:00&#43;00:00">Jan 26, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Adding the ability for the agent to create posts that follow my templates, with the ability to recover from mistakes.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2026/02-02-claude-agent-sdk-part-7/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 7: Creating Custom MCP Tools</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2026/02-16-claude-agent-sdk-part-6/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2026/02-09-claude-agent-sdk-part-5_hu_891d2ea19213a83c.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2026/02-02-claude-agent-sdk-part-4/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2026/02-02-claude-agent-sdk-part-4_hu_615a266d9efd0d24.jpg" alt="Claude Agent SDK Part 4: Implementing Context Profiles" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="http://localhost:1313/posts/2026/01-26-claude-agent-sdk-part-3/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2026/01-26-claude-agent-sdk-part-3_hu_fe87bb651bb579da.png" alt="Claude Agent SDK Part 3: The Context Control Problem" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 3: The Context Control Problem</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="http://localhost:1313/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script src="/js/insertoggle.js"></script>
+</body>
+</html>

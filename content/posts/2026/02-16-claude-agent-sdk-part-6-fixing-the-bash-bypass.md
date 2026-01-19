@@ -296,26 +296,27 @@ async def bash_permission_hook(
                 "permissionDecision": "allow",
             }
         }
+    # Stop entirely - don't let Claude try something else
     return {
-        "hookSpecificOutput": {
-            "hookEventName": "PreToolUse",
-            "permissionDecision": "deny",
-            "permissionDecisionReason": "User denied this command"
-        }
+        "continue_": False,
+        "stopReason": "User denied Bash command"
     }
 ```
-
-The logic is straightforward - prompt and return based on the answer. 
-
+claud
 ### The Response Structure
 
-When you want to make a permission decision, you return a dictionary with a `hookSpecificOutput` key. Inside that:
+When allowing a tool, you return a `hookSpecificOutput` with:
 
 - **`hookEventName`**: Must match the event type you're responding to (`"PreToolUse"` here).
-- **`permissionDecision`**: Either `"allow"` or `"deny"`. This controls whether the tool runs.
-- **`permissionDecisionReason`**: Optional explanation shown to Claude when denying.
+- **`permissionDecision`**: Set to `"allow"` to let the tool run.
 
-Returning an empty `{}` means "I have no opinion" - the SDK continues down the permission evaluation chain. Returning a `hookSpecificOutput` with a `permissionDecision` is an authoritative answer that short-circuits the rest.
+When denying, you have two options:
+
+1. **`permissionDecision: "deny"`** - Blocks this specific command but Claude continues thinking. It might try a different approach or rephrase the command.
+
+2. **`continue_: False`** - Stops the agent entirely and returns to the user prompt. This is what I use here - if I say no to a Bash command, I want to give new instructions, not have Claude guess at alternatives.
+
+Returning an empty `{}` means "I have no opinion" - the SDK continues down the permission evaluation chain.
 
 ### The Result
 
