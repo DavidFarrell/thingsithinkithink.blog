@@ -7,7 +7,7 @@
 <title>Three Things I Learned About Voice Agents from Kwindla Kramer | thingsithinkithink</title>
 
 <meta name="description" content="Three thigns I learned about voice agent architecture, context limitations, and latency trade-offs.">
-      <link rel="stylesheet" href="/css/main.min.80f29fb74d530136f20bd8f3c36d75c8a96e2026e849229670727aa4d68f7fbc.css" integrity="sha256-gPKft01TATbyC9jzw211yKluICboSSKWcHJ6pNaPf7w=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.37627a3df6cbc23a43fef20f183473af95eb47c8816508d827b07b50cd3deab5.css" integrity="sha256-N2J6PfbLwjpD/vIPGDRzr5XrR8iBZQjYJ7B7UM096rU=" crossorigin="anonymous">
 
 <link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
 <link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
@@ -116,7 +116,7 @@
     </header>
 
     <figure id="featureimage" class="rounded-xl aspect-video">
-            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2025/07-04-voiceagents_kwindla_hu_4621293334a8d661.png" alt="" width="750" height="842">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2025/07-04-voiceagents_kwindla_hu_e2b19f32ed57435.png" alt="" width="750" height="842">
         <figcaption class="text-center italic text-xs">The standard voice agent pipeline showing the modular approach most production systems use</figcaption>
 
     </figure>
@@ -130,7 +130,8 @@
 <h2 id="models-degrade-faster-than-expected-in-multi-turn-voice">Models Degrade Faster Than Expected in Multi-Turn Voice</h2>
 <p>Kwindla highlighted how quickly voice agents go out of distribution, despite operating within theoretical context window limits. The issue isn&rsquo;t context length but the nature of the training data:</p>
 <blockquote>
-<p>&ldquo;Long multi-turn, long contexts in general, and audio all tend to take you out of distribution for how the big models are trained today. Practically speaking, what that means is that instruction following and function calling are worse for voice AI use cases than they are on any of the published benchmarks you will see for any models.&rdquo;</p></blockquote>
+<p>&ldquo;Long multi-turn, long contexts in general, and audio all tend to take you out of distribution for how the big models are trained today. Practically speaking, what that means is that instruction following and function calling are worse for voice AI use cases than they are on any of the published benchmarks you will see for any models.&rdquo;</p>
+</blockquote>
 <p>Tool calling degrades significantly as conversations progress. Models might handle function calls perfectly for the first few turns, then performance falls off a cliff. This happens because training data contains little that resembles long back-and-forth conversations with extensive tool usage.</p>
 <p>This reinforces how each use case requires deep understanding of what&rsquo;s at stake. You can&rsquo;t simply integrate an LLM and expect consistent performance across different interaction patterns.</p>
 <h2 id="latency-forces-infrastructure-trade-offs">Latency Forces Infrastructure Trade-offs</h2>
@@ -159,7 +160,7 @@
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/06-22-ai-demystified-book-cover_hu_fd100943957718b0.png" alt="AI Demystified Book by Antonio Weiss" width="750" height="887">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/06-22-ai-demystified-book-cover_hu_f9497362d184216f.png" alt="AI Demystified Book by Antonio Weiss" width="750" height="887">
 
 	  </figure>
 
@@ -176,7 +177,7 @@
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/05-04-synthesising-a-new-framework-for-ai-transformation/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/05/mollick_on_transformation_hu_981a7cb03f05994e.png" alt="Synthesising a new framework for AI Transformation" width="750" height="294">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/05/mollick_on_transformation_hu_ef8efd991bbb83da.png" alt="Synthesising a new framework for AI Transformation" width="750" height="294">
 
 	  </figure>
 
@@ -210,8 +211,16 @@
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_86bd4167f2b86ba8.jpg" alt="Claude Agent SDK Part 4: Implementing Context Profiles" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3>
+	</div>
+</article><article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-26-claude-agent-sdk-part-3_hu_fe87bb651bb579da.png" alt="Claude Agent SDK Part 3: The Context Control Problem" width="444" height="250">
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-26-claude-agent-sdk-part-3_hu_b7859d2c5461156f.png" alt="Claude Agent SDK Part 3: The Context Control Problem" width="444" height="250">
 
 	</figure>
 	<div class="basis-2/3 self-center ml-4">
@@ -219,7 +228,7 @@
 	</div>
 </article><article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-19-claude-agent-sdk-part-2_hu_31dfff7ba85c41f4.png" alt="Claude Agent SDK: Part 2" width="444" height="250">
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-19-claude-agent-sdk-part-2_hu_fbec07eea3b71339.png" alt="Claude Agent SDK: Part 2" width="444" height="250">
 
 	</figure>
 	<div class="basis-2/3 self-center ml-4">
@@ -227,7 +236,7 @@
 	</div>
 </article><article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-13-claude-cowork-first-impressions/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox_hu_a4d549a04bcbf685.png" alt="First Impressions of Claude Cowork Mode" width="444" height="250">
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox_hu_b7177ee90f7018ee.png" alt="First Impressions of Claude Cowork Mode" width="444" height="250">
 
 	</figure>
 	<div class="basis-2/3 self-center ml-4">
@@ -235,19 +244,11 @@
 	</div>
 </article><article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/12-23-claude-agent-sdk_hu_38c7b10161ff92dc.png" alt="Exploring the Claude Agent SDK" width="444" height="250">
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/12-23-claude-agent-sdk_hu_2030f1f57c6b055f.png" alt="Exploring the Claude Agent SDK" width="444" height="250">
 
 	</figure>
 	<div class="basis-2/3 self-center ml-4">
 		<h3 class="font-bold group-hover:underline decoration-auto">Exploring the Claude Agent SDK</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-07-christmas-game-welcome_hu_c0626d4427d544f3.png" alt="Three Things I Did Over Christmas" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Three Things I Did Over Christmas</h3>
 	</div>
 </article>
 		
