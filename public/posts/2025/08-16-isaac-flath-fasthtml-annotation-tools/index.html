@@ -156,7 +156,7 @@
 <p>I know that experienced web folks won&rsquo;t find the idea of a minimalist, python web app builder appealing, but I like how you don&rsquo;t have to switch langauge / framework context when you use FastHTML.</p>
 <p>As Isaac put it: &ldquo;If you&rsquo;re living in Python, it helps you stay in that context.&rdquo; No separate HTML files, CSS files, or wrestling with JavaScript frameworks.</p>
 <p>Here&rsquo;s his minimal example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fasthtml.common <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fasthtml.common <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> monsterui.all <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>app, rt <span style="color:#f92672">=</span> fast_app(hdrs<span style="color:#f92672">=</span>Theme<span style="color:#f92672">.</span>blue<span style="color:#f92672">.</span>headers())
@@ -170,7 +170,7 @@
 <hr>
 <h2 id="database-setup-with-fastlite">Database Setup with FastLite</h2>
 <p>Isaac uses FastLite for database access, which builds on python&rsquo;s in-build SQLite implementation and follows the same minimal-code philosophy as FastHTML. The annotation table schema is simple:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastlite <span style="color:#f92672">import</span> Database
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastlite <span style="color:#f92672">import</span> Database
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>db <span style="color:#f92672">=</span> Database(<span style="color:#e6db74">&#39;eval.db&#39;</span>)
 </span></span><span style="display:flex;"><span>
@@ -186,7 +186,7 @@
 <hr>
 <h2 id="the-main-page-routes-and-tables">The Main Page: Routes and Tables</h2>
 <p>FastHTML&rsquo;s routing works differently from FastAPI. Instead of explicit route strings, it uses function names with a decorator:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():  <span style="color:#75715e"># Becomes the root route &#34;/&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Get unique queries from database</span>
 </span></span><span style="display:flex;"><span>    unique_inputs <span style="color:#f92672">=</span> list(db<span style="color:#f92672">.</span>annotations<span style="color:#f92672">.</span>rows_where(select<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;distinct input_id, input&#39;</span>))
@@ -211,7 +211,7 @@
 <h2 id="the-evaluation-page-htmx-integration">The Evaluation Page: HTMX Integration</h2>
 <p>The evaluation interface shows where FastHTML with HTMX integration - this is how you provide some of the modern, dynamic website functionality folk expect:</p>
 <p><img src="/images/2025/parlancecourse/08-16-evaluation-page.png" alt="Evaluation page showing flashcards with good/bad buttons and note fields"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">evaluate</span>(input_id: str):
 </span></span><span style="display:flex;"><span>    documents <span style="color:#f92672">=</span> list(db<span style="color:#f92672">.</span>annotations<span style="color:#f92672">.</span>rows_where(<span style="color:#e6db74">&#39;input_id=?&#39;</span>, [input_id]))
 </span></span><span style="display:flex;"><span>    body <span style="color:#f92672">=</span> []
@@ -242,7 +242,7 @@
 <hr>
 <h2 id="htmx-partial-page-updates">HTMX: Partial Page Updates</h2>
 <p>The <code>update_notes</code> shows HTMX&rsquo;s usefulness:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@rt</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_notes</span>(input_id: str, document_id: int, notes: str):
 </span></span><span style="display:flex;"><span>    record <span style="color:#f92672">=</span> Annotation(input_id<span style="color:#f92672">=</span>input_id, document_id<span style="color:#f92672">=</span>document_id, notes<span style="color:#f92672">=</span>notes)
 </span></span><span style="display:flex;"><span>    db<span style="color:#f92672">.</span>annotations<span style="color:#f92672">.</span>update(record)
@@ -259,7 +259,7 @@
 <h2 id="button-state-management">Button State Management</h2>
 <p>The evaluation buttons show state management being used to control the view:</p>
 <p><img src="/images/2025/parlancecourse/08-16-button-state-management.png" alt="Button state management showing good/bad buttons with primary/secondary styling"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">eval_buttons</span>(input_id: str, document_id: int <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">eval_buttons</span>(input_id: str, document_id: int <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>):
 </span></span><span style="display:flex;"><span>    target_id <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;#eval-</span><span style="color:#e6db74">{</span>input_id<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">{</span>document_id<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>    _annotation <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>annotations[input_id, document_id]
 </span></span><span style="display:flex;"><span>    
@@ -384,6 +384,14 @@
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3>
+	</div>
+</article><article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
 	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="444" height="250">
 
@@ -414,14 +422,6 @@
 	</figure>
 	<div class="basis-2/3 self-center ml-4">
 		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK: Part 2</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-13-claude-cowork-first-impressions/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox_hu_b7177ee90f7018ee.png" alt="First Impressions of Claude Cowork Mode" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">First Impressions of Claude Cowork Mode</h3>
 	</div>
 </article>
 		

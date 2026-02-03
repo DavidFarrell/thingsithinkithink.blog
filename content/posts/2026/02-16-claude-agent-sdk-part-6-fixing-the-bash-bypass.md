@@ -15,7 +15,7 @@ tags:
   - python
   - learning
   - feature
-draft: true
+draft: false
 ---
 
 In [Part 5](/posts/2026/02-09-claude-agent-sdk-part-5/), I added file checkpointing with the ability to rewind changes. But I also mentioned a problem: Claude can bypass the checkpointing system entirely by using Bash to write files instead of the Write or Edit tools. Today I'm fixing that loophole - and in the process, I learned a lot about how the SDK's permission system actually works.

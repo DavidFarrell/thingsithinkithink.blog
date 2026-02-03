@@ -125,7 +125,7 @@
       <p>In <a href="/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a>, I discovered I couldn&rsquo;t have perfect control over the conversation history with the Agent SDK. Today I&rsquo;m implementing two things: a <strong>context profile</strong> that persists across conversations, and <strong>usage tracking</strong> so I can see exactly what&rsquo;s happening with tokens.</p>
 <h2 id="understanding-the-usage-dict">Understanding the Usage Dict</h2>
 <p>Before building anything, I needed to understand what the SDK actually tells us about token usage. After each query, <code>ResultMessage.usage</code> contains:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;input_tokens&#39;</span>: <span style="color:#ae81ff">3</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;output_tokens&#39;</span>: <span style="color:#ae81ff">72</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;cache_creation_input_tokens&#39;</span>: <span style="color:#ae81ff">6065</span>,
@@ -190,7 +190,7 @@
 </ul>
 <h2 id="building-the-usagetracker">Building the UsageTracker</h2>
 <p>I built a <code>UsageTracker</code> class that shows a per-turn breakdown:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">format_verbose</span>(self, baseline_cache: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">-&gt;</span> str:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">format_verbose</span>(self, baseline_cache: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">-&gt;</span> str:
 </span></span><span style="display:flex;"><span>    user_cache_read <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0</span>, self<span style="color:#f92672">.</span>cache_read_tokens <span style="color:#f92672">-</span> baseline_cache)
 </span></span><span style="display:flex;"><span>    lines <span style="color:#f92672">=</span> [
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;  input: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>input_tokens<span style="color:#e6db74">}</span><span style="color:#e6db74"> (uncached) + </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>cache_creation_tokens<span style="color:#e6db74">}</span><span style="color:#e6db74"> (newly cached) = </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>new_tokens<span style="color:#e6db74">}</span><span style="color:#e6db74"> new tokens&#34;</span>,
@@ -200,7 +200,7 @@
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(lines)
 </span></span></code></pre></div><p>Here is what it looks like in practice:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User: hello
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User: hello
 </span></span><span style="display:flex;"><span>Assistant: Hello! How can I help you today?
 </span></span><span style="display:flex;"><span>  input: 2 (uncached) + 0 (newly cached) = 2 new tokens
 </span></span><span style="display:flex;"><span>  cache: 0 tokens reused from previous turns (+15187 system prompt)
@@ -215,7 +215,7 @@
 </ul>
 <h2 id="the-contextstore">The ContextStore</h2>
 <p>Now for the context profile feature. I wanted a way to add files or snippets that persist across conversation resets - things like &ldquo;always know about my blog structure&rdquo; or &ldquo;here are my writing guidelines.&rdquo;  Or sometimes I have a few context items that combined are too large for the window - this let&rsquo;s me manage which ones are sent so I can (e.g.) fact check against a text, a transcript, etc etc one at a time on the same piece of work.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ContextItem</span>:
 </span></span><span style="display:flex;"><span>    path: str
 </span></span><span style="display:flex;"><span>    content: str
@@ -242,7 +242,7 @@
 <h2 id="the-two-loop-pattern">The Two-Loop Pattern</h2>
 <p>Because I want to be able to start a new conversation and send in the context automatically, I needed to rewrite my main loop.
 The main loop structure now handles both conversation flow and session resets:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Outer loop: creates fresh client/session</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Outer loop: creates fresh client/session</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> ClaudeSDKClient(options<span style="color:#f92672">=</span>options) <span style="color:#66d9ef">as</span> client:
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Inject context at session start</span>
@@ -267,7 +267,7 @@ The main loop structure now handles both conversation flow and session resets:</
 </ul>
 <h2 id="the-usage-command">The /usage Command</h2>
 <p>For a quick session overview:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/usage
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/usage
 </span></span><span style="display:flex;"><span>Session Usage Summary
 </span></span><span style="display:flex;"><span>----------------------------------------
 </span></span><span style="display:flex;"><span>  Turns: 5
@@ -378,6 +378,14 @@ The main loop structure now handles both conversation flow and session resets:</
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3>
+	</div>
+</article><article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
 	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="444" height="250">
 
@@ -408,14 +416,6 @@ The main loop structure now handles both conversation flow and session resets:</
 	</figure>
 	<div class="basis-2/3 self-center ml-4">
 		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK: Part 2</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-13-claude-cowork-first-impressions/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox_hu_b7177ee90f7018ee.png" alt="First Impressions of Claude Cowork Mode" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">First Impressions of Claude Cowork Mode</h3>
 	</div>
 </article>
 		

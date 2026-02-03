@@ -166,7 +166,7 @@
 <h2 id="using-claude-code-to-learn-claude-code">Using Claude Code to Learn Claude Code</h2>
 <p>There&rsquo;s something pleasingly recursive about using Claude Code to help me understand the Agent SDK that powers it. I&rsquo;ve been running Claude Code with the output style set to &ldquo;learning&rdquo;, which means it explains what it&rsquo;s doing as it goes. This gives me contextual support as I work through tutorials and examples.</p>
 <p>For example, when I was looking at some example code, I noticed this configuration:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
 </span></span><span style="display:flex;"><span>    system_prompt<span style="color:#f92672">=</span>SYSTEM_PROMPT,
 </span></span><span style="display:flex;"><span>    allowed_tools<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Read&#34;</span>, <span style="color:#e6db74">&#34;Write&#34;</span>, <span style="color:#e6db74">&#34;Edit&#34;</span>, <span style="color:#e6db74">&#34;Bash&#34;</span>, <span style="color:#e6db74">&#34;Glob&#34;</span>, <span style="color:#e6db74">&#34;Grep&#34;</span>],
 </span></span><span style="display:flex;"><span>    cwd<span style="color:#f92672">=</span>str(cwd),
@@ -212,7 +212,7 @@
 </ol>
 <h2 id="super-basic-writing-agent">Super Basic Writing Agent</h2>
 <p>This is a more or less minimal implementation of an agent based on the Claude Agent SDK. Here&rsquo;s the full code, but I&rsquo;ll break down a couple of interesting bits below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;Writing Agent - A Claude-powered writing assistant.
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">A CLI tool for working with your blog/writing projects.
@@ -323,7 +323,7 @@
 </span></span></code></pre></div><p>I&rsquo;ve already discussed the relationship between the Agent SDK and Claude Code above, as well as some of the tools. The interesting stuff really happens in that async block.</p>
 <p>Notice that it&rsquo;s essentially a very thin wrapper around Claude Code. We listen for user input, and when we get it, we send it to the ClaudeSDKClient, which passes it to the Claude Code CLI running as a subprocess. Claude Code handles everything from there: talking to the Anthropic API, executing tools, running the agentic loop, and streaming back what happened. From our Python code&rsquo;s perspective, Claude Code is a black box. We can&rsquo;t see inside it; we just receive a stream of typed messages describing what occurred.</p>
 <p>The response can be of various types:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">for</span> msg <span style="color:#f92672">in</span> client<span style="color:#f92672">.</span>receive_response():
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">for</span> msg <span style="color:#f92672">in</span> client<span style="color:#f92672">.</span>receive_response():
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isinstance(msg, AssistantMessage):        <span style="color:#75715e"># Claude&#39;s response</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> block <span style="color:#f92672">in</span> msg<span style="color:#f92672">.</span>content:
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> isinstance(block, TextBlock):     <span style="color:#75715e"># Actual words</span>
@@ -467,6 +467,14 @@ You:
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3>
+	</div>
+</article><article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
 	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="444" height="250">
 
@@ -497,14 +505,6 @@ You:
 	</figure>
 	<div class="basis-2/3 self-center ml-4">
 		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK: Part 2</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-13-claude-cowork-first-impressions/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox_hu_b7177ee90f7018ee.png" alt="First Impressions of Claude Cowork Mode" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">First Impressions of Claude Cowork Mode</h3>
 	</div>
 </article>
 		
