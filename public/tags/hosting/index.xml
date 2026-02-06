@@ -1,19 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Hosting on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/hosting/</link>
-    <description>Recent content in Hosting on thingsithinkithink</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 16 Aug 2025 08:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/hosting/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Where to Host Your FastHTML Apps</title>
-      <link>https://thingsithinkithink.blog/posts/2025/08-16-where-to-host-fasthtml-apps/</link>
-      <pubDate>Sat, 16 Aug 2025 08:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/08-16-where-to-host-fasthtml-apps/</guid>
-      <description>&lt;p&gt;FastHTML apps are built on Starlette, which means they can run anywhere Starlette runs. Some options for hosting so I don&amp;rsquo;t need to look next time.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;simple-deployment-options&#34;&gt;Simple Deployment Options&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Railway&lt;/strong&gt;: go-to choice for simple deployment&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Plash&lt;/strong&gt;: Answer.ai&amp;rsquo;s new hosting service (currently in beta)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Modal&lt;/strong&gt;: Good option if you have free credits (like I do from the Hamel course)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;any-starlette-compatible-hosting&#34;&gt;Any Starlette-Compatible Hosting&lt;/h2&gt;&#xA;&lt;p&gt;Since FastHTML apps run on Starlette, they work with any hosting service that supports Starlette applications.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hosting on thingsithinkithink</title><link>https://thingsithinkithink.blog/tags/hosting/</link><description>Recent content in Hosting on thingsithinkithink</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 16 Aug 2025 08:00:00 +0000</lastBuildDate><atom:link href="https://thingsithinkithink.blog/tags/hosting/index.xml" rel="self" type="application/rss+xml"/><item><title>Where to Host Your FastHTML Apps</title><link>https://thingsithinkithink.blog/posts/2025/08-16-where-to-host-fasthtml-apps/</link><pubDate>Sat, 16 Aug 2025 08:00:00 +0000</pubDate><guid>https://thingsithinkithink.blog/posts/2025/08-16-where-to-host-fasthtml-apps/</guid><description>&lt;p&gt;FastHTML apps are built on Starlette, which means they can run anywhere Starlette runs. Some options for hosting so I don&amp;rsquo;t need to look next time.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="simple-deployment-options"&gt;Simple Deployment Options&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Railway&lt;/strong&gt;: go-to choice for simple deployment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plash&lt;/strong&gt;: Answer.ai&amp;rsquo;s new hosting service (currently in beta)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modal&lt;/strong&gt;: Good option if you have free credits (like I do from the Hamel course)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="any-starlette-compatible-hosting"&gt;Any Starlette-Compatible Hosting&lt;/h2&gt;
+&lt;p&gt;Since FastHTML apps run on Starlette, they work with any hosting service that supports Starlette applications.&lt;/p&gt;</description></item></channel></rss>

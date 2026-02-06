@@ -1,26 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Product Management on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/product-management/</link>
-    <description>Recent content in Product Management on thingsithinkithink</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 12 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/product-management/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Why we need Experiment-based Roadmaps in the AI Product Era</title>
-      <link>https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</link>
-      <pubDate>Sat, 12 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</guid>
-      <description>&lt;p&gt;I recently &lt;a href=&#34;https://www.youtube.com/watch?v=R_HnI9oTv3c&#34;&gt;watched&lt;/a&gt; a good talk by &lt;a href=&#34;https://www.linkedin.com/in/bryan-bischof/&#34;&gt;Bryan Bischoff&lt;/a&gt;, Head of AI at Theory Ventures, on why traditional product roadmaps fail for AI development and how teams should approach building AI capabilities differently. The presentation provided a good mental model for shifting from rigid planning to experimental discovery.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem-with-traditional-roadmaps-in-ai&#34;&gt;The Problem with Traditional Roadmaps in AI&lt;/h2&gt;&#xA;&lt;p&gt;Traditional software roadmapping focuses on time estimates for when specific features will be ready for users. Product managers meticulously plan sprints, assign engineers to swim lanes, and establish checkpoints to track progress. When teams fall behind, they reassess, potentially cutting scope or adjusting timelines.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Jackie Bavaro on Strategy</title>
-      <link>https://thingsithinkithink.blog/posts/2025/01-14-three-parts-of-strategy-with-jackie-bavaro/</link>
-      <pubDate>Tue, 14 Jan 2025 12:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2025/01-14-three-parts-of-strategy-with-jackie-bavaro/</guid>
-      <description>&lt;p&gt;Jackie Bavaro’s breakdown of strategy in her &lt;a href=&#34;https://www.lennysnewsletter.com/p/jackie-bavaro-on-how-to-build-product&#34;&gt;recent podcast interview&lt;/a&gt; really stuck with me. She shared a simple (but I think, pretty good) framework that highlights three key components of strategy: &lt;strong&gt;Vision&lt;/strong&gt;, &lt;strong&gt;Strategic Framework&lt;/strong&gt;, and &lt;strong&gt;Roadmap&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-vision-this-is-where-we-want-to-go&#34;&gt;1. Vision: “This is where we want to go”&lt;/h2&gt;&#xA;&lt;p&gt;The vision is an inspiring picture of what the future looks like. Jackie framed it:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;“Hey everyone, this is where we want to get to—don’t you want to build this future with me?”&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Product-Management on thingsithinkithink</title><link>https://thingsithinkithink.blog/tags/product-management/</link><description>Recent content in Product-Management on thingsithinkithink</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 12 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://thingsithinkithink.blog/tags/product-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Why we need Experiment-based Roadmaps in the AI Product Era</title><link>https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</link><pubDate>Sat, 12 Apr 2025 00:00:00 +0000</pubDate><guid>https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/</guid><description>&lt;p&gt;I recently &lt;a href="https://www.youtube.com/watch?v=R_HnI9oTv3c"&gt;watched&lt;/a&gt; a good talk by &lt;a href="https://www.linkedin.com/in/bryan-bischof/"&gt;Bryan Bischoff&lt;/a&gt;, Head of AI at Theory Ventures, on why traditional product roadmaps fail for AI development and how teams should approach building AI capabilities differently. The presentation provided a good mental model for shifting from rigid planning to experimental discovery.&lt;/p&gt;
+&lt;h2 id="the-problem-with-traditional-roadmaps-in-ai"&gt;The Problem with Traditional Roadmaps in AI&lt;/h2&gt;
+&lt;p&gt;Traditional software roadmapping focuses on time estimates for when specific features will be ready for users. Product managers meticulously plan sprints, assign engineers to swim lanes, and establish checkpoints to track progress. When teams fall behind, they reassess, potentially cutting scope or adjusting timelines.&lt;/p&gt;</description></item><item><title>Jackie Bavaro on Strategy</title><link>https://thingsithinkithink.blog/posts/2025/01-14-three-parts-of-strategy-with-jackie-bavaro/</link><pubDate>Tue, 14 Jan 2025 12:00:00 +0000</pubDate><guid>https://thingsithinkithink.blog/posts/2025/01-14-three-parts-of-strategy-with-jackie-bavaro/</guid><description>&lt;p&gt;Jackie Bavaro’s breakdown of strategy in her &lt;a href="https://www.lennysnewsletter.com/p/jackie-bavaro-on-how-to-build-product"&gt;recent podcast interview&lt;/a&gt; really stuck with me. She shared a simple (but I think, pretty good) framework that highlights three key components of strategy: &lt;strong&gt;Vision&lt;/strong&gt;, &lt;strong&gt;Strategic Framework&lt;/strong&gt;, and &lt;strong&gt;Roadmap&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-vision-this-is-where-we-want-to-go"&gt;1. Vision: “This is where we want to go”&lt;/h2&gt;
+&lt;p&gt;The vision is an inspiring picture of what the future looks like. Jackie framed it:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;“Hey everyone, this is where we want to get to—don’t you want to build this future with me?”&lt;/em&gt;&lt;/p&gt;</description></item></channel></rss>

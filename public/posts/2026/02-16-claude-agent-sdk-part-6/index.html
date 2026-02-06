@@ -1,630 +1,117 @@
-<!DOCTYPE html>
-<html lang="en-us" dir="ltr">
-<head>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions | thingsithinkithink</title>
-
-<meta name="description" content="Closing the checkpointing loophole and getting to know the SDK&#39;s permission system.">
-      <link rel="stylesheet" href="/css/main.min.37627a3df6cbc23a43fef20f183473af95eb47c8816508d827b07b50cd3deab5.css" integrity="sha256-N2J6PfbLwjpD/vIPGDRzr5XrR8iBZQjYJ7B7UM096rU=" crossorigin="anonymous">
-
-<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
-<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
-<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
-<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
-<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
-
-</head>
-<body>
-  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
-	<div class="flex items-center">
-		<div class="flex items-center">
-			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
-				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
-				</svg>
-				<span class="bg-blue-500 fill-white rounded-full p-1.5">
-					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
-						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
-					</svg>
-				</span>
-			</button>
-			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
-				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
-			</div>
-		</div>
-		<div class="flex items-center ml-auto">
-			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
-				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
-				</svg>
-			</button>
-		</div>
-	</div>
-  <nav id="menu-bar" class="block mt-3 close">
-    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
-    <li class="my-2">
-      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
-    </li>
-    <li class="my-2">
-      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
-    </li>
-    <li class="my-2">
-      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
-    </li>
-    <li class="my-2">
-      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
-    </li>
-    </ul>
-  </nav>
-<div id="search-bar" class="block mt-3 close">
-	<form id="search" class="flex items-stretch">
-		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
-		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
-			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
-				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-			</svg>
-		</button>
-	</form>
-</div>
-</div></header>
-  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
-	<ul class="flex space-x-4 text-sm text-zinc-500">
-		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
-			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
-		</li>
-		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
-			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
-		</li>
-	</ul>
-</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-
-  <article class="md:col-span-2 prose lg:prose-lg">
-
-    <header class="not-prose">
-      
-      <h1 id="title" class="text-4xl font-bold leading-normal">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h1>
-
-      <div id="lead" class="my-6">
-
-        <p class="font-bold">Closing the checkpointing loophole and getting to know the SDK&#39;s permission system. </p>
-
-      </div>
-      
-      <div id="writer" class="flex items-center space-x-4">
-
-        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
-
-        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
-          
-          <li class="font-semibold my-2">David Gérouville-Farrell</li>
-          
-          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-01-29T06:30:00&#43;00:00">January 29, 2026</time>
-          </li>
-
-          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            10 min read
-          </li>
-
-        </ul>
-
-      </div>
-      
-    </header>
-
-    <figure id="featureimage" class="rounded-xl aspect-video">
-            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_dd88f81922459e7d.png" alt="" width="750" height="543">
-        <figcaption class="text-center italic text-xs">TBD</figcaption>
-
-    </figure>
-
-    <div id="content" class="mb-14">
-      <p>In <a href="/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a>, I added file checkpointing with the ability to rewind changes. But I also mentioned a problem: Claude can bypass the checkpointing system entirely by using Bash to write files instead of the Write or Edit tools. Today I&rsquo;m fixing that loophole - and in the process, I learned a lot about how the SDK&rsquo;s permission system actually works.</p>
-<h2 id="whats-on-the-agenda">What&rsquo;s on the Agenda</h2>
-<p>Before setting up MCP tools (which was originally the plan for today), I need to close this safety gap. The plan for today:</p>
-<ol>
-<li><strong>Fix the Bash bypass problem</strong> - Stop Claude from sneaking around the checkpointing system</li>
-<li><strong>Understand permissions</strong> - How <code>allowed_tools</code>, settings files, and callbacks interact</li>
-<li><strong>Understand hooks</strong> - When callbacks aren&rsquo;t enough, hooks give per-invocation control</li>
-</ol>
-<h2 id="the-bash-bypass-problem">The Bash Bypass Problem</h2>
-<p>I discovered in Part 5. File checkpointing only tracks changes made through <code>Write</code>, <code>Edit</code>, and <code>NotebookEdit</code> tools. If Claude uses Bash to modify files, those changes aren&rsquo;t tracked. Claude doesn&rsquo;t usually use Bash to modify files.</p>
-<p>BUT the agent <em>will</em> use Bash when the other tools fail. When I was testing, the Write tool kept truncating a large file. Claude, being helpful and agentic, noticed the problem and worked around it:</p>
-<blockquote>
-<p>&ldquo;I see the write is still truncating. Let me try a different approach - I&rsquo;ll use Python to write the file&rdquo;</p>
-</blockquote>
-<p>It then ran something like <code>python3 -c &quot;open('file.txt', 'w').write(...)&quot;</code> - which successfully wrote the file but completely bypassed the checkpointing system.</p>
-<p>The file got written correctly. But my safety net disappeared without any warning. If I&rsquo;d tried to <code>/rewind</code> after that, I&rsquo;d have discovered the checkpoint didn&rsquo;t include those changes. My goal here is to build a tool I can actually use - confidently, and safely.  So I need to fix this issue.</p>
-<h2 id="understanding-the-permission-system">Understanding the Permission System</h2>
-<p>To fix this, I needed to understand how the SDK&rsquo;s permission system works in more detail.</p>
-<p>The agent has access to a set of built-in tools (Read, Write, Edit, Bash, Glob, Grep, etc.) plus any MCP tools you configure. The <a href="https://platform.claude.com/docs/en/agent-sdk/quickstart#key-concepts">SDK quickstart</a> explains that <strong>permission modes</strong> control how much human oversight you want:</p>
-<table>
-  <thead>
-      <tr>
-          <th>Mode</th>
-          <th>Behavior</th>
-          <th>Use case</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>acceptEdits</code></td>
-          <td>Auto-approves file edits, asks for other actions</td>
-          <td>Trusted development workflows</td>
-      </tr>
-      <tr>
-          <td><code>bypassPermissions</code></td>
-          <td>Runs without prompts</td>
-          <td>CI/CD pipelines, automation</td>
-      </tr>
-      <tr>
-          <td><code>default</code></td>
-          <td>Requires a <code>canUseTool</code> callback to handle approval</td>
-          <td>Custom approval flows</td>
-      </tr>
-  </tbody>
-</table>
-<p>You can also control which tools are available using two options in <code>ClaudeAgentOptions</code>:</p>
-<ul>
-<li><strong><code>allowed_tools</code></strong>: Tools that execute without prompting for permission</li>
-<li><strong><code>disallowed_tools</code></strong>: Tools that are removed from the model&rsquo;s context entirely</li>
-</ul>
-<p>If a tool isn&rsquo;t in <code>allowed_tools</code>, it&rsquo;s still available - the agent just has to ask permission first.</p>
-<h3 id="the-default-behaviour">The Default Behaviour</h3>
-<p>If you don&rsquo;t specify <code>allowed_tools</code> at all, the default is <strong>all tools run freely</strong>. So to have any permission prompting, you need to explicitly list only the tools you want to run without asking.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># This makes EVERYTHING run without permission (default)</span>
-</span></span><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># This makes only Read/Glob free, everything else asks permission</span>
-</span></span><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
-</span></span><span style="display:flex;"><span>    allowed_tools<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Read&#34;</span>, <span style="color:#e6db74">&#34;Glob&#34;</span>]
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><h2 id="the-fix">The Fix?</h2>
-<p>With this understanding, I thought the fix would be trivial. I would just need to remove <code>Bash</code> from my <code>allowed_tools</code> list.</p>
-<p><strong>Before:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
-</span></span><span style="display:flex;"><span>    system_prompt<span style="color:#f92672">=</span>system_prompt,
-</span></span><span style="display:flex;"><span>    allowed_tools<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Read&#34;</span>, <span style="color:#e6db74">&#34;Write&#34;</span>, <span style="color:#e6db74">&#34;Edit&#34;</span>, <span style="color:#e6db74">&#34;Bash&#34;</span>, <span style="color:#e6db74">&#34;Glob&#34;</span>, <span style="color:#e6db74">&#34;Grep&#34;</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p><strong>After:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
-</span></span><span style="display:flex;"><span>    system_prompt<span style="color:#f92672">=</span>system_prompt,
-</span></span><span style="display:flex;"><span>    allowed_tools<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Read&#34;</span>, <span style="color:#e6db74">&#34;Write&#34;</span>, <span style="color:#e6db74">&#34;Edit&#34;</span>, <span style="color:#e6db74">&#34;Glob&#34;</span>, <span style="color:#e6db74">&#34;Grep&#34;</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><h3 id="first-issue---project-settings-overriding-code">First issue - project settings overriding code</h3>
-<p>I made this change and&hellip; Bash still ran without asking. It took me a minute to figure out why.</p>
-<p>Claude Code uses settings files that can override your code-level configuration. In my case, I had a <code>.claude/settings.local.json</code> in my project with pre-approved Bash permissions:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;permissions&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;allow&#34;</span>: [
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;Bash(file:*)&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;Bash(ls:*)&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;Bash(git fetch:*)&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">...</span>
-</span></span><span style="display:flex;"><span>    ]
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>These had accumulated over time as I approved various commands during normal claude code use.  My agent is built on top of claude code so I was giving permissions to CC and accidentally giving them to the agent. The settings file was silently overriding my <code>allowed_tools</code> change.</p>
-<p>If you want Bash to require permission, you need to make sure it&rsquo;s not pre-approved in your project settings.</p>
-<h2 id="testing-the-fix-and-finding-another-layer">Testing the Fix&hellip; And Finding Another Layer</h2>
-<p>I made both changes (removed Bash from <code>allowed_tools</code>, cleared Bash permissions from <code>settings.local.json</code>) and tested again:</p>
-<pre tabindex="0"><code>You: Please run the tree command in the current directory.
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions | thingsithinkithink</title><meta name=description content="Closing the checkpointing loophole and getting to know the SDK's permission system."><link rel=stylesheet href=/css/main.min.37627a3df6cbc23a43fef20f183473af95eb47c8816508d827b07b50cd3deab5.css integrity="sha256-N2J6PfbLwjpD/vIPGDRzr5XrR8iBZQjYJ7B7UM096rU=" crossorigin=anonymous><link rel=icon type=image/svg+xml href=https://thingsithinkithink.blog/favicon.svg><link rel=icon type=image/x-icon href=https://thingsithinkithink.blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://thingsithinkithink.blog/favicon.png><link rel=icon type=image/png sizes=32x32 href=https://thingsithinkithink.blog/favicon-32.png><link rel=icon type=image/png sizes=64x64 href=https://thingsithinkithink.blog/favicon-64.png></head><body><header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col"><div class="flex items-center"><div class="flex items-center"><button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=menu-bar>
+<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5.0 01.5-.5h10a.5.5.0 010 1H3a.5.5.0 01-.5-.5zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 8zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 4z"/></svg>
+<span class="bg-blue-500 fill-white rounded-full p-1.5"><svg width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg></span></button><div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2"><h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href=https://thingsithinkithink.blog/>thingsithinkithink</a></h2></div></div><div class="flex items-center ml-auto"><button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=search-bar>
+<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/><path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5.0 11.708-.708L8 7.293l5.146-5.147a.5.5.0 01.708.708L8.707 8l5.147 5.146a.5.5.0 01-.708.708L8 8.707l-5.146 5.147a.5.5.0 01-.708-.708L7.293 8 2.146 2.854z"/></svg></button></div></div><nav id=menu-bar class="block mt-3 close"><ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4"><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/>Home</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/about/>About</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/tags/>Tags</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/categories/>Taxonomy</a></li></ul></nav><div id=search-bar class="block mt-3 close"><form id=search class="flex items-stretch"><input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type=text placeholder=Search...>
+<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200">
+<svg width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/></svg></button></form></div></div></header><main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id=breadcrumb class="max-w-7xl mx-auto py-8"><ul class="flex space-x-4 text-sm text-zinc-500"><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/>thingsithinkithink</a></li><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/posts/>Posts</a></li></ul></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"><article class="md:col-span-2 prose lg:prose-lg"><header class=not-prose><h1 id=title class="text-4xl font-bold leading-normal">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h1><div id=lead class=my-6><p class=font-bold>Closing the checkpointing loophole and getting to know the SDK's permission system.</p></div><div id=writer class="flex items-center space-x-4"><img class="w-12 h-12 bg-black rounded-full" src=https://thingsithinkithink.blog/images/goldfinch.jpg alt="David Gérouville-Farrell avatar" width=1000 height=1000><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-2">David Gérouville-Farrell</li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime=2026-01-29T06:30:00+00:00>January 29, 2026</time></li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">10 min read</li></ul></div></header><figure id=featureimage class="rounded-xl aspect-video"><img class=rounded-lg src=https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_dd88f81922459e7d.png alt width=750 height=543><figcaption class="text-center italic text-xs">TBD</figcaption></figure><div id=content class=mb-14><p>In <a href=/posts/2026/02-09-claude-agent-sdk-part-5/>Part 5</a>, I added file checkpointing with the ability to rewind changes. But I also mentioned a problem: Claude can bypass the checkpointing system entirely by using Bash to write files instead of the Write or Edit tools. Today I&rsquo;m fixing that loophole - and in the process, I learned a lot about how the SDK&rsquo;s permission system actually works.</p><h2 id=whats-on-the-agenda>What&rsquo;s on the Agenda</h2><p>Before setting up MCP tools (which was originally the plan for today), I need to close this safety gap. The plan for today:</p><ol><li><strong>Fix the Bash bypass problem</strong> - Stop Claude from sneaking around the checkpointing system</li><li><strong>Understand permissions</strong> - How <code>allowed_tools</code>, settings files, and callbacks interact</li><li><strong>Understand hooks</strong> - When callbacks aren&rsquo;t enough, hooks give per-invocation control</li></ol><h2 id=the-bash-bypass-problem>The Bash Bypass Problem</h2><p>I discovered in Part 5. File checkpointing only tracks changes made through <code>Write</code>, <code>Edit</code>, and <code>NotebookEdit</code> tools. If Claude uses Bash to modify files, those changes aren&rsquo;t tracked. Claude doesn&rsquo;t usually use Bash to modify files.</p><p>BUT the agent <em>will</em> use Bash when the other tools fail. When I was testing, the Write tool kept truncating a large file. Claude, being helpful and agentic, noticed the problem and worked around it:</p><blockquote><p>&ldquo;I see the write is still truncating. Let me try a different approach - I&rsquo;ll use Python to write the file&rdquo;</p></blockquote><p>It then ran something like <code>python3 -c "open('file.txt', 'w').write(...)"</code> - which successfully wrote the file but completely bypassed the checkpointing system.</p><p>The file got written correctly. But my safety net disappeared without any warning. If I&rsquo;d tried to <code>/rewind</code> after that, I&rsquo;d have discovered the checkpoint didn&rsquo;t include those changes. My goal here is to build a tool I can actually use - confidently, and safely. So I need to fix this issue.</p><h2 id=understanding-the-permission-system>Understanding the Permission System</h2><p>To fix this, I needed to understand how the SDK&rsquo;s permission system works in more detail.</p><p>The agent has access to a set of built-in tools (Read, Write, Edit, Bash, Glob, Grep, etc.) plus any MCP tools you configure. The <a href=https://platform.claude.com/docs/en/agent-sdk/quickstart#key-concepts>SDK quickstart</a> explains that <strong>permission modes</strong> control how much human oversight you want:</p><table><thead><tr><th>Mode</th><th>Behavior</th><th>Use case</th></tr></thead><tbody><tr><td><code>acceptEdits</code></td><td>Auto-approves file edits, asks for other actions</td><td>Trusted development workflows</td></tr><tr><td><code>bypassPermissions</code></td><td>Runs without prompts</td><td>CI/CD pipelines, automation</td></tr><tr><td><code>default</code></td><td>Requires a <code>canUseTool</code> callback to handle approval</td><td>Custom approval flows</td></tr></tbody></table><p>You can also control which tools are available using two options in <code>ClaudeAgentOptions</code>:</p><ul><li><strong><code>allowed_tools</code></strong>: Tools that execute without prompting for permission</li><li><strong><code>disallowed_tools</code></strong>: Tools that are removed from the model&rsquo;s context entirely</li></ul><p>If a tool isn&rsquo;t in <code>allowed_tools</code>, it&rsquo;s still available - the agent just has to ask permission first.</p><h3 id=the-default-behaviour>The Default Behaviour</h3><p>If you don&rsquo;t specify <code>allowed_tools</code> at all, the default is <strong>all tools run freely</strong>. So to have any permission prompting, you need to explicitly list only the tools you want to run without asking.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># This makes EVERYTHING run without permission (default)</span>
+</span></span><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># This makes only Read/Glob free, everything else asks permission</span>
+</span></span><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions(
+</span></span><span style=display:flex><span>    allowed_tools<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;Read&#34;</span>, <span style=color:#e6db74>&#34;Glob&#34;</span>]
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><h2 id=the-fix>The Fix?</h2><p>With this understanding, I thought the fix would be trivial. I would just need to remove <code>Bash</code> from my <code>allowed_tools</code> list.</p><p><strong>Before:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions(
+</span></span><span style=display:flex><span>    system_prompt<span style=color:#f92672>=</span>system_prompt,
+</span></span><span style=display:flex><span>    allowed_tools<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;Read&#34;</span>, <span style=color:#e6db74>&#34;Write&#34;</span>, <span style=color:#e6db74>&#34;Edit&#34;</span>, <span style=color:#e6db74>&#34;Bash&#34;</span>, <span style=color:#e6db74>&#34;Glob&#34;</span>, <span style=color:#e6db74>&#34;Grep&#34;</span>],
+</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><p><strong>After:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions(
+</span></span><span style=display:flex><span>    system_prompt<span style=color:#f92672>=</span>system_prompt,
+</span></span><span style=display:flex><span>    allowed_tools<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;Read&#34;</span>, <span style=color:#e6db74>&#34;Write&#34;</span>, <span style=color:#e6db74>&#34;Edit&#34;</span>, <span style=color:#e6db74>&#34;Glob&#34;</span>, <span style=color:#e6db74>&#34;Grep&#34;</span>],
+</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><h3 id=first-issue---project-settings-overriding-code>First issue - project settings overriding code</h3><p>I made this change and&mldr; Bash still ran without asking. It took me a minute to figure out why.</p><p>Claude Code uses settings files that can override your code-level configuration. In my case, I had a <code>.claude/settings.local.json</code> in my project with pre-approved Bash permissions:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;permissions&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;allow&#34;</span>: [
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Bash(file:*)&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Bash(ls:*)&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Bash(git fetch:*)&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#960050;background-color:#1e0010>...</span>
+</span></span><span style=display:flex><span>    ]
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>These had accumulated over time as I approved various commands during normal claude code use. My agent is built on top of claude code so I was giving permissions to CC and accidentally giving them to the agent. The settings file was silently overriding my <code>allowed_tools</code> change.</p><p>If you want Bash to require permission, you need to make sure it&rsquo;s not pre-approved in your project settings.</p><h2 id=testing-the-fix-and-finding-another-layer>Testing the Fix&mldr; And Finding Another Layer</h2><p>I made both changes (removed Bash from <code>allowed_tools</code>, cleared Bash permissions from <code>settings.local.json</code>) and tested again:</p><pre tabindex=0><code>You: Please run the tree command in the current directory.
 
 A: I&#39;ll run the tree command to show the directory structure.
 [Bash: {&#39;command&#39;: &#39;tree&#39;, &#39;description&#39;: &#39;Show directory tree structure&#39;}]
 It looks like the tree command needs approval to run on your home directory...
-</code></pre><p>The command was blocked, but I never saw a prompt. The agent just couldn&rsquo;t run it, and moved on.</p>
-<p>Removing Bash from <code>allowed_tools</code> meant it now needed permission to run - but I hadn&rsquo;t implemented any mechanism to actually grant that permission. So the system had no way to ask me, and defaulted to denying the tool.</p>
-<p>I need to be able to approve Bash commands selectively (like <code>git status</code> or <code>tree</code>), not block them entirely.</p>
-<p>The <a href="https://platform.claude.com/docs/en/agent-sdk/permissions#how-permissions-are-evaluated">permissions documentation</a>, explains the evaluation order. When the agent tries to use a tool, the system checks in this order:</p>
-<ol>
-<li><strong>Hooks</strong> - Run first, can allow, deny, or continue</li>
-<li><strong>Permission rules</strong> - Check rules in settings.json (deny first, then allow, then ask)</li>
-<li><strong>Permission mode</strong> - Apply the active permission mode</li>
-<li><strong><code>can_use_tool</code> callback</strong> - If not resolved, call your callback</li>
-</ol>
-<p><img src="/images/2026/02-16-permissions-flow.svg" alt="Permission evaluation flow">
-<em>Image credit: Anthropic</em></p>
-<p>If a tool isn&rsquo;t in <code>allowed_tools</code> and there&rsquo;s no <code>can_use_tool</code> callback defined, the default behaviour is to <strong>deny silently</strong> rather than prompt the user. The agent notices it can&rsquo;t use the tool and adapts.</p>
-<p>To get actual prompts so I can approve commands like <code>git status</code> while blocking file writes, I needed to implement the callback.</p>
-<h2 id="adding-the-permission-callback">Adding the Permission Callback</h2>
-<p>The <code>can_use_tool</code> callback lets you handle permission requests programmatically. Here&rsquo;s what I added:</p>
-<p>First, the imports:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> claude_agent_sdk <span style="color:#f92672">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
-</span></span><span style="display:flex;"><span>    PermissionResultAllow,
-</span></span><span style="display:flex;"><span>    PermissionResultDeny,
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>Then the callback function:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle_tool_permission</span>(tool_name: str, input_data: dict, context):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Prompt user for permission on any non-allowed tool.&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{</span>META<span style="color:#e6db74">}{</span>tool_name<span style="color:#e6db74">}</span><span style="color:#e6db74"> permission requested:</span><span style="color:#e6db74">{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>CODE<span style="color:#e6db74">}</span><span style="color:#e6db74">  </span><span style="color:#e6db74">{</span>input_data<span style="color:#e6db74">}{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> input(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>USER<span style="color:#e6db74">}</span><span style="color:#e6db74">Allow? [y/n]: </span><span style="color:#e6db74">{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>lower() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;y&#39;</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> PermissionResultAllow(updated_input<span style="color:#f92672">=</span>input_data)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> PermissionResultDeny(message<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;User denied </span><span style="color:#e6db74">{</span>tool_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span></code></pre></div><p>Note that I don&rsquo;t need to check for Bash specifically. The callback only gets called for tools that <em>aren&rsquo;t</em> in <code>allowed_tools</code>. So anything in my allowed list runs freely; everything else hits this prompt.</p>
-<p>And wire it up in the options:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
-</span></span><span style="display:flex;"><span>    system_prompt<span style="color:#f92672">=</span>system_prompt,
-</span></span><span style="display:flex;"><span>    allowed_tools<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Read&#34;</span>, <span style="color:#e6db74">&#34;Write&#34;</span>, <span style="color:#e6db74">&#34;Edit&#34;</span>, <span style="color:#e6db74">&#34;Glob&#34;</span>, <span style="color:#e6db74">&#34;Grep&#34;</span>],
-</span></span><span style="display:flex;"><span>    can_use_tool<span style="color:#f92672">=</span>handle_tool_permission,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>Now when the agent wants to run a Bash command, I get an actual prompt:</p>
-<p><img src="/images/2026/02-16-bash-permission-prompt.png" alt="Bash permission prompt working">
-<em>The callback prompts for permission, I approve, and the tree command runs</em></p>
-<p>I can approve safe commands like <code>tree</code> or <code>git status</code>, and deny anything that looks like it&rsquo;s trying to write files outside the checkpointing system.</p>
-<h2 id="session-wide-permission-caching">Session-wide permission caching</h2>
-<p>I thought I was done (again). Then I tested with two Bash commands in sequence: first <code>tree -L 2</code>, then <code>pwd</code>. The first command prompted me and I approved it. But the second command just ran without any prompt:</p>
-<p><img src="/images/2026/02-16-bash-caching-no-prompt.png" alt="Bash command running without prompt">
-<em>The pwd command executed immediately with no permission prompt - the approval was cached</em></p>
-<p>I approved one Bash command, and suddenly <em>all</em> Bash commands were approved for the session.</p>
-<h2 id="back-to-the-documentation">Back to the Documentation</h2>
-<p>I went back to the SDK documentation and found what I&rsquo;d missed. The permission evaluation order I mentioned earlier:</p>
-<ol>
-<li><strong>Hooks</strong> - Run first</li>
-<li><strong>Permission rules</strong> - Settings files</li>
-<li><strong>Permission mode</strong> - Active mode</li>
-<li><strong><code>can_use_tool</code> callback</strong> - Called if not resolved</li>
-</ol>
-<p>When <code>can_use_tool</code> returns <code>PermissionResultAllow</code>, that decision gets <em>cached for the session</em>. This makes sense for tools like <code>Read</code> where you don&rsquo;t want to approve every single call.</p>
-<p>But for my use case (protecting file writes), I need per-command control over Bash. And there&rsquo;s no <code>PermissionResultAllowOnce</code> option.</p>
-<h2 id="implementing-hooks-for-per-command-control">Implementing Hooks for Per-Command Control</h2>
-<p>Hooks run at the top of the permission evaluation order - before any caching happens. Each hook invocation is independent, so I can make fresh decisions for every Bash command.</p>
-<h3 id="setting-up-the-hook">Setting Up the Hook</h3>
-<p>First, the imports:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> claude_agent_sdk <span style="color:#f92672">import</span> HookMatcher
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> claude_agent_sdk.types <span style="color:#f92672">import</span> HookInput, HookContext, HookJSONOutput
-</span></span></code></pre></div><p>Then wire up the hook in the agent options:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
-</span></span><span style="display:flex;"><span>    system_prompt<span style="color:#f92672">=</span>system_prompt,
-</span></span><span style="display:flex;"><span>    allowed_tools<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Read&#34;</span>, <span style="color:#e6db74">&#34;Write&#34;</span>, <span style="color:#e6db74">&#34;Edit&#34;</span>, <span style="color:#e6db74">&#34;Glob&#34;</span>, <span style="color:#e6db74">&#34;Grep&#34;</span>],
-</span></span><span style="display:flex;"><span>    hooks<span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PreToolUse&#34;</span>: [
-</span></span><span style="display:flex;"><span>            HookMatcher(
-</span></span><span style="display:flex;"><span>                matcher<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Bash&#34;</span>,
-</span></span><span style="display:flex;"><span>                hooks<span style="color:#f92672">=</span>[bash_permission_hook],
-</span></span><span style="display:flex;"><span>                timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">120</span>  <span style="color:#75715e"># 2 minutes for user response</span>
-</span></span><span style="display:flex;"><span>            )
-</span></span><span style="display:flex;"><span>        ]
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>The <code>hooks</code> option is a dictionary keyed by <a href="https://platform.claude.com/docs/en/agent-sdk/hooks#available-hooks">hook event name</a>. <code>PreToolUse</code> fires before a tool executes and can block or allow the operation. The <code>HookMatcher</code> filters which tools trigger the callback - here, <code>matcher=&quot;Bash&quot;</code> means only Bash commands hit this hook. The <code>hooks</code> array contains the callback functions to run (you can chain multiple).</p>
-<h3 id="understanding-the-hook-types">Understanding the Hook Types</h3>
-<p>The callback uses three types from <code>claude_agent_sdk.types</code>. The <a href="https://platform.claude.com/docs/en/agent-sdk/hooks#callback-function-inputs">SDK documentation</a> has the full details:</p>
-<ul>
-<li>
-<p><strong><a href="https://platform.claude.com/docs/en/agent-sdk/hooks#input-data">HookInput</a></strong>: A dictionary with event details. Common fields include <code>hook_event_name</code>, <code>session_id</code>, and <code>cwd</code>. For <code>PreToolUse</code>, it also has <code>tool_name</code> and <code>tool_input</code> (the arguments passed to the tool).</p>
-</li>
-<li>
-<p><strong><a href="https://platform.claude.com/docs/en/agent-sdk/hooks#callback-function-inputs">HookContext</a></strong>: Reserved for future use in Python. In TypeScript, it provides an <code>AbortSignal</code> for cancellation.</p>
-</li>
-<li>
-<p><strong><a href="https://platform.claude.com/docs/en/agent-sdk/hooks#callback-outputs">HookJSONOutput</a></strong>: The return type. Return an empty <code>{}</code> to let the operation proceed unchanged. Return a <code>hookSpecificOutput</code> dictionary to make a permission decision.</p>
-</li>
-</ul>
-<h3 id="the-callback-function">The Callback Function</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bash_permission_hook</span>(
-</span></span><span style="display:flex;"><span>    input_data: HookInput,
-</span></span><span style="display:flex;"><span>    tool_use_id: str <span style="color:#f92672">|</span> <span style="color:#66d9ef">None</span>,
-</span></span><span style="display:flex;"><span>    context: HookContext
-</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> HookJSONOutput:
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Prompt for EVERY Bash command - no caching.&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Only handle PreToolUse events for Bash</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> input_data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;hook_event_name&#34;</span>) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;PreToolUse&#34;</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> input_data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;tool_name&#34;</span>) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;Bash&#34;</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Get command details from tool_input</span>
-</span></span><span style="display:flex;"><span>    tool_input <span style="color:#f92672">=</span> input_data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;tool_input&#34;</span>, {})
-</span></span><span style="display:flex;"><span>    command <span style="color:#f92672">=</span> tool_input<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;command&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Prompt the user</span>
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{</span>META<span style="color:#e6db74">}</span><span style="color:#e6db74">Bash permission requested:</span><span style="color:#e6db74">{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>CODE<span style="color:#e6db74">}</span><span style="color:#e6db74">  </span><span style="color:#e6db74">{</span>command<span style="color:#e6db74">}{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> input(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>USER<span style="color:#e6db74">}</span><span style="color:#e6db74">Allow? [y/n]: </span><span style="color:#e6db74">{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>lower() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;y&#34;</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;hookSpecificOutput&#34;</span>: {
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;hookEventName&#34;</span>: <span style="color:#e6db74">&#34;PreToolUse&#34;</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;permissionDecision&#34;</span>: <span style="color:#e6db74">&#34;allow&#34;</span>,
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Stop entirely - don&#39;t let Claude try something else</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;continue_&#34;</span>: <span style="color:#66d9ef">False</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;stopReason&#34;</span>: <span style="color:#e6db74">&#34;User denied Bash command&#34;</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span></code></pre></div><p>claud</p>
-<h3 id="the-response-structure">The Response Structure</h3>
-<p>When allowing a tool, you return a <code>hookSpecificOutput</code> with:</p>
-<ul>
-<li><strong><code>hookEventName</code></strong>: Must match the event type you&rsquo;re responding to (<code>&quot;PreToolUse&quot;</code> here).</li>
-<li><strong><code>permissionDecision</code></strong>: Set to <code>&quot;allow&quot;</code> to let the tool run.</li>
-</ul>
-<p>When denying, you have two options:</p>
-<ol>
-<li>
-<p><strong><code>permissionDecision: &quot;deny&quot;</code></strong> - Blocks this specific command but Claude continues thinking. It might try a different approach or rephrase the command.</p>
-</li>
-<li>
-<p><strong><code>continue_: False</code></strong> - Stops the agent entirely and returns to the user prompt. This is what I use here - if I say no to a Bash command, I want to give new instructions, not have Claude guess at alternatives.</p>
-</li>
-</ol>
-<p>Returning an empty <code>{}</code> means &ldquo;I have no opinion&rdquo; - the SDK continues down the permission evaluation chain.</p>
-<h3 id="the-result">The Result</h3>
-<p>With hooks in place, each Bash command prompts independently:</p>
-<p><img src="/images/2026/02-16-hooks-per-command-working.png" alt="Hooks working - each Bash command prompts separately">
-<em>The tree command executes after approval, then pwd prompts separately - no caching</em></p>
-<p>I can approve <code>tree</code> and still be asked about <code>pwd</code>. My checkpoint protection is complete.</p>
-<h2 id="the-full-permission-picture">The Full Permission Picture</h2>
-<p>After all this exploration, here&rsquo;s my mental model for the SDK permission system:</p>
-<table>
-  <thead>
-      <tr>
-          <th>Layer</th>
-          <th>When to use</th>
-          <th>Caching</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>allowed_tools</code></td>
-          <td>Tools that should always run freely</td>
-          <td>N/A - no prompt</td>
-      </tr>
-      <tr>
-          <td><code>disallowed_tools</code></td>
-          <td>Tools that should never run</td>
-          <td>N/A - blocked</td>
-      </tr>
-      <tr>
-          <td>Settings patterns</td>
-          <td>Fine-grained static rules (<code>Bash(git:*)</code>)</td>
-          <td>Persistent</td>
-      </tr>
-      <tr>
-          <td><code>can_use_tool</code> callback</td>
-          <td>Session-level approval</td>
-          <td><strong>Cached per tool type</strong></td>
-      </tr>
-      <tr>
-          <td><code>PreToolUse</code> hooks</td>
-          <td>Per-invocation control</td>
-          <td><strong>No caching</strong></td>
-      </tr>
-  </tbody>
-</table>
-<p>For most use cases, <code>can_use_tool</code> is simpler and the caching is helpful. But when you need command-level control (like protecting against Bash file writes), hooks are the right tool.</p>
-<h2 id="whats-next">What&rsquo;s Next</h2>
-<p>With permissions and hooks now making sense, I&rsquo;m ready to tackle custom MCP tools. In the next post, I want to:</p>
-<ul>
-<li>Expose the rewind function as a proper tool (so <code>/rewind</code> becomes a real slash command Claude can use)</li>
-<li>Add a tool to start and stop the local Hugo server</li>
-<li>Add a tool to run the build/deploy script</li>
-</ul>
-<p>The SDK&rsquo;s <code>@tool</code> decorator and <code>create_sdk_mcp_server()</code> function make this possible - but that&rsquo;s for next time.</p>
-<hr>
-<p><em>This is Part 6 of my series on learning the Claude Agent SDK. <a href="/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> covers initial exploration, <a href="/posts/2026/01-19-claude-agent-sdk-part-2/">Part 2</a> adds polish, <a href="/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a> explores context control, <a href="/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a> implements context profiles, and <a href="/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a> adds file checkpointing.</em></p>
-
-
-    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
-
-      <li class="font-semibold my-4">Tags:</li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/claude/">Claude</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/agent-sdk/">Agent-Sdk</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/python/">Python</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/learning/">Learning</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
-    </ul>
-</div>
-
-    <footer id="content-footer" class="not-prose">
-
-      
-
-      
-      <div id="related-post" class="">
-
-        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
-	
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
-
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_457afa222a853fbd.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="750" height="419">
-
-	  </figure>
-
-	<div class="p-6">
-
-		<time datetime="2026-01-26T06:30:00&#43;00:00">Jan 26, 2026</time>
-
-		<h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3>
-
-		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Adding the ability for the agent to create posts that follow my templates, with the ability to recover from mistakes.</p>
-
-	</div>
-</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
-	
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/"></a>
-
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_2c2189dde4e2506d.jpg" alt="Claude Agent SDK Part 4: Implementing Context Profiles" width="750" height="543">
-
-	  </figure>
-
-	<div class="p-6">
-
-		<time datetime="2026-01-22T06:30:00&#43;00:00">Jan 22, 2026</time>
-
-		<h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 4: Implementing Context Profiles</h3>
-
-		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Building context profiles and usage tracking that works with the SDK&#39;s design.</p>
-
-	</div>
-</article>
-          
-        </div>
-      </div>
-
-    </footer>
-
-  </article>
-
-  
-  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
-
-		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
-
-		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
-
-</div><div class="space-y-6">
-
-		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
-
-		<article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_7dc1390a998f20d.png" alt="Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_86bd4167f2b86ba8.jpg" alt="Claude Agent SDK Part 4: Implementing Context Profiles" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-26-claude-agent-sdk-part-3_hu_b7859d2c5461156f.png" alt="Claude Agent SDK Part 3: The Context Control Problem" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 3: The Context Control Problem</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-19-claude-agent-sdk-part-2_hu_fbec07eea3b71339.png" alt="Claude Agent SDK: Part 2" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK: Part 2</h3>
-	</div>
-</article>
-		
-	</div>
-
-</div>
-</aside>
-
-</div>
-  
-</main>
-  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-
-  <div class="flex flex-wrap space-y-6 mb-4">
-
-    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
-
-      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
-          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
-        </svg>
-        
-        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
-      </a>
-
-      <p class="font-semibold">
-        
-      </p>
-
-      
-
-    </div>
-
-    <div class="self-center flex flex-col w-full md:w-2/5">
-
-<ul id="social-media" class="flex items-center space-x-4">
-	
-	
-	<li> 
-		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
-		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
-			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
-		</a>
-	</li>
-	
-	<li> 
-		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
-		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
-			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
-		</a>
-	</li>
-	<li> 
-		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
-		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
-			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
-		</a>
-	</li>
-	
-	
-</ul>
-
-    </div>
-    
-  </div>
-
-  <div class="my-8">
-    <ul class="flex items-center space-x-4">
-      
-        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
-      
-        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
-      
-        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
-      
-        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
-      
-    </ul>
-  </div>
-
-  <div class="border-t pt-4">
-
-    <p class="text-sm">
-      Powered by 
-      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
-      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
-      and based on the 
-      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
-    </p>
-
-  </div>
-  
-</div>
-</footer>
-      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
-</body>
-</html>
+</code></pre><p>The command was blocked, but I never saw a prompt. The agent just couldn&rsquo;t run it, and moved on.</p><p>Removing Bash from <code>allowed_tools</code> meant it now needed permission to run - but I hadn&rsquo;t implemented any mechanism to actually grant that permission. So the system had no way to ask me, and defaulted to denying the tool.</p><p>I need to be able to approve Bash commands selectively (like <code>git status</code> or <code>tree</code>), not block them entirely.</p><p>The <a href=https://platform.claude.com/docs/en/agent-sdk/permissions#how-permissions-are-evaluated>permissions documentation</a>, explains the evaluation order. When the agent tries to use a tool, the system checks in this order:</p><ol><li><strong>Hooks</strong> - Run first, can allow, deny, or continue</li><li><strong>Permission rules</strong> - Check rules in settings.json (deny first, then allow, then ask)</li><li><strong>Permission mode</strong> - Apply the active permission mode</li><li><strong><code>can_use_tool</code> callback</strong> - If not resolved, call your callback</li></ol><p><img src=/images/2026/02-16-permissions-flow.svg alt="Permission evaluation flow">
+<em>Image credit: Anthropic</em></p><p>If a tool isn&rsquo;t in <code>allowed_tools</code> and there&rsquo;s no <code>can_use_tool</code> callback defined, the default behaviour is to <strong>deny silently</strong> rather than prompt the user. The agent notices it can&rsquo;t use the tool and adapts.</p><p>To get actual prompts so I can approve commands like <code>git status</code> while blocking file writes, I needed to implement the callback.</p><h2 id=adding-the-permission-callback>Adding the Permission Callback</h2><p>The <code>can_use_tool</code> callback lets you handle permission requests programmatically. Here&rsquo;s what I added:</p><p>First, the imports:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> claude_agent_sdk <span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>    PermissionResultAllow,
+</span></span><span style=display:flex><span>    PermissionResultDeny,
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><p>Then the callback function:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>handle_tool_permission</span>(tool_name: str, input_data: dict, context):
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;Prompt user for permission on any non-allowed tool.&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>{</span>META<span style=color:#e6db74>}{</span>tool_name<span style=color:#e6db74>}</span><span style=color:#e6db74> permission requested:</span><span style=color:#e6db74>{</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>CODE<span style=color:#e6db74>}</span><span style=color:#e6db74>  </span><span style=color:#e6db74>{</span>input_data<span style=color:#e6db74>}{</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    response <span style=color:#f92672>=</span> input(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>USER<span style=color:#e6db74>}</span><span style=color:#e6db74>Allow? [y/n]: </span><span style=color:#e6db74>{</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> response<span style=color:#f92672>.</span>lower() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;y&#39;</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> PermissionResultAllow(updated_input<span style=color:#f92672>=</span>input_data)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> PermissionResultDeny(message<span style=color:#f92672>=</span><span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;User denied </span><span style=color:#e6db74>{</span>tool_name<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span></code></pre></div><p>Note that I don&rsquo;t need to check for Bash specifically. The callback only gets called for tools that <em>aren&rsquo;t</em> in <code>allowed_tools</code>. So anything in my allowed list runs freely; everything else hits this prompt.</p><p>And wire it up in the options:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions(
+</span></span><span style=display:flex><span>    system_prompt<span style=color:#f92672>=</span>system_prompt,
+</span></span><span style=display:flex><span>    allowed_tools<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;Read&#34;</span>, <span style=color:#e6db74>&#34;Write&#34;</span>, <span style=color:#e6db74>&#34;Edit&#34;</span>, <span style=color:#e6db74>&#34;Glob&#34;</span>, <span style=color:#e6db74>&#34;Grep&#34;</span>],
+</span></span><span style=display:flex><span>    can_use_tool<span style=color:#f92672>=</span>handle_tool_permission,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><p>Now when the agent wants to run a Bash command, I get an actual prompt:</p><p><img src=/images/2026/02-16-bash-permission-prompt.png alt="Bash permission prompt working">
+<em>The callback prompts for permission, I approve, and the tree command runs</em></p><p>I can approve safe commands like <code>tree</code> or <code>git status</code>, and deny anything that looks like it&rsquo;s trying to write files outside the checkpointing system.</p><h2 id=session-wide-permission-caching>Session-wide permission caching</h2><p>I thought I was done (again). Then I tested with two Bash commands in sequence: first <code>tree -L 2</code>, then <code>pwd</code>. The first command prompted me and I approved it. But the second command just ran without any prompt:</p><p><img src=/images/2026/02-16-bash-caching-no-prompt.png alt="Bash command running without prompt">
+<em>The pwd command executed immediately with no permission prompt - the approval was cached</em></p><p>I approved one Bash command, and suddenly <em>all</em> Bash commands were approved for the session.</p><h2 id=back-to-the-documentation>Back to the Documentation</h2><p>I went back to the SDK documentation and found what I&rsquo;d missed. The permission evaluation order I mentioned earlier:</p><ol><li><strong>Hooks</strong> - Run first</li><li><strong>Permission rules</strong> - Settings files</li><li><strong>Permission mode</strong> - Active mode</li><li><strong><code>can_use_tool</code> callback</strong> - Called if not resolved</li></ol><p>When <code>can_use_tool</code> returns <code>PermissionResultAllow</code>, that decision gets <em>cached for the session</em>. This makes sense for tools like <code>Read</code> where you don&rsquo;t want to approve every single call.</p><p>But for my use case (protecting file writes), I need per-command control over Bash. And there&rsquo;s no <code>PermissionResultAllowOnce</code> option.</p><h2 id=implementing-hooks-for-per-command-control>Implementing Hooks for Per-Command Control</h2><p>Hooks run at the top of the permission evaluation order - before any caching happens. Each hook invocation is independent, so I can make fresh decisions for every Bash command.</p><h3 id=setting-up-the-hook>Setting Up the Hook</h3><p>First, the imports:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> claude_agent_sdk <span style=color:#f92672>import</span> HookMatcher
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> claude_agent_sdk.types <span style=color:#f92672>import</span> HookInput, HookContext, HookJSONOutput
+</span></span></code></pre></div><p>Then wire up the hook in the agent options:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions(
+</span></span><span style=display:flex><span>    system_prompt<span style=color:#f92672>=</span>system_prompt,
+</span></span><span style=display:flex><span>    allowed_tools<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;Read&#34;</span>, <span style=color:#e6db74>&#34;Write&#34;</span>, <span style=color:#e6db74>&#34;Edit&#34;</span>, <span style=color:#e6db74>&#34;Glob&#34;</span>, <span style=color:#e6db74>&#34;Grep&#34;</span>],
+</span></span><span style=display:flex><span>    hooks<span style=color:#f92672>=</span>{
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;PreToolUse&#34;</span>: [
+</span></span><span style=display:flex><span>            HookMatcher(
+</span></span><span style=display:flex><span>                matcher<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Bash&#34;</span>,
+</span></span><span style=display:flex><span>                hooks<span style=color:#f92672>=</span>[bash_permission_hook],
+</span></span><span style=display:flex><span>                timeout<span style=color:#f92672>=</span><span style=color:#ae81ff>120</span>  <span style=color:#75715e># 2 minutes for user response</span>
+</span></span><span style=display:flex><span>            )
+</span></span><span style=display:flex><span>        ]
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><p>The <code>hooks</code> option is a dictionary keyed by <a href=https://platform.claude.com/docs/en/agent-sdk/hooks#available-hooks>hook event name</a>. <code>PreToolUse</code> fires before a tool executes and can block or allow the operation. The <code>HookMatcher</code> filters which tools trigger the callback - here, <code>matcher="Bash"</code> means only Bash commands hit this hook. The <code>hooks</code> array contains the callback functions to run (you can chain multiple).</p><h3 id=understanding-the-hook-types>Understanding the Hook Types</h3><p>The callback uses three types from <code>claude_agent_sdk.types</code>. The <a href=https://platform.claude.com/docs/en/agent-sdk/hooks#callback-function-inputs>SDK documentation</a> has the full details:</p><ul><li><p><strong><a href=https://platform.claude.com/docs/en/agent-sdk/hooks#input-data>HookInput</a></strong>: A dictionary with event details. Common fields include <code>hook_event_name</code>, <code>session_id</code>, and <code>cwd</code>. For <code>PreToolUse</code>, it also has <code>tool_name</code> and <code>tool_input</code> (the arguments passed to the tool).</p></li><li><p><strong><a href=https://platform.claude.com/docs/en/agent-sdk/hooks#callback-function-inputs>HookContext</a></strong>: Reserved for future use in Python. In TypeScript, it provides an <code>AbortSignal</code> for cancellation.</p></li><li><p><strong><a href=https://platform.claude.com/docs/en/agent-sdk/hooks#callback-outputs>HookJSONOutput</a></strong>: The return type. Return an empty <code>{}</code> to let the operation proceed unchanged. Return a <code>hookSpecificOutput</code> dictionary to make a permission decision.</p></li></ul><h3 id=the-callback-function>The Callback Function</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>bash_permission_hook</span>(
+</span></span><span style=display:flex><span>    input_data: HookInput,
+</span></span><span style=display:flex><span>    tool_use_id: str <span style=color:#f92672>|</span> <span style=color:#66d9ef>None</span>,
+</span></span><span style=display:flex><span>    context: HookContext
+</span></span><span style=display:flex><span>) <span style=color:#f92672>-&gt;</span> HookJSONOutput:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;Prompt for EVERY Bash command - no caching.&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Only handle PreToolUse events for Bash</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> input_data<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;hook_event_name&#34;</span>) <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;PreToolUse&#34;</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> input_data<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;tool_name&#34;</span>) <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;Bash&#34;</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Get command details from tool_input</span>
+</span></span><span style=display:flex><span>    tool_input <span style=color:#f92672>=</span> input_data<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;tool_input&#34;</span>, {})
+</span></span><span style=display:flex><span>    command <span style=color:#f92672>=</span> tool_input<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#34;command&#34;</span>, <span style=color:#e6db74>&#34;&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Prompt the user</span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>{</span>META<span style=color:#e6db74>}</span><span style=color:#e6db74>Bash permission requested:</span><span style=color:#e6db74>{</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>CODE<span style=color:#e6db74>}</span><span style=color:#e6db74>  </span><span style=color:#e6db74>{</span>command<span style=color:#e6db74>}{</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    response <span style=color:#f92672>=</span> input(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>USER<span style=color:#e6db74>}</span><span style=color:#e6db74>Allow? [y/n]: </span><span style=color:#e6db74>{</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> response<span style=color:#f92672>.</span>lower() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;y&#34;</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;hookSpecificOutput&#34;</span>: {
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;hookEventName&#34;</span>: <span style=color:#e6db74>&#34;PreToolUse&#34;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;permissionDecision&#34;</span>: <span style=color:#e6db74>&#34;allow&#34;</span>,
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Stop entirely - don&#39;t let Claude try something else</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;continue_&#34;</span>: <span style=color:#66d9ef>False</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;stopReason&#34;</span>: <span style=color:#e6db74>&#34;User denied Bash command&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span></code></pre></div><p>claud</p><h3 id=the-response-structure>The Response Structure</h3><p>When allowing a tool, you return a <code>hookSpecificOutput</code> with:</p><ul><li><strong><code>hookEventName</code></strong>: Must match the event type you&rsquo;re responding to (<code>"PreToolUse"</code> here).</li><li><strong><code>permissionDecision</code></strong>: Set to <code>"allow"</code> to let the tool run.</li></ul><p>When denying, you have two options:</p><ol><li><p><strong><code>permissionDecision: "deny"</code></strong> - Blocks this specific command but Claude continues thinking. It might try a different approach or rephrase the command.</p></li><li><p><strong><code>continue_: False</code></strong> - Stops the agent entirely and returns to the user prompt. This is what I use here - if I say no to a Bash command, I want to give new instructions, not have Claude guess at alternatives.</p></li></ol><p>Returning an empty <code>{}</code> means &ldquo;I have no opinion&rdquo; - the SDK continues down the permission evaluation chain.</p><h3 id=the-result>The Result</h3><p>With hooks in place, each Bash command prompts independently:</p><p><img src=/images/2026/02-16-hooks-per-command-working.png alt="Hooks working - each Bash command prompts separately">
+<em>The tree command executes after approval, then pwd prompts separately - no caching</em></p><p>I can approve <code>tree</code> and still be asked about <code>pwd</code>. My checkpoint protection is complete.</p><h2 id=the-full-permission-picture>The Full Permission Picture</h2><p>After all this exploration, here&rsquo;s my mental model for the SDK permission system:</p><table><thead><tr><th>Layer</th><th>When to use</th><th>Caching</th></tr></thead><tbody><tr><td><code>allowed_tools</code></td><td>Tools that should always run freely</td><td>N/A - no prompt</td></tr><tr><td><code>disallowed_tools</code></td><td>Tools that should never run</td><td>N/A - blocked</td></tr><tr><td>Settings patterns</td><td>Fine-grained static rules (<code>Bash(git:*)</code>)</td><td>Persistent</td></tr><tr><td><code>can_use_tool</code> callback</td><td>Session-level approval</td><td><strong>Cached per tool type</strong></td></tr><tr><td><code>PreToolUse</code> hooks</td><td>Per-invocation control</td><td><strong>No caching</strong></td></tr></tbody></table><p>For most use cases, <code>can_use_tool</code> is simpler and the caching is helpful. But when you need command-level control (like protecting against Bash file writes), hooks are the right tool.</p><h2 id=whats-next>What&rsquo;s Next</h2><p>With permissions and hooks now making sense, I&rsquo;m ready to tackle custom MCP tools. In the next post, I want to:</p><ul><li>Expose the rewind function as a proper tool (so <code>/rewind</code> becomes a real slash command Claude can use)</li><li>Add a tool to start and stop the local Hugo server</li><li>Add a tool to run the build/deploy script</li></ul><p>The SDK&rsquo;s <code>@tool</code> decorator and <code>create_sdk_mcp_server()</code> function make this possible - but that&rsquo;s for next time.</p><hr><p><em>This is Part 6 of my series on learning the Claude Agent SDK. <a href=/posts/2026/01-12-exploring-claude-agent-sdk/>Part 1</a> covers initial exploration, <a href=/posts/2026/01-19-claude-agent-sdk-part-2/>Part 2</a> adds polish, <a href=/posts/2026/01-26-claude-agent-sdk-part-3/>Part 3</a> explores context control, <a href=/posts/2026/02-02-claude-agent-sdk-part-4/>Part 4</a> implements context profiles, and <a href=/posts/2026/02-09-claude-agent-sdk-part-5/>Part 5</a> adds file checkpointing.</em></p><ul id=taxonomy class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-4">Tags:</li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/claude/>Claude</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/agent-sdk/>Agent-Sdk</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/python/>Python</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/learning/>Learning</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/feature/>Feature</a></li></ul></div><footer id=content-footer class=not-prose><div id=related-post><h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_457afa222a853fbd.jpg alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width=750 height=419></figure><div class=p-6><time datetime=2026-01-26T06:30:00+00:00>Jan 26, 2026</time><h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Adding the ability for the agent to create posts that follow my templates, with the ability to recover from mistakes.</p></div></article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_2c2189dde4e2506d.jpg alt="Claude Agent SDK Part 4: Implementing Context Profiles" width=750 height=543></figure><div class=p-6><time datetime=2026-01-22T06:30:00+00:00>Jan 22, 2026</time><h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 4: Implementing Context Profiles</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Building context profiles and usage tracking that works with the SDK's design.</p></div></article></div></div></footer></article><aside class=md:col-span-1><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10"><img class="aspect-video rounded" src=/images/2024/infinite_archive.png alt="things i think i think abstract image of waves and a stick figure"><p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p></div><div class=space-y-6><h2 class="font-bold text-xl mb-8">Recent Post</h2><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-7/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-7_hu_39e3e8b0b2b2fb1d.png alt="Claude Agent SDK Part 7: Creating Custom MCP Tools" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 7: Creating Custom MCP Tools</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_7dc1390a998f20d.png alt="Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_86bd4167f2b86ba8.jpg alt="Claude Agent SDK Part 4: Implementing Context Profiles" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/01-26-claude-agent-sdk-part-3_hu_b7859d2c5461156f.png alt="Claude Agent SDK Part 3: The Context Control Problem" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 3: The Context Control Problem</h3></div></article></div></div></aside></div></main><footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div class="flex flex-wrap space-y-6 mb-4"><div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10"><a class="flex items-center group" href=https://thingsithinkithink.blog/><svg width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg>
+<span class="text-2xl font-semibold uppercase">thingsithinkithink</span></a><p class=font-semibold></p></div><div class="self-center flex flex-col w-full md:w-2/5"><ul id=social-media class="flex items-center space-x-4"><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://linkedin.com/in/davidfarrell81 target=_blank rel="noopener noreferrer"><img src=/images/linkedin-color-svgrepo-com.svg alt="LinkedIn Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://github.com/DavidFarrell/ target=_blank rel="noopener noreferrer"><img src=/images/github-mark.svg alt="GitHub Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://bsky.app/profile/dgerouvillefarrell.bsky.social target=_blank rel="noopener noreferrer"><img src=/images/Bluesky_Logo.svg alt="Bluesky Logo" class="w-8 h-8"></a></li></ul></div></div><div class=my-8><ul class="flex items-center space-x-4"><li><a class="decoration-auto hover:underline font-semibold" href=/>Home</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/about/>About</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/tags/>Tags</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/categories/>Taxonomy</a></li></ul></div><div class="border-t pt-4"><p class=text-sm>Powered by
+<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>,
+<a href=https://pages.github.com/ target=_blank rel=noopener>GitHub Pages</a>
+and based on the
+<a href=https://pehtheme-hugo.netlify.app/ target=_blank rel=noopener>pehtheme</a> theme.</p></div></div></footer><script defer src=/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js integrity="sha256-R0+bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin=anonymous></script></body></html>
