@@ -15,7 +15,7 @@ tags:
   - python
   - learning
   - feature
-draft: true
+draft: false
 ---
 
 In [Part 5](/posts/2026/02-09-claude-agent-sdk-part-5/), I added file checkpointing with a `/rewind` command. But `/rewind` isn't a real slash command - it's just my Python code pattern-matching on the input string. Claude has no idea the capability exists.
