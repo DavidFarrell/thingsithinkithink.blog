@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rag on thingsithinkithink</title><link>https://thingsithinkithink.blog/tags/rag/</link><description>Recent content in Rag on thingsithinkithink</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 11 Oct 2025 12:00:00 +0000</lastBuildDate><atom:link href="https://thingsithinkithink.blog/tags/rag/index.xml" rel="self" type="application/rss+xml"/><item><title>LLM Evals Course Lesson 5: How to Evaluate Complex Architectures</title><link>https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/</link><pubDate>Sat, 11 Oct 2025 12:00:00 +0000</pubDate><guid>https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/</guid><description>&lt;p&gt;The fifth lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s &lt;a href="https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/"&gt;LLM evaluation course&lt;/a&gt; moved into evaluating more complex systems. Previous lessons focused on single-step evaluation, but this session addressed RAG systems, tool calling, and other architectures that introduce additional components to evaluate.&lt;/p&gt;
-&lt;p&gt;We&amp;rsquo;re still in the analyse-measure phase of the evaluation lifecycle. The focus remains on understanding issues and identifying failure modes rather than implementing improvements.&lt;/p&gt;
-&lt;h2 id="rag-isnt-dead"&gt;RAG Isn&amp;rsquo;t Dead&lt;/h2&gt;
-&lt;p&gt;The early post-ChatGPT period saw considerable attention on RAG implementation details - chunking strategies, vector databases, embedding models. Whilst these details matter, they became the single greatest focus when they&amp;rsquo;re just one part of a larger system.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rag on thingsithinkithink</title>
+    <link>https://thingsithinkithink.blog/tags/rag/</link>
+    <description>Recent content in Rag on thingsithinkithink</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Oct 2025 12:00:00 +0000</lastBuildDate>
+    <atom:link href="https://thingsithinkithink.blog/tags/rag/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM Evals Course Lesson 5: How to Evaluate Complex Architectures</title>
+      <link>https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/</link>
+      <pubDate>Sat, 11 Oct 2025 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/</guid>
+      <description>&lt;p&gt;The fifth lesson of Hamel Husain and Shreya Shankar&amp;rsquo;s &lt;a href=&#34;https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/&#34;&gt;LLM evaluation course&lt;/a&gt; moved into evaluating more complex systems. Previous lessons focused on single-step evaluation, but this session addressed RAG systems, tool calling, and other architectures that introduce additional components to evaluate.&lt;/p&gt;&#xA;&lt;p&gt;We&amp;rsquo;re still in the analyse-measure phase of the evaluation lifecycle. The focus remains on understanding issues and identifying failure modes rather than implementing improvements.&lt;/p&gt;&#xA;&lt;h2 id=&#34;rag-isnt-dead&#34;&gt;RAG Isn&amp;rsquo;t Dead&lt;/h2&gt;&#xA;&lt;p&gt;The early post-ChatGPT period saw considerable attention on RAG implementation details - chunking strategies, vector databases, embedding models. Whilst these details matter, they became the single greatest focus when they&amp;rsquo;re just one part of a larger system.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

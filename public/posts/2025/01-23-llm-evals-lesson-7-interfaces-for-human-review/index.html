@@ -1,11 +1,458 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>LLM Evals Course Lesson 7: Interfaces for Human Review | thingsithinkithink</title><meta name=description content="Notes from lesson 7 of Hamel and Shreya's LLM evaluation course - interface design principles and strategic sampling."><link rel=stylesheet href=/css/main.min.37627a3df6cbc23a43fef20f183473af95eb47c8816508d827b07b50cd3deab5.css integrity="sha256-N2J6PfbLwjpD/vIPGDRzr5XrR8iBZQjYJ7B7UM096rU=" crossorigin=anonymous><link rel=icon type=image/svg+xml href=https://thingsithinkithink.blog/favicon.svg><link rel=icon type=image/x-icon href=https://thingsithinkithink.blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://thingsithinkithink.blog/favicon.png><link rel=icon type=image/png sizes=32x32 href=https://thingsithinkithink.blog/favicon-32.png><link rel=icon type=image/png sizes=64x64 href=https://thingsithinkithink.blog/favicon-64.png></head><body><header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col"><div class="flex items-center"><div class="flex items-center"><button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=menu-bar>
-<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5.0 01.5-.5h10a.5.5.0 010 1H3a.5.5.0 01-.5-.5zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 8zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 4z"/></svg>
-<span class="bg-blue-500 fill-white rounded-full p-1.5"><svg width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg></span></button><div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2"><h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href=https://thingsithinkithink.blog/>thingsithinkithink</a></h2></div></div><div class="flex items-center ml-auto"><button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=search-bar>
-<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/><path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5.0 11.708-.708L8 7.293l5.146-5.147a.5.5.0 01.708.708L8.707 8l5.147 5.146a.5.5.0 01-.708.708L8 8.707l-5.146 5.147a.5.5.0 01-.708-.708L7.293 8 2.146 2.854z"/></svg></button></div></div><nav id=menu-bar class="block mt-3 close"><ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4"><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/>Home</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/about/>About</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/tags/>Tags</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/categories/>Taxonomy</a></li></ul></nav><div id=search-bar class="block mt-3 close"><form id=search class="flex items-stretch"><input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type=text placeholder=Search...>
-<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200">
-<svg width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/></svg></button></form></div></div></header><main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id=breadcrumb class="max-w-7xl mx-auto py-8"><ul class="flex space-x-4 text-sm text-zinc-500"><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/>thingsithinkithink</a></li><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/posts/>Posts</a></li></ul></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"><article class="md:col-span-2 prose lg:prose-lg"><header class=not-prose><h1 id=title class="text-4xl font-bold leading-normal">LLM Evals Course Lesson 7: Interfaces for Human Review</h1><div id=lead class=my-6><p class=font-bold>Notes from lesson 7 of Hamel and Shreya's LLM evaluation course - interface design principles and strategic sampling.</p></div><div id=writer class="flex items-center space-x-4"><img class="w-12 h-12 bg-black rounded-full" src=https://thingsithinkithink.blog/images/goldfinch.jpg alt="David Gérouville-Farrell avatar" width=1000 height=1000><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-2">David Gérouville-Farrell</li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime=2025-11-23T12:00:00+00:00>November 23, 2025</time></li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">7 min read</li></ul></div></header><figure id=featureimage class="rounded-xl aspect-video"><img class=rounded-lg src=https://thingsithinkithink.blog/images/2025/parlancecourse/01_23_lesson7_hero_progress_bar_impact_hu_3c7a552a32e2616f.png alt width=750 height=419><figcaption class="text-center italic text-xs">The impact of progress bars on review completion</figcaption></figure><div id=content class=mb-14><p>The seventh lesson of Hamel Husain and Shreya Shankar&rsquo;s <a href=https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/>LLM evaluation course</a> covered interfaces for reviewing LLM outputs. This builds on <a href=/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/>Isaac Flath&rsquo;s vibe coding sessions</a>, but focuses on design principles rather than implementation.</p><h2 id=the-review-bottleneck-problem>The Review Bottleneck Problem</h2><p>People talk a lot about AI doing more coding, pushing humans &ldquo;higher up the stack&rdquo; to do review instead of implementation. But review is already a massive bottleneck. I don&rsquo;t want to manually examine 10,000 agent outputs one by one.</p><p>The shift towards review-heavy workflows needs dramatically better tools. Probably some new paradigms. I&rsquo;m not convinced current approaches scale to what we&rsquo;re being asked to evaluate.</p><p>Whilst it&rsquo;s easy to say code your own interfaces for your evals, I was curious for this lecture because I was eager to learn from Shreya&rsquo;s extensive experience in the area.</p><h2 id=spreadsheet-hell>Spreadsheet Hell</h2><p>Shreya showed an example of &ldquo;spreadsheet hell&rdquo; that matches my experience. Walls of text crammed into cells. Constantly adjusting column widths and heights. Double-clicking to expand cells. Scrolling through JSON that should be rendered properly. It&rsquo;s a total pain having to view complex rich data inside a spreadsheet.</p><p><img src=/images/2025/parlancecourse/01_23_lesson7_spreadsheet_hell.png alt="Spreadsheet hell showing dense text in spreadsheet cells"></p><h2 id=custom-interfaces--increased-throughput>Custom Interfaces == Increased Throughput</h2><p>Shreya said custom interfaces give you 10x review throughput compared to spreadsheets. She mentioned reviewing 200 traces per hour with good interfaces.</p><p>In my experience working with subject matter experts, we&rsquo;d typically review about 20 traces per hour in spreadsheets. So 10x feels about right to me.</p><p>You can build these interfaces in about half an hour with vibe coding. The time investment pays back almost immediately on any serious project.</p><h2 id=nielsens-usability-heuristics>Nielsen&rsquo;s Usability Heuristics</h2><p><img src=/images/2025/parlancecourse/01_23_lesson7_hci_principles.png alt="Comparison of interfaces without and with HCI principles applied"></p><p>Shreya showed this before and after of what it&rsquo;s like to look at raw JSON versus a nice custom interface. I built data munging scripts to convert JSON into CSV with everything in its own cell. Still painful. Spreadsheets weren&rsquo;t designed for this type of data review.</p><p>Shreya referenced Jakob Nielsen&rsquo;s heuristics from 1994:</p><ul><li><strong>Visibility of status</strong>: Show trace numbers, how many reviewed, how many remaining<ul><li>A progress bar really motivates people to finish</li></ul></li><li><strong>Recognition over recall</strong>: Pre-filled failure mode options instead of making users remember and type them<ul><li>You don&rsquo;t want people to have to think about how to do it, they should just look at it and understand it</li><li>If you pre-fill failure modes, people can just click on them rather than remembering what the failure modes are and typing them in</li></ul></li><li><strong>Match the real world</strong>: Domain-aware views (emails look like emails, code looks like code)</li><li><strong>User control</strong>: Hotkeys, undo, defer for uncertainty</li></ul><p>That last one about deferring for uncertainty reminds me of the old exam advice: don&rsquo;t get stuck on a difficult question, move to the next one and come back later. When reviewing LLM outputs, if you hit an edge case you&rsquo;re unsure about, defer it. By the time you&rsquo;ve reviewed everything else, you&rsquo;ll have better intuition for that difficult case.</p><p>I taught interface design and usability back in 2011-2013. Covered Nielsen&rsquo;s heuristics in my <a href=https://www.slideshare.net/slideshow/comu346-lecture-6-evaluation/9683553#2>lecture on expert evaluation</a> and his broader framework in my <a href=https://www.slideshare.net/slideshow/game-design-2-lecture-12-usability-layout-slideshare/28590091>lecture on usability and layout</a>. Once you start viewing interfaces through these lenses, they help with everything you build.</p><p>In my usability teaching, I also covered Nielsen&rsquo;s 2003 usability attributes, which apply here too:</p><ul><li><strong>Learnability</strong>: How quickly can someone start using it?</li><li><strong>Efficiency</strong>: How fast can experienced users work?</li><li><strong>Memorability</strong>: Can users return after time away and still use it?</li><li><strong>Errors</strong>: How many mistakes and how easily can they recover?</li><li><strong>Satisfaction</strong>: How pleasant is it to use?</li></ul><p>These directly impact whether your team will actually use the interface or find excuses to avoid the work.</p><h2 id=speed-and-accuracy-boosters>Speed and Accuracy Boosters</h2><p>At this point, this is where the lecture actually got pretty valuable for me. As mentioned earlier, the idea of building custom interfaces has come up a few times in the course. From this point, Shreya started sharing her own actual experience and I thought these were all pretty useful.</p><p><strong>Single-trace canvas</strong>: Most time gets spent in single-trace views rather than batch views. Make this view clean and focused.</p><p><strong>Pass/fail in one key press</strong>: Tag chips that auto-select on number keys. Move quickly through common judgements.</p><p><strong>Progress bar</strong>: People complete more when they can see progress. In early user studies without progress bars, people would review 3-4 traces then stop. With a progress bar, they pushed through to completion.</p><ul><li>↑ I really like this one, I hadn&rsquo;t thought of that and it&rsquo;s really cool</li></ul><p><strong>Batch-label similar traces</strong>: After multiple rounds of error analysis, cluster similar traces and batch-apply labels. Only do this after you understand the patterns.</p><p><strong>Context ribbons</strong>: Show pipeline version, user segment, previous automated judge verdicts. Helps reviewers make decisions without hunting for information.</p><p><strong>LLM-as-judge assistance</strong>: Use judiciously. Having an LLM flag potential instances in a long document saves hunting. The human still verifies. Don&rsquo;t use this in your first interface version.</p><h2 id=strategic-sampling>Strategic Sampling</h2><p>This is my favourite part of the lecture and one of my favourite parts of the whole course actually. These specific things are not things that I already had in my mind and it shows the difference between somebody who&rsquo;s done some work in this space and somebody who&rsquo;s spent a significant part of their career focusing on this problem. I really love these.</p><p>Reviewers have limited bandwidth. You can&rsquo;t examine everything. Which traces should hit your interface?</p><ul><li><p><strong>Limited reviewer bandwidth</strong></p><ul><li>Aim for about 100 traces per week, not your full log stream</li></ul></li><li><p><strong>Random sampling</strong></p><ul><li>Unbiased health check of overall quality. Essential for understanding baseline performance</li></ul></li><li><p><strong>Uncertainty sampling</strong></p><ul><li>Select traces where automated judges disagree or have low confidence. Surfaces edge cases efficiently</li></ul></li><li><p><strong>Failure-driven sampling</strong></p><ul><li>Include guardrail violations, exceptions, user-flagged bugs. Your highest severity items</li></ul></li><li><p><strong>Blend the queues</strong></p><ul><li>Mix these approaches. For instance: 20% random, 50% uncertainty, 30% failure-driven. Regenerate a fresh batch daily</li></ul></li></ul><p>The blending approach addresses multiple problems simultaneously. You don&rsquo;t need to be the person who figures out your system can&rsquo;t handle edge cases because uncertainty sampling surfaces them automatically. You don&rsquo;t need to discover high-severity bugs in production because failure-driven sampling surfaces them immediately.</p><p>This is why courses like this have value. You can think hard about evaluation and figure some of this out yourself, but having someone share their battle scars saves time.</p><h2 id=case-study-evalgen>Case Study: EvalGen</h2><p>EvalGen was one of the first interfaces built specifically for LLM evaluation. The <a href=https://arxiv.org/abs/2404.12272>paper</a> describes the system.</p><ul><li>Criteria drift matters more than anticipated</li><li>What users think counts as &ldquo;good&rdquo; evolves as they see more examples</li><li>Progress bars proved crucial - without them, people reviewed a handful of traces then stopped</li></ul><h2 id=case-study-docwrangler>Case Study: DocWrangler</h2><p><a href=https://data-people-group.github.io/blogs/2025/01/13/docwrangler/>DocWrangler</a> addresses making sense of unstructured documents at scale. The <a href=https://arxiv.org/abs/2504.14764>paper</a> details the approach.</p><ul><li>User studies revealed people found specification issues within just 5 open codes</li><li>The system emphasises prompt versioning and maintaining history</li></ul><p><img src=/images/2025/parlancecourse/01_23_lesson7_docwrangler_improve_prompt.png alt="DocWrangler&rsquo;s prompt improvement interface for iterative refinement"></p><p>DocWrangler includes a feature where you can accumulate open-coded feedback across examples, then click a button to generate an improved prompt incorporating that feedback. The interface shows a diff of changes and maintains revision history.</p><p>I&rsquo;m quite uncomfortable with the idea of automatic prompt improvement. Every time I&rsquo;ve experimented with tools that do this, they end up adding things to prompts I don&rsquo;t approve of - unnecessary verbosity, hedge words, or structural changes that don&rsquo;t match my intent. The key word here is &ldquo;automatic&rdquo;. I&rsquo;d only ever use this kind of feature if I could review the suggested changes before accepting them.</p><p>The screenshot above shows a decent approach. By showing the diff directly, you can see what is being changed and edit it if you don&rsquo;t like it.</p><h2 id=shreyas-learnings>Shreya&rsquo;s Learnings</h2><ul><li>Rapid iteration matters: prompt updates should take minutes, not hours</li><li>People find specification issues within approximately 5 open codes</li><li>Versioned prompts and label history prevent loss when criteria drift</li><li>Interfaces should close the loop - feedback should improve outputs directly</li><li>Once specification is addressed, shift to systematic evaluations for generalisation issues</li></ul><h2 id=thingsithinkithink>thingsithinkithink</h2><ul><li><p>One thing I don&rsquo;t love about the course is that the information density isn&rsquo;t consistent. There&rsquo;s so much value in the first couple of lessons, but we don&rsquo;t necessarily need to keep talking about custom interfaces quite so much. That said, I did really enjoy the usability guidance in this one.</p></li><li><p>The problem of handling and reviewing large quantities of outputs from LLMs or other AIs isn&rsquo;t going away. I think we need even more revolutionary approaches than these ones. But these are a good start.</p></li></ul><ul id=taxonomy class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-4">Tags:</li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/llm/>Llm</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/evaluation/>Evaluation</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/interface-design/>Interface-Design</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/usability/>Usability</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/course-notes/>Course-Notes</a></li></ul></div><footer id=content-footer class=not-prose><div id=related-post><h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/10_12_lesson6_transition_failure_matrix_hu_47ee971fa2dd4b00.png alt="LLM Evals Course Lesson 6: Complex Pipelines and CI/CD" width=750 height=422></figure><div class=p-6><time datetime=2025-10-12T09:00:00+00:00>Oct 12, 2025</time><h3 class="my-4 text-2xl font-bold">LLM Evals Course Lesson 6: Complex Pipelines and CI/CD</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Notes from lesson 6 of Hamel and Shreya's LLM evaluation course - debugging agentic systems, handling complex data modalities, and implementing CI/CD for production LLM applications.</p></div></article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2025/parlancecourse/10_11_lesson5_generation_quality_hu_ae7e97a4cd2f2907.png alt="LLM Evals Course Lesson 5: How to Evaluate Complex Architectures" width=750 height=422></figure><div class=p-6><time datetime=2025-10-11T12:00:00+00:00>Oct 11, 2025</time><h3 class="my-4 text-2xl font-bold">LLM Evals Course Lesson 5: How to Evaluate Complex Architectures</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Notes from lesson 5 of Hamel and Shreya's LLM evaluation course - evaluating retrieval quality, generation quality, and common pitfalls in RAG systems.</p></div></article></div></div></footer></article><aside class=md:col-span-1><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10"><img class="aspect-video rounded" src=/images/2024/infinite_archive.png alt="things i think i think abstract image of waves and a stick figure"><p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p></div><div class=space-y-6><h2 class="font-bold text-xl mb-8">Recent Post</h2><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_e3f5f8daf225297.png alt="The Jevons Paradox and the Kindle Web Proxy" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">The Jevons Paradox and the Kindle Web Proxy</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-7/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-7_hu_39e3e8b0b2b2fb1d.png alt="Claude Agent SDK Part 7: Creating Custom MCP Tools" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 7: Creating Custom MCP Tools</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_7dc1390a998f20d.png alt="Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_86bd4167f2b86ba8.jpg alt="Claude Agent SDK Part 4: Implementing Context Profiles" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3></div></article></div></div></aside></div></main><footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div class="flex flex-wrap space-y-6 mb-4"><div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10"><a class="flex items-center group" href=https://thingsithinkithink.blog/><svg width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg>
-<span class="text-2xl font-semibold uppercase">thingsithinkithink</span></a><p class=font-semibold></p></div><div class="self-center flex flex-col w-full md:w-2/5"><ul id=social-media class="flex items-center space-x-4"><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://linkedin.com/in/davidfarrell81 target=_blank rel="noopener noreferrer"><img src=/images/linkedin-color-svgrepo-com.svg alt="LinkedIn Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://github.com/DavidFarrell/ target=_blank rel="noopener noreferrer"><img src=/images/github-mark.svg alt="GitHub Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://bsky.app/profile/dgerouvillefarrell.bsky.social target=_blank rel="noopener noreferrer"><img src=/images/Bluesky_Logo.svg alt="Bluesky Logo" class="w-8 h-8"></a></li></ul></div></div><div class=my-8><ul class="flex items-center space-x-4"><li><a class="decoration-auto hover:underline font-semibold" href=/>Home</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/about/>About</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/tags/>Tags</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/categories/>Taxonomy</a></li></ul></div><div class="border-t pt-4"><p class=text-sm>Powered by
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>,
-<a href=https://pages.github.com/ target=_blank rel=noopener>GitHub Pages</a>
-and based on the
-<a href=https://pehtheme-hugo.netlify.app/ target=_blank rel=noopener>pehtheme</a> theme.</p></div></div></footer><script defer src=/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js integrity="sha256-R0+bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin=anonymous></script></body></html>
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LLM Evals Course Lesson 7: Interfaces for Human Review | thingsithinkithink</title>
+
+<meta name="description" content="Notes from lesson 7 of Hamel and Shreya&#39;s LLM evaluation course - interface design principles and strategic sampling.">
+      <link rel="stylesheet" href="/css/main.min.37627a3df6cbc23a43fef20f183473af95eb47c8816508d827b07b50cd3deab5.css" integrity="sha256-N2J6PfbLwjpD/vIPGDRzr5XrR8iBZQjYJ7B7UM096rU=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">LLM Evals Course Lesson 7: Interfaces for Human Review</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Notes from lesson 7 of Hamel and Shreya&#39;s LLM evaluation course - interface design principles and strategic sampling. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-11-23T12:00:00&#43;00:00">November 23, 2025</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            7 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2025/parlancecourse/01_23_lesson7_hero_progress_bar_impact_hu_3c7a552a32e2616f.png" alt="" width="750" height="419">
+        <figcaption class="text-center italic text-xs">The impact of progress bars on review completion</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>The seventh lesson of Hamel Husain and Shreya Shankar&rsquo;s <a href="https://thingsithinkithink.blog/posts/2025/06-08-llm-evals-lesson-1/">LLM evaluation course</a> covered interfaces for reviewing LLM outputs. This builds on <a href="/posts/2025/08-16-isaac-flath-fasthtml-annotation-tools/">Isaac Flath&rsquo;s vibe coding sessions</a>, but focuses on design principles rather than implementation.</p>
+<h2 id="the-review-bottleneck-problem">The Review Bottleneck Problem</h2>
+<p>People talk a lot about AI doing more coding, pushing humans &ldquo;higher up the stack&rdquo; to do review instead of implementation. But review is already a massive bottleneck. I don&rsquo;t want to manually examine 10,000 agent outputs one by one.</p>
+<p>The shift towards review-heavy workflows needs dramatically better tools. Probably some new paradigms. I&rsquo;m not convinced current approaches scale to what we&rsquo;re being asked to evaluate.</p>
+<p>Whilst it&rsquo;s easy to say code your own interfaces for your evals, I was curious for this lecture because I was eager to learn from Shreya&rsquo;s extensive experience in the area.</p>
+<h2 id="spreadsheet-hell">Spreadsheet Hell</h2>
+<p>Shreya showed an example of &ldquo;spreadsheet hell&rdquo; that matches my experience. Walls of text crammed into cells. Constantly adjusting column widths and heights. Double-clicking to expand cells. Scrolling through JSON that should be rendered properly. It&rsquo;s a total pain having to view complex rich data inside a spreadsheet.</p>
+<p><img src="/images/2025/parlancecourse/01_23_lesson7_spreadsheet_hell.png" alt="Spreadsheet hell showing dense text in spreadsheet cells"></p>
+<h2 id="custom-interfaces--increased-throughput">Custom Interfaces == Increased Throughput</h2>
+<p>Shreya said custom interfaces give you 10x review throughput compared to spreadsheets. She mentioned reviewing 200 traces per hour with good interfaces.</p>
+<p>In my experience working with subject matter experts, we&rsquo;d typically review about 20 traces per hour in spreadsheets. So 10x feels about right to me.</p>
+<p>You can build these interfaces in about half an hour with vibe coding. The time investment pays back almost immediately on any serious project.</p>
+<h2 id="nielsens-usability-heuristics">Nielsen&rsquo;s Usability Heuristics</h2>
+<p><img src="/images/2025/parlancecourse/01_23_lesson7_hci_principles.png" alt="Comparison of interfaces without and with HCI principles applied"></p>
+<p>Shreya showed this before and after of what it&rsquo;s like to look at raw JSON versus a nice custom interface. I built data munging scripts to convert JSON into CSV with everything in its own cell. Still painful. Spreadsheets weren&rsquo;t designed for this type of data review.</p>
+<p>Shreya referenced Jakob Nielsen&rsquo;s heuristics from 1994:</p>
+<ul>
+<li><strong>Visibility of status</strong>: Show trace numbers, how many reviewed, how many remaining
+<ul>
+<li>A progress bar really motivates people to finish</li>
+</ul>
+</li>
+<li><strong>Recognition over recall</strong>: Pre-filled failure mode options instead of making users remember and type them
+<ul>
+<li>You don&rsquo;t want people to have to think about how to do it, they should just look at it and understand it</li>
+<li>If you pre-fill failure modes, people can just click on them rather than remembering what the failure modes are and typing them in</li>
+</ul>
+</li>
+<li><strong>Match the real world</strong>: Domain-aware views (emails look like emails, code looks like code)</li>
+<li><strong>User control</strong>: Hotkeys, undo, defer for uncertainty</li>
+</ul>
+<p>That last one about deferring for uncertainty reminds me of the old exam advice: don&rsquo;t get stuck on a difficult question, move to the next one and come back later. When reviewing LLM outputs, if you hit an edge case you&rsquo;re unsure about, defer it. By the time you&rsquo;ve reviewed everything else, you&rsquo;ll have better intuition for that difficult case.</p>
+<p>I taught interface design and usability back in 2011-2013. Covered Nielsen&rsquo;s heuristics in my <a href="https://www.slideshare.net/slideshow/comu346-lecture-6-evaluation/9683553#2">lecture on expert evaluation</a> and his broader framework in my <a href="https://www.slideshare.net/slideshow/game-design-2-lecture-12-usability-layout-slideshare/28590091">lecture on usability and layout</a>. Once you start viewing interfaces through these lenses, they help with everything you build.</p>
+<p>In my usability teaching, I also covered Nielsen&rsquo;s 2003 usability attributes, which apply here too:</p>
+<ul>
+<li><strong>Learnability</strong>: How quickly can someone start using it?</li>
+<li><strong>Efficiency</strong>: How fast can experienced users work?</li>
+<li><strong>Memorability</strong>: Can users return after time away and still use it?</li>
+<li><strong>Errors</strong>: How many mistakes and how easily can they recover?</li>
+<li><strong>Satisfaction</strong>: How pleasant is it to use?</li>
+</ul>
+<p>These directly impact whether your team will actually use the interface or find excuses to avoid the work.</p>
+<h2 id="speed-and-accuracy-boosters">Speed and Accuracy Boosters</h2>
+<p>At this point, this is where the lecture actually got pretty valuable for me. As mentioned earlier, the idea of building custom interfaces has come up a few times in the course. From this point, Shreya started sharing her own actual experience and I thought these were all pretty useful.</p>
+<p><strong>Single-trace canvas</strong>: Most time gets spent in single-trace views rather than batch views. Make this view clean and focused.</p>
+<p><strong>Pass/fail in one key press</strong>: Tag chips that auto-select on number keys. Move quickly through common judgements.</p>
+<p><strong>Progress bar</strong>: People complete more when they can see progress. In early user studies without progress bars, people would review 3-4 traces then stop. With a progress bar, they pushed through to completion.</p>
+<ul>
+<li>↑ I really like this one, I hadn&rsquo;t thought of that and it&rsquo;s really cool</li>
+</ul>
+<p><strong>Batch-label similar traces</strong>: After multiple rounds of error analysis, cluster similar traces and batch-apply labels. Only do this after you understand the patterns.</p>
+<p><strong>Context ribbons</strong>: Show pipeline version, user segment, previous automated judge verdicts. Helps reviewers make decisions without hunting for information.</p>
+<p><strong>LLM-as-judge assistance</strong>: Use judiciously. Having an LLM flag potential instances in a long document saves hunting. The human still verifies. Don&rsquo;t use this in your first interface version.</p>
+<h2 id="strategic-sampling">Strategic Sampling</h2>
+<p>This is my favourite part of the lecture and one of my favourite parts of the whole course actually. These specific things are not things that I already had in my mind and it shows the difference between somebody who&rsquo;s done some work in this space and somebody who&rsquo;s spent a significant part of their career focusing on this problem. I really love these.</p>
+<p>Reviewers have limited bandwidth. You can&rsquo;t examine everything. Which traces should hit your interface?</p>
+<ul>
+<li>
+<p><strong>Limited reviewer bandwidth</strong></p>
+<ul>
+<li>Aim for about 100 traces per week, not your full log stream</li>
+</ul>
+</li>
+<li>
+<p><strong>Random sampling</strong></p>
+<ul>
+<li>Unbiased health check of overall quality. Essential for understanding baseline performance</li>
+</ul>
+</li>
+<li>
+<p><strong>Uncertainty sampling</strong></p>
+<ul>
+<li>Select traces where automated judges disagree or have low confidence. Surfaces edge cases efficiently</li>
+</ul>
+</li>
+<li>
+<p><strong>Failure-driven sampling</strong></p>
+<ul>
+<li>Include guardrail violations, exceptions, user-flagged bugs. Your highest severity items</li>
+</ul>
+</li>
+<li>
+<p><strong>Blend the queues</strong></p>
+<ul>
+<li>Mix these approaches. For instance: 20% random, 50% uncertainty, 30% failure-driven. Regenerate a fresh batch daily</li>
+</ul>
+</li>
+</ul>
+<p>The blending approach addresses multiple problems simultaneously. You don&rsquo;t need to be the person who figures out your system can&rsquo;t handle edge cases because uncertainty sampling surfaces them automatically. You don&rsquo;t need to discover high-severity bugs in production because failure-driven sampling surfaces them immediately.</p>
+<p>This is why courses like this have value. You can think hard about evaluation and figure some of this out yourself, but having someone share their battle scars saves time.</p>
+<h2 id="case-study-evalgen">Case Study: EvalGen</h2>
+<p>EvalGen was one of the first interfaces built specifically for LLM evaluation. The <a href="https://arxiv.org/abs/2404.12272">paper</a> describes the system.</p>
+<ul>
+<li>Criteria drift matters more than anticipated</li>
+<li>What users think counts as &ldquo;good&rdquo; evolves as they see more examples</li>
+<li>Progress bars proved crucial - without them, people reviewed a handful of traces then stopped</li>
+</ul>
+<h2 id="case-study-docwrangler">Case Study: DocWrangler</h2>
+<p><a href="https://data-people-group.github.io/blogs/2025/01/13/docwrangler/">DocWrangler</a> addresses making sense of unstructured documents at scale. The <a href="https://arxiv.org/abs/2504.14764">paper</a> details the approach.</p>
+<ul>
+<li>User studies revealed people found specification issues within just 5 open codes</li>
+<li>The system emphasises prompt versioning and maintaining history</li>
+</ul>
+<p><img src="/images/2025/parlancecourse/01_23_lesson7_docwrangler_improve_prompt.png" alt="DocWrangler&rsquo;s prompt improvement interface for iterative refinement"></p>
+<p>DocWrangler includes a feature where you can accumulate open-coded feedback across examples, then click a button to generate an improved prompt incorporating that feedback. The interface shows a diff of changes and maintains revision history.</p>
+<p>I&rsquo;m quite uncomfortable with the idea of automatic prompt improvement. Every time I&rsquo;ve experimented with tools that do this, they end up adding things to prompts I don&rsquo;t approve of - unnecessary verbosity, hedge words, or structural changes that don&rsquo;t match my intent. The key word here is &ldquo;automatic&rdquo;. I&rsquo;d only ever use this kind of feature if I could review the suggested changes before accepting them.</p>
+<p>The screenshot above shows a decent approach. By showing the diff directly, you can see what is being changed and edit it if you don&rsquo;t like it.</p>
+<h2 id="shreyas-learnings">Shreya&rsquo;s Learnings</h2>
+<ul>
+<li>Rapid iteration matters: prompt updates should take minutes, not hours</li>
+<li>People find specification issues within approximately 5 open codes</li>
+<li>Versioned prompts and label history prevent loss when criteria drift</li>
+<li>Interfaces should close the loop - feedback should improve outputs directly</li>
+<li>Once specification is addressed, shift to systematic evaluations for generalisation issues</li>
+</ul>
+<h2 id="thingsithinkithink">thingsithinkithink</h2>
+<ul>
+<li>
+<p>One thing I don&rsquo;t love about the course is that the information density isn&rsquo;t consistent. There&rsquo;s so much value in the first couple of lessons, but we don&rsquo;t necessarily need to keep talking about custom interfaces quite so much. That said, I did really enjoy the usability guidance in this one.</p>
+</li>
+<li>
+<p>The problem of handling and reviewing large quantities of outputs from LLMs or other AIs isn&rsquo;t going away. I think we need even more revolutionary approaches than these ones. But these are a good start.</p>
+</li>
+</ul>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/llm/">Llm</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/evaluation/">Evaluation</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/interface-design/">Interface-Design</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/usability/">Usability</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/course-notes/">Course-Notes</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/10-12-llm-evals-course-lesson-6-complex-pipelines-cicd/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/10_12_lesson6_transition_failure_matrix_hu_47ee971fa2dd4b00.png" alt="LLM Evals Course Lesson 6: Complex Pipelines and CI/CD" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-10-12T09:00:00&#43;00:00">Oct 12, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">LLM Evals Course Lesson 6: Complex Pipelines and CI/CD</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Notes from lesson 6 of Hamel and Shreya&#39;s LLM evaluation course - debugging agentic systems, handling complex data modalities, and implementing CI/CD for production LLM applications.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/10-11-llm-evals-course-lesson-5-how-to-evaluate-complex-architectures/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/parlancecourse/10_11_lesson5_generation_quality_hu_ae7e97a4cd2f2907.png" alt="LLM Evals Course Lesson 5: How to Evaluate Complex Architectures" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-10-11T12:00:00&#43;00:00">Oct 11, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">LLM Evals Course Lesson 5: How to Evaluate Complex Architectures</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Notes from lesson 5 of Hamel and Shreya&#39;s LLM evaluation course - evaluating retrieval quality, generation quality, and common pitfalls in RAG systems.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_e3f5f8daf225297.png" alt="The Jevons Paradox and the Kindle Web Proxy" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">The Jevons Paradox and the Kindle Web Proxy</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-7/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-7_hu_39e3e8b0b2b2fb1d.png" alt="Claude Agent SDK Part 7: Creating Custom MCP Tools" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 7: Creating Custom MCP Tools</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_7dc1390a998f20d.png" alt="Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_86bd4167f2b86ba8.jpg" alt="Claude Agent SDK Part 4: Implementing Context Profiles" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,33 +1,175 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Claude Agent SDK: Part 2 | thingsithinkithink</title><meta name=description content="Continuing to explore Anthropic's Agent SDK - making tool calls more descriptive and learning about Python introspection."><link rel=stylesheet href=/css/main.min.37627a3df6cbc23a43fef20f183473af95eb47c8816508d827b07b50cd3deab5.css integrity="sha256-N2J6PfbLwjpD/vIPGDRzr5XrR8iBZQjYJ7B7UM096rU=" crossorigin=anonymous><link rel=icon type=image/svg+xml href=https://thingsithinkithink.blog/favicon.svg><link rel=icon type=image/x-icon href=https://thingsithinkithink.blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://thingsithinkithink.blog/favicon.png><link rel=icon type=image/png sizes=32x32 href=https://thingsithinkithink.blog/favicon-32.png><link rel=icon type=image/png sizes=64x64 href=https://thingsithinkithink.blog/favicon-64.png></head><body><header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col"><div class="flex items-center"><div class="flex items-center"><button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=menu-bar>
-<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5.0 01.5-.5h10a.5.5.0 010 1H3a.5.5.0 01-.5-.5zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 8zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 4z"/></svg>
-<span class="bg-blue-500 fill-white rounded-full p-1.5"><svg width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg></span></button><div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2"><h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href=https://thingsithinkithink.blog/>thingsithinkithink</a></h2></div></div><div class="flex items-center ml-auto"><button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=search-bar>
-<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/><path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5.0 11.708-.708L8 7.293l5.146-5.147a.5.5.0 01.708.708L8.707 8l5.147 5.146a.5.5.0 01-.708.708L8 8.707l-5.146 5.147a.5.5.0 01-.708-.708L7.293 8 2.146 2.854z"/></svg></button></div></div><nav id=menu-bar class="block mt-3 close"><ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4"><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/>Home</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/about/>About</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/tags/>Tags</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/categories/>Taxonomy</a></li></ul></nav><div id=search-bar class="block mt-3 close"><form id=search class="flex items-stretch"><input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type=text placeholder=Search...>
-<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200">
-<svg width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/></svg></button></form></div></div></header><main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id=breadcrumb class="max-w-7xl mx-auto py-8"><ul class="flex space-x-4 text-sm text-zinc-500"><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/>thingsithinkithink</a></li><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/posts/>Posts</a></li></ul></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"><article class="md:col-span-2 prose lg:prose-lg"><header class=not-prose><h1 id=title class="text-4xl font-bold leading-normal">Claude Agent SDK: Part 2</h1><div id=lead class=my-6><p class=font-bold>Continuing to explore Anthropic's Agent SDK - making tool calls more descriptive and learning about Python introspection.</p></div><div id=writer class="flex items-center space-x-4"><img class="w-12 h-12 bg-black rounded-full" src=https://thingsithinkithink.blog/images/goldfinch.jpg alt="David Gérouville-Farrell avatar" width=1000 height=1000><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-2">David Gérouville-Farrell</li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime=2026-01-15T06:30:00+00:00>January 15, 2026</time></li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">7 min read</li></ul></div></header><figure id=featureimage class="rounded-xl aspect-video"><img class=rounded-lg src=https://thingsithinkithink.blog/images/2026/01-19-claude-agent-sdk-part-2_hu_a99f46546073ac8d.png alt width=750 height=419><figcaption class="text-center italic text-xs">Claude the painter bringing color to the terminal, with Bowie (the Ragdoll) knocking over paint</figcaption></figure><div id=content class=mb-14><p>My goal today is to make the minimal writing agent from <a href=/posts/2026/01-12-exploring-claude-agent-sdk/>Part 1</a> a bit more user-friendly. I&rsquo;m starting with making the tool calls more descriptive.</p><p>Here&rsquo;s what they currently look like:</p><pre tabindex=0><code>Assistant:
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Claude Agent SDK: Part 2 | thingsithinkithink</title>
+
+<meta name="description" content="Continuing to explore Anthropic&#39;s Agent SDK - making tool calls more descriptive and learning about Python introspection.">
+      <link rel="stylesheet" href="/css/main.min.37627a3df6cbc23a43fef20f183473af95eb47c8816508d827b07b50cd3deab5.css" integrity="sha256-N2J6PfbLwjpD/vIPGDRzr5XrR8iBZQjYJ7B7UM096rU=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">Claude Agent SDK: Part 2</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Continuing to explore Anthropic&#39;s Agent SDK - making tool calls more descriptive and learning about Python introspection. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-01-15T06:30:00&#43;00:00">January 15, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            7 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/01-19-claude-agent-sdk-part-2_hu_a99f46546073ac8d.png" alt="" width="750" height="419">
+        <figcaption class="text-center italic text-xs">Claude the painter bringing color to the terminal, with Bowie (the Ragdoll) knocking over paint</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>My goal today is to make the minimal writing agent from <a href="/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> a bit more user-friendly. I&rsquo;m starting with making the tool calls more descriptive.</p>
+<p>Here&rsquo;s what they currently look like:</p>
+<pre tabindex="0"><code>Assistant:
 [Using Glob...]Let me search more specifically in the content folder for blog posts:
 [Using Glob...]Based on the file dates, the most recent post appears to be from December 21, 2025. Let me read it:
 [Using Read...]
-</code></pre><p>You can see tool usage happening (<code>[Using Glob...]</code>, <code>[Using Read...]</code>), but there&rsquo;s no information about <em>what</em> the tool is actually doing. What pattern is Glob searching for? What file is Read opening?</p><h2 id=figuring-out-whats-available>Figuring Out What&rsquo;s Available</h2><p>First, I need to figure out what information is available on a <code>ToolUseBlock</code>. When I started typing in my IDE, IntelliSense suggested a <code>signature</code> property:</p><p><img src=/images/2026/intellisense-wrong-suggestion.png alt="IntelliSense suggesting signature property"></p><p>But when I tried to use it, I got an error:</p><pre tabindex=0><code>AttributeError: &#39;ToolUseBlock&#39; object has no attribute &#39;signature&#39;
-</code></pre><p>IntelliSense was getting confused somehow. The <code>signature</code> property it suggested actually belongs to a <em>different</em> class (<code>ThinkingBlock</code>) that happens to be defined nearby in the same module. It surprised me that IntelliSense would get confused by two classes defined in the same module, but Claude suggested that&rsquo;s the case. According to Claude, type narrowing inside <code>elif isinstance()</code> branches isn&rsquo;t always reliable.</p><p><em>I was a bit skeptical of this explanation, and because I&rsquo;m posting this publicly, I did a little digging. It turns out this is actually a known limitation of static type analysis in Python. In the SDK, <code>block</code> is defined as a union of four different classes: <code>TextBlock</code>, <code>ThinkingBlock</code>, <code>ToolUseBlock</code>, and <code>ToolResultBlock</code>. The process where the IDE notices we&rsquo;re inside an <code>isinstance(block, ToolUseBlock)</code> check - and therefore knows which of the four classes we&rsquo;re actually dealing with - is called &ldquo;type narrowing&rdquo;. It requires the IDE to interpret the code structure and perform that narrowing dynamically. Language servers like Pylance (the engine behind VS Code&rsquo;s Python support) don&rsquo;t always do a good job of this when the code structure is complex.</em></p><p>I wrote a small script to inspect the actual properties of <code>ToolUseBlock</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> claude_agent_sdk <span style=color:#f92672>import</span> ToolUseBlock
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Try to find source or show class info</span>
-</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#39;Type:&#39;</span>, type(ToolUseBlock))
-</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#39;MRO:&#39;</span>, ToolUseBlock<span style=color:#f92672>.</span>__mro__)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Check if it&#39;s a dataclass or has annotations</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> hasattr(ToolUseBlock, <span style=color:#e6db74>&#39;__annotations__&#39;</span>):
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#39;Annotations:&#39;</span>, ToolUseBlock<span style=color:#f92672>.</span>__annotations__)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> hasattr(ToolUseBlock, <span style=color:#e6db74>&#39;__dataclass_fields__&#39;</span>):
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#39;Dataclass fields:&#39;</span>, list(ToolUseBlock<span style=color:#f92672>.</span>__dataclass_fields__<span style=color:#f92672>.</span>keys()))
-</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> hasattr(ToolUseBlock, <span style=color:#e6db74>&#39;model_fields&#39;</span>):
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#39;Pydantic fields:&#39;</span>, list(ToolUseBlock<span style=color:#f92672>.</span>model_fields<span style=color:#f92672>.</span>keys()))
-</span></span></code></pre></div><p>This script uses Python&rsquo;s introspection capabilities to discover what&rsquo;s actually available on a class at runtime:</p><ul><li><strong><code>type()</code></strong> - Confirms what kind of object we&rsquo;re dealing with (a class, in this case)</li><li><strong><code>__mro__</code></strong> - &ldquo;Method Resolution Order&rdquo; - shows the inheritance chain, so we can see what the class inherits from</li><li><strong><code>__annotations__</code></strong> - Shows type hints defined on the class (available on any class with type annotations)</li><li><strong><code>__dataclass_fields__</code></strong> - If it&rsquo;s a dataclass, this contains all field definitions</li><li><strong><code>model_fields</code></strong> - If it&rsquo;s a Pydantic model, this contains field definitions</li></ul><p>Running it shows:</p><pre tabindex=0><code>Type: &lt;class &#39;type&#39;&gt;
+</code></pre><p>You can see tool usage happening (<code>[Using Glob...]</code>, <code>[Using Read...]</code>), but there&rsquo;s no information about <em>what</em> the tool is actually doing. What pattern is Glob searching for? What file is Read opening?</p>
+<h2 id="figuring-out-whats-available">Figuring Out What&rsquo;s Available</h2>
+<p>First, I need to figure out what information is available on a <code>ToolUseBlock</code>. When I started typing in my IDE, IntelliSense suggested a <code>signature</code> property:</p>
+<p><img src="/images/2026/intellisense-wrong-suggestion.png" alt="IntelliSense suggesting signature property"></p>
+<p>But when I tried to use it, I got an error:</p>
+<pre tabindex="0"><code>AttributeError: &#39;ToolUseBlock&#39; object has no attribute &#39;signature&#39;
+</code></pre><p>IntelliSense was getting confused somehow. The <code>signature</code> property it suggested actually belongs to a <em>different</em> class (<code>ThinkingBlock</code>) that happens to be defined nearby in the same module. It surprised me that IntelliSense would get confused by two classes defined in the same module, but Claude suggested that&rsquo;s the case. According to Claude, type narrowing inside <code>elif isinstance()</code> branches isn&rsquo;t always reliable.</p>
+<p><em>I was a bit skeptical of this explanation, and because I&rsquo;m posting this publicly, I did a little digging. It turns out this is actually a known limitation of static type analysis in Python. In the SDK, <code>block</code> is defined as a union of four different classes: <code>TextBlock</code>, <code>ThinkingBlock</code>, <code>ToolUseBlock</code>, and <code>ToolResultBlock</code>. The process where the IDE notices we&rsquo;re inside an <code>isinstance(block, ToolUseBlock)</code> check - and therefore knows which of the four classes we&rsquo;re actually dealing with - is called &ldquo;type narrowing&rdquo;. It requires the IDE to interpret the code structure and perform that narrowing dynamically. Language servers like Pylance (the engine behind VS Code&rsquo;s Python support) don&rsquo;t always do a good job of this when the code structure is complex.</em></p>
+<p>I wrote a small script to inspect the actual properties of <code>ToolUseBlock</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> claude_agent_sdk <span style="color:#f92672">import</span> ToolUseBlock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Try to find source or show class info</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Type:&#39;</span>, type(ToolUseBlock))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;MRO:&#39;</span>, ToolUseBlock<span style="color:#f92672">.</span>__mro__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check if it&#39;s a dataclass or has annotations</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> hasattr(ToolUseBlock, <span style="color:#e6db74">&#39;__annotations__&#39;</span>):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;Annotations:&#39;</span>, ToolUseBlock<span style="color:#f92672">.</span>__annotations__)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> hasattr(ToolUseBlock, <span style="color:#e6db74">&#39;__dataclass_fields__&#39;</span>):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;Dataclass fields:&#39;</span>, list(ToolUseBlock<span style="color:#f92672">.</span>__dataclass_fields__<span style="color:#f92672">.</span>keys()))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> hasattr(ToolUseBlock, <span style="color:#e6db74">&#39;model_fields&#39;</span>):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;Pydantic fields:&#39;</span>, list(ToolUseBlock<span style="color:#f92672">.</span>model_fields<span style="color:#f92672">.</span>keys()))
+</span></span></code></pre></div><p>This script uses Python&rsquo;s introspection capabilities to discover what&rsquo;s actually available on a class at runtime:</p>
+<ul>
+<li><strong><code>type()</code></strong> - Confirms what kind of object we&rsquo;re dealing with (a class, in this case)</li>
+<li><strong><code>__mro__</code></strong> - &ldquo;Method Resolution Order&rdquo; - shows the inheritance chain, so we can see what the class inherits from</li>
+<li><strong><code>__annotations__</code></strong> - Shows type hints defined on the class (available on any class with type annotations)</li>
+<li><strong><code>__dataclass_fields__</code></strong> - If it&rsquo;s a dataclass, this contains all field definitions</li>
+<li><strong><code>model_fields</code></strong> - If it&rsquo;s a Pydantic model, this contains field definitions</li>
+</ul>
+<p>Running it shows:</p>
+<pre tabindex="0"><code>Type: &lt;class &#39;type&#39;&gt;
 MRO: (&lt;class &#39;claude_agent_sdk.types.ToolUseBlock&#39;&gt;, &lt;class &#39;object&#39;&gt;)
 Annotations: {&#39;id&#39;: &lt;class &#39;str&#39;&gt;, &#39;name&#39;: &lt;class &#39;str&#39;&gt;, &#39;input&#39;: dict[str, typing.Any]}
 Dataclass fields: [&#39;id&#39;, &#39;name&#39;, &#39;input&#39;]
-</code></pre><p>So <code>ToolUseBlock</code> has three fields: <code>id</code>, <code>name</code>, and <code>input</code>. The <code>input</code> field is a dictionary containing the parameters passed to the tool which is what I wanted to show.</p><h2 id=making-tool-calls-more-descriptive>Making Tool Calls More Descriptive</h2><p>I updated my code to show what each tool is actually doing:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>elif</span> isinstance(block, ToolUseBlock):
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>[Using </span><span style=color:#e6db74>{</span>block<span style=color:#f92672>.</span>name<span style=color:#e6db74>}</span><span style=color:#e6db74>... </span><span style=color:#e6db74>{</span>block<span style=color:#f92672>.</span>input<span style=color:#e6db74>}</span><span style=color:#e6db74>]&#34;</span>, end<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>, flush<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
-</span></span></code></pre></div><p>And here&rsquo;s what the output looks like now:</p><pre tabindex=0><code>You: find my blog - be super thorough - it is somewhere!
+</code></pre><p>So <code>ToolUseBlock</code> has three fields: <code>id</code>, <code>name</code>, and <code>input</code>. The <code>input</code> field is a dictionary containing the parameters passed to the tool which is what I wanted to show.</p>
+<h2 id="making-tool-calls-more-descriptive">Making Tool Calls More Descriptive</h2>
+<p>I updated my code to show what each tool is actually doing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> isinstance(block, ToolUseBlock):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">[Using </span><span style="color:#e6db74">{</span>block<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">... </span><span style="color:#e6db74">{</span>block<span style="color:#f92672">.</span>input<span style="color:#e6db74">}</span><span style="color:#e6db74">]&#34;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, flush<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p>And here&rsquo;s what the output looks like now:</p>
+<pre tabindex="0"><code>You: find my blog - be super thorough - it is somewhere!
 
 A: I&#39;ll search thoroughly for your blog folder. Let me try multiple approaches to find it.
 [Using Glob... {&#39;pattern&#39;: &#39;**/*blog*/**/*.md&#39;}]
@@ -37,42 +179,275 @@ A: I&#39;ll search thoroughly for your blog folder. Let me try multiple approach
 [Using Glob... {&#39;pattern&#39;: &#39;**/articles/**/*.md&#39;}]
 [Using Grep... {&#39;pattern&#39;: &#39;^---\\s*&#39;, &#39;glob&#39;: &#39;*.md&#39;, &#39;output_mode&#39;: &#39;files_with_matches&#39;}]
 Let me expand my search to look in more locations and with different patterns:
-</code></pre><p>Now I can see exactly what patterns Glob is searching for, and what regex Grep is using. Much more informative!</p><p>Adding <code>block.input</code> to the output lets me see what the tool is actually doing - which patterns it&rsquo;s searching, which files it&rsquo;s reading, which commands it&rsquo;s running. This makes debugging much easier and gives me confidence that the agent is doing what I expect.</p><hr><h2 id=adding-some-polish>Adding Some Polish</h2><h3 id=colors>Colors</h3><p>I wanted some color in the terminal to make the output easier to scan. I didn&rsquo;t know much about ANSI colour codes (vague memories from my youth mibbe):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>DIM <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\033</span><span style=color:#e6db74>[2m&#34;</span>
-</span></span></code></pre></div><p>The <code>\033</code> means &ldquo;ESC&rdquo; - i.e. an escape sequence is starting. The <code>[</code> specifies that this is a &ldquo;Control Sequence Introduction&rdquo;. Then comes parameters, and finally <code>m</code> is the SGR (Select Graphic Rendition) command terminator.</p><p>For example, <code>\033[2m</code> means ESC + CSI + &lsquo;2&rsquo; + SGR Terminator = &ldquo;turn on dim/faint text&rdquo;. The <code>2</code> is an SGR parameter code - different numbers do different things: <code>0</code> resets to default, <code>1</code> is bold, <code>2</code> is dim, <code>38;2;R;G;B</code> sets a 24-bit RGB foreground color, and so on.</p><p>These two websites are useful for exploring options: <a href=https://ansi.gabebanks.net/>https://ansi.gabebanks.net/</a> and <a href=https://ansi-generator.pages.dev/>https://ansi-generator.pages.dev/</a></p><p>Here&rsquo;s my colour palette:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># ─── Colors ───────────────────────────────────────────────</span>
-</span></span><span style=display:flex><span>ESC <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\033</span><span style=color:#e6db74>[&#34;</span>
-</span></span><span style=display:flex><span>RESET <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>ESC<span style=color:#e6db74>}</span><span style=color:#e6db74>0m&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>BANNER <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>ESC<span style=color:#e6db74>}</span><span style=color:#e6db74>38;2;156;147;138m&#34;</span>    <span style=color:#75715e># warm taupe gray</span>
-</span></span><span style=display:flex><span>USER <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>ESC<span style=color:#e6db74>}</span><span style=color:#e6db74>38;2;86;148;148m&#34;</span>       <span style=color:#75715e># muted teal</span>
-</span></span><span style=display:flex><span>ASSISTANT <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>ESC<span style=color:#e6db74>}</span><span style=color:#e6db74>38;2;217;119;87m&#34;</span>  <span style=color:#75715e># coral/terracotta</span>
-</span></span><span style=display:flex><span>META <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>ESC<span style=color:#e6db74>}</span><span style=color:#e6db74>38;2;180;156;120m&#34;</span>      <span style=color:#75715e># muted amber</span>
-</span></span><span style=display:flex><span>ERROR <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>ESC<span style=color:#e6db74>}</span><span style=color:#e6db74>38;2;204;82;82m&#34;</span>       <span style=color:#75715e># warm red</span>
-</span></span><span style=display:flex><span>CODE <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>ESC<span style=color:#e6db74>}</span><span style=color:#e6db74>38;2;140;160;160m&#34;</span>      <span style=color:#75715e># blue-gray for tool calls</span>
-</span></span><span style=display:flex><span>PATH <span style=color:#f92672>=</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>ESC<span style=color:#e6db74>}</span><span style=color:#e6db74>38;2;120;140;180m&#34;</span>      <span style=color:#75715e># soft blue</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># ──────────────────────────────────────────────────────────</span>
-</span></span></code></pre></div><p>And this is what it looks like when I run it:</p><p><img src=/images/2026/colored-terminal-output.png alt="Colored terminal output showing the writing agent in action"></p><h3 id=multi-line-input-with-prompt_toolkit>Multi-line Input with prompt_toolkit</h3><p>I wanted the behaviour where Enter/Return just does a line break, and Option+Enter submits the message. Python&rsquo;s built-in <code>input()</code> always submits on Enter - there&rsquo;s no way to change that.</p><p>I found <code>prompt_toolkit</code> - a library for building interactive command-line interfaces with custom key bindings.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>uv pip install prompt-toolkit
-</span></span></code></pre></div><p>Here&rsquo;s how I set it up:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> prompt_toolkit <span style=color:#f92672>import</span> PromptSession
-</span></span><span style=display:flex><span><span style=color:#f92672>from</span> prompt_toolkit.key_binding <span style=color:#f92672>import</span> KeyBindings
-</span></span><span style=display:flex><span><span style=color:#f92672>from</span> prompt_toolkit.formatted_text <span style=color:#f92672>import</span> ANSI
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Set up key bindings - Option+Enter to submit</span>
-</span></span><span style=display:flex><span>bindings <span style=color:#f92672>=</span> KeyBindings()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>@bindings.add</span>(<span style=color:#e6db74>&#39;escape&#39;</span>, <span style=color:#e6db74>&#39;enter&#39;</span>)  <span style=color:#75715e># Option+Enter on Mac</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>submit</span>(event):
-</span></span><span style=display:flex><span>    event<span style=color:#f92672>.</span>current_buffer<span style=color:#f92672>.</span>validate_and_handle()
-</span></span></code></pre></div><p>The <code>@bindings.add('escape', 'enter')</code> decorator registers Option+Enter as the submit key. (Terminals send Option+key as Escape followed by the key, which is why we bind to <code>'escape', 'enter'</code>.)</p><p>Then in the main loop, I create a <code>PromptSession</code> and use <code>prompt_async()</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>session <span style=color:#f92672>=</span> PromptSession(key_bindings<span style=color:#f92672>=</span>bindings)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>with</span> ClaudeSDKClient(options<span style=color:#f92672>=</span>options) <span style=color:#66d9ef>as</span> client:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> <span style=color:#66d9ef>True</span>:
-</span></span><span style=display:flex><span>        user_input <span style=color:#f92672>=</span> (<span style=color:#66d9ef>await</span> session<span style=color:#f92672>.</span>prompt_async(
-</span></span><span style=display:flex><span>            ANSI(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>{</span>USER<span style=color:#e6db74>}</span><span style=color:#e6db74>You:</span><span style=color:#e6db74>{</span>RESET<span style=color:#e6db74>}</span><span style=color:#e6db74> &#34;</span>),
-</span></span><span style=display:flex><span>            multiline<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>,
-</span></span><span style=display:flex><span>            prompt_continuation<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>,
-</span></span><span style=display:flex><span>        ))<span style=color:#f92672>.</span>strip()
-</span></span></code></pre></div><p>A few things to note:</p><ul><li><strong><code>prompt_async()</code></strong> instead of <code>prompt()</code> - because we&rsquo;re inside an async function. Using the sync version would cause a &ldquo;cannot call asyncio.run() from a running event loop&rdquo; error.</li><li><strong><code>ANSI(...)</code></strong> wrapper around the prompt string - prompt_toolkit has its own rendering system and doesn&rsquo;t interpret ANSI escape codes by default. Without this wrapper, you&rsquo;d see raw codes like <code>^[[38;2;86;148;148m</code> instead of colors. Note that we only need this wrapper for the prompt_toolkit prompt - the other <code>print()</code> statements in my code don&rsquo;t need it because they go directly to the terminal, which natively understands ANSI codes.</li><li><strong><code>multiline=True</code></strong> - Enter creates a new line instead of submitting.</li><li><strong><code>prompt_continuation=""</code></strong> - This fixes the indentation problem (see below).</li></ul><p>Look at the screenshot below. Notice how after I type &ldquo;hi&rdquo;, the next line is indented to align directly below where my text started. The same with &ldquo;how are you&rdquo; and the line after it. This means I&rsquo;m sending a bunch of useless whitespace characters to the API, and the formatting I&rsquo;m actually sending isn&rsquo;t what I think I&rsquo;m sending. It looks fine to me on screen, but behind the scenes there&rsquo;s extra whitespace being added to every line.</p><p><img src=/images/2026/indentation-wasting-tokens.png alt="Indentation adding spaces to each line"></p><p>By default, prompt_toolkit indents continuation lines to align with where the first line started. Setting <code>prompt_continuation=""</code> keeps subsequent lines flush to the left, so I&rsquo;m sending exactly what I type without hidden whitespace.</p><p>As a bonus, <code>prompt_toolkit</code> also gives me arrow key navigation and command history for free.</p><ul id=taxonomy class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-4">Tags:</li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/claude/>Claude</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/agent-sdk/>Agent-Sdk</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/python/>Python</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/learning/>Learning</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/feature/>Feature</a></li></ul></div><footer id=content-footer class=not-prose><div id=related-post><h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/12-23-claude-agent-sdk_hu_7380b23652c2e82b.png alt="Exploring the Claude Agent SDK" width=750 height=419></figure><div class=p-6><time datetime=2026-01-12T06:30:00+00:00>Jan 12, 2026</time><h3 class="my-4 text-2xl font-bold">Exploring the Claude Agent SDK</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Learning in public: experimenting with Anthropic's Agent SDK after hearing that anything Claude Code can do, you can do with the SDK.</p></div></article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/01-13-claude-cowork-first-impressions/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox_hu_395165b2911335aa.png alt="First Impressions of Claude Cowork Mode" width=750 height=696></figure><div class=p-6><time datetime=2026-01-13T06:00:00+00:00>Jan 13, 2026</time><h3 class="my-4 text-2xl font-bold">First Impressions of Claude Cowork Mode</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Trying out Anthropic's new Claude Cowork mode.</p></div></article></div></div></footer></article><aside class=md:col-span-1><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10"><img class="aspect-video rounded" src=/images/2024/infinite_archive.png alt="things i think i think abstract image of waves and a stick figure"><p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p></div><div class=space-y-6><h2 class="font-bold text-xl mb-8">Recent Post</h2><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_e3f5f8daf225297.png alt="The Jevons Paradox and the Kindle Web Proxy" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">The Jevons Paradox and the Kindle Web Proxy</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-7/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-7_hu_39e3e8b0b2b2fb1d.png alt="Claude Agent SDK Part 7: Creating Custom MCP Tools" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 7: Creating Custom MCP Tools</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_7dc1390a998f20d.png alt="Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_86bd4167f2b86ba8.jpg alt="Claude Agent SDK Part 4: Implementing Context Profiles" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3></div></article></div></div></aside></div></main><footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div class="flex flex-wrap space-y-6 mb-4"><div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10"><a class="flex items-center group" href=https://thingsithinkithink.blog/><svg width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg>
-<span class="text-2xl font-semibold uppercase">thingsithinkithink</span></a><p class=font-semibold></p></div><div class="self-center flex flex-col w-full md:w-2/5"><ul id=social-media class="flex items-center space-x-4"><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://linkedin.com/in/davidfarrell81 target=_blank rel="noopener noreferrer"><img src=/images/linkedin-color-svgrepo-com.svg alt="LinkedIn Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://github.com/DavidFarrell/ target=_blank rel="noopener noreferrer"><img src=/images/github-mark.svg alt="GitHub Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://bsky.app/profile/dgerouvillefarrell.bsky.social target=_blank rel="noopener noreferrer"><img src=/images/Bluesky_Logo.svg alt="Bluesky Logo" class="w-8 h-8"></a></li></ul></div></div><div class=my-8><ul class="flex items-center space-x-4"><li><a class="decoration-auto hover:underline font-semibold" href=/>Home</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/about/>About</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/tags/>Tags</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/categories/>Taxonomy</a></li></ul></div><div class="border-t pt-4"><p class=text-sm>Powered by
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>,
-<a href=https://pages.github.com/ target=_blank rel=noopener>GitHub Pages</a>
-and based on the
-<a href=https://pehtheme-hugo.netlify.app/ target=_blank rel=noopener>pehtheme</a> theme.</p></div></div></footer><script defer src=/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js integrity="sha256-R0+bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin=anonymous></script></body></html>
+</code></pre><p>Now I can see exactly what patterns Glob is searching for, and what regex Grep is using. Much more informative!</p>
+<p>Adding <code>block.input</code> to the output lets me see what the tool is actually doing - which patterns it&rsquo;s searching, which files it&rsquo;s reading, which commands it&rsquo;s running. This makes debugging much easier and gives me confidence that the agent is doing what I expect.</p>
+<hr>
+<h2 id="adding-some-polish">Adding Some Polish</h2>
+<h3 id="colors">Colors</h3>
+<p>I wanted some color in the terminal to make the output easier to scan. I didn&rsquo;t know much about ANSI colour codes (vague memories from my youth mibbe):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>DIM <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\033</span><span style="color:#e6db74">[2m&#34;</span>
+</span></span></code></pre></div><p>The <code>\033</code> means &ldquo;ESC&rdquo; - i.e. an escape sequence is starting. The <code>[</code> specifies that this is a &ldquo;Control Sequence Introduction&rdquo;. Then comes parameters, and finally <code>m</code> is the SGR (Select Graphic Rendition) command terminator.</p>
+<p>For example, <code>\033[2m</code> means ESC + CSI + &lsquo;2&rsquo; + SGR Terminator = &ldquo;turn on dim/faint text&rdquo;. The <code>2</code> is an SGR parameter code - different numbers do different things: <code>0</code> resets to default, <code>1</code> is bold, <code>2</code> is dim, <code>38;2;R;G;B</code> sets a 24-bit RGB foreground color, and so on.</p>
+<p>These two websites are useful for exploring options: <a href="https://ansi.gabebanks.net/">https://ansi.gabebanks.net/</a> and <a href="https://ansi-generator.pages.dev/">https://ansi-generator.pages.dev/</a></p>
+<p>Here&rsquo;s my colour palette:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># ─── Colors ───────────────────────────────────────────────</span>
+</span></span><span style="display:flex;"><span>ESC <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\033</span><span style="color:#e6db74">[&#34;</span>
+</span></span><span style="display:flex;"><span>RESET <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>ESC<span style="color:#e6db74">}</span><span style="color:#e6db74">0m&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>BANNER <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>ESC<span style="color:#e6db74">}</span><span style="color:#e6db74">38;2;156;147;138m&#34;</span>    <span style="color:#75715e"># warm taupe gray</span>
+</span></span><span style="display:flex;"><span>USER <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>ESC<span style="color:#e6db74">}</span><span style="color:#e6db74">38;2;86;148;148m&#34;</span>       <span style="color:#75715e"># muted teal</span>
+</span></span><span style="display:flex;"><span>ASSISTANT <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>ESC<span style="color:#e6db74">}</span><span style="color:#e6db74">38;2;217;119;87m&#34;</span>  <span style="color:#75715e"># coral/terracotta</span>
+</span></span><span style="display:flex;"><span>META <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>ESC<span style="color:#e6db74">}</span><span style="color:#e6db74">38;2;180;156;120m&#34;</span>      <span style="color:#75715e"># muted amber</span>
+</span></span><span style="display:flex;"><span>ERROR <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>ESC<span style="color:#e6db74">}</span><span style="color:#e6db74">38;2;204;82;82m&#34;</span>       <span style="color:#75715e"># warm red</span>
+</span></span><span style="display:flex;"><span>CODE <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>ESC<span style="color:#e6db74">}</span><span style="color:#e6db74">38;2;140;160;160m&#34;</span>      <span style="color:#75715e"># blue-gray for tool calls</span>
+</span></span><span style="display:flex;"><span>PATH <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>ESC<span style="color:#e6db74">}</span><span style="color:#e6db74">38;2;120;140;180m&#34;</span>      <span style="color:#75715e"># soft blue</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ──────────────────────────────────────────────────────────</span>
+</span></span></code></pre></div><p>And this is what it looks like when I run it:</p>
+<p><img src="/images/2026/colored-terminal-output.png" alt="Colored terminal output showing the writing agent in action"></p>
+<h3 id="multi-line-input-with-prompt_toolkit">Multi-line Input with prompt_toolkit</h3>
+<p>I wanted the behaviour where Enter/Return just does a line break, and Option+Enter submits the message. Python&rsquo;s built-in <code>input()</code> always submits on Enter - there&rsquo;s no way to change that.</p>
+<p>I found <code>prompt_toolkit</code> - a library for building interactive command-line interfaces with custom key bindings.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uv pip install prompt-toolkit
+</span></span></code></pre></div><p>Here&rsquo;s how I set it up:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> prompt_toolkit <span style="color:#f92672">import</span> PromptSession
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> prompt_toolkit.key_binding <span style="color:#f92672">import</span> KeyBindings
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> prompt_toolkit.formatted_text <span style="color:#f92672">import</span> ANSI
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set up key bindings - Option+Enter to submit</span>
+</span></span><span style="display:flex;"><span>bindings <span style="color:#f92672">=</span> KeyBindings()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@bindings.add</span>(<span style="color:#e6db74">&#39;escape&#39;</span>, <span style="color:#e6db74">&#39;enter&#39;</span>)  <span style="color:#75715e"># Option+Enter on Mac</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">submit</span>(event):
+</span></span><span style="display:flex;"><span>    event<span style="color:#f92672">.</span>current_buffer<span style="color:#f92672">.</span>validate_and_handle()
+</span></span></code></pre></div><p>The <code>@bindings.add('escape', 'enter')</code> decorator registers Option+Enter as the submit key. (Terminals send Option+key as Escape followed by the key, which is why we bind to <code>'escape', 'enter'</code>.)</p>
+<p>Then in the main loop, I create a <code>PromptSession</code> and use <code>prompt_async()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>session <span style="color:#f92672">=</span> PromptSession(key_bindings<span style="color:#f92672">=</span>bindings)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> ClaudeSDKClient(options<span style="color:#f92672">=</span>options) <span style="color:#66d9ef">as</span> client:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        user_input <span style="color:#f92672">=</span> (<span style="color:#66d9ef">await</span> session<span style="color:#f92672">.</span>prompt_async(
+</span></span><span style="display:flex;"><span>            ANSI(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{</span>USER<span style="color:#e6db74">}</span><span style="color:#e6db74">You:</span><span style="color:#e6db74">{</span>RESET<span style="color:#e6db74">}</span><span style="color:#e6db74"> &#34;</span>),
+</span></span><span style="display:flex;"><span>            multiline<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>            prompt_continuation<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>        ))<span style="color:#f92672">.</span>strip()
+</span></span></code></pre></div><p>A few things to note:</p>
+<ul>
+<li><strong><code>prompt_async()</code></strong> instead of <code>prompt()</code> - because we&rsquo;re inside an async function. Using the sync version would cause a &ldquo;cannot call asyncio.run() from a running event loop&rdquo; error.</li>
+<li><strong><code>ANSI(...)</code></strong> wrapper around the prompt string - prompt_toolkit has its own rendering system and doesn&rsquo;t interpret ANSI escape codes by default. Without this wrapper, you&rsquo;d see raw codes like <code>^[[38;2;86;148;148m</code> instead of colors. Note that we only need this wrapper for the prompt_toolkit prompt - the other <code>print()</code> statements in my code don&rsquo;t need it because they go directly to the terminal, which natively understands ANSI codes.</li>
+<li><strong><code>multiline=True</code></strong> - Enter creates a new line instead of submitting.</li>
+<li><strong><code>prompt_continuation=&quot;&quot;</code></strong> - This fixes the indentation problem (see below).</li>
+</ul>
+<p>Look at the screenshot below. Notice how after I type &ldquo;hi&rdquo;, the next line is indented to align directly below where my text started. The same with &ldquo;how are you&rdquo; and the line after it. This means I&rsquo;m sending a bunch of useless whitespace characters to the API, and the formatting I&rsquo;m actually sending isn&rsquo;t what I think I&rsquo;m sending. It looks fine to me on screen, but behind the scenes there&rsquo;s extra whitespace being added to every line.</p>
+<p><img src="/images/2026/indentation-wasting-tokens.png" alt="Indentation adding spaces to each line"></p>
+<p>By default, prompt_toolkit indents continuation lines to align with where the first line started. Setting <code>prompt_continuation=&quot;&quot;</code> keeps subsequent lines flush to the left, so I&rsquo;m sending exactly what I type without hidden whitespace.</p>
+<p>As a bonus, <code>prompt_toolkit</code> also gives me arrow key navigation and command history for free.</p>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/claude/">Claude</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/agent-sdk/">Agent-Sdk</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/python/">Python</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/learning/">Learning</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/12-23-claude-agent-sdk_hu_7380b23652c2e82b.png" alt="Exploring the Claude Agent SDK" width="750" height="419">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-01-12T06:30:00&#43;00:00">Jan 12, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Exploring the Claude Agent SDK</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Learning in public: experimenting with Anthropic&#39;s Agent SDK after hearing that anything Claude Code can do, you can do with the SDK.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-13-claude-cowork-first-impressions/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/Claude_Cowork_First_Impressions/2025-01-13_08-57-01_-_PT1_Cowork_initial_prompt_get_Lennys_transcripts_from_Dropbox_hu_395165b2911335aa.png" alt="First Impressions of Claude Cowork Mode" width="750" height="696">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-01-13T06:00:00&#43;00:00">Jan 13, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">First Impressions of Claude Cowork Mode</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Trying out Anthropic&#39;s new Claude Cowork mode.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_e3f5f8daf225297.png" alt="The Jevons Paradox and the Kindle Web Proxy" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">The Jevons Paradox and the Kindle Web Proxy</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-7/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-7_hu_39e3e8b0b2b2fb1d.png" alt="Claude Agent SDK Part 7: Creating Custom MCP Tools" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 7: Creating Custom MCP Tools</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_7dc1390a998f20d.png" alt="Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_86bd4167f2b86ba8.jpg" alt="Claude Agent SDK Part 4: Implementing Context Profiles" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+</body>
+</html>

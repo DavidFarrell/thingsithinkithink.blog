@@ -2,7 +2,7 @@
 title: "The Jevons Paradox and the Kindle Web Proxy"
 date: 2026-02-09T12:00:00Z
 slug: /02-09-jevons-paradox-and-the-kindle-web-proxy/
-description: "When solving problems becomes almost free, more problems get solved. I built a silly little app today that nobody else would ever build, and that's sort of the point."
+description: "When solving problems becomes almost free, more problems get solved. I built a silly little app last night that nobody else would ever build, and that's sort of the point."
 image: images/2026/02-09-kindle-proxy-home.png
 caption: "The Kindle Web Proxy home page"
 categories:
@@ -30,7 +30,7 @@ These days, though, I sometimes come across concepts that Wikipedia doesn't cove
 
 ## My Niche App
 
-Today I solved this problem. With the help of Claude Code, I built a [Kindle Web Proxy](https://github.com/DavidFarrell/kindle-web-proxy) - a server-side web proxy that makes the modern web readable on e-ink.
+Last night I solved this problem by prompting AI maybe 20 times as I cooked dinner. With the help of Claude Code, I built a [Kindle Web Proxy](https://github.com/DavidFarrell/kindle-web-proxy) - a server-side web proxy that makes the modern web readable on e-ink.
 
 It's a Flask app that sits between my Kindle and the internet. You get a simple input box and you can do three things with it:
 
@@ -46,7 +46,7 @@ It's a Flask app that sits between my Kindle and the internet. You get a simple 
 
 {{< figure src="/images/2026/02-09-kindle-proxy-ask-ai.png" caption="Asking the AI about the Second Opium War" >}}
 
-It also handles images (converts to greyscale, resizes for e-ink), paginates long articles so the Kindle doesn't choke, and even extracts text from PDFs. There's a bookmarks system so I can save pages for later. It took probably 20 minutes of prompting, which I chipped at in gaps from other work I was doing - basically whenever I was waiting for a different AI to do some work, I prompted this with the next step.
+It also handles images (converts to greyscale, resizes for e-ink), paginates long articles so the Kindle doesn't choke, and even extracts text from PDFs. There's a bookmarks system so I can save pages for later.
 
 The whole thing is hosted on Railway at near-zero cost. Between Brave Search's free tier (2,000 searches per month) and Gemini Flash being absurdly cheap, I will never come close to hitting any spending limits. I might use this app ten times a year.
 

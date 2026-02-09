@@ -1,117 +1,524 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Claude Agent SDK Part 5: Editing Files with Checkpointing | thingsithinkithink</title><meta name=description content="Adding the ability for the agent to create posts that follow my templates, with the ability to recover from mistakes."><link rel=stylesheet href=/css/main.min.37627a3df6cbc23a43fef20f183473af95eb47c8816508d827b07b50cd3deab5.css integrity="sha256-N2J6PfbLwjpD/vIPGDRzr5XrR8iBZQjYJ7B7UM096rU=" crossorigin=anonymous><link rel=icon type=image/svg+xml href=https://thingsithinkithink.blog/favicon.svg><link rel=icon type=image/x-icon href=https://thingsithinkithink.blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://thingsithinkithink.blog/favicon.png><link rel=icon type=image/png sizes=32x32 href=https://thingsithinkithink.blog/favicon-32.png><link rel=icon type=image/png sizes=64x64 href=https://thingsithinkithink.blog/favicon-64.png></head><body><header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col"><div class="flex items-center"><div class="flex items-center"><button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=menu-bar>
-<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5.0 01.5-.5h10a.5.5.0 010 1H3a.5.5.0 01-.5-.5zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 8zm0-4a.5.5.0 01.5-.5h10a.5.5.0 010 1H3A.5.5.0 012.5 4z"/></svg>
-<span class="bg-blue-500 fill-white rounded-full p-1.5"><svg width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg></span></button><div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2"><h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href=https://thingsithinkithink.blog/>thingsithinkithink</a></h2></div></div><div class="flex items-center ml-auto"><button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target=search-bar>
-<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/><path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5.0 11.708-.708L8 7.293l5.146-5.147a.5.5.0 01.708.708L8.707 8l5.147 5.146a.5.5.0 01-.708.708L8 8.707l-5.146 5.147a.5.5.0 01-.708-.708L7.293 8 2.146 2.854z"/></svg></button></div></div><nav id=menu-bar class="block mt-3 close"><ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4"><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/>Home</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/about/>About</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/tags/>Tags</a></li><li class=my-2><a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href=/categories/>Taxonomy</a></li></ul></nav><div id=search-bar class="block mt-3 close"><form id=search class="flex items-stretch"><input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type=text placeholder=Search...>
-<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200">
-<svg width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5.0 10-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007.0 00-.115-.1zM12 6.5a5.5 5.5.0 11-11 0 5.5 5.5.0 0111 0z"/></svg></button></form></div></div></header><main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id=breadcrumb class="max-w-7xl mx-auto py-8"><ul class="flex space-x-4 text-sm text-zinc-500"><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/>thingsithinkithink</a></li><li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase"><a href=https://thingsithinkithink.blog/posts/>Posts</a></li></ul></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"><article class="md:col-span-2 prose lg:prose-lg"><header class=not-prose><h1 id=title class="text-4xl font-bold leading-normal">Claude Agent SDK Part 5: Editing Files with Checkpointing</h1><div id=lead class=my-6><p class=font-bold>Adding the ability for the agent to create posts that follow my templates, with the ability to recover from mistakes.</p></div><div id=writer class="flex items-center space-x-4"><img class="w-12 h-12 bg-black rounded-full" src=https://thingsithinkithink.blog/images/goldfinch.jpg alt="David Gérouville-Farrell avatar" width=1000 height=1000><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-2">David Gérouville-Farrell</li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime=2026-01-26T06:30:00+00:00>January 26, 2026</time></li><li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">9 min read</li></ul></div></header><figure id=featureimage class="rounded-xl aspect-video"><img class=rounded-lg src=https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_457afa222a853fbd.jpg alt width=750 height=419><figcaption class="text-center italic text-xs">David and Claude digging through the wastepaper basket, looking for the right checkpoint</figcaption></figure><div id=content class=mb-14><p>In <a href=/posts/2026/02-02-claude-agent-sdk-part-4/>Part 4</a>, I built context profiles and usage tracking. Today the writing agent becomes actually useful: I want it to create posts that follow my templates - right folder, right front matter, right conventions etc. And since the agent will be editing my files, I want the ability to recover from mistakes.</p><p>To get there, I&rsquo;m using <a href=https://platform.claude.com/docs/en/agent-sdk/slash-commands>slash commands</a> to define the templated workflow, and <a href=https://platform.claude.com/docs/en/agent-sdk/file-checkpointing>file checkpointing</a> to enable rewind.</p><h2 id=slash-commands-adding-custom-workflows>Slash Commands: Adding Custom Workflows</h2><p>Claude Code has a concept of &ldquo;slash commands&rdquo; - markdown files that become <code>/command-name</code> shortcuts. I wanted to create a <code>/new-post</code> command that would set up a new blog post with the right front matter, in the right folder, following my conventions.</p><h3 id=where-commands-live>Where Commands Live</h3><p>Slash commands go in a <code>.claude/commands/</code> folder:</p><pre tabindex=0><code>writing-agent/
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Claude Agent SDK Part 5: Editing Files with Checkpointing | thingsithinkithink</title>
+
+<meta name="description" content="Adding the ability for the agent to create posts that follow my templates, with the ability to recover from mistakes.">
+      <link rel="stylesheet" href="/css/main.min.37627a3df6cbc23a43fef20f183473af95eb47c8816508d827b07b50cd3deab5.css" integrity="sha256-N2J6PfbLwjpD/vIPGDRzr5XrR8iBZQjYJ7B7UM096rU=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch">
+		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+</div>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">Claude Agent SDK Part 5: Editing Files with Checkpointing</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Adding the ability for the agent to create posts that follow my templates, with the ability to recover from mistakes. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-01-26T06:30:00&#43;00:00">January 26, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            9 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_457afa222a853fbd.jpg" alt="" width="750" height="419">
+        <figcaption class="text-center italic text-xs">David and Claude digging through the wastepaper basket, looking for the right checkpoint</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>In <a href="/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a>, I built context profiles and usage tracking. Today the writing agent becomes actually useful: I want it to create posts that follow my templates - right folder, right front matter, right conventions etc. And since the agent will be editing my files, I want the ability to recover from mistakes.</p>
+<p>To get there, I&rsquo;m using <a href="https://platform.claude.com/docs/en/agent-sdk/slash-commands">slash commands</a> to define the templated workflow, and <a href="https://platform.claude.com/docs/en/agent-sdk/file-checkpointing">file checkpointing</a> to enable rewind.</p>
+<h2 id="slash-commands-adding-custom-workflows">Slash Commands: Adding Custom Workflows</h2>
+<p>Claude Code has a concept of &ldquo;slash commands&rdquo; - markdown files that become <code>/command-name</code> shortcuts. I wanted to create a <code>/new-post</code> command that would set up a new blog post with the right front matter, in the right folder, following my conventions.</p>
+<h3 id="where-commands-live">Where Commands Live</h3>
+<p>Slash commands go in a <code>.claude/commands/</code> folder:</p>
+<pre tabindex="0"><code>writing-agent/
 ├── .claude/
 │   └── commands/
 │       └── new-post.md    # Becomes /new-post
 ├── config.yaml
 └── src/writing_agent/
-</code></pre><p>The filename (minus <code>.md</code>) becomes the command name.</p><h3 id=anatomy-of-the-slash-command>Anatomy of the Slash Command</h3><p>Here&rsquo;s my <code>/new-post</code> command - a real slash command, meaning it&rsquo;s a markdown file that Claude reads and executes:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-markdown data-lang=markdown><span style=display:flex><span>---
-</span></span><span style=display:flex><span>allowed-tools: Write, Read, Glob
-</span></span><span style=display:flex><span>description: Create a new blog post with front matter template
-</span></span><span style=display:flex><span>argument-hint: &#34;title and optional date&#34;
-</span></span><span style=display:flex><span>---
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Create a new blog post for the user. Read @config.yaml for the blog settings.
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Use the front_matter_template from config, substituting:
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> $TITLE: The post title
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> $DATE: In the format from date_format
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> $SLUG: Derived from the date and title
-</span></span><span style=display:flex><span><span style=color:#66d9ef>-</span> $YEAR: Four-digit year
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>$ARGUMENTS
-</span></span></code></pre></div><p>A few things to notice:</p><ol><li>It has its own <a href=https://platform.claude.com/docs/en/agent-sdk/slash-commands#advanced-features>YAML frontmatter</a> (meta-frontmatter!) with <code>allowed-tools</code>, <code>description</code>, and <code>argument-hint</code></li><li><code>@config.yaml</code> includes the file contents inline - Claude sees the actual config</li><li><code>$ARGUMENTS</code> gets replaced with whatever the user types after <code>/new-post</code></li><li>Arguments are AI-interpreted - no rigid parsing needed</li></ol><p>That last point is cool. Because AI is interpreting the parameters, I don&rsquo;t need <code>/new-post --title "My Title" --date 2026-03-15</code>. I can just say:</p><pre tabindex=0><code>/new-post My new post about slash commands, for next Monday
-</code></pre><p>Claude figures it out and can do all the steps to figure out what today&rsquo;s date is, what &rsquo;next monday&rsquo; refers to and then puts the appropriate values in the parameters.</p><h3 id=the-config-file>The Config File</h3><p>The slash command references <code>@config.yaml</code> - here&rsquo;s what that looks like:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># config.yaml</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>blog</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/Users/david/git/ai-sandbox/projects/websites/thingsithinkithink.blog</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>posts_folder</span>: <span style=color:#ae81ff>content/posts</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>images_folder</span>: <span style=color:#ae81ff>assets/images</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>date_format</span>: <span style=color:#e6db74>&#34;2006-01-02T15:04:05Z&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>front_matter_template</span>: |<span style=color:#e6db74>
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    ---
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    title: &#34;$TITLE&#34;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    date: $DATE
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    slug: /$SLUG/
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    description: &#34;&#34;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    image: images/$YEAR/$SLUG.png
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    caption: &#34;TBD&#34;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    categories: []
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    tags: []
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    draft: false
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    ---</span>
-</span></span></code></pre></div><p>This is specific to my blog - it&rsquo;s just what my front matter looks like. The <code>@</code> syntax inlines the entire file contents, so Claude sees all of this when the command runs.</p><h3 id=gotcha-1-the-cwd-problem>Gotcha #1: The <code>cwd</code> Problem</h3><p>My first attempt didn&rsquo;t work. Claude couldn&rsquo;t find the command.</p><p>When you set up an agent, you specify its working directory in the options:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions(
-</span></span><span style=display:flex><span>    cwd<span style=color:#f92672>=</span>str(blog_path),  <span style=color:#75715e># Where the agent works</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
-</span></span><span style=display:flex><span>)
-</span></span></code></pre></div><p>Since I&rsquo;m building a writing agent that works on my blog, I pointed <code>cwd</code> to the blog folder.</p><p>The problem was, when the agent initializes, it looks in the <code>cwd</code> for all its metadata - MCP servers, slash commands, settings etc etc. So it was looking for <code>.claude/commands/</code> inside my blog folder, not finding anything, and my <code>/new-post</code> command didn&rsquo;t exist as far as it was concerned. The slash command I created was in the agent&rsquo;s folder, not the blog folder.</p><p>To fix it I had to track two &lsquo;working directories&rsquo; - I set <code>cwd</code> to the agent folder, where the <code>/new-post</code> command was specified, and pass the target folder via system prompt instead:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>agent_home <span style=color:#f92672>=</span> Path(__file__)<span style=color:#f92672>.</span>parent<span style=color:#f92672>.</span>parent<span style=color:#f92672>.</span>parent  <span style=color:#75715e># Where .claude/commands/ lives</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions(
-</span></span><span style=display:flex><span>    cwd<span style=color:#f92672>=</span>str(agent_home),  <span style=color:#75715e># Commands live here</span>
-</span></span><span style=display:flex><span>    system_prompt<span style=color:#f92672>=</span><span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;The blog is at: </span><span style=color:#e6db74>{</span>blog_path<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>,  <span style=color:#75715e># Work on files here</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
-</span></span><span style=display:flex><span>)
-</span></span></code></pre></div><p>Claude can work with files anywhere using absolute paths. The <code>cwd</code> is just for relative paths and command discovery.</p><h3 id=gotcha-2-the-setting_sources-surprise>Gotcha #2: The <code>setting_sources</code> Surprise</h3><p>Even with the right <code>cwd</code>, my commands still weren&rsquo;t found. Turns out the SDK has <a href=https://platform.claude.com/docs/en/agent-sdk/python#setting-source>a security feature</a>: it doesn&rsquo;t load any filesystem settings by default.</p><p>The fix was to explicitly opt in:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions(
-</span></span><span style=display:flex><span>    cwd<span style=color:#f92672>=</span>str(agent_home),
-</span></span><span style=display:flex><span>    setting_sources<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;project&#34;</span>],  <span style=color:#75715e># Load .claude/ settings!</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
-</span></span><span style=display:flex><span>)
-</span></span></code></pre></div><p>Available sources:</p><ul><li><code>"user"</code> - Global settings from <code>~/.claude/</code></li><li><code>"project"</code> - Project settings from <code>.claude/</code> in cwd</li><li><code>"local"</code> - Local gitignored settings from <code>.claude-local/</code></li></ul><p>This is a deliberate isolation feature for SDK apps. You have to explicitly say what you want loaded.</p><h3 id=the-agentic-workflow-in-action>The Agentic Workflow in Action</h3><p>Here&rsquo;s where it gets fun. I asked the agent:</p><blockquote><p>&ldquo;What have I named the blogs in my Claude Agent SDK series?&rdquo;</p></blockquote><p>Claude used Glob to find the posts, Grep to extract titles, and listed all four with their dates. Then I said:</p><blockquote><p>&ldquo;/new-post Give it a similar name. It&rsquo;s part five, about slash commands and file checkpointing. For the date, give it the next Monday in the sequence.&rdquo;</p></blockquote><p>Claude noticed the pattern (Jan 12, 19, 26, Feb 2 - all Mondays), calculated Feb 9, and created the post with proper front matter.</p><p>This is what I love about agentic AI. One slash command with a few words of context is all it needs to go away and do several useful steps - saving me a bunch of faff.</p><h2 id=file-checkpointing>File Checkpointing</h2><p>Now that I can create new posts with the agent, I&rsquo;m closer to using it to support my actual writing. The kind of thing I might ask it to do is insert links, reformat a section, or fix some markdown. But whenever you&rsquo;re asking AI to touch actual files on your computer, there&rsquo;s a chance it makes a mistake.</p><p>The Agent SDK has a file checkpointing feature that protects against this. It tracks changes made by Write, Edit, and NotebookEdit tools, and if Claude makes a mess of your file, you can rewind to a previous state.</p><h3 id=enabling-checkpointing>Enabling Checkpointing</h3><p>To enable checkpointing, you need to set two options in <code>ClaudeAgentOptions</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>options <span style=color:#f92672>=</span> ClaudeAgentOptions(
-</span></span><span style=display:flex><span>    enable_file_checkpointing<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>,
-</span></span><span style=display:flex><span>    extra_args<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#34;replay-user-messages&#34;</span>: <span style=color:#66d9ef>None</span>},  <span style=color:#75715e># Needed to get checkpoint UUIDs</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
-</span></span><span style=display:flex><span>)
-</span></span></code></pre></div><p>The <code>replay-user-messages</code> flag makes the CLI echo <code>UserMessage</code> objects into your response stream - each carrying a UUID that serves as a checkpoint handle.</p><h3 id=how-checkpoints-work>How Checkpoints Work</h3><p>When checkpointing is enabled, the response stream looks like this:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># You send:</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>await</span> client<span style=color:#f92672>.</span>query(<span style=color:#e6db74>&#34;change the title to something German&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># You receive:</span>
-</span></span><span style=display:flex><span>UserMessage(uuid<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;abc-123&#34;</span>)        <span style=color:#75715e># Your prompt echoed back ← checkpoint UUID</span>
-</span></span><span style=display:flex><span>AssistantMessage(tool_use<span style=color:#f92672>=</span>Edit)   <span style=color:#75715e># Claude decides to edit</span>
-</span></span><span style=display:flex><span>UserMessage(uuid<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;def-456&#34;</span>)       <span style=color:#75715e># Tool result</span>
-</span></span><span style=display:flex><span>AssistantMessage(text<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Done!&#34;</span>)    <span style=color:#75715e># Claude&#39;s response</span>
-</span></span><span style=display:flex><span>ResultMessage(<span style=color:#f92672>...</span>)                <span style=color:#75715e># Final stats</span>
-</span></span></code></pre></div><p>The checkpoint UUID is on the <em>first</em> UserMessage - the one that echoes your prompt back. This represents the file state at the start of the turn, before any edits happen.</p><p>One other thing to know: <code>rewind_files()</code> must be called on the same client instance:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># WRONG - creates new client, loses checkpoint references</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>with</span> ClaudeSDKClient(options, resume<span style=color:#f92672>=</span>session_id) <span style=color:#66d9ef>as</span> new_client:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>await</span> new_client<span style=color:#f92672>.</span>rewind_files(checkpoint_uuid)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># RIGHT - use the existing client</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>await</span> client<span style=color:#f92672>.</span>rewind_files(checkpoint_uuid)
-</span></span></code></pre></div><p>The checkpoints live in the CLI&rsquo;s memory for your current connection. A new client doesn&rsquo;t have access to them.</p><h3 id=the-rewind-implementation>The /rewind Implementation</h3><p>Unlike <code>/new-post</code>, <code>/rewind</code> isn&rsquo;t a real slash command - it&rsquo;s just my Python code pattern-matching on the input string. Here&rsquo;s how it works:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>checkpoints: list[Checkpoint] <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>for</span> msg <span style=color:#f92672>in</span> client<span style=color:#f92672>.</span>receive_response():
-</span></span><span style=display:flex><span>    <span style=color:#75715e># Capture first UserMessage as checkpoint</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> isinstance(msg, UserMessage) <span style=color:#f92672>and</span> msg<span style=color:#f92672>.</span>uuid <span style=color:#f92672>and</span> <span style=color:#f92672>not</span> turn_captured:
-</span></span><span style=display:flex><span>        checkpoints<span style=color:#f92672>.</span>append(Checkpoint(
-</span></span><span style=display:flex><span>            uuid<span style=color:#f92672>=</span>msg<span style=color:#f92672>.</span>uuid,
-</span></span><span style=display:flex><span>            turn<span style=color:#f92672>=</span>len(checkpoints) <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>,
-</span></span><span style=display:flex><span>            timestamp<span style=color:#f92672>=</span>datetime<span style=color:#f92672>.</span>now()
-</span></span><span style=display:flex><span>        ))
-</span></span><span style=display:flex><span>        turn_captured <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># ... handle other messages ...</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Later, to rewind:</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>await</span> client<span style=color:#f92672>.</span>rewind_files(checkpoints[target_index]<span style=color:#f92672>.</span>uuid)
-</span></span></code></pre></div><h3 id=why-rewind-cant-be-a-real-slash-command>Why /rewind Can&rsquo;t Be a Real Slash Command</h3><p>So why the difference? Real slash commands can only tell Claude to do things Claude already knows how to do - things it has tools for. The <code>rewind_files()</code> function lives in Python, not as a tool Claude can call. Claude never sees <code>/rewind</code> and has no idea the capability exists.</p><p>If I wanted <code>/rewind</code> to be a real slash command, I&rsquo;d need to expose the rewind function as an MCP tool first. That&rsquo;s a direction for a future post.</p><h3 id=adding-haiku-summaries>Adding Haiku Summaries</h3><p>Checkpoints are more useful when you can tell them apart. I added a feature that calls Haiku after each turn to generate a ~10 word summary:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>summarize_turn</span>(user_prompt: str, tool_calls: list[str]) <span style=color:#f92672>-&gt;</span> str:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>for</span> msg <span style=color:#f92672>in</span> query(
-</span></span><span style=display:flex><span>        prompt<span style=color:#f92672>=</span><span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Summarize in 10 words: </span><span style=color:#e6db74>{</span>user_prompt[:<span style=color:#ae81ff>200</span>]<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>,
-</span></span><span style=display:flex><span>        options<span style=color:#f92672>=</span>ClaudeAgentOptions(model<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;haiku&#34;</span>, allowed_tools<span style=color:#f92672>=</span>[])
-</span></span><span style=display:flex><span>    ):
-</span></span><span style=display:flex><span>        <span style=color:#75715e># Extract text...</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> summary
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># After each turn:</span>
-</span></span><span style=display:flex><span>checkpoints[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]<span style=color:#f92672>.</span>summary <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> summarize_turn(user_input, tools_used)
-</span></span></code></pre></div><p>Now <code>/rewind</code> shows:</p><pre tabindex=0><code>Available Checkpoints:
+</code></pre><p>The filename (minus <code>.md</code>) becomes the command name.</p>
+<h3 id="anatomy-of-the-slash-command">Anatomy of the Slash Command</h3>
+<p>Here&rsquo;s my <code>/new-post</code> command - a real slash command, meaning it&rsquo;s a markdown file that Claude reads and executes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>allowed-tools: Write, Read, Glob
+</span></span><span style="display:flex;"><span>description: Create a new blog post with front matter template
+</span></span><span style="display:flex;"><span>argument-hint: &#34;title and optional date&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create a new blog post for the user. Read @config.yaml for the blog settings.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Use the front_matter_template from config, substituting:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> $TITLE: The post title
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> $DATE: In the format from date_format
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> $SLUG: Derived from the date and title
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> $YEAR: Four-digit year
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ARGUMENTS
+</span></span></code></pre></div><p>A few things to notice:</p>
+<ol>
+<li>It has its own <a href="https://platform.claude.com/docs/en/agent-sdk/slash-commands#advanced-features">YAML frontmatter</a> (meta-frontmatter!) with <code>allowed-tools</code>, <code>description</code>, and <code>argument-hint</code></li>
+<li><code>@config.yaml</code> includes the file contents inline - Claude sees the actual config</li>
+<li><code>$ARGUMENTS</code> gets replaced with whatever the user types after <code>/new-post</code></li>
+<li>Arguments are AI-interpreted - no rigid parsing needed</li>
+</ol>
+<p>That last point is cool. Because AI is interpreting the parameters, I don&rsquo;t need <code>/new-post --title &quot;My Title&quot; --date 2026-03-15</code>. I can just say:</p>
+<pre tabindex="0"><code>/new-post My new post about slash commands, for next Monday
+</code></pre><p>Claude figures it out and can do all the steps to figure out what today&rsquo;s date is, what &rsquo;next monday&rsquo; refers to and then puts the appropriate values in the parameters.</p>
+<h3 id="the-config-file">The Config File</h3>
+<p>The slash command references <code>@config.yaml</code> - here&rsquo;s what that looks like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># config.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">blog</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/Users/david/git/ai-sandbox/projects/websites/thingsithinkithink.blog</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">posts_folder</span>: <span style="color:#ae81ff">content/posts</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">images_folder</span>: <span style="color:#ae81ff">assets/images</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">date_format</span>: <span style="color:#e6db74">&#34;2006-01-02T15:04:05Z&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">front_matter_template</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ---
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    title: &#34;$TITLE&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    date: $DATE
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    slug: /$SLUG/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    description: &#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    image: images/$YEAR/$SLUG.png
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    caption: &#34;TBD&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    categories: []
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    tags: []
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    draft: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ---</span>
+</span></span></code></pre></div><p>This is specific to my blog - it&rsquo;s just what my front matter looks like. The <code>@</code> syntax inlines the entire file contents, so Claude sees all of this when the command runs.</p>
+<h3 id="gotcha-1-the-cwd-problem">Gotcha #1: The <code>cwd</code> Problem</h3>
+<p>My first attempt didn&rsquo;t work. Claude couldn&rsquo;t find the command.</p>
+<p>When you set up an agent, you specify its working directory in the options:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
+</span></span><span style="display:flex;"><span>    cwd<span style="color:#f92672">=</span>str(blog_path),  <span style="color:#75715e"># Where the agent works</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Since I&rsquo;m building a writing agent that works on my blog, I pointed <code>cwd</code> to the blog folder.</p>
+<p>The problem was, when the agent initializes, it looks in the <code>cwd</code> for all its metadata - MCP servers, slash commands, settings etc etc. So it was looking for <code>.claude/commands/</code> inside my blog folder, not finding anything, and my <code>/new-post</code> command didn&rsquo;t exist as far as it was concerned. The slash command I created was in the agent&rsquo;s folder, not the blog folder.</p>
+<p>To fix it I had to track two &lsquo;working directories&rsquo; - I set <code>cwd</code> to the agent folder, where the <code>/new-post</code> command was specified, and pass the target folder via system prompt instead:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>agent_home <span style="color:#f92672">=</span> Path(__file__)<span style="color:#f92672">.</span>parent<span style="color:#f92672">.</span>parent<span style="color:#f92672">.</span>parent  <span style="color:#75715e"># Where .claude/commands/ lives</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
+</span></span><span style="display:flex;"><span>    cwd<span style="color:#f92672">=</span>str(agent_home),  <span style="color:#75715e"># Commands live here</span>
+</span></span><span style="display:flex;"><span>    system_prompt<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;The blog is at: </span><span style="color:#e6db74">{</span>blog_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,  <span style="color:#75715e"># Work on files here</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Claude can work with files anywhere using absolute paths. The <code>cwd</code> is just for relative paths and command discovery.</p>
+<h3 id="gotcha-2-the-setting_sources-surprise">Gotcha #2: The <code>setting_sources</code> Surprise</h3>
+<p>Even with the right <code>cwd</code>, my commands still weren&rsquo;t found. Turns out the SDK has <a href="https://platform.claude.com/docs/en/agent-sdk/python#setting-source">a security feature</a>: it doesn&rsquo;t load any filesystem settings by default.</p>
+<p>The fix was to explicitly opt in:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
+</span></span><span style="display:flex;"><span>    cwd<span style="color:#f92672">=</span>str(agent_home),
+</span></span><span style="display:flex;"><span>    setting_sources<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;project&#34;</span>],  <span style="color:#75715e"># Load .claude/ settings!</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Available sources:</p>
+<ul>
+<li><code>&quot;user&quot;</code> - Global settings from <code>~/.claude/</code></li>
+<li><code>&quot;project&quot;</code> - Project settings from <code>.claude/</code> in cwd</li>
+<li><code>&quot;local&quot;</code> - Local gitignored settings from <code>.claude-local/</code></li>
+</ul>
+<p>This is a deliberate isolation feature for SDK apps. You have to explicitly say what you want loaded.</p>
+<h3 id="the-agentic-workflow-in-action">The Agentic Workflow in Action</h3>
+<p>Here&rsquo;s where it gets fun. I asked the agent:</p>
+<blockquote>
+<p>&ldquo;What have I named the blogs in my Claude Agent SDK series?&rdquo;</p>
+</blockquote>
+<p>Claude used Glob to find the posts, Grep to extract titles, and listed all four with their dates. Then I said:</p>
+<blockquote>
+<p>&ldquo;/new-post Give it a similar name. It&rsquo;s part five, about slash commands and file checkpointing. For the date, give it the next Monday in the sequence.&rdquo;</p>
+</blockquote>
+<p>Claude noticed the pattern (Jan 12, 19, 26, Feb 2 - all Mondays), calculated Feb 9, and created the post with proper front matter.</p>
+<p>This is what I love about agentic AI. One slash command with a few words of context is all it needs to go away and do several useful steps - saving me a bunch of faff.</p>
+<h2 id="file-checkpointing">File Checkpointing</h2>
+<p>Now that I can create new posts with the agent, I&rsquo;m closer to using it to support my actual writing. The kind of thing I might ask it to do is insert links, reformat a section, or fix some markdown. But whenever you&rsquo;re asking AI to touch actual files on your computer, there&rsquo;s a chance it makes a mistake.</p>
+<p>The Agent SDK has a file checkpointing feature that protects against this. It tracks changes made by Write, Edit, and NotebookEdit tools, and if Claude makes a mess of your file, you can rewind to a previous state.</p>
+<h3 id="enabling-checkpointing">Enabling Checkpointing</h3>
+<p>To enable checkpointing, you need to set two options in <code>ClaudeAgentOptions</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>options <span style="color:#f92672">=</span> ClaudeAgentOptions(
+</span></span><span style="display:flex;"><span>    enable_file_checkpointing<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    extra_args<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;replay-user-messages&#34;</span>: <span style="color:#66d9ef">None</span>},  <span style="color:#75715e"># Needed to get checkpoint UUIDs</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>The <code>replay-user-messages</code> flag makes the CLI echo <code>UserMessage</code> objects into your response stream - each carrying a UUID that serves as a checkpoint handle.</p>
+<h3 id="how-checkpoints-work">How Checkpoints Work</h3>
+<p>When checkpointing is enabled, the response stream looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># You send:</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> client<span style="color:#f92672">.</span>query(<span style="color:#e6db74">&#34;change the title to something German&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># You receive:</span>
+</span></span><span style="display:flex;"><span>UserMessage(uuid<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;abc-123&#34;</span>)        <span style="color:#75715e"># Your prompt echoed back ← checkpoint UUID</span>
+</span></span><span style="display:flex;"><span>AssistantMessage(tool_use<span style="color:#f92672">=</span>Edit)   <span style="color:#75715e"># Claude decides to edit</span>
+</span></span><span style="display:flex;"><span>UserMessage(uuid<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;def-456&#34;</span>)       <span style="color:#75715e"># Tool result</span>
+</span></span><span style="display:flex;"><span>AssistantMessage(text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Done!&#34;</span>)    <span style="color:#75715e"># Claude&#39;s response</span>
+</span></span><span style="display:flex;"><span>ResultMessage(<span style="color:#f92672">...</span>)                <span style="color:#75715e"># Final stats</span>
+</span></span></code></pre></div><p>The checkpoint UUID is on the <em>first</em> UserMessage - the one that echoes your prompt back. This represents the file state at the start of the turn, before any edits happen.</p>
+<p>One other thing to know: <code>rewind_files()</code> must be called on the same client instance:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># WRONG - creates new client, loses checkpoint references</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> ClaudeSDKClient(options, resume<span style="color:#f92672">=</span>session_id) <span style="color:#66d9ef">as</span> new_client:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> new_client<span style="color:#f92672">.</span>rewind_files(checkpoint_uuid)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># RIGHT - use the existing client</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> client<span style="color:#f92672">.</span>rewind_files(checkpoint_uuid)
+</span></span></code></pre></div><p>The checkpoints live in the CLI&rsquo;s memory for your current connection. A new client doesn&rsquo;t have access to them.</p>
+<h3 id="the-rewind-implementation">The /rewind Implementation</h3>
+<p>Unlike <code>/new-post</code>, <code>/rewind</code> isn&rsquo;t a real slash command - it&rsquo;s just my Python code pattern-matching on the input string. Here&rsquo;s how it works:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>checkpoints: list[Checkpoint] <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">for</span> msg <span style="color:#f92672">in</span> client<span style="color:#f92672">.</span>receive_response():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Capture first UserMessage as checkpoint</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isinstance(msg, UserMessage) <span style="color:#f92672">and</span> msg<span style="color:#f92672">.</span>uuid <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> turn_captured:
+</span></span><span style="display:flex;"><span>        checkpoints<span style="color:#f92672">.</span>append(Checkpoint(
+</span></span><span style="display:flex;"><span>            uuid<span style="color:#f92672">=</span>msg<span style="color:#f92672">.</span>uuid,
+</span></span><span style="display:flex;"><span>            turn<span style="color:#f92672">=</span>len(checkpoints) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>            timestamp<span style="color:#f92672">=</span>datetime<span style="color:#f92672">.</span>now()
+</span></span><span style="display:flex;"><span>        ))
+</span></span><span style="display:flex;"><span>        turn_captured <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ... handle other messages ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Later, to rewind:</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> client<span style="color:#f92672">.</span>rewind_files(checkpoints[target_index]<span style="color:#f92672">.</span>uuid)
+</span></span></code></pre></div><h3 id="why-rewind-cant-be-a-real-slash-command">Why /rewind Can&rsquo;t Be a Real Slash Command</h3>
+<p>So why the difference? Real slash commands can only tell Claude to do things Claude already knows how to do - things it has tools for. The <code>rewind_files()</code> function lives in Python, not as a tool Claude can call. Claude never sees <code>/rewind</code> and has no idea the capability exists.</p>
+<p>If I wanted <code>/rewind</code> to be a real slash command, I&rsquo;d need to expose the rewind function as an MCP tool first. That&rsquo;s a direction for a future post.</p>
+<h3 id="adding-haiku-summaries">Adding Haiku Summaries</h3>
+<p>Checkpoints are more useful when you can tell them apart. I added a feature that calls Haiku after each turn to generate a ~10 word summary:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">summarize_turn</span>(user_prompt: str, tool_calls: list[str]) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">for</span> msg <span style="color:#f92672">in</span> query(
+</span></span><span style="display:flex;"><span>        prompt<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Summarize in 10 words: </span><span style="color:#e6db74">{</span>user_prompt[:<span style="color:#ae81ff">200</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>        options<span style="color:#f92672">=</span>ClaudeAgentOptions(model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;haiku&#34;</span>, allowed_tools<span style="color:#f92672">=</span>[])
+</span></span><span style="display:flex;"><span>    ):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Extract text...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> summary
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># After each turn:</span>
+</span></span><span style="display:flex;"><span>checkpoints[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>summary <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> summarize_turn(user_input, tools_used)
+</span></span></code></pre></div><p>Now <code>/rewind</code> shows:</p>
+<pre tabindex="0"><code>Available Checkpoints:
     0: Turn 1 @ 11:34:05 - Found and displayed recent blog post
     1: Turn 2 @ 11:34:21 - Changed title and description to German
     2: Turn 3 @ 11:34:31 - Translated content to French
-</code></pre><p>Much easier to pick the right checkpoint.</p><h2 id=the-bash-bypass-problem>The Bash Bypass Problem</h2><p>There&rsquo;s still one problem with my agent and the rewind feature as it stands. Checkpointing only tracks Write, Edit, and NotebookEdit tools. If Claude uses Bash to modify files (e.g., <code>cat</code>, <code>echo</code>, <code>python</code>), those changes aren&rsquo;t tracked and don&rsquo;t appear in your checkpoints.</p><p>I discovered this when testing the tool. I was asking it to write a large file for me, and the Write tool kept truncating because the change was too big. Claude, being agentic, tried a few times, noticed it was hitting the same limit, and worked around it using Python.</p><p>The file got written correctly, but it bypassed all the checkpointing. If you&rsquo;re not paying close attention, you&rsquo;ll miss that you&rsquo;ve lost your safety net.</p><p>I haven&rsquo;t figured out what to do here. I might spend some time on the system prompt, or remove Bash from the allowed tools, or make it more explicit when Claude wants to use Bash. For now, I&rsquo;m just aware of it - it&rsquo;s a footgun to document and look out for.</p><h2 id=whats-next>What&rsquo;s Next</h2><p>The writing agent now has:</p><ul><li>Custom slash commands for templated workflows</li><li>File checkpointing with rewind</li><li>Haiku-powered checkpoint summaries</li></ul><p>Next time I want to dig into MCP tools. I&rsquo;ve got a few things I want to expose to Claude: the rewind function (so it becomes a real capability), the ability to start and stop my local blog server, and a way to run my build script to deploy changes. I also want to find a solution for the Bash bypass problem - stopping Claude from working around failed edits by shelling out to Python or cat.</p><hr><p><em>This is Part 5 of my series on learning the Claude Agent SDK. <a href=/posts/2026/01-12-exploring-claude-agent-sdk/>Part 1</a> covers initial exploration, <a href=/posts/2026/01-19-claude-agent-sdk-part-2/>Part 2</a> builds the first working agent, <a href=/posts/2026/01-26-claude-agent-sdk-part-3/>Part 3</a> explores context control, and <a href=/posts/2026/02-02-claude-agent-sdk-part-4/>Part 4</a> adds usage tracking and context profiles.</em></p><ul id=taxonomy class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto"><li class="font-semibold my-4">Tags:</li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/claude/>Claude</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/agent-sdk/>Agent-Sdk</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/python/>Python</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/learning/>Learning</a></li><li><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href=/tags/feature/>Feature</a></li></ul></div><footer id=content-footer class=not-prose><div id=related-post><h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_2c2189dde4e2506d.jpg alt="Claude Agent SDK Part 4: Implementing Context Profiles" width=750 height=543></figure><div class=p-6><time datetime=2026-01-22T06:30:00+00:00>Jan 22, 2026</time><h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 4: Implementing Context Profiles</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Building context profiles and usage tracking that works with the SDK's design.</p></div></article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/></a><figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/01-26-claude-agent-sdk-part-3_hu_150233a42889ec1.png alt="Claude Agent SDK Part 3: The Context Control Problem" width=750 height=419></figure><div class=p-6><time datetime=2026-01-19T05:00:00+00:00>Jan 19, 2026</time><h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 3: The Context Control Problem</h3><p class="text-normal leading-normal text-zinc-500 line-clamp-2">Discovering the trade-offs between agency and control when building on the Claude Agent SDK.</p></div></article></div></div></footer></article><aside class=md:col-span-1><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10"><img class="aspect-video rounded" src=/images/2024/infinite_archive.png alt="things i think i think abstract image of waves and a stick figure"><p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p></div><div class=space-y-6><h2 class="font-bold text-xl mb-8">Recent Post</h2><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_e3f5f8daf225297.png alt="The Jevons Paradox and the Kindle Web Proxy" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">The Jevons Paradox and the Kindle Web Proxy</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-7/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-7_hu_39e3e8b0b2b2fb1d.png alt="Claude Agent SDK Part 7: Creating Custom MCP Tools" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 7: Creating Custom MCP Tools</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_7dc1390a998f20d.png alt="Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3></div></article><article class="relative group flex flex-row"><a class=insert-link href=https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/></a><figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src=https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_86bd4167f2b86ba8.jpg alt="Claude Agent SDK Part 4: Implementing Context Profiles" width=444 height=250></figure><div class="basis-2/3 self-center ml-4"><h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3></div></article></div></div></aside></div></main><footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div class="flex flex-wrap space-y-6 mb-4"><div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10"><a class="flex items-center group" href=https://thingsithinkithink.blog/><svg width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16"><path d="M8 11a3 3 0 100-6 3 3 0 000 6z"/><path d="M13.997 5.17A5 5 0 005.896 1.08 5 5 0 001.28 9.342a5 5 0 008.336 5.109 3.5 3.5.0 005.201-4.065 3.001 3.001.0 00-.822-5.216zm-1-.034a1 1 0 00.668.977 2.001 2.001.0 01.547 3.478 1 1 0 00-.341 1.113 2.5 2.5.0 01-3.715 2.905 1 1 0 00-1.262.152 4 4 0 01-6.67-4.087 1 1 0 00-.2-1 4 4 0 013.693-6.61 1 1 0 00.8-.2 4 4 0 016.48 3.273z"/></svg>
-<span class="text-2xl font-semibold uppercase">thingsithinkithink</span></a><p class=font-semibold></p></div><div class="self-center flex flex-col w-full md:w-2/5"><ul id=social-media class="flex items-center space-x-4"><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://linkedin.com/in/davidfarrell81 target=_blank rel="noopener noreferrer"><img src=/images/linkedin-color-svgrepo-com.svg alt="LinkedIn Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://github.com/DavidFarrell/ target=_blank rel="noopener noreferrer"><img src=/images/github-mark.svg alt="GitHub Logo" class="w-8 h-8"></a></li><li><a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href=https://bsky.app/profile/dgerouvillefarrell.bsky.social target=_blank rel="noopener noreferrer"><img src=/images/Bluesky_Logo.svg alt="Bluesky Logo" class="w-8 h-8"></a></li></ul></div></div><div class=my-8><ul class="flex items-center space-x-4"><li><a class="decoration-auto hover:underline font-semibold" href=/>Home</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/about/>About</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/tags/>Tags</a></li><li><a class="decoration-auto hover:underline font-semibold" href=/categories/>Taxonomy</a></li></ul></div><div class="border-t pt-4"><p class=text-sm>Powered by
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>,
-<a href=https://pages.github.com/ target=_blank rel=noopener>GitHub Pages</a>
-and based on the
-<a href=https://pehtheme-hugo.netlify.app/ target=_blank rel=noopener>pehtheme</a> theme.</p></div></div></footer><script defer src=/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js integrity="sha256-R0+bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin=anonymous></script></body></html>
+</code></pre><p>Much easier to pick the right checkpoint.</p>
+<h2 id="the-bash-bypass-problem">The Bash Bypass Problem</h2>
+<p>There&rsquo;s still one problem with my agent and the rewind feature as it stands. Checkpointing only tracks Write, Edit, and NotebookEdit tools. If Claude uses Bash to modify files (e.g., <code>cat</code>, <code>echo</code>, <code>python</code>), those changes aren&rsquo;t tracked and don&rsquo;t appear in your checkpoints.</p>
+<p>I discovered this when testing the tool. I was asking it to write a large file for me, and the Write tool kept truncating because the change was too big. Claude, being agentic, tried a few times, noticed it was hitting the same limit, and worked around it using Python.</p>
+<p>The file got written correctly, but it bypassed all the checkpointing. If you&rsquo;re not paying close attention, you&rsquo;ll miss that you&rsquo;ve lost your safety net.</p>
+<p>I haven&rsquo;t figured out what to do here. I might spend some time on the system prompt, or remove Bash from the allowed tools, or make it more explicit when Claude wants to use Bash. For now, I&rsquo;m just aware of it - it&rsquo;s a footgun to document and look out for.</p>
+<h2 id="whats-next">What&rsquo;s Next</h2>
+<p>The writing agent now has:</p>
+<ul>
+<li>Custom slash commands for templated workflows</li>
+<li>File checkpointing with rewind</li>
+<li>Haiku-powered checkpoint summaries</li>
+</ul>
+<p>Next time I want to dig into MCP tools. I&rsquo;ve got a few things I want to expose to Claude: the rewind function (so it becomes a real capability), the ability to start and stop my local blog server, and a way to run my build script to deploy changes. I also want to find a solution for the Bash bypass problem - stopping Claude from working around failed edits by shelling out to Python or cat.</p>
+<hr>
+<p><em>This is Part 5 of my series on learning the Claude Agent SDK. <a href="/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> covers initial exploration, <a href="/posts/2026/01-19-claude-agent-sdk-part-2/">Part 2</a> builds the first working agent, <a href="/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a> explores context control, and <a href="/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a> adds usage tracking and context profiles.</em></p>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/claude/">Claude</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/agent-sdk/">Agent-Sdk</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/python/">Python</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/learning/">Learning</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_2c2189dde4e2506d.jpg" alt="Claude Agent SDK Part 4: Implementing Context Profiles" width="750" height="543">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-01-22T06:30:00&#43;00:00">Jan 22, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 4: Implementing Context Profiles</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Building context profiles and usage tracking that works with the SDK&#39;s design.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-26-claude-agent-sdk-part-3_hu_150233a42889ec1.png" alt="Claude Agent SDK Part 3: The Context Control Problem" width="750" height="419">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-01-19T05:00:00&#43;00:00">Jan 19, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Claude Agent SDK Part 3: The Context Control Problem</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Discovering the trade-offs between agency and control when building on the Claude Agent SDK.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_e3f5f8daf225297.png" alt="The Jevons Paradox and the Kindle Web Proxy" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">The Jevons Paradox and the Kindle Web Proxy</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-7/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-7_hu_39e3e8b0b2b2fb1d.png" alt="Claude Agent SDK Part 7: Creating Custom MCP Tools" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 7: Creating Custom MCP Tools</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-16-claude-agent-sdk-part-6_hu_7dc1390a998f20d.png" alt="Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 6: Fixing the Bash Bypass and Understanding Permissions</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-claude-agent-sdk-part-5_hu_36315df84bc80536.jpg" alt="Claude Agent SDK Part 5: Editing Files with Checkpointing" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 5: Editing Files with Checkpointing</h3>
+	</div>
+</article><article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/"></a>
+	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_86bd4167f2b86ba8.jpg" alt="Claude Agent SDK Part 4: Implementing Context Profiles" width="444" height="250">
+
+	</figure>
+	<div class="basis-2/3 self-center ml-4">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude Agent SDK Part 4: Implementing Context Profiles</h3>
+	</div>
+</article>
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+</body>
+</html>
