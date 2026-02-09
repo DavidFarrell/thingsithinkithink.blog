@@ -3,8 +3,8 @@ title: "The Jevons Paradox and the Kindle Web Proxy"
 date: 2026-02-09T12:00:00Z
 slug: /02-09-jevons-paradox-and-the-kindle-web-proxy/
 description: "When solving problems becomes almost free, more problems get solved. I built a silly little app today that nobody else would ever build, and that's sort of the point."
-image: images/2026/02-09-jevons-paradox-kindle.png
-caption: "BBC News has gobbledygook on the left and is legible on the right"
+image: images/2026/02-09-kindle-proxy-home.png
+caption: "The Kindle Web Proxy home page"
 categories:
   - blog
   - artificial-intelligence
@@ -21,6 +21,10 @@ draft: false
 I have a Kindle Oasis that I've had for years and I love it. I really love reading, I feel good about myself when I read more, but I struggle to resist the allure of the internet and the ease of access that my phone gives me to a never-ending slot machine of interesting things.
 
 The Kindle Oasis has just enough connectivity built in to be useful. Long press a word and you can look it up in the dictionary or check Wikipedia. Occasionally I'd want to understand something from a book a bit better and I'd open the Kindle's web browser to look it up. The browser used to be labelled "experimental" and while they've dropped that label, it's still very bare-bones. Most modern websites render fine, albeit they don't perform very well, but it's not really been something that bothered me until recently.
+
+{{< figure src="/images/2026/02-09-bbc-direct.jpg" caption="BBC News rendered directly on the Kindle - garbled text and broken layout" >}}
+
+{{< figure src="/images/2026/02-09-bbc-proxied.jpg" caption="The same page through the Kindle Web Proxy - clean and readable" >}}
 
 These days, though, I sometimes come across concepts that Wikipedia doesn't cover well enough, and what I really want is to ask an AI about them. The Kindle can't do this. None of the main AI websites work on it. Additionally, I love taking my Kindle with me to the sauna, and you don't take your phone to the sauna, which means I can't access my passkeys for OAuth anyway, even if the frontier lab websites did render correctly on it.
 
