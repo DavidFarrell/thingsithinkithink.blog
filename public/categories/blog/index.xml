@@ -6,8 +6,15 @@
     <description>Recent content in Blog on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Feb 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Feb 2026 05:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Typing Code and Punching Cards</title>
+      <link>https://thingsithinkithink.blog/posts/2026/02-09-typing-code-and-punching-cards/</link>
+      <pubDate>Thu, 12 Feb 2026 05:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/02-09-typing-code-and-punching-cards/</guid>
+      <description>&lt;p&gt;In my &lt;a href=&#34;https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/&#34;&gt;Jevons Paradox and the Kindle Web Proxy&lt;/a&gt; post, I wrote about how I (along with a large group of AI-pilled tech folks) noticed a change around November of last year with AI-assisted coding tools getting significantly better as the harnesses and the models both reached a minimum viable level of power that created a flywheel effect. I&amp;rsquo;ve since been listening to the &lt;a href=&#34;https://github.com/oxidecomputer/oxide-and-friends/blob/master/2026_01_05.md&#34;&gt;Oxide and Friends&lt;/a&gt; episode where they did their &lt;a href=&#34;https://www.youtube.com/watch?v=lVDhQMiAbR8&#34;&gt;annual predictions for 2026&lt;/a&gt; - a conversation between &lt;a href=&#34;https://bsky.app/profile/bcantrill.bsky.social&#34;&gt;Bryan Cantrill&lt;/a&gt;, &lt;a href=&#34;https://bsky.app/profile/ahl.bsky.social&#34;&gt;Adam Leventhal&lt;/a&gt;, &lt;a href=&#34;https://simonwillison.net&#34;&gt;Simon Willison&lt;/a&gt;, &lt;a href=&#34;https://bsky.app/profile/steveklabnik.com&#34;&gt;Steve Klabnik&lt;/a&gt;, and &lt;a href=&#34;https://hachyderm.io/@iangrunert&#34;&gt;Ian Grunert&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The Jevons Paradox and the Kindle Web Proxy</title>
       <link>https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/</link>
