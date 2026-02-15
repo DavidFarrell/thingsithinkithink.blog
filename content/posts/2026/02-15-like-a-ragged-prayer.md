@@ -11,7 +11,7 @@ tags:
   - creative-industries
   - software-engineering
   - feature
-image: /images/2026/02-15-hard-fork-logo.jpg
+image: images/2026/02-15-hard-fork-logo.jpg
 ---
 
 This week's [Hard Fork](https://podcasts.apple.com/us/podcast/something-big-is-happening-a-i-rocks-the-romance/id1528594034?i=1000749587690) featured an interview with New York Times reporter Alexandra Altar, who wrote [a piece about how AI is disrupting the romance novel industry](https://www.nytimes.com/2026/02/08/business/ai-claude-romance-books.html). It's the pulpy end of the fiction spectrum - so presumably the community of creators here might self-identify less as Artists (with a capital A) - but this community is wrangling with the impacts of AI just like everybody else, and in some ways they're further along than most.

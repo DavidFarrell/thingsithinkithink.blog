@@ -45,6 +45,11 @@ The GitHub Action uploads `./public` directly - it does NOT run Hugo, so the loc
 - **Descriptions/loglines are invitations, not summaries.** Casual and understated ("some interesting stuff from X on Y"). Don't give away the thesis. Credit the source. Don't oversell
 - **Section headings should sound natural**, like something you'd say in conversation ("We still haven't figured out how to handle copyright") not like newspaper headlines ("Copyright and the question that won't go away")
 
+### Fact-Checking
+- **Cross-check against source material.** When working from a transcript or article, verify that claims in the draft match the source. If David says something that contradicts the transcript or misremembers a detail (a name, a number, a quote), flag it before publishing.
+- **Catch accidental contradictions.** If the draft says one thing in one section and something different elsewhere, raise it.
+- **Don't silently fix - raise it.** If something seems like an honest mistake, bring it to David's attention rather than quietly correcting it. He'd rather know.
+
 ### Content Patterns
 - References specific sources with hyperlinks
 - Builds arguments through personal anecdote + industry evidence
