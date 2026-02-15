@@ -1,6 +1,6 @@
 ---
 title: "Like a Ragged Prayer"
-date: 2026-02-15T12:00:00Z
+date: 2026-02-15T08:00:00Z
 slug: /02-15-like-a-ragged-prayer/
 description: "Some interesting stuff from Alexandra Alter on how AI is disrupting the romance novel industry."
 categories:

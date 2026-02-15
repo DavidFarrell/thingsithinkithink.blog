@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Creative-Industries on thingsithinkithink</title>
-    <link>http://localhost:65507/tags/creative-industries/</link>
+    <link>https://thingsithinkithink.blog/tags/creative-industries/</link>
     <description>Recent content in Creative-Industries on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Feb 2026 12:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:65507/tags/creative-industries/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Feb 2026 08:00:00 +0000</lastBuildDate>
+    <atom:link href="https://thingsithinkithink.blog/tags/creative-industries/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Like a Ragged Prayer</title>
-      <link>http://localhost:65507/posts/2026/02-15-like-a-ragged-prayer/</link>
-      <pubDate>Sun, 15 Feb 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:65507/posts/2026/02-15-like-a-ragged-prayer/</guid>
+      <link>https://thingsithinkithink.blog/posts/2026/02-15-like-a-ragged-prayer/</link>
+      <pubDate>Sun, 15 Feb 2026 08:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/02-15-like-a-ragged-prayer/</guid>
       <description>&lt;p&gt;This week&amp;rsquo;s &lt;a href=&#34;https://podcasts.apple.com/us/podcast/something-big-is-happening-a-i-rocks-the-romance/id1528594034?i=1000749587690&#34;&gt;Hard Fork&lt;/a&gt; featured an interview with New York Times reporter Alexandra Altar, who wrote &lt;a href=&#34;https://www.nytimes.com/2026/02/08/business/ai-claude-romance-books.html&#34;&gt;a piece about how AI is disrupting the romance novel industry&lt;/a&gt;. It&amp;rsquo;s the pulpy end of the fiction spectrum - so presumably the community of creators here might self-identify less as Artists (with a capital A) - but this community is wrangling with the impacts of AI just like everybody else, and in some ways they&amp;rsquo;re further along than most.&lt;/p&gt;</description>
     </item>
   </channel>
