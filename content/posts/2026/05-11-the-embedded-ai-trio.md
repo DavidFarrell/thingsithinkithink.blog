@@ -17,7 +17,7 @@ caption: "Jon Krohn in conversation with Ethan Mollick, Insight Partners (Nov 20
 draft: false
 ---
 
-One of my favourite writers on AI isn't really someone you'd consider an "AI guy." It's [Ethan Mollick](https://www.oneusefulthing.org/), the Wharton professor of business who wrote one of the first good books about our current AI moment, [*Co-Intelligence*](https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/). That book formed the basis of my first AI enablement workshops. What I love about Ethan's work is that he takes the capabilities and potential of AI very seriously, but he is so grounded in actual real-world work environments that he never sounds like a sci-fi author. My own experience of using AI - and of showing other people how to use it - aligns very closely with the kind of messaging Ethan puts out.
+One of my favourite writers on AI isn't really someone you'd consider an "AI guy." It's [Ethan Mollick](https://www.oneusefulthing.org/), the Wharton professor of business who wrote one of the first good books about our current AI moment, [*Co-Intelligence*](https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/). That book formed the basis of my first AI enablement workshops. What I love about Ethan is that he takes AI seriously without sounding like a sci-fi author. He's grounded in how real work actually gets done.
 
 Back in November he was interviewed by [Jon Krohn](https://www.linkedin.com/in/jonkrohn/), Co-Founder & CEO of Y Carrot, for Insight Partners. The full interview is [here](https://www.insightpartners.com/ideas/ethan-mollick-on-ai/) and runs about six minutes.
 
