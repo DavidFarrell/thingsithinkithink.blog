@@ -11,6 +11,7 @@ tags:
   - ai-leadership
   - consulting
   - product
+  - feature
 image: images/2026/05-11-mollick-krohn-hero.jpg
 caption: "Jon Krohn in conversation with Ethan Mollick, Insight Partners (Nov 2025)"
 draft: false
