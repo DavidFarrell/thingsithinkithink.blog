@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AI on thingsithinkithink</title>
+    <title>Ai on thingsithinkithink</title>
     <link>https://thingsithinkithink.blog/tags/ai/</link>
-    <description>Recent content in AI on thingsithinkithink</description>
+    <description>Recent content in Ai on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Feb 2026 08:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 08:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Embedded AI Trio</title>
+      <link>https://thingsithinkithink.blog/posts/2026/05-11-the-embedded-ai-trio/</link>
+      <pubDate>Mon, 11 May 2026 08:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/05-11-the-embedded-ai-trio/</guid>
+      <description>&lt;p&gt;One of my favourite writers on AI isn&amp;rsquo;t really someone you&amp;rsquo;d consider an &amp;ldquo;AI guy.&amp;rdquo; It&amp;rsquo;s &lt;a href=&#34;https://www.oneusefulthing.org/&#34;&gt;Ethan Mollick&lt;/a&gt;, the Wharton professor of business who wrote one of the first good books about our current AI moment, &lt;a href=&#34;https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/&#34;&gt;&lt;em&gt;Co-Intelligence&lt;/em&gt;&lt;/a&gt;. That book formed the basis of my first AI enablement workshops. What I love about Ethan&amp;rsquo;s work is that he takes the capabilities and potential of AI very seriously, but he is so grounded in actual real-world work environments that he never sounds like a sci-fi author. My own experience of using AI - and of showing other people how to use it - aligns very closely with the kind of messaging Ethan puts out.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Like a Ragged Prayer</title>
       <link>https://thingsithinkithink.blog/posts/2026/02-15-like-a-ragged-prayer/</link>
