@@ -11,7 +11,7 @@ tags:
   - ai-leadership
   - consulting
   - product
-draft: false
+draft: true
 ---
 
 Something I keep noticing across my consulting work is that, in an enterprise setting, it is much easier to use AI to say *no* than to use it to say *yes*. Or sometimes the other way around. The point isn't which direction - the point is that almost every real-world AI decision has a risk-asymmetric easy side and a risk-heavy hard side. If you can identify which is which, you can get into production a lot faster than risk-averse organisations usually assume.
