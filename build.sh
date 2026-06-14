@@ -1,4 +1,21 @@
 #!/bin/bash
+#
+# Build + deploy thingsithinkithink.blog.   Usage:  ./build.sh "commit message"
+#
+# This is the ONE correct way to publish. It runs the production build
+# (npm run build = tailwind CSS + `hugo --environment production`) into ./public,
+# then commits everything (including public/) and pushes.
+#
+# WHY commit public/: the GitHub Action only UPLOADS ./public - it does NOT run
+# Hugo. The built site must be generated locally and committed, which this does.
+#
+# NEVER `git commit` right after `hugo server` / `npm run dev`: the dev server
+# rewrites public/ with localhost:1313 URLs. Always run THIS script (a clean
+# production build) before committing so the live URLs are correct.
+#
+# Hero image missing? Hugo writes _hu_-suffixed image variants under
+# resources/_gen/images/ during the local build; if a post's hero won't render,
+# check resources/_gen has entries for it (they only exist after a local build).
 
 # Check if a commit message was provided
 if [ $# -eq 0 ]; then
