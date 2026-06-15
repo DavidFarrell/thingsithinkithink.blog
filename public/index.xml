@@ -6,8 +6,15 @@
     <description>Recent content on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Jun 2026 08:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 05:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Climbing the Ladder of Abstraction</title>
+      <link>https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/</link>
+      <pubDate>Mon, 15 Jun 2026 05:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/</guid>
+      <description>&lt;p&gt;Last week I gave a talk at AI Practitioner London. The theme of the evening was &amp;ldquo;Coding Agents: Good, Bad, Ugly and Worse&amp;rdquo;, and my role was to represent good - or more precisely, what good looks like when you can no longer review every line an AI writes.&lt;/p&gt;&#xA;&lt;p&gt;When an agent produces more code in an afternoon than you could read in a week, how do you say the work is good? I built the talk around Hayakawa&amp;rsquo;s ladder of abstraction.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The Embedded AI Trio</title>
       <link>https://thingsithinkithink.blog/posts/2026/06-15-the-embedded-ai-trio/</link>
