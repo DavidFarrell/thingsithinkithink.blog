@@ -11,6 +11,7 @@ tags:
   - ai-leadership
   - code-review
   - consulting
+  - feature
 image: images/2026/06-14-climbing-the-ladder/cow-ladder.png
 caption: "Hayakawa's ladder of abstraction"
 draft: false
