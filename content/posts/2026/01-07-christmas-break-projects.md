@@ -23,7 +23,7 @@ This year I had three main projects.
 
 ## Finishing My LLM Evals Course Notes
 
-I finally wrote up the last of my notes on the [LLM Evals course](/01-05-llm-evals-course-recap/), including an overall summary and an index page pulling together all eight lessons. It felt good to close the loop on something I'd been chipping away at for months.
+I finally wrote up the last of my notes on the [LLM Evals course]({{< ref "posts/2026/01-05-llm-evals-course-recap.md" >}}), including an overall summary and an index page pulling together all eight lessons. It felt good to close the loop on something I'd been chipping away at for months.
 
 ## Learning the Claude Agent SDK
 

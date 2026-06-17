@@ -122,7 +122,7 @@
     </figure>
 
     <div id="content" class="mb-14">
-      <p>In <a href="/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a>, I built context profiles and usage tracking. Today the writing agent becomes actually useful: I want it to create posts that follow my templates - right folder, right front matter, right conventions etc. And since the agent will be editing my files, I want the ability to recover from mistakes.</p>
+      <p>In <a href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a>, I built context profiles and usage tracking. Today the writing agent becomes actually useful: I want it to create posts that follow my templates - right folder, right front matter, right conventions etc. And since the agent will be editing my files, I want the ability to recover from mistakes.</p>
 <p>To get there, I&rsquo;m using <a href="https://platform.claude.com/docs/en/agent-sdk/slash-commands">slash commands</a> to define the templated workflow, and <a href="https://platform.claude.com/docs/en/agent-sdk/file-checkpointing">file checkpointing</a> to enable rewind.</p>
 <h2 id="slash-commands-adding-custom-workflows">Slash Commands: Adding Custom Workflows</h2>
 <p>Claude Code has a concept of &ldquo;slash commands&rdquo; - markdown files that become <code>/command-name</code> shortcuts. I wanted to create a <code>/new-post</code> command that would set up a new blog post with the right front matter, in the right folder, following my conventions.</p>
@@ -311,7 +311,7 @@
 </ul>
 <p>Next time I want to dig into MCP tools. I&rsquo;ve got a few things I want to expose to Claude: the rewind function (so it becomes a real capability), the ability to start and stop my local blog server, and a way to run my build script to deploy changes. I also want to find a solution for the Bash bypass problem - stopping Claude from working around failed edits by shelling out to Python or cat.</p>
 <hr>
-<p><em>This is Part 5 of my series on learning the Claude Agent SDK. <a href="/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> covers initial exploration, <a href="/posts/2026/01-19-claude-agent-sdk-part-2/">Part 2</a> builds the first working agent, <a href="/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a> explores context control, and <a href="/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a> adds usage tracking and context profiles.</em></p>
+<p><em>This is Part 5 of my series on learning the Claude Agent SDK. <a href="https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> covers initial exploration, <a href="https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/">Part 2</a> builds the first working agent, <a href="https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a> explores context control, and <a href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a> adds usage tracking and context profiles.</em></p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">

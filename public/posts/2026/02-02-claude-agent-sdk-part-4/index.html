@@ -122,7 +122,7 @@
     </figure>
 
     <div id="content" class="mb-14">
-      <p>In <a href="/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a>, I discovered I couldn&rsquo;t have perfect control over the conversation history with the Agent SDK. Today I&rsquo;m implementing two things: a <strong>context profile</strong> that persists across conversations, and <strong>usage tracking</strong> so I can see exactly what&rsquo;s happening with tokens.</p>
+      <p>In <a href="https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a>, I discovered I couldn&rsquo;t have perfect control over the conversation history with the Agent SDK. Today I&rsquo;m implementing two things: a <strong>context profile</strong> that persists across conversations, and <strong>usage tracking</strong> so I can see exactly what&rsquo;s happening with tokens.</p>
 <h2 id="understanding-the-usage-dict">Understanding the Usage Dict</h2>
 <p>Before building anything, I needed to understand what the SDK actually tells us about token usage. After each query, <code>ResultMessage.usage</code> contains:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
@@ -302,7 +302,7 @@ The main loop structure now handles both conversation flow and session resets:</
 <p>Next time I want to tackle <strong>template handling</strong> - having the agent create and manage a work-in-progress blog post file.</p>
 <p>The Agent SDK has file checkpoint features that let you roll back changes to previous states - but only when using the Write, Edit, and NotebookEdit tools (not Bash). I&rsquo;ll be exploring how to create a new post, edit it iteratively, and take advantage of those checkpoints for version control.</p>
 <hr>
-<p><em>This is Part 4 of my series on learning the Claude Agent SDK. <a href="/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> covers initial exploration, <a href="/posts/2026/01-19-claude-agent-sdk-part-2/">Part 2</a> builds the first working agent, and <a href="/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a> dives into conversation history.</em></p>
+<p><em>This is Part 4 of my series on learning the Claude Agent SDK. <a href="https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> covers initial exploration, <a href="https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/">Part 2</a> builds the first working agent, and <a href="https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a> dives into conversation history.</em></p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">

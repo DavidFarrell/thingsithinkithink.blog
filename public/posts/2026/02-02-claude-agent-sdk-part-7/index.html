@@ -122,7 +122,7 @@
     </figure>
 
     <div id="content" class="mb-14">
-      <p>In <a href="/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a>, I added file checkpointing with a <code>/rewind</code> command. But <code>/rewind</code> isn&rsquo;t a real slash command - it&rsquo;s just my Python code pattern-matching on the input string. Claude has no idea the capability exists.</p>
+      <p>In <a href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a>, I added file checkpointing with a <code>/rewind</code> command. But <code>/rewind</code> isn&rsquo;t a real slash command - it&rsquo;s just my Python code pattern-matching on the input string. Claude has no idea the capability exists.</p>
 <p>Although I&rsquo;m happy to use <code>/rewind</code> myself, I also like the idea of being able to say &ldquo;hey Claude, could you rewind back to this version?&rdquo; or &ldquo;would you mind undoing that thing you just did?&rdquo; I want Claude to be able to access the rewind and checkpointing features itself. To do that, I need to expose the function as a tool that Claude can call directly - and that means implementing a basic MCP server.</p>
 <h2 id="what-mcp-tools-are-and-arent">What MCP Tools Are (And Aren&rsquo;t)</h2>
 <p>MCP stands for Model Context Protocol. MCP servers aren&rsquo;t always separate processes or microservices listening on ports - though they can be. They can also be code on your local machine that gets invoked and writes to stdout. Or, if you&rsquo;re using the Claude Agent SDK, they can be in-process collections of tool definitions that get registered with Claude.</p>
@@ -134,7 +134,7 @@
 <li>Claude can now call your functions like any other tool</li>
 </ol>
 <h2 id="the-rewind-tool">The Rewind Tool</h2>
-<p>Quick reminder of how rewind works from <a href="/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a>: the agent tracks checkpoints as it goes. Each checkpoint has a UUID (from the SDK), a turn number, a timestamp, and a Haiku-generated summary of what happened. The <code>/rewind</code> command lets users pick a checkpoint by index, looks up the UUID, and calls the SDK&rsquo;s <code>client.rewind_files(uuid)</code> method to restore the files. Our MCP tool will wrap this same logic and expose it to Claude.</p>
+<p>Quick reminder of how rewind works from <a href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a>: the agent tracks checkpoints as it goes. Each checkpoint has a UUID (from the SDK), a turn number, a timestamp, and a Haiku-generated summary of what happened. The <code>/rewind</code> command lets users pick a checkpoint by index, looks up the UUID, and calls the SDK&rsquo;s <code>client.rewind_files(uuid)</code> method to restore the files. Our MCP tool will wrap this same logic and expose it to Claude.</p>
 <p>Tools are defined using the <code>@tool</code> decorator, which takes three arguments:</p>
 <ul>
 <li><strong>Name</strong>: How Claude refers to the tool (<code>&quot;rewind_files&quot;</code>)</li>
@@ -220,7 +220,7 @@
 <em>The tool works! But notice it rewound to checkpoint 0 without asking first.</em></p>
 <p>It works - but there&rsquo;s a problem. Claude rewound to checkpoint 0 (the very first checkpoint) when I only wanted to go back one step. And it didn&rsquo;t ask for confirmation before making a destructive change.</p>
 <h2 id="adding-permission-control">Adding Permission Control</h2>
-<p>Rewind is destructive - it overwrites files. I don&rsquo;t want Claude auto-rewinding without asking. Using the same hook pattern from <a href="/posts/2026/02-16-claude-agent-sdk-part-6/">Part 6</a>:</p>
+<p>Rewind is destructive - it overwrites files. I don&rsquo;t want Claude auto-rewinding without asking. Using the same hook pattern from <a href="https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/">Part 6</a>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rewind_permission_hook</span>(
 </span></span><span style="display:flex;"><span>    input_data: HookInput,
 </span></span><span style="display:flex;"><span>    tool_use_id: str <span style="color:#f92672">|</span> <span style="color:#66d9ef">None</span>,
@@ -312,7 +312,7 @@
 </ul>
 <p>The first two are straightforward - same MCP tool pattern. The prompt work is where the real value will come from. Once that&rsquo;s dialled in, I&rsquo;ll have a writing agent that actually understands my style and can help improve my posts. Nearly there.</p>
 <hr>
-<p><em>This is Part 7 of my series on learning the Claude Agent SDK. <a href="/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> covers initial exploration, <a href="/posts/2026/01-19-claude-agent-sdk-part-2/">Part 2</a> builds the first working agent, <a href="/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a> tackles context control, <a href="/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a> adds usage tracking, <a href="/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a> introduces checkpointing, and <a href="/posts/2026/02-16-claude-agent-sdk-part-6/">Part 6</a> fixes the Bash bypass problem.</em></p>
+<p><em>This is Part 7 of my series on learning the Claude Agent SDK. <a href="https://thingsithinkithink.blog/posts/2026/01-12-exploring-claude-agent-sdk/">Part 1</a> covers initial exploration, <a href="https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/">Part 2</a> builds the first working agent, <a href="https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/">Part 3</a> tackles context control, <a href="https://thingsithinkithink.blog/posts/2026/02-02-claude-agent-sdk-part-4/">Part 4</a> adds usage tracking, <a href="https://thingsithinkithink.blog/posts/2026/02-09-claude-agent-sdk-part-5/">Part 5</a> introduces checkpointing, and <a href="https://thingsithinkithink.blog/posts/2026/02-16-claude-agent-sdk-part-6/">Part 6</a> fixes the Bash bypass problem.</em></p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">

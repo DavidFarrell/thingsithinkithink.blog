@@ -47,7 +47,7 @@ My argument is that wherever you sit on that line today, you are going to be pus
 
 It is tempting to think this is a programming problem. I don't think it is. Programmers just hit it first, because the tooling is furthest ahead here and we use more AI output than anyone. We are the canary in the coal mine.
 
-A few months ago I [wrote about a Hard Fork episode](/posts/2026/02-15-like-a-ragged-prayer/) on AI in romance publishing, and how some authors are already moving up the abstraction ladder - directing and editing rather than writing every word. And on [a recent podcast](https://www.youtube.com/watch?v=UkERw3cBEAo) the CTO of Legora suggested lawyers will start to work like software engineers: caring about security boundaries and the trade-offs that matter, rather than getting nitty-gritty about individual words in a contract.
+A few months ago I [wrote about a Hard Fork episode]({{< ref "posts/2026/02-15-like-a-ragged-prayer.md" >}}) on AI in romance publishing, and how some authors are already moving up the abstraction ladder - directing and editing rather than writing every word. And on [a recent podcast](https://www.youtube.com/watch?v=UkERw3cBEAo) the CTO of Legora suggested lawyers will start to work like software engineers: caring about security boundaries and the trade-offs that matter, rather than getting nitty-gritty about individual words in a contract.
 
 {{< figure src="/images/2026/06-14-climbing-the-ladder/code-law.png" caption="The same move, one rung up: code and law both stop reviewing line-by-line" >}}
 

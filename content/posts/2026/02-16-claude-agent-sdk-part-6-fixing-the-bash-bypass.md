@@ -18,7 +18,7 @@ tags:
 draft: false
 ---
 
-In [Part 5](/posts/2026/02-09-claude-agent-sdk-part-5/), I added file checkpointing with the ability to rewind changes. But I also mentioned a problem: Claude can bypass the checkpointing system entirely by using Bash to write files instead of the Write or Edit tools. Today I'm fixing that loophole - and in the process, I learned a lot about how the SDK's permission system actually works.
+In [Part 5]({{< ref "posts/2026/02-09-claude-agent-sdk-part-5-slash-commands-and-file-checkpoints.md" >}}), I added file checkpointing with the ability to rewind changes. But I also mentioned a problem: Claude can bypass the checkpointing system entirely by using Bash to write files instead of the Write or Edit tools. Today I'm fixing that loophole - and in the process, I learned a lot about how the SDK's permission system actually works.
 
 ## What's on the Agenda
 
@@ -353,4 +353,4 @@ The SDK's `@tool` decorator and `create_sdk_mcp_server()` function make this pos
 
 ---
 
-*This is Part 6 of my series on learning the Claude Agent SDK. [Part 1](/posts/2026/01-12-exploring-claude-agent-sdk/) covers initial exploration, [Part 2](/posts/2026/01-19-claude-agent-sdk-part-2/) adds polish, [Part 3](/posts/2026/01-26-claude-agent-sdk-part-3/) explores context control, [Part 4](/posts/2026/02-02-claude-agent-sdk-part-4/) implements context profiles, and [Part 5](/posts/2026/02-09-claude-agent-sdk-part-5/) adds file checkpointing.*
+*This is Part 6 of my series on learning the Claude Agent SDK. [Part 1]({{< ref "posts/2026/01-12-exploring-claude-agent-sdk.md" >}}) covers initial exploration, [Part 2]({{< ref "posts/2026/01-19-claude-agent-sdk-part-2.md" >}}) adds polish, [Part 3]({{< ref "posts/2026/01-26-claude-agent-sdk-part-3--adding-context-control.md" >}}) explores context control, [Part 4]({{< ref "posts/2026/02-02-claude-agent-sdk-part-4--implementing-context-profiles.md" >}}) implements context profiles, and [Part 5]({{< ref "posts/2026/02-09-claude-agent-sdk-part-5-slash-commands-and-file-checkpoints.md" >}}) adds file checkpointing.*

@@ -18,7 +18,7 @@ tags:
 draft: false
 ---
 
-In [Part 5](/posts/2026/02-09-claude-agent-sdk-part-5/), I added file checkpointing with a `/rewind` command. But `/rewind` isn't a real slash command - it's just my Python code pattern-matching on the input string. Claude has no idea the capability exists.
+In [Part 5]({{< ref "posts/2026/02-09-claude-agent-sdk-part-5-slash-commands-and-file-checkpoints.md" >}}), I added file checkpointing with a `/rewind` command. But `/rewind` isn't a real slash command - it's just my Python code pattern-matching on the input string. Claude has no idea the capability exists.
 
 Although I'm happy to use `/rewind` myself, I also like the idea of being able to say "hey Claude, could you rewind back to this version?" or "would you mind undoing that thing you just did?" I want Claude to be able to access the rewind and checkpointing features itself. To do that, I need to expose the function as a tool that Claude can call directly - and that means implementing a basic MCP server.
 
@@ -34,7 +34,7 @@ The pattern:
 
 ## The Rewind Tool
 
-Quick reminder of how rewind works from [Part 5](/posts/2026/02-09-claude-agent-sdk-part-5/): the agent tracks checkpoints as it goes. Each checkpoint has a UUID (from the SDK), a turn number, a timestamp, and a Haiku-generated summary of what happened. The `/rewind` command lets users pick a checkpoint by index, looks up the UUID, and calls the SDK's `client.rewind_files(uuid)` method to restore the files. Our MCP tool will wrap this same logic and expose it to Claude.
+Quick reminder of how rewind works from [Part 5]({{< ref "posts/2026/02-09-claude-agent-sdk-part-5-slash-commands-and-file-checkpoints.md" >}}): the agent tracks checkpoints as it goes. Each checkpoint has a UUID (from the SDK), a turn number, a timestamp, and a Haiku-generated summary of what happened. The `/rewind` command lets users pick a checkpoint by index, looks up the UUID, and calls the SDK's `client.rewind_files(uuid)` method to restore the files. Our MCP tool will wrap this same logic and expose it to Claude.
 
 Tools are defined using the `@tool` decorator, which takes three arguments:
 - **Name**: How Claude refers to the tool (`"rewind_files"`)
@@ -136,7 +136,7 @@ It works - but there's a problem. Claude rewound to checkpoint 0 (the very first
 
 ## Adding Permission Control
 
-Rewind is destructive - it overwrites files. I don't want Claude auto-rewinding without asking. Using the same hook pattern from [Part 6](/posts/2026/02-16-claude-agent-sdk-part-6/):
+Rewind is destructive - it overwrites files. I don't want Claude auto-rewinding without asking. Using the same hook pattern from [Part 6]({{< ref "posts/2026/02-16-claude-agent-sdk-part-6-fixing-the-bash-bypass.md" >}}):
 
 ```python
 async def rewind_permission_hook(
@@ -253,4 +253,4 @@ The first two are straightforward - same MCP tool pattern. The prompt work is wh
 
 ---
 
-*This is Part 7 of my series on learning the Claude Agent SDK. [Part 1](/posts/2026/01-12-exploring-claude-agent-sdk/) covers initial exploration, [Part 2](/posts/2026/01-19-claude-agent-sdk-part-2/) builds the first working agent, [Part 3](/posts/2026/01-26-claude-agent-sdk-part-3/) tackles context control, [Part 4](/posts/2026/02-02-claude-agent-sdk-part-4/) adds usage tracking, [Part 5](/posts/2026/02-09-claude-agent-sdk-part-5/) introduces checkpointing, and [Part 6](/posts/2026/02-16-claude-agent-sdk-part-6/) fixes the Bash bypass problem.*
+*This is Part 7 of my series on learning the Claude Agent SDK. [Part 1]({{< ref "posts/2026/01-12-exploring-claude-agent-sdk.md" >}}) covers initial exploration, [Part 2]({{< ref "posts/2026/01-19-claude-agent-sdk-part-2.md" >}}) builds the first working agent, [Part 3]({{< ref "posts/2026/01-26-claude-agent-sdk-part-3--adding-context-control.md" >}}) tackles context control, [Part 4]({{< ref "posts/2026/02-02-claude-agent-sdk-part-4--implementing-context-profiles.md" >}}) adds usage tracking, [Part 5]({{< ref "posts/2026/02-09-claude-agent-sdk-part-5-slash-commands-and-file-checkpoints.md" >}}) introduces checkpointing, and [Part 6]({{< ref "posts/2026/02-16-claude-agent-sdk-part-6-fixing-the-bash-bypass.md" >}}) fixes the Bash bypass problem.*
