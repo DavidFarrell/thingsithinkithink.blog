@@ -13,7 +13,6 @@ tags:
   - ai
   - coding
   - side-projects
-  - feature
 draft: false
 ---
 
