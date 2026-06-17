@@ -13,7 +13,7 @@ tags:
   - ai
   - coding
   - side-projects
-draft: false
+draft: true
 ---
 
 Here's another in my series of little [Jevons apps]({{< ref "posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy.md" >}}) - apps I only built because the cost of doing so was essentially free. This time the situation is trying to find a way to listen to podcasts underwater.
