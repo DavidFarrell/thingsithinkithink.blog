@@ -6,8 +6,15 @@
     <description>Recent content in Feature on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jun 2026 05:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/feature/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>David&#39;s Debbie App</title>
+      <link>https://thingsithinkithink.blog/posts/2026/06-17-davids-debbie-app/</link>
+      <pubDate>Wed, 17 Jun 2026 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/06-17-davids-debbie-app/</guid>
+      <description>&lt;p&gt;Nobody can predict how AI is going to change the way we work. One of the ideas you hear is that, thanks to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Jevons_paradox&#34;&gt;Jevons Paradox&lt;/a&gt;, as it gets cheaper to do something - coding, say - that won&amp;rsquo;t wipe out a class of work so much as trigger a surge in demand for it. I&amp;rsquo;ve felt that surge myself in the little bespoke apps I now build for myself. There was &lt;a href=&#34;https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/&#34;&gt;this ridiculous proxy server&lt;/a&gt; that makes the modern web readable on my Kindle, and a few other odds and ends since. I thought it might be nice to keep track of them here.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Climbing the Ladder of Abstraction</title>
       <link>https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/</link>
