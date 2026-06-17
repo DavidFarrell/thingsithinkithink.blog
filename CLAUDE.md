@@ -19,6 +19,24 @@ The GitHub Action uploads `./public` directly - it does NOT run Hugo, so the loc
 - Blog post images go in `assets/images/` (not `static/images/`) so Hugo can process them and generate `_hu_` variants
 - Use Hugo figure shortcodes: `{{< figure src="/images/..." caption="..." >}}`
 
+## Internal Links (cross-references between posts)
+
+**ALWAYS use the Hugo `ref` shortcode for links to other posts on this blog. Never hard-code a URL path.**
+
+Correct:
+```markdown
+[Part 1]({{< ref "posts/2026/01-12-exploring-claude-agent-sdk.md" >}})
+```
+
+Rules:
+- Reference the **actual filename** (with `.md`), NOT the slug. On this site the slug often differs from the filename (e.g. the Claude Agent SDK posts), and the rendered URL is slug-based - so a hand-written path built from the filename, or a guessed slug, will be wrong.
+- A leading-slash `slug:` in front matter (e.g. `slug: /01-05-foo/`) does NOT put the post at the site root - posts still render under `/posts/YYYY/...`. So a bare `[text](/01-05-foo/)` link 404s.
+- Never write `[text](/posts/2026/slug/)` or `[text](/slug/)`. Hard-coded paths break silently if a post is renamed or moved, and bare-slug ones are broken from the start.
+- Anchors go INSIDE the ref: `{{< ref "posts/2026/file.md#a-heading" >}}`.
+- Why this matters: `ref` is validated at build time - a broken `ref` FAILS the build, so a bad internal link can never ship. A hard-coded path fails silently and 404s in production.
+
+(History: on 2026-06-17 we found ~34 hard-coded internal links plus one already-broken bare-slug link; all were converted to `ref` shortcodes and browser-verified. Don't reintroduce the hard-coded style.)
+
 ## Style
 
 - No em dashes. Use ` - ` (space-hyphen-space) instead of `—` or `–`

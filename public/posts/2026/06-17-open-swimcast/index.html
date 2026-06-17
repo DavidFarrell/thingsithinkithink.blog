@@ -4,9 +4,9 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI | thingsithinkithink</title>
+<title>Open Swimcast | thingsithinkithink</title>
 
-<meta name="description" content="">
+<meta name="description" content="Another little app I only built because it was essentially free to build - this one gets my podcast feed onto a pair of underwater swimming headphones.">
     <link rel="stylesheet" href="/css/main.css">
 
 <link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg"> 
@@ -77,61 +77,146 @@
 			<a href="http://localhost:1313/">thingsithinkithink</a>
 		</li>
 		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
-			<a href="http://localhost:1313/tags/">Tags</a>
+			<a href="http://localhost:1313/posts/">Posts</a>
 		</li>
 	</ul>
-</div><div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
 
-  <section class="md:col-span-2">
+  <article class="md:col-span-2 prose lg:prose-lg">
 
-    <h2 class="text-3xl font-bold mb-10">Ai</h2>
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">Open Swimcast</h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-4">
+      <div id="lead" class="my-6">
 
-      <article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+        <p class="font-bold">Another little app I only built because it was essentially free to build - this one gets my podcast feed onto a pair of underwater swimming headphones. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="http://localhost:1313/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-06-17T15:00:00&#43;00:00">June 17, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            3 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="http://localhost:1313/images/2026/06-17-openswimcast-hero_hu_d6a4c24438ee2db6.png" alt="" width="750" height="422">
+        <figcaption class="text-center italic text-xs">Open Swimcast</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>Here&rsquo;s another in my series of little <a href="http://localhost:1313/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/">Jevons apps</a> - apps I only built because the cost of doing so was essentially free. This time the situation is trying to find a way to listen to podcasts underwater.</p>
+<p>I looked online to see how people do this, and as far as I can tell there isn&rsquo;t a good solution. There&rsquo;s a custom Android underwater tablet, about the size of an Apple Watch, that you strap to the back of your goggles and plug waterproof headphones into - customer reviews basically indicate it&rsquo;s a very low quality product. There are also devices that transmit radio waves to a receiver on your headset, and the receiver can be plugged into with underwater headphones. That&rsquo;s fine, but then you have to put your phone near the pool so the signal can be broadcast, and I don&rsquo;t want to leave my phone exposed at the poolside.</p>
+<p>I was basically thinking there wasn&rsquo;t a solution. Then my wife, knowing I was trying to do this, bought me these underwater MP3-player headphones. They&rsquo;re great - I love these headphones. But they don&rsquo;t support podcasts, they support music. You drag MP3 files onto the disk when you plug the headphones into your computer, and then when you switch the headphones on, they play what&rsquo;s on their hard drive.</p>
+<p>The problem is that podcasts aren&rsquo;t really a drag-and-drop medium. They&rsquo;re a feed-based medium, and I want to synchronise with whatever I&rsquo;m already listening to on my phone. I don&rsquo;t want to manually figure out the URL of the MP3s, download them, and so on - it&rsquo;s just too much faff.</p>
+<p>However, I have Claude Code. And I have motivation. And if you&rsquo;ve got Claude Code and you&rsquo;ve got motivation, you can build a lot of cool things.</p>
+<p>The app I use for podcasts is called Pocket Casts. Pocket Casts is cross-platform - you can listen on your phone, and you can listen in a web browser. And because there&rsquo;s a web browser version, that means there&rsquo;s an API, documented or not. So I was able to build this little app. I&rsquo;m calling it Open Swimcast.</p>
+<p>Open Swimcast logs into my podcast feed and lets me choose which podcasts I want to listen to, selecting the ones I want to hear in my next swim.</p>
+<figure><img src="/images/2026/06-17-openswimcast-queue.png"
+    alt="My Pocket Casts feed, picking episodes for the next swim"><figcaption>
+      <p>My Pocket Casts feed, picking episodes for the next swim</p>
+    </figcaption>
+</figure>
+
+<p>Then I go to the preparation screen, where I can choose settings like volume boost, speed-up, and text-to-speech generated announcements.</p>
+<figure><img src="/images/2026/06-17-openswimcast-lineup.png"
+    alt="The preparation screen - boost, speed, spoken announcements, and ad trimming"><figcaption>
+      <p>The preparation screen - boost, speed, spoken announcements, and ad trimming</p>
+    </figcaption>
+</figure>
+
+<p>I can even run the transcription of each podcast through a little pipeline I built that identifies and strips ad breaks. I don&rsquo;t mind ads in my podcasts, but I listened to This Week in Tech the other day underwater and there was a solid eight-minute advert - and I&rsquo;m not doing that.</p>
+<figure><img src="/images/2026/06-17-openswimcast-pipeline.png"
+    alt="Each episode runs through the pipeline - transcribe, find ad breaks, re-edit, encode, and copy to the headphones"><figcaption>
+      <p>Each episode runs through the pipeline - transcribe, find ad breaks, re-edit, encode, and copy to the headphones</p>
+    </figcaption>
+</figure>
+
+<p>So far I&rsquo;ve probably spent more time playing with the app than I have swimming, but it&rsquo;s early days and I&rsquo;m highly motivated now that I&rsquo;ve got my ability to keep listening underwater. It&rsquo;s actually a lot of fun.</p>
+<p>There&rsquo;s a wee video below if you want to see how it looks in practice.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/htrqQ63iFXg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/ai/">Ai</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/coding/">Coding</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/side-projects/">Side-Projects</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
 	
-	<a class="insert-link" href="http://localhost:1313/posts/2024/12-30-open-models-2024-progress-and-challenges/"></a>
+	<a class="insert-link" href="http://localhost:1313/posts/2026/06-17-davids-debbie-app/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2024/12-30-open-models-2024-progress-and-challenges_hu_7b2c0c5b00f78147.png" alt="Open Models in 2024: Progress and Challenges" width="750" height="450">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2026/06-17-debbie-app-home_hu_e0a1559be4a8e2b3.jpg" alt="David&#39;s Debbie App" width="750" height="422">
 
 	  </figure>
 
 	<div class="p-6">
 
-		<time datetime="2024-12-30T12:00:00&#43;00:00">Dec 30, 2024</time>
+		<time datetime="2026-06-17T12:00:00&#43;00:00">Jun 17, 2026</time>
 
-		<h3 class="my-4 text-2xl font-bold">Open Models in 2024: Progress and Challenges</h3>
+		<h3 class="my-4 text-2xl font-bold">David&#39;s Debbie App</h3>
 
-		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Open models achieved a lot in 2024, Luca from the AI Institute gives a good overview.</p>
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Another little bespoke app I built for myself - this one translates English and German live so I can talk to my sister-in-law.</p>
 
 	</div>
 </article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
 	
-	<a class="insert-link" href="http://localhost:1313/posts/2024/off-the-radar-ai-links-for-2024/"></a>
+	<a class="insert-link" href="http://localhost:1313/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2024/off-the-radar-ai-gems_hu_a919c1cade923661.png" alt="Off-the-Radar AI links for the End of the Year" width="750" height="750">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2026/02-09-kindle-proxy-home_hu_7be91843b6ac2868.png" alt="The Jevons Paradox and the Kindle Web Proxy" width="750" height="793">
 
 	  </figure>
 
 	<div class="p-6">
 
-		<time datetime="2024-12-21T12:00:00&#43;00:00">Dec 21, 2024</time>
+		<time datetime="2026-02-09T12:00:00&#43;00:00">Feb 09, 2026</time>
 
-		<h3 class="my-4 text-2xl font-bold">Off-the-Radar AI links for the End of the Year</h3>
+		<h3 class="my-4 text-2xl font-bold">The Jevons Paradox and the Kindle Web Proxy</h3>
 
-		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Sharing a few lesser-known (but I liked them) things that I don&#39;t see other people talking about.</p>
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">When solving problems becomes almost free, more problems get solved. I built a silly little app last night that nobody else would ever build, and that&#39;s sort of the point.</p>
 
 	</div>
 </article>
-    
-    </div>
+          
+        </div>
+      </div>
 
-    
+    </footer>
 
-    <div class="flex items-center mt-10"><a class="border rounded-full px-6 py-2 hover:bg-zinc-200 mr-auto" href="/tags/ai/page/3/">← Previous</a></div>
+  </article>
+
   
-  </section>
-
   <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
 
 		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
@@ -143,7 +228,7 @@
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
-	<a class="insert-link" href="http://localhost:1313/posts/2026/06-21-open-swimcast/"></a>
+	<a class="insert-link" href="http://localhost:1313/posts/2026/06-17-open-swimcast/"></a>
 	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="http://localhost:1313/images/2026/06-17-openswimcast-hero_hu_401bb839be68429a.png" alt="Open Swimcast" width="444" height="250">
 
 	</figure>
@@ -189,8 +274,8 @@
 </div>
 </aside>
 
-  </div>
-
+</div>
+  
 </main>
   <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
 
