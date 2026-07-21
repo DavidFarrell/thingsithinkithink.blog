@@ -4,7 +4,7 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ai | thingsithinkithink</title>
+<title>AI | thingsithinkithink</title>
 
 <meta name="description" content="">
       <link rel="stylesheet" href="/css/main.min.8c78a3be3773522aca77753a4cb797e255cc8f58a7fef21eec2091e345509b95.css" integrity="sha256-jHijvjdzUirKd3U6TLeX4lXMj1in/vIe7CCR40VQm5U=" crossorigin="anonymous">
@@ -20,7 +20,7 @@
   <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
 	<div class="flex items-center">
 		<div class="flex items-center">
-			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar" type="button" aria-controls="menu-bar" aria-expanded="false" aria-label="Toggle menu">
 				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
 					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
 				</svg>
@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		<div class="flex items-center ml-auto">
-			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar" type="button" aria-controls="search-bar" aria-expanded="false" aria-label="Toggle search">
 				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
 					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
 					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
@@ -61,16 +61,21 @@
     </ul>
   </nav>
 <div id="search-bar" class="block mt-3 close">
-	<form id="search" class="flex items-stretch">
-		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
-		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+	<form id="search" class="flex items-stretch" role="search" data-index-url="/index.json">
+		<label class="hidden" for="search-query">Search the blog</label>
+		<input id="search-query" name="q" class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="search" placeholder="Search posts..." autocomplete="off" aria-label="Search the blog" aria-controls="search-results" aria-describedby="search-feedback">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200" type="submit" aria-label="Search">
 			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
 				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
 			</svg>
 		</button>
 	</form>
+	<p id="search-feedback" class="mt-2 text-sm text-zinc-500" role="status" aria-live="polite"></p>
+	<ol id="search-results" class="mt-2 space-y-4" aria-label="Search results"></ol>
+	<noscript><p class="mt-2 text-sm text-zinc-500">Search needs JavaScript to run in your browser.</p></noscript>
 </div>
-</div></header>
+</div>
+</header>
   <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
 	<ul class="flex space-x-4 text-sm text-zinc-500">
 		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
@@ -89,6 +94,23 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-4">
 
       <article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_7be91843b6ac2868.png" alt="The Jevons Paradox and the Kindle Web Proxy" width="750" height="793">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-02-09T12:00:00&#43;00:00">Feb 09, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">The Jevons Paradox and the Kindle Web Proxy</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">When solving problems becomes almost free, more problems get solved. I built a silly little app last night that nobody else would ever build, and that&#39;s sort of the point.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/09-23-decade-of-agents-swyx-keynote/"></a>
 
@@ -173,23 +195,6 @@
 		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">I like bits of Brunig&#39;s and Mollick&#39;s AI frameworks, but neither quite works for me.</p>
 
 	</div>
-</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
-	
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/"></a>
-
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/hamel/14_hu_62651e38dd0e5efd.png" alt="Why we need Experiment-based Roadmaps in the AI Product Era" width="750" height="336">
-
-	  </figure>
-
-	<div class="p-6">
-
-		<time datetime="2025-04-12T00:00:00&#43;00:00">Apr 12, 2025</time>
-
-		<h3 class="my-4 text-2xl font-bold">Why we need Experiment-based Roadmaps in the AI Product Era</h3>
-
-		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Why evaluation-driven experimentation creates better roadmaps in AI products.</p>
-
-	</div>
 </article>
     
     </div>
@@ -211,46 +216,51 @@
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-17-davids-debbie-app/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-debbie-app-home_hu_cdb4a37c7ec4e8a8.jpg" alt="David&#39;s Debbie App" width="444" height="250">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-21-open-swimcast/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_c3d70596ff2ae153.png" alt="Open Swimcast" width="444" height="250" style="object-fit: contain;">
 
 	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">David&#39;s Debbie App</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-14-climbing-the-ladder/cow-ladder_hu_3e57561ef52a2746.png" alt="Climbing the Ladder of Abstraction" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Climbing the Ladder of Abstraction</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-15-the-embedded-ai-trio/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/05-11-mollick-krohn-hero_hu_34faf1fe1f4bb12d.jpg" alt="The Embedded AI Trio" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">The Embedded AI Trio</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-15-like-a-ragged-prayer/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-15-hard-fork-logo_hu_d37d2b821e43d3a9.jpg" alt="Like a Ragged Prayer" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Like a Ragged Prayer</h3>
-	</div>
-</article><article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-typing-code-and-punching-cards/"></a>
-	<figure class="basis-1/3 aspect-video overflow-hidden rounded-2xl bg-zinc-100"><img class="object-cover h-full w-full group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-oxide-predictions-kakapo_hu_220f324bda5e3b5f.jpg" alt="Typing Code and Punching Cards" width="444" height="250">
-
-	</figure>
-	<div class="basis-2/3 self-center ml-4">
-		<h3 class="font-bold group-hover:underline decoration-auto">Typing Code and Punching Cards</h3>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Open Swimcast</h3>
 	</div>
 </article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-17-davids-debbie-app/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-debbie-app-home_hu_911242bc24cc900e.jpg" alt="David&#39;s Debbie App" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">David&#39;s Debbie App</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-14-climbing-the-ladder/cow-ladder_hu_b95a7ca7696c2022.png" alt="Climbing the Ladder of Abstraction" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Climbing the Ladder of Abstraction</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-15-the-embedded-ai-trio/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/05-11-mollick-krohn-hero_hu_69c1face79415df9.jpg" alt="The Embedded AI Trio" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">The Embedded AI Trio</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-15-like-a-ragged-prayer/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-15-hard-fork-logo_hu_98adb72ce6406f57.jpg" alt="Like a Ragged Prayer" width="250" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Like a Ragged Prayer</h3>
+	</div>
+</article>
+
 		
 	</div>
 
@@ -343,6 +353,8 @@
   
 </div>
 </footer>
-      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+      <script defer src="/js/insertoggle.5e0074947f573e105c5cd8cc6469570dd0c8bab091b8009e1895ab2f34e82d21.js" integrity="sha256-XgB0lH9XPhBcXNjMZGlXDdDIurCRuACeGJWrLzToLSE=" crossorigin="anonymous"></script>
+      <script defer src="/js/search.a60eb1bcca84a7fca79f62f442bfc9072560eda4426cf061f9e232ee320cd6e0.js" integrity="sha256-pg6xvMqEp/ynn2L0Qr/JByVg7aRCbPBh&#43;eIy7jIM1uA=" crossorigin="anonymous"></script>
+
 </body>
 </html>

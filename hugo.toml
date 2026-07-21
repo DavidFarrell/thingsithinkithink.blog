@@ -10,6 +10,9 @@ summaryLength = '20' # <- 20 words are approximately 160 characters
 googleAnalytics = 'G-MEASUREMENT_ID' # <- Your GA-4
 disqusShortname = 'your-disqus-shortname' # <- Get form here : https://disqus.com
 
+[outputs]
+	home = ['HTML', 'RSS', 'JSON']
+
 [params]
 	# Meta description, not exceeding 160 characters, used for the meta description within the HTML head
 	description = 'This is a personal blog where I can think, learn, and work in public.'
@@ -44,5 +47,5 @@ disqusShortname = 'your-disqus-shortname' # <- Get form here : https://disqus.co
     extended = false
     min = "0.116.0"
   [module.mounts] # Directing the static folder to assets.
-  	source = 'assets'
-  	target = 'static'
+	source = 'assets'
+	target = 'static'

@@ -3,12 +3,25 @@
 	// Get all elements with the "toggle-button" class
     const toggleButtons = document.querySelectorAll(".toggle-button");
 
-    // Function to hide all elements except the target
+    function setExpanded(targetElement, expanded) {
+        toggleButtons.forEach((button) => {
+            const targetIds = button.getAttribute("data-target").split(" ");
+            if (targetIds.includes(targetElement.id)) {
+                button.setAttribute("aria-expanded", String(expanded));
+            }
+        });
+    }
+
+    function closeElement(element) {
+        element.classList.remove("open");
+        element.classList.add("close");
+        setExpanded(element, false);
+    }
+
     function hideAllExcept(targetElement) {
-        document.querySelectorAll(".hidden").forEach((element) => {
+        document.querySelectorAll(".open").forEach((element) => {
             if (element !== targetElement) {
-                element.classList.add("close"); // Hide the element
-                element.classList.remove("open"); // Close previously open elements
+                closeElement(element);
             }
         });
     }
@@ -19,6 +32,7 @@
         hideAllExcept(targetElement);
         targetElement.classList.toggle("close", !isHidden);
         targetElement.classList.toggle("open", isHidden);
+        setExpanded(targetElement, isHidden);
     }
 
     toggleButtons.forEach((button) => {
@@ -28,6 +42,10 @@
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
                     toggleElement(targetElement);
+                    if (targetElement.classList.contains("open")) {
+                        const input = targetElement.querySelector("input");
+                        if (input) window.requestAnimationFrame(() => input.focus());
+                    }
                 }
             });
         });
@@ -41,10 +59,13 @@
         });
 
         if (clickedOutsideAllTargets) {
-            targetElements.forEach((element) => {
-                element.classList.remove("open"); // Close open elements
-                element.classList.add("close"); // Hide elements
-            });
+            targetElements.forEach(closeElement);
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            document.querySelectorAll(".open").forEach(closeElement);
         }
     });
 

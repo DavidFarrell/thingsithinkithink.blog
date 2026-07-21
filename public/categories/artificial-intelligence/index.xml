@@ -6,8 +6,15 @@
     <description>Recent content in Artificial-Intelligence on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Jun 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/categories/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Open Swimcast</title>
+      <link>https://thingsithinkithink.blog/posts/2026/06-21-open-swimcast/</link>
+      <pubDate>Sun, 21 Jun 2026 12:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/06-21-open-swimcast/</guid>
+      <description>&lt;p&gt;Here&amp;rsquo;s another in my series of little &lt;a href=&#34;https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/&#34;&gt;Jevons apps&lt;/a&gt; - apps I only built because the cost of doing so was essentially free. This time the situation is trying to find a way to listen to podcasts underwater.&lt;/p&gt;&#xA;&lt;p&gt;I looked online to see how people do this, and as far as I can tell there isn&amp;rsquo;t a good solution. There&amp;rsquo;s a custom Android underwater tablet, about the size of an Apple Watch, that you strap to the back of your goggles and plug waterproof headphones into - customer reviews basically indicate it&amp;rsquo;s a very low quality product. There are also devices that transmit radio waves to a receiver on your headset, and the receiver can be plugged into with underwater headphones. That&amp;rsquo;s fine, but then you have to put your phone near the pool so the signal can be broadcast, and I don&amp;rsquo;t want to leave my phone exposed at the poolside.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>David&#39;s Debbie App</title>
       <link>https://thingsithinkithink.blog/posts/2026/06-17-davids-debbie-app/</link>

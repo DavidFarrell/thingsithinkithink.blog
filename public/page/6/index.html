@@ -21,7 +21,7 @@
   <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
 	<div class="flex items-center">
 		<div class="flex items-center">
-			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar" type="button" aria-controls="menu-bar" aria-expanded="false" aria-label="Toggle menu">
 				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
 					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
 				</svg>
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		<div class="flex items-center ml-auto">
-			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar" type="button" aria-controls="search-bar" aria-expanded="false" aria-label="Toggle search">
 				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
 					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
 					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
@@ -63,16 +63,21 @@
     </ul>
   </nav>
 <div id="search-bar" class="block mt-3 close">
-	<form id="search" class="flex items-stretch">
-		<input class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="text" placeholder="Search...">
-		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200 ">
+	<form id="search" class="flex items-stretch" role="search" data-index-url="/index.json">
+		<label class="hidden" for="search-query">Search the blog</label>
+		<input id="search-query" name="q" class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="search" placeholder="Search posts..." autocomplete="off" aria-label="Search the blog" aria-controls="search-results" aria-describedby="search-feedback">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200" type="submit" aria-label="Search">
 			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
 				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
 			</svg>
 		</button>
 	</form>
+	<p id="search-feedback" class="mt-2 text-sm text-zinc-500" role="status" aria-live="polite"></p>
+	<ol id="search-results" class="mt-2 space-y-4" aria-label="Search results"></ol>
+	<noscript><p class="mt-2 text-sm text-zinc-500">Search needs JavaScript to run in your browser.</p></noscript>
 </div>
-</div></header>
+</div>
+</header>
   <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
 
 <section class="block md:flex relative group p-6 lg:p-10 space-y-6 md:space-x-6 my-14 bg-zinc-100 rounded-3xl hover:bg-blue-100">
@@ -104,6 +109,23 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-10">
 
     <article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-21-open-swimcast/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_d6a4c24438ee2db6.png" alt="Open Swimcast" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-06-21T12:00:00&#43;00:00">Jun 21, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Open Swimcast</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Another little app I only built because it was essentially free to build - this one gets my podcast feed onto a pair of underwater swimming headphones.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-17-davids-debbie-app/"></a>
 
@@ -137,23 +159,6 @@
 		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">I gave a talk at AI Practitioner London on what &#39;good enough&#39; looks like when you can no longer review every line an AI writes.</p>
 
 	</div>
-</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
-	
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-15-the-embedded-ai-trio/"></a>
-
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/05-11-mollick-krohn-hero_hu_b444b8929f8eb17c.jpg" alt="The Embedded AI Trio" width="750" height="422">
-
-	  </figure>
-
-	<div class="p-6">
-
-		<time datetime="2026-06-14T08:00:00&#43;00:00">Jun 14, 2026</time>
-
-		<h3 class="my-4 text-2xl font-bold">The Embedded AI Trio</h3>
-
-		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Ethan Mollick on embedding AI builders alongside subject-matter experts - and why, as someone who has been doing this, I have mixed feelings about it.</p>
-
-	</div>
 </article>
 
     </div>
@@ -177,6 +182,23 @@
     
 
     <article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/06-22-ai-demystified-book-cover_hu_f9497362d184216f.png" alt="AI Demystified Book by Antonio Weiss" width="750" height="887">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2025-06-22T05:00:00&#43;00:00">Jun 22, 2025</time>
+
+		<h3 class="my-4 text-2xl font-bold">AI Demystified Book by Antonio Weiss</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Pearson FT published AI Demystified offers a gentle introduction for business leaders who want to understand how AI might impact their field.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/06-21-llm-evals-lesson-2-error-analysis/"></a>
 
@@ -259,23 +281,6 @@
 		<h3 class="my-4 text-2xl font-bold">Error Analysis for Improving LLM Applications</h3>
 
 		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">A systematic approach to analysing and improving large language model applications through error analysis.</p>
-
-	</div>
-</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
-	
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/04-13-why-we-need-experiment-based-roadmaps-in-the-ai-product-era/"></a>
-
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/hamel/14_hu_62651e38dd0e5efd.png" alt="Why we need Experiment-based Roadmaps in the AI Product Era" width="750" height="336">
-
-	  </figure>
-
-	<div class="p-6">
-
-		<time datetime="2025-04-12T00:00:00&#43;00:00">Apr 12, 2025</time>
-
-		<h3 class="my-4 text-2xl font-bold">Why we need Experiment-based Roadmaps in the AI Product Era</h3>
-
-		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Why evaluation-driven experimentation creates better roadmaps in AI products.</p>
 
 	</div>
 </article>
@@ -372,6 +377,8 @@
   
 </div>
 </footer>
-      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+      <script defer src="/js/insertoggle.5e0074947f573e105c5cd8cc6469570dd0c8bab091b8009e1895ab2f34e82d21.js" integrity="sha256-XgB0lH9XPhBcXNjMZGlXDdDIurCRuACeGJWrLzToLSE=" crossorigin="anonymous"></script>
+      <script defer src="/js/search.a60eb1bcca84a7fca79f62f442bfc9072560eda4426cf061f9e232ee320cd6e0.js" integrity="sha256-pg6xvMqEp/ynn2L0Qr/JByVg7aRCbPBh&#43;eIy7jIM1uA=" crossorigin="anonymous"></script>
+
 </body>
 </html>
