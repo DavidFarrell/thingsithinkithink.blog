@@ -15,7 +15,7 @@ tags:
 draft: false
 ---
 
-Last week I got back to the AI Engineer London meetup for the first time in a while. It was great to see [Eddie Forson](https://www.linkedin.com/in/eddie-forson/) again and to meet [Tiago Pina](https://www.linkedin.com/in/tpina/) and [Amandine Flachs](https://www.linkedin.com/in/amandineflachs/). I always enjoy going to London AI meetups, but it's been over a month since I've gone to one because I've had so many travels and some game projects I had to attend to.
+Last week I got back to the AI Engineer London meetup for the first time in a while. It was great to see [Eddie Forson](https://www.linkedin.com/in/eddie-forson/) again and to meet [Tiago Pina](https://www.linkedin.com/in/tpina/), [Amandine Flachs](https://www.linkedin.com/in/amandineflachs/) and [Nel Bandularatne](https://www.linkedin.com/in/nelith-bandularatne/). I always enjoy going to London AI meetups, but it's been over a month since I've gone to one because I've had so many travels and some game projects I had to attend to.
 
 I wanted to share a couple of interesting things from the talks.
 
@@ -53,7 +53,7 @@ He shared a piece of evidence that I found counterintuitive at first, but as soo
 
 I don't have slides to jog my memory, but I'll explain here my recollection of his talk.
 
-Lots of models these days can do speech to text, and transcriptions get better as models get larger (he showed a benchmark demonstrating this). However, one of the things ElevenLabs really care about is character-by-character precision. If you say "good morning", they want the text, but they also want to know exactly where each part of those words sits within the sound wave.
+Lots of models these days can do speech to text, and transcriptions get better as models get larger (he showed a benchmark demonstrating this). However, one of the things ElevenLabs really care about is character-by-character precision, which is what their [Cue](https://elevenlabs.io/blog/cue-aligner) aligner does. If you say "good morning", they want the text, but they also want to know exactly where each part of those words sits within the sound wave.
 
 He showed evidence from their benchmarks that even though transcriptions are improving significantly in large frontier models, timestamp accuracy isn't improving in the same way. In some examples timestamp accuracy was decreasing even as transcriptions improved.
 
