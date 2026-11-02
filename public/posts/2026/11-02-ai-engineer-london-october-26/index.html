@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Engineer London - October 26 | thingsithinkithink</title>
+
+<meta name="description" content="Some interesting stuff from Peter Gostev at Arena and Danila Kozlov at ElevenLabs.">
+      <link rel="stylesheet" href="/css/main.min.8c78a3be3773522aca77753a4cb797e255cc8f58a7fef21eec2091e345509b95.css" integrity="sha256-jHijvjdzUirKd3U6TLeX4lXMj1in/vIe7CCR40VQm5U=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar" type="button" aria-controls="menu-bar" aria-expanded="false" aria-label="Toggle menu">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar" type="button" aria-controls="search-bar" aria-expanded="false" aria-label="Toggle search">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch" role="search" data-index-url="/index.json">
+		<label class="hidden" for="search-query">Search the blog</label>
+		<input id="search-query" name="q" class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="search" placeholder="Search posts..." autocomplete="off" aria-label="Search the blog" aria-controls="search-results" aria-describedby="search-feedback">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200" type="submit" aria-label="Search">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+	<p id="search-feedback" class="mt-2 text-sm text-zinc-500" role="status" aria-live="polite"></p>
+	<ol id="search-results" class="mt-2 space-y-4" aria-label="Search results"></ol>
+	<noscript><p class="mt-2 text-sm text-zinc-500">Search needs JavaScript to run in your browser.</p></noscript>
+</div>
+</div>
+</header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">AI Engineer London - October 26</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Some interesting stuff from Peter Gostev at Arena and Danila Kozlov at ElevenLabs. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-11-02T09:00:00&#43;00:00">November 2, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            5 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/11-01-ai-engineer-london/shapeless-blob_hu_b63cc69d8c787d0c.jpg" alt="" width="750" height="563">
+        <figcaption class="text-center italic text-xs">Peter Gostev and the shapeless blob</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>Last week I got back to the AI Engineer London meetup for the first time in a while. It was great to see <a href="https://www.linkedin.com/in/eddie-forson/">Eddie Forson</a> again and to meet <a href="https://www.linkedin.com/in/tpina/">Tiago Pina</a>, <a href="https://www.linkedin.com/in/amandineflachs/">Amandine Flachs</a> and <a href="https://www.linkedin.com/in/nelith-bandularatne/">Nel Bandularatne</a>. I always enjoy going to London AI meetups, but it&rsquo;s been over a month since I&rsquo;ve gone to one because I&rsquo;ve had so many travels and some game projects I had to attend to.</p>
+<p>I wanted to share a couple of interesting things from the talks.</p>
+<h2 id="peter-gostev-on-how-arena-do-evals">Peter Gostev on how Arena do evals</h2>
+<p>I&rsquo;m very interested in <a href="https://thingsithinkithink.blog/posts/2026/01-05-llm-evals-course-recap/">evals</a>, and it was great to have <a href="https://www.linkedin.com/in/peter-gostev/">Peter Gostev</a> from <a href="https://arena.ai/">Arena</a> presenting some of the work they do on evals and explaining how they put it together.</p>
+<p>I think the shapeless blob metaphor at the top of this post worked really well, because every one of these models does have a unique shape. For a minute there it did feel to me, incorrectly, that models were going to converge on very similar profiles, but this has proven not to be the case. Hearing more about how Arena think about and shape their work was really interesting.</p>
+<p>For example, they&rsquo;ve got a benchmark on <a href="https://arena.ai/resources/agent-arena-signals/">agent mode</a>. You can see from the slide that they look for indicators of performance across multiple signals - in this case, looking for confirmations of success, weighing praise against complaints from users, looking to see how steerable the AIs are, whether they use bash correctly and whether they hallucinated any tools.</p>
+<figure><img src="/images/2026/11-01-ai-engineer-london/five-signals.jpg"
+    alt="Agent mode: five signals"><figcaption>
+      <p>Agent mode: five signals</p>
+    </figcaption>
+</figure>
+
+<p>So for example, steerability. They score each assistant turn by how much correcting the user has to do, and a repeated correction costs more than a first one.</p>
+<figure><img src="/images/2026/11-01-ai-engineer-london/steerability.jpg"
+    alt="Steerability: the cost of each correction"><figcaption>
+      <p>Steerability: the cost of each correction</p>
+    </figcaption>
+</figure>
+
+<p>You can see here that there are meaningful differences between today&rsquo;s frontier models, as of late October. You can understand why Anthropic are leading so effectively in coding tasks when Opus 5.5 is performing so much better overall than GPT-6 Astra (with GPT-6.1 Sol just behind Astra).</p>
+<figure><img src="/images/2026/11-01-ai-engineer-london/current-profiles.jpg"
+    alt="Agent mode: current profiles for Claude Opus 5.5 (Max), GPT-6 Astra (Max) and Mistral Medium 3.5"><figcaption>
+      <p>Agent mode: current profiles for Claude Opus 5.5 (Max), GPT-6 Astra (Max) and Mistral Medium 3.5</p>
+    </figcaption>
+</figure>
+
+<p>I also enjoyed hearing about how they <a href="https://arena.ai/blog/ai-alignment-index">measure alignment</a>. The way that they categorise failure signals feels to me in line with the way one would identify clusters of errors when performing <a href="https://thingsithinkithink.blog/posts/2025/04-13-error-analysis-for-improving-llm-applications/">error analysis</a>.</p>
+<figure><img src="/images/2026/11-01-ai-engineer-london/alignment.jpg"
+    alt="Alignment: three failure signals"><figcaption>
+      <p>Alignment: three failure signals</p>
+    </figcaption>
+</figure>
+
+<p>Also, I&rsquo;m pretty sure it&rsquo;s universally agreed that Peter is one of the most creative people out there when it comes to using these frontier models, and it&rsquo;s always a joy to see the weird and wonderful demos he creates. He <a href="https://x.com/petergostev/status/2048078400628412885">basically recreated Google Street View</a> for the Hanging Gardens of Babylon, with GPT-Image-2 generating the 1,500 images and GPT-5.5 in Codex building it. If you haven&rsquo;t seen his stuff, have a look at his <a href="https://www.youtube.com/watch?v=GQPi39sjNhU">first impressions of GPT-6 Astra</a>. What a fun job he has, and I&rsquo;m pretty sure he&rsquo;s the right guy for that job.</p>
+<h2 id="danila-kozlov-on-small-models">Danila Kozlov on small models</h2>
+<p>The other talk I want to mention was from <a href="https://www.linkedin.com/in/danilakozlov/">Danila Kozlov</a>, who has just joined ElevenLabs. I only got one image from his talk (oops).</p>
+<p>ElevenLabs are known for absolute frontier-level models that set the bar for audio. But part of his role there is small models, and he&rsquo;s been doing some work with them on device.</p>
+<p>He shared a piece of evidence that I found counterintuitive at first, but as soon as he explained it, it made perfect sense. It&rsquo;s a reminder that fundamentals are still the most important thing, even though we&rsquo;re getting so much benefit from scale right now.</p>
+<p>I don&rsquo;t have slides to jog my memory, but I&rsquo;ll explain here my recollection of his talk.</p>
+<p>Lots of models these days can do speech to text, and transcriptions get better as models get larger (he showed a benchmark demonstrating this). However, one of the things ElevenLabs really care about is character-by-character precision, which is what their <a href="https://elevenlabs.io/blog/cue-aligner">Cue</a> aligner does. If you say &ldquo;good morning&rdquo;, they want the text, but they also want to know exactly where each part of those words sits within the sound wave.</p>
+<p>He showed evidence from their benchmarks that even though transcriptions are improving significantly in large frontier models, timestamp accuracy isn&rsquo;t improving in the same way. In some examples timestamp accuracy was decreasing even as transcriptions improved.</p>
+<p>His explanation is obvious when you hear it. A large model ends up learning so many things about the relationship between words and audio. For example, it learns that &ldquo;good morning&rdquo; takes something like half a second to say almost all the time. So when somebody says it faster or slower than that, the model&rsquo;s general knowledge interferes, because it just &ldquo;knows&rdquo; that the phrase takes about half a second. A smaller model can&rsquo;t learn these things about every word, so it&rsquo;s forced to use a simpler trick - paying more attention to the relationship between the sound at that moment and the letters.</p>
+<p>It shows that intuitions can lead you astray. The intuition is that a larger model will always be better, specialised fine-tunes aside. That doesn&rsquo;t always hold, and there are actual concrete downsides.</p>
+<p>He also shared a benchmark with a graph of the same model at bigger and bigger sizes. It might have been Meta, it might have been Nvidia, I&rsquo;m not sure. At a certain point timestamp accuracy started to decrease. It was the same class of model and the same training regime, so the argument of large generic model versus smaller fine-tuned model doesn&rsquo;t really apply. As I understood it, as the model got bigger it started to learn all these clever shortcuts that decreased its accuracy. I had a look for the benchmark but I couldn&rsquo;t find it.</p>
+<figure><img src="/images/2026/11-01-ai-engineer-london/voice-on-device.jpg"
+    alt="Danila&rsquo;s closing slide: voice, on device"><figcaption>
+      <p>Danila&rsquo;s closing slide: voice, on device</p>
+    </figcaption>
+</figure>
+
+<p>If you&rsquo;re interested in the ElevenLabs local models, they&rsquo;ve got a <a href="https://elevenlabs.io/local-deployment-waitlist">waitlist here</a>.</p>
+<figure><img src="/images/2026/11-01-ai-engineer-london/elevenlabs-waitlist-qr.png"
+    alt="ElevenLabs local deployment waitlist" width="220"><figcaption>
+      <p>ElevenLabs local deployment waitlist</p>
+    </figcaption>
+</figure>
+
+<h2 id="thingsithinkithink">thingsithinkithink</h2>
+<ul>
+<li>For a long time I&rsquo;ve been using the Qwen local models to generate audio, but I am looking forward to a local model that doesn&rsquo;t insert random laughs and sniffs and snores and groans etc!</li>
+</ul>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/ai/">AI</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/evals/">Evals</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/speech-to-text/">Speech-to-Text</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-21-open-swimcast/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_d6a4c24438ee2db6.png" alt="Open Swimcast" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-06-21T12:00:00&#43;00:00">Jun 21, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Open Swimcast</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Another little app I only built because it was essentially free to build - this one gets my podcast feed onto a pair of underwater swimming headphones.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-17-davids-debbie-app/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-debbie-app-home_hu_e0a1559be4a8e2b3.jpg" alt="David&#39;s Debbie App" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-06-17T12:00:00&#43;00:00">Jun 17, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">David&#39;s Debbie App</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Another little bespoke app I built for myself - this one translates English and German live so I can talk to my sister-in-law.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-02-ai-engineer-london-october-26/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-01-ai-engineer-london/shapeless-blob_hu_d309f13bb5736e88.jpg" alt="AI Engineer London - October 26" width="333" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">AI Engineer London - October 26</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-21-open-swimcast/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_c3d70596ff2ae153.png" alt="Open Swimcast" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Open Swimcast</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-17-davids-debbie-app/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-debbie-app-home_hu_911242bc24cc900e.jpg" alt="David&#39;s Debbie App" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">David&#39;s Debbie App</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-14-climbing-the-ladder/cow-ladder_hu_b95a7ca7696c2022.png" alt="Climbing the Ladder of Abstraction" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Climbing the Ladder of Abstraction</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-15-the-embedded-ai-trio/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/05-11-mollick-krohn-hero_hu_69c1face79415df9.jpg" alt="The Embedded AI Trio" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">The Embedded AI Trio</h3>
+	</div>
+</article>
+
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script defer src="/js/insertoggle.5e0074947f573e105c5cd8cc6469570dd0c8bab091b8009e1895ab2f34e82d21.js" integrity="sha256-XgB0lH9XPhBcXNjMZGlXDdDIurCRuACeGJWrLzToLSE=" crossorigin="anonymous"></script>
+      <script defer src="/js/search.a60eb1bcca84a7fca79f62f442bfc9072560eda4426cf061f9e232ee320cd6e0.js" integrity="sha256-pg6xvMqEp/ynn2L0Qr/JByVg7aRCbPBh&#43;eIy7jIM1uA=" crossorigin="anonymous"></script>
+
+</body>
+</html>

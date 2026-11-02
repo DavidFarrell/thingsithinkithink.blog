@@ -6,13 +6,27 @@
     <description>Recent content in Tags on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Jun 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://thingsithinkithink.blog/tags/ai/</link>
-      <pubDate>Sun, 21 Jun 2026 12:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Evals</title>
+      <link>https://thingsithinkithink.blog/tags/evals/</link>
+      <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/evals/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Speech-to-Text</title>
+      <link>https://thingsithinkithink.blog/tags/speech-to-text/</link>
+      <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/tags/speech-to-text/</guid>
       <description></description>
     </item>
     <item>
@@ -132,13 +146,6 @@
       <link>https://thingsithinkithink.blog/tags/christmas/</link>
       <pubDate>Wed, 07 Jan 2026 06:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/christmas/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Evals</title>
-      <link>https://thingsithinkithink.blog/tags/evals/</link>
-      <pubDate>Wed, 07 Jan 2026 06:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/tags/evals/</guid>
       <description></description>
     </item>
     <item>
@@ -394,7 +401,7 @@
       <description></description>
     </item>
     <item>
-      <title>Product Management</title>
+      <title>Product-Management</title>
       <link>https://thingsithinkithink.blog/tags/product-management/</link>
       <pubDate>Sat, 12 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://thingsithinkithink.blog/tags/product-management/</guid>
