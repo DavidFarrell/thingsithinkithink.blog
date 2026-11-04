@@ -1105,10 +1105,6 @@ video {
   content: var(--tw-content);
 }
 
-.visible {
-  visibility: visible;
-}
-
 .invisible {
   visibility: hidden;
 }
