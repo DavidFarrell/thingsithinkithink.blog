@@ -4,6 +4,7 @@ date: 2026-11-09T09:00:00Z
 slug: /11-09-trying-out-personal-agents/
 description: "I tried two personal agents, and each one of them broke my trust."
 image: images/2026/11-09-personal-agents/hero-logo-collage.jpg
+og_image: images/2026/11-09-personal-agents/og-instinct-message.jpg
 caption: "OpenClaw, Instinct, Dots, Grok Bot, Hermes Agent, Claude and ChatGPT"
 categories:
   - blog
