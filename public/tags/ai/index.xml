@@ -6,8 +6,15 @@
     <description>Recent content in Ai on thingsithinkithink</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Nov 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://thingsithinkithink.blog/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trying Out Personal Agents</title>
+      <link>https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/</link>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
+      <guid>https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/</guid>
+      <description>&lt;p&gt;There&amp;rsquo;s a new wave of personal agents: agents connected to your email, calendar and accounts that do things on your behalf. Depending on who you read, they&amp;rsquo;re &amp;ldquo;&lt;a href=&#34;https://every.to/guides/claw-school&#34;&gt;claws&lt;/a&gt;&amp;rdquo; (after OpenClaw), &amp;ldquo;&lt;a href=&#34;https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/&#34;&gt;always-on agents&lt;/a&gt;&amp;rdquo;, &amp;ldquo;&lt;a href=&#34;https://www.engadget.com/2293646/claude-duet-is-anthropics-answer-to-meta-muse-and-&#34;&gt;proactive agents&lt;/a&gt;&amp;rdquo;, or &lt;a href=&#34;https://techcrunch.com/2026/10/24/all-the-ai-agents-that-can-live-in-your-text-messages/&#34;&gt;AI assistants that live in your text messages&lt;/a&gt;. There&amp;rsquo;s &lt;a href=&#34;https://openclaw.ai&#34;&gt;OpenClaw&lt;/a&gt;, xAI&amp;rsquo;s &lt;a href=&#34;https://www.kucoin.com/news/flash/xai-launches-grok-bot-ai-agent-with-its-own-computer-for-cross-app-task-automation&#34;&gt;Grok Bot&lt;/a&gt;, Meta&amp;rsquo;s &lt;a href=&#34;https://www.foxbusiness.com/technology/meta-introduces-muse-personal-ai-agent-can-send-emails-book-travel&#34;&gt;Muse&lt;/a&gt;, OpenAI&amp;rsquo;s &lt;a href=&#34;https://openai.com/index/introducing-dots/&#34;&gt;Dots&lt;/a&gt;, Nous Research&amp;rsquo;s &lt;a href=&#34;https://hermes-agent.nousresearch.com&#34;&gt;Hermes Agent&lt;/a&gt;, &lt;a href=&#34;https://www.instinct.com&#34;&gt;Instinct&lt;/a&gt;, and Anthropic&amp;rsquo;s &lt;a href=&#34;https://claude.com/product/claude-duet&#34;&gt;Claude Duet&lt;/a&gt; on the way.&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-own-version&#34;&gt;My own version&lt;/h2&gt;&#xA;&lt;p&gt;Like many early adopters of AI, I have a very elaborate, home-rolled equivalent to these. For me it&amp;rsquo;s Claude Code, and it helps me run my business (and most aspects of my life at this point). It has access to my email accounts and calendars through a connector I wrote (well, asked Claude to write).&lt;/p&gt;</description>
+    </item>
     <item>
       <title>On The PSC Podcast</title>
       <link>https://thingsithinkithink.blog/posts/2026/11-06-on-the-psc-podcast/</link>
