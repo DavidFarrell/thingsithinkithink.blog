@@ -21,7 +21,9 @@
 {{- if .IsPage }}
 <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
 {{- end }}
-{{- with .Params.image }}{{ with resources.Get . }}{{ if in (slice "jpeg" "png" "webp") .MediaType.SubType }}
+{{- /* Link-preview image: the hero (`image:`) by default. To use a different one for a
+       post, add `og_image: images/...` to its front matter (same path style as `image:`). */ -}}
+{{- with (.Params.og_image | default .Params.image) }}{{ with resources.Get . }}{{ if in (slice "jpeg" "png" "webp") .MediaType.SubType }}
 {{- $og := .Fill "1200x627 Center q85" }}
 <meta property="og:image" content="{{ $og.Permalink }}">
 <meta property="og:image:width" content="{{ $og.Width }}">

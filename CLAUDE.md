@@ -19,6 +19,12 @@ The GitHub Action uploads `./public` directly - it does NOT run Hugo, so the loc
 - Blog post images go in `assets/images/` (not `static/images/`) so Hugo can process them and generate `_hu_` variants
 - Use Hugo figure shortcodes: `{{< figure src="/images/..." caption="..." >}}`
 
+## Link previews (LinkedIn, Slack, etc.)
+
+- `layouts/partials/head.html` (site-level override of the theme's head, added 2026-11-09) writes Open Graph + Twitter card tags. Before that the site had none, and LinkedIn guessed an image (the goldfinch icon).
+- The preview image is the post's hero (`image:`), cropped to 1200x627. To use a different image for one post, add `og_image: images/...` to its front matter (same path style as `image:`; jpg/png/webp, from `assets/images/`).
+- LinkedIn caches previews: after changing one, re-scrape the URL in https://www.linkedin.com/post-inspector/
+
 ## Internal Links (cross-references between posts)
 
 **ALWAYS use the Hugo `ref` shortcode for links to other posts on this blog. Never hard-code a URL path.**
