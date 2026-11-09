@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Dynamic title for SEO -->
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<!-- Dynamic description for SEO -->
+<meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Params.description }}{{ end }}">
+{{- /* Open Graph + Twitter card tags so LinkedIn, Slack etc. show the post's hero image
+       instead of guessing (it used to pick the goldfinch icon). Site-level override of
+       the theme's head.html, added 9 Nov 2026. */ -}}
+{{- $ogTitle := site.Title -}}
+{{- $ogDesc := site.Params.description -}}
+{{- if not .IsHome -}}
+  {{- $ogTitle = .Title -}}
+  {{- with .Params.description }}{{ $ogDesc = . }}{{ end -}}
+{{- end }}
+<meta property="og:title" content="{{ $ogTitle }}">
+<meta property="og:description" content="{{ $ogDesc }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+{{- if .IsPage }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}
+{{- with .Params.image }}{{ with resources.Get . }}{{ if in (slice "jpeg" "png" "webp") .MediaType.SubType }}
+{{- $og := .Fill "1200x627 Center q85" }}
+<meta property="og:image" content="{{ $og.Permalink }}">
+<meta property="og:image:width" content="{{ $og.Width }}">
+<meta property="og:image:height" content="{{ $og.Height }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ $og.Permalink }}">
+{{- end }}{{ end }}{{ end }}
+{{- partialCached "head/css.html" . -}}
+{{- partialCached "head/favicon.html" . -}}
+{{- /* template "_internal/google_analytics.html" . */ -}}
