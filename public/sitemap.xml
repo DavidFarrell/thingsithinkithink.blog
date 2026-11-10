@@ -2,34 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://thingsithinkithink.blog/tags/agents/</loc>
-    <lastmod>2026-11-09T09:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://thingsithinkithink.blog/tags/ai/</loc>
+    <lastmod>2026-11-10T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/artificial-intelligence/</loc>
+    <lastmod>2026-11-10T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/blog/</loc>
+    <lastmod>2026-11-10T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/</loc>
+    <lastmod>2026-11-10T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/posts/2026/11-10-on-the-psc-podcast/</loc>
+    <lastmod>2026-11-10T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/posts/</loc>
+    <lastmod>2026-11-10T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/public-services/</loc>
+    <lastmod>2026-11-10T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/</loc>
+    <lastmod>2026-11-10T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/</loc>
+    <lastmod>2026-11-10T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/agents/</loc>
     <lastmod>2026-11-09T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/ai-security/</loc>
     <lastmod>2026-11-09T09:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thingsithinkithink.blog/categories/artificial-intelligence/</loc>
-    <lastmod>2026-11-09T09:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/categories/blog/</loc>
-    <lastmod>2026-11-09T09:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/categories/</loc>
-    <lastmod>2026-11-09T09:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://thingsithinkithink.blog/tags/feature/</loc>
-    <lastmod>2026-11-09T09:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/posts/</loc>
-    <lastmod>2026-11-09T09:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/</loc>
-    <lastmod>2026-11-09T09:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/</loc>
     <lastmod>2026-11-09T09:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/</loc>
