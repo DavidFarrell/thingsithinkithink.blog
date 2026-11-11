@@ -1,5 +1,5 @@
 ---
-title: "Trying Out Personal Agents"
+title: "How I Got Hacked by Instinct"
 date: 2026-11-09T09:00:00Z
 slug: /11-09-trying-out-personal-agents/
 description: "I tried two personal agents, and each one of them broke my trust."
