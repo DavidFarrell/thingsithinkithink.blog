@@ -1,0 +1,9 @@
+{{- /* Centred figure. Usage: {{< figure-center src="/images/..." caption="..." width="280" >}} */ -}}
+{{- $src := .Get "src" -}}
+{{- $img := resources.Get (strings.TrimPrefix "/" $src) -}}
+<figure style="text-align:center">
+  <img src="{{ with $img }}{{ .RelPermalink }}{{ else }}{{ $src }}{{ end }}" alt="{{ .Get "alt" | default (.Get "caption") }}"{{ with .Get "width" }} width="{{ . }}"{{ end }} style="display:block;margin-left:auto;margin-right:auto">
+  {{- with .Get "caption" }}
+  <figcaption>{{ . }}</figcaption>
+  {{- end }}
+</figure>
