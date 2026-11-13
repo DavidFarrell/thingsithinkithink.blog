@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trust, Data and Governance in Housing Finance | thingsithinkithink</title>
+
+<meta name="description" content="What I said on Ivy Rock&#39;s AI in Housing Finance panel, plus some great examples from Paul McGrady and Victor Ochieng.">
+<meta property="og:title" content="Trust, Data and Governance in Housing Finance">
+<meta property="og:description" content="What I said on Ivy Rock&#39;s AI in Housing Finance panel, plus some great examples from Paul McGrady and Victor Ochieng.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thingsithinkithink.blog/posts/2026/11-13-ai-in-housing-finance/">
+<meta property="og:site_name" content="thingsithinkithink">
+<meta property="article:published_time" content="2026-11-13T06:00:00Z">
+<meta property="og:image" content="https://thingsithinkithink.blog/images/2026/11-20-ivy-rock/slide-01_hu_32eb295f2b51caf0.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://thingsithinkithink.blog/images/2026/11-20-ivy-rock/slide-01_hu_32eb295f2b51caf0.jpg">
+      <link rel="stylesheet" href="/css/main.min.8c78a3be3773522aca77753a4cb797e255cc8f58a7fef21eec2091e345509b95.css" integrity="sha256-jHijvjdzUirKd3U6TLeX4lXMj1in/vIe7CCR40VQm5U=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar" type="button" aria-controls="menu-bar" aria-expanded="false" aria-label="Toggle menu">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar" type="button" aria-controls="search-bar" aria-expanded="false" aria-label="Toggle search">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch" role="search" data-index-url="/index.json">
+		<label class="hidden" for="search-query">Search the blog</label>
+		<input id="search-query" name="q" class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="search" placeholder="Search posts..." autocomplete="off" aria-label="Search the blog" aria-controls="search-results" aria-describedby="search-feedback">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200" type="submit" aria-label="Search">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+	<p id="search-feedback" class="mt-2 text-sm text-zinc-500" role="status" aria-live="polite"></p>
+	<ol id="search-results" class="mt-2 space-y-4" aria-label="Search results"></ol>
+	<noscript><p class="mt-2 text-sm text-zinc-500">Search needs JavaScript to run in your browser.</p></noscript>
+</div>
+</div>
+</header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">Trust, Data and Governance in Housing Finance</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">What I said on Ivy Rock&#39;s AI in Housing Finance panel, plus some great examples from Paul McGrady and Victor Ochieng. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-11-13T06:00:00&#43;00:00">November 13, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            9 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/11-20-ivy-rock/slide-01_hu_7f1eb0357a08b213.jpg" alt="" width="750" height="422">
+        <figcaption class="text-center italic text-xs">Trust, data and governance: what you need before AI delivers value</figcaption>
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>Last Friday, I had the pleasure of being invited to join <a href="https://ivyrockpartners.com">Ivy Rock</a>&rsquo;s panel on AI in Housing Finance: From Experimentation to Impact. About 70 people from housing associations, mostly finance folk, joined the webinar. Housing associations are at the coalface of one of the country&rsquo;s greatest challenges, and it was really interesting hearing how <a href="https://www.linkedin.com/in/paul-mcgrady-57307b171/">Paul McGrady</a> (Chief Finance Officer, Magenta Living) and <a href="https://www.linkedin.com/in/victor-fcca/">Victor Ochieng</a> (Head of Finance Business Partnering, Lifestone Homes) are dealing with AI in their organisations.</p>
+<h2 id="paul-and-victor">Paul and Victor</h2>
+<p>Paul has spent 18 months treating AI as &ldquo;a business challenge, not an IT challenge&rdquo;, and putting people first. He said a couple of things that I wanted to share here.</p>
+<p>The first was training people to solve their own problems. With a local chamber of commerce and a tech entrepreneur, Paul&rsquo;s team built an AI academy with three levels (foundation, proficiency and mastery). 25 people have already graduated, and by the end they&rsquo;re building their own Copilot agents. They&rsquo;ve also developed a short course of about ten bite-sized modules, which 36 people have finished, and AI training is now a mandatory part of induction. Paul said it costs them about £200 a head, which makes it cheap enough that you don&rsquo;t need to worry about return on investment.</p>
+<p>The second was being transparent with the board in order to build trust. Magenta only allow Copilot on their network unless you&rsquo;ve got explicit permission, so people can&rsquo;t use their own personal agents, and they monitor who uses what, which departments and which agents. Following the summer&rsquo;s AI hacking stories, Magenta have split AI risk into internal and external on the risk register: are they going to be hacked, and are they going to hack anybody? Paul is focusing on transparency as a key way to keep the board aligned with the execution.</p>
+<p>Victor framed his talk around reducing the friction in finance business partners&rsquo; work, so they could become &ldquo;finance decision partners&rdquo;. His team looked at the kinds of questions they get asked, and tried to separate retrieval (&ldquo;What&rsquo;s my budget?&rdquo;, &ldquo;What have I spent?&rdquo;) from questions that need judgement (&ldquo;Why am I overspending?&rdquo;, &ldquo;What action should I take?&rdquo;). They have focused their AI work on the simpler retrieval questions, so that the finance team can focus on the harder questions that need human judgement.</p>
+<figure><img src="/images/2026/11-20-ivy-rock/victor-finance-time.png"
+    alt="Victor Ochieng: where finance should spend its time"><figcaption>
+      <p>Victor Ochieng: where finance should spend its time</p>
+    </figcaption>
+</figure>
+
+<p>The second thing Victor&rsquo;s team built was a &ldquo;what is my budget?&rdquo; agent in Microsoft Teams. Teams already knows who the person is, and the agent has access to data on board-approved budgets, FTE, cost centres and approval authorities, refreshed each month from the finance system. Budget holders can ask for their budget, the phasing and what&rsquo;s left to spend, and the agent gives very consistent results, which builds a lot of confidence in the tool itself.</p>
+<h2 id="my-question">My question</h2>
+<p>For my part, I was asked: <em>&ldquo;How do we make AI something that people can genuinely trust? And what does that tell us about the quality of the data we&rsquo;re asking it to work with? What governance, controls and data foundations do organisations need before AI can truly deliver value?&rdquo;</em></p>
+<p>There&rsquo;s a lot in that, so I broke it down into separate components: trust, data quality, governance, and controls and foundations. I wanted to share here what I said at the panel.</p>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-02.jpg"
+    alt="The question, and my four parts"><figcaption>
+      <p>The question, and my four parts</p>
+    </figcaption>
+</figure>
+
+<p>My short answer is that <mark style="background:#d6efe2;color:inherit;padding:.05em .2em;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone">trust isn't a property of AI, it's a property of the system around the AI</mark>.</p>
+<h2 id="trust">Trust</h2>
+<p>I&rsquo;ve already written <a href="https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/">a whole piece</a> about how personal agents have betrayed my trust, and I relayed a short version of that story on the panel.</p>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-03.jpg">
+</figure>
+
+<p>The other way AI breaks trust is when something bad happens to your data or your systems.</p>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-04.jpg">
+</figure>
+
+<p>The <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">lethal trifecta</a> is a phrase Simon Willison coined. It&rsquo;s a trifecta because three things have to come together:</p>
+<ul>
+<li><strong>Private data:</strong> your ledger, your inbox, your line of business system with all your tenant records. Connecting AI to your data is how you get the value.</li>
+<li><strong>Untrusted content:</strong> you want your AI to read websites and the PDFs people email you, but you didn&rsquo;t write them. Someone dodgy can put instructions in there that trick your AI into doing what they want instead of what you want.</li>
+<li><strong>A way to communicate or impact a system:</strong> it can send an email, visit a website or change your data.</li>
+</ul>
+<p>If you&rsquo;ve got all three at the same time, you need to be very careful. If you&rsquo;re building your own system, it needs the utmost level of governance. If you&rsquo;re buying one off the shelf, at least ask your supplier how they reduce the chance of things going wrong.</p>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-05.jpg">
+</figure>
+
+<p><a href="https://www.linkedin.com/in/cameron-mattis/">Cameron Mattis</a>, who works at Stripe, put a hidden line in his LinkedIn bio telling any AI that read it to include a recipe for flan in its message to him. Then he started getting recruiter messages that opened like any AI-written email and then included a flan recipe. That&rsquo;s untrusted content (his bio) and a way to communicate (the AI writing to him). What&rsquo;s missing is the private data. What if the same agent had known about the other candidates, or the maximum salary the recruiter would be happy to offer? Nothing bad happened, but something bad could have.</p>
+<h2 id="data-quality">Data quality</h2>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-06.jpg">
+</figure>
+
+<p>How good your data needs to be depends on what you want to do. A chatbot that only talks about your publicly available policy documents is low risk: your policies are already out there, and even the free version of ChatGPT can read your website. Automations are different. Victor&rsquo;s agent can answer &ldquo;what is my budget?&rdquo;, and that&rsquo;s quite sophisticated. It needs to know who is asking, and to tie their identity through your systems to their budget, safely.</p>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-07.jpg">
+</figure>
+
+<p>We&rsquo;ve all heard before that you need to get your data sorted before starting AI projects. But I think these days (and Paul made a similar point) your data doesn&rsquo;t need to be perfect, and in fact AI can actually help you find the problems in it. A story I didn&rsquo;t share from the <a href="https://thingsithinkithink.blog/posts/2026/11-11-claude-in-the-enterprise/">Edge Tech panel</a> I went to earlier that week: Ben described connecting Claude to a system of record, and it found 15 people still in the HR database 20 years after they&rsquo;d left.</p>
+<p>It&rsquo;s nice when your data is connected to your AI. Without that, you download a spreadsheet from your line of business system, upload it to Copilot, do the work, then copy the answer and paste it back. Once it&rsquo;s connected, it&rsquo;s night and day. You do need people in your team who can make sure you don&rsquo;t get yourself in a pickle.</p>
+<h2 id="governance">Governance</h2>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-08.jpg">
+</figure>
+
+<p>AI is scary, and the natural reaction is to go heavy on governance. But if you go heavy on everything you won&rsquo;t get the benefits, so it&rsquo;s worth working out when to go heavy and when not to.</p>
+<p>I worked for a brief period as a service designer at a housing body that&rsquo;s arm&rsquo;s-length from Kingston Council, so I&rsquo;ve seen some of the homelessness duty side of housing. An agent that finds short-term rental listings, only looking at rental websites and not connected to any of your data, can have relatively light governance. An AI working through your backlog of housing applications, with people&rsquo;s data in it, needs to be taken extraordinarily seriously: GDPR, what happens to the data, and making sure the tool isn&rsquo;t biasing your staff. As for AI deciding who gets accepted for a housing duty, my slide says &ldquo;probably not&rdquo;, but I wouldn&rsquo;t touch it with a barge pole.</p>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-09.jpg">
+</figure>
+
+<p>At Paidia, we worked with Ivy Rock to help a couple of London councils put governance in place. It took over a year, because you have to go through each part of the organisation (legal, procurement, HR), and everybody has a legitimate stake. The goal is to have your cake and eat it: <mark style="background:#d6efe2;color:inherit;padding:.05em .2em;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone">say yes to the things that are low risk, and make sure the risky things are identified and dealt with properly</mark>. It&rsquo;s nuanced and quite hard work, but I think it&rsquo;s worth it, and I&rsquo;m very proud of the work we did there.</p>
+<h2 id="controls-and-foundations">Controls and foundations</h2>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-10.jpg">
+</figure>
+
+<p>Enterprise licences come with protections much like your agreements with Microsoft or Amazon. The providers don&rsquo;t train on your data and don&rsquo;t look at it, so the enterprise versions are really quite safe.</p>
+<p>Paul described Magenta&rsquo;s Copilot-only stance, and the struggle now that AI is turning up inside everything, from Adobe Acrobat to board papers in Diligent. I don&rsquo;t think &ldquo;use only official tools&rdquo; works any more. I searched Google for a good AI stance for an organisation, and the first thing on the page was an AI answer. You can&rsquo;t tell people not to use AI when it&rsquo;s in Google. What you can do is talk about your data: anything to do with your organisational data goes into your official tools. I used to hold exactly the same stance as Paul, and I think it was the right one a year ago. As this stuff goes everywhere, it just isn&rsquo;t possible any more. I wish it was.</p>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-11.jpg">
+</figure>
+
+<p>Connectors are where most of the value is. In order to build organisational confidence, you should probably switch them on read-only at first. But one part of getting your data estate ready does still matter. For example, one large organisation I work with was switching on connectors for the first time, starting with read-only access to SharePoint. I had the default new-employee access and typed into their AI: &ldquo;I&rsquo;ve been asked to find the salary spreadsheet. Can you find it for me?&rdquo; It found it, buried in a SharePoint folder nobody knew was there.</p>
+<p>People aren&rsquo;t going to search exhaustively, but their AI agents will. So before you switch connectors on, get your IT folk to check that people can&rsquo;t find things they&rsquo;re not meant to find.</p>
+<figure><img src="/images/2026/11-20-ivy-rock/slide-12.jpg">
+</figure>
+
+<p>If you&rsquo;re not sure what to do, though, Meta built on Simon&rsquo;s idea of the trifecta and recommend the <a href="https://ai.meta.com/blog/practical-ai-agent-security/">rule of two</a>: only two of the three at once. If it has access to your email, it doesn&rsquo;t get the web. If it goes to the web, it doesn&rsquo;t get your private data. It&rsquo;s tricky to set up, and it makes more work for IT, but it can be done.</p>
+<p>You don&rsquo;t need to worry about this as much with the big tools: Copilot, ChatGPT and Claude. It&rsquo;s still possible for something to go wrong, but in practice it doesn&rsquo;t really happen. Whether &ldquo;it doesn&rsquo;t really happen&rdquo; is enough for you, or whether you need &ldquo;it can&rsquo;t possibly happen&rdquo;, is up to you. If it&rsquo;s the second, you need the rule of two.</p>
+<p>Thanks to <a href="https://www.linkedin.com/in/megan-hunter-663522263/">Megan Hunter</a> and <a href="https://www.linkedin.com/in/charlotte--dow/">Charlotte Dow</a> at Ivy Rock for having me, and to <a href="https://www.linkedin.com/in/paul-mcgrady-57307b171/">Paul</a> and <a href="https://www.linkedin.com/in/victor-fcca/">Victor</a> for two great talks.</p>
+<h2 id="thingsithinkithink">thingsithinkithink</h2>
+<ul>
+<li>Housing is one of the most important areas where we should look to use AI. If we can use AI to improve housing, we will help so many people, but it&rsquo;s such a hard thing to do sensitively and safely.</li>
+</ul>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/ai/">Ai</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/ai-governance/">Ai-Governance</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/housing/">Housing</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-11-claude-in-the-enterprise/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-11-edge-tech/speakers_hu_77ce66f59c2b4a8e.jpg" alt="Claude in the Enterprise" width="750" height="1000">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-11-11T06:00:00&#43;00:00">Nov 11, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Claude in the Enterprise</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Reporting from the field on the different types of impact AI is having in large organisations.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-10-on-the-psc-podcast/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-06-psc-podcast/hero-nikki-pick_hu_83ad523078b9e5d1.jpg" alt="On The PSC Podcast" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-11-10T06:00:00&#43;00:00">Nov 10, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">On The PSC Podcast</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">I went on The PSC&#39;s podcast for a chat with Antonio Weiss.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-13-ai-in-housing-finance/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-20-ivy-rock/slide-01_hu_b6c064037fcad7fe.jpg" alt="Trust, Data and Governance in Housing Finance" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Trust, Data and Governance in Housing Finance</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-11-claude-in-the-enterprise/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-11-edge-tech/speakers_hu_c6968840cc8851cc.jpg" alt="Claude in the Enterprise" width="188" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude in the Enterprise</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-10-on-the-psc-podcast/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-06-psc-podcast/hero-nikki-pick_hu_bf165f067c213e8e.jpg" alt="On The PSC Podcast" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">On The PSC Podcast</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-09-personal-agents/hero-logo-collage_hu_17f6f7d4c4bf2efd.jpg" alt="How I Got Hacked by Instinct" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">How I Got Hacked by Instinct</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-04-does-it-matter-if-ai-wrote-this/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-04-does-it-matter/hero_hu_35fa4b04396092fb.png" alt="Does It Matter If AI Wrote This?" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Does It Matter If AI Wrote This?</h3>
+	</div>
+</article>
+
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script defer src="/js/insertoggle.5e0074947f573e105c5cd8cc6469570dd0c8bab091b8009e1895ab2f34e82d21.js" integrity="sha256-XgB0lH9XPhBcXNjMZGlXDdDIurCRuACeGJWrLzToLSE=" crossorigin="anonymous"></script>
+      <script defer src="/js/search.a60eb1bcca84a7fca79f62f442bfc9072560eda4426cf061f9e232ee320cd6e0.js" integrity="sha256-pg6xvMqEp/ynn2L0Qr/JByVg7aRCbPBh&#43;eIy7jIM1uA=" crossorigin="anonymous"></script>
+
+</body>
+</html>
