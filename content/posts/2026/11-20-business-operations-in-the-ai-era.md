@@ -1,9 +1,9 @@
 ---
 title: "Business Operations in the AI Era"
-date: 2026-11-18T06:00:00Z
-slug: /11-18-business-operations-in-the-ai-era/
+date: 2026-11-20T06:00:00Z
+slug: /11-20-business-operations-in-the-ai-era/
 description: "Thinking about how citizens and the state deal with each other, under the watchful eye of the man who built the welfare state."
-image: images/2026/11-18-business-operations-in-the-ai-era/attlee-hero-16x9.jpg
+image: images/2026/11-20-business-operations-in-the-ai-era/attlee-hero-16x9.jpg
 caption: "Clement Attlee, prime minister 1945-51, watching over the Attlee Room"
 categories:
   - blog
@@ -22,7 +22,7 @@ I hadn't heard of the company before, but I thought there were a few interesting
 
 ## People would rather use their own AI
 
-{{< figure src="/images/2026/11-18-business-operations-in-the-ai-era/slide-support-demand-v2.jpg" caption="If I was running a customer-facing service just now, my thought would be: “gulp”." >}}
+{{< figure src="/images/2026/11-20-business-operations-in-the-ai-era/slide-support-demand-v2.jpg" caption="If I was running a customer-facing service just now, my thought would be: “gulp”." >}}
 
 The two stats on this slide are a wee bit interesting. The first is from [Gartner](https://www.gartner.com/en/newsroom/press-releases/2026-07-08-gartner-survey-finds-customers-are-three-times-more-likely-to-use-third-party-genai-than-company-provided-chatbots-for-customer-service) (July 2026): people are three times more likely to use a third-party GenAI tool than a company's own chatbot for customer service issues.
 
@@ -62,7 +62,7 @@ He never got a tree. This is what happens when different departments own differe
 
 ## Signal distillation in the modern AI era
 
-{{< figure src="/images/2026/11-18-business-operations-in-the-ai-era/slide-root-causes-v2.jpg" caption="Find root causes. Prioritise what to fix." >}}
+{{< figure src="/images/2026/11-20-business-operations-in-the-ai-era/slide-root-causes-v2.jpg" caption="Find root causes. Prioritise what to fix." >}}
 
 QiQ looks to me like a modern take on a traditional data science product, the kind of thing you might build on top of Databricks: take a bunch of inputs (calls, chats, emails, complaints), run them through an intelligence layer, and turn them into signals you can act on. One big shift now is that you really can process absolutely every piece of input, from every call to every event on your website. Dave said the old quality assurance process looked at 1 or 2% of contacts. You have a much higher chance of deriving valuable insight if you can be comprehensive.
 
