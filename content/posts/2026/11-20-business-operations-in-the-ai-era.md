@@ -30,7 +30,7 @@ That speaks true to my own experience. My Claude becomes more valuable the more 
 
 With the growth of [personal agents]({{< ref "posts/2026/11-09-trying-out-personal-agents.md" >}}), it looks like there's likely to be a preference, at least in B2C (and G2C - government to citizen), for people to use their own AI and have their own AI interface with other people's AIs. Salesforce are ahead of the curve here with [Headless 360](https://venturebeat.com/ai/salesforce-launches-headless-360-to-turn-its-entire-platform-into-infrastructure-for-ai-agents), which exposes the whole platform as APIs, MCP tools and command-line tools so you can have your own AI interact with Salesforce. (It also has the benefit that the service provider doesn't pay for the tokens if you're bringing your own AI.)
 
-The downside, of course, is that it gives the provider less control. Later that same day, at a [Figma event](https://luma.com/29zm6gmg), they talked about how the MCP server they provide is a venue for product-led growth. This seems to be a way that companies are trying to keep doing product-led growth even as they give over more control of their product experience to third-party agents.
+The downside, of course, is that it gives the provider less control. Later that same day, at a [Figma event]({{< ref "posts/2026/11-18-how-ai-built-this-at-figma.md" >}}), they talked about how the MCP server they provide is a venue for product-led growth. This seems to be a way that companies are trying to keep doing product-led growth even as they give over more control of their product experience to third-party agents.
 
 ## Expect a lot more contact
 
