@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Using Jev to Answer the Internet&#39;s Hardest Questions | thingsithinkithink</title>
+
+<meta name="description" content="Settling some old arguments with TypeSafe&#39;s Jev.">
+<meta property="og:title" content="Using Jev to Answer the Internet&#39;s Hardest Questions">
+<meta property="og:description" content="Settling some old arguments with TypeSafe&#39;s Jev.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/">
+<meta property="og:site_name" content="thingsithinkithink">
+<meta property="article:published_time" content="2026-11-16T06:00:00Z">
+<meta property="og:image" content="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_83b42dbd426dfb5d.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_83b42dbd426dfb5d.png">
+      <link rel="stylesheet" href="/css/main.min.8c78a3be3773522aca77753a4cb797e255cc8f58a7fef21eec2091e345509b95.css" integrity="sha256-jHijvjdzUirKd3U6TLeX4lXMj1in/vIe7CCR40VQm5U=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://thingsithinkithink.blog/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://thingsithinkithink.blog/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://thingsithinkithink.blog/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar" type="button" aria-controls="menu-bar" aria-expanded="false" aria-label="Toggle menu">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://thingsithinkithink.blog/">thingsithinkithink</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+			<button class="flex items-center rounded-full p-3 bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="search-bar" type="button" aria-controls="search-bar" aria-expanded="false" aria-label="Toggle search">
+				<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+					<path id="path1" class="transition-all ease-linear" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+					<path id="path2" class="transition-all ease-linear hidden" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/categories/">Taxonomy</a>
+    </li>
+    </ul>
+  </nav>
+<div id="search-bar" class="block mt-3 close">
+	<form id="search" class="flex items-stretch" role="search" data-index-url="/index.json">
+		<label class="hidden" for="search-query">Search the blog</label>
+		<input id="search-query" name="q" class="w-full block px-6 py-2 rounded-l-full focus:outline-none border border-zinc-200" type="search" placeholder="Search posts..." autocomplete="off" aria-label="Search the blog" aria-controls="search-results" aria-describedby="search-feedback">
+		<button class="flex items-center px-7 py-2.5 rounded-r-full border border-zinc-200" type="submit" aria-label="Search">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-pulse" viewBox="0 0 16 16">
+				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+			</svg>
+		</button>
+	</form>
+	<p id="search-feedback" class="mt-2 text-sm text-zinc-500" role="status" aria-live="polite"></p>
+	<ol id="search-results" class="mt-2 space-y-4" aria-label="Search results"></ol>
+	<noscript><p class="mt-2 text-sm text-zinc-500">Search needs JavaScript to run in your browser.</p></noscript>
+</div>
+</div>
+</header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/">thingsithinkithink</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://thingsithinkithink.blog/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+
+  <article class="md:col-span-2 prose lg:prose-lg">
+
+    <header class="not-prose">
+      
+      <h1 id="title" class="text-4xl font-bold leading-normal">Using Jev to Answer the Internet&#39;s Hardest Questions</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Settling some old arguments with TypeSafe&#39;s Jev. </p>
+
+      </div>
+      
+      <div id="writer" class="flex items-center space-x-4">
+
+        <img class="w-12 h-12 bg-black rounded-full" src="https://thingsithinkithink.blog/images/goldfinch.jpg" alt="David Gérouville-Farrell avatar" width="1000" height="1000">
+
+        <ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+          
+          <li class="font-semibold my-2">David Gérouville-Farrell</li>
+          
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2026-11-16T06:00:00&#43;00:00">November 16, 2026</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            6 min read
+          </li>
+
+        </ul>
+
+      </div>
+      
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_e9aa8c114086ed03.png" alt="" width="750" height="422">
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>Last Thursday I was at a Figma AI event, <a href="https://luma.com/29zm6gmg">How AI Built This with Figma</a>. I&rsquo;m going to write up the event properly later, but one of the demos was showing off how Figma used <a href="https://typesafe.ai">Jev</a> - TypeSafe&rsquo;s model that answers questions with typed outputs and probabilities rather than generated text - and somebody made a joke about how we could finally figure out what colour that dress was.</p>
+<p>Inspired by that, I have decided it&rsquo;s finally time to answer each of the internet&rsquo;s hardest questions.</p>
+<h2 id="the-dress">The Dress</h2>
+<p>We have to start with the 2015 <a href="https://en.wikipedia.org/wiki/The_dress">dress</a> that split the internet between folk who saw it as blue and black and folk who saw it as white and gold.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/dress.png" alt="The dress" width="280" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>The dress</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;The Dress!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;What colours is the dress in `photo`?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Blue and black&#34;</span>: <span style="color:#e6db74">&#34;The dress is blue with black lace stripes&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;White and gold&#34;</span>: <span style="color:#e6db74">&#34;The dress is white with gold lace stripes&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/dress-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>Jev itself seems a bit confused here, but leans towards blue and black, which is obviously wrong.</p>
+<h2 id="the-checker-shadow">The Checker Shadow</h2>
+<p>Going way back to 1995, we have <a href="https://en.wikipedia.org/wiki/Checker_shadow_illusion">Edward Adelson&rsquo;s checker shadow illusion</a>, in which squares A and B look like different shades but are in fact the same shade.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/checker-shadow.png" alt="The checker shadow" width="420" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>The checker shadow</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;The Checker Shadow!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;Which is darker in `photo`, square A or square B?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Square A&#34;</span>: <span style="color:#e6db74">&#34;Square A is darker than square B&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Neither&#34;</span>: <span style="color:#e6db74">&#34;Squares A and B are exactly the same shade of grey&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/checker-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>Jev nails this one.</p>
+<h2 id="the-strawberries">The Strawberries</h2>
+<p>In 2017 Akiyoshi Kitaoka shared <a href="https://www.sciencealert.com/in-spite-of-what-your-eyes-tell-you-these-strawberries-aren-t-red">this photo of strawberries</a> that look red but don&rsquo;t contain a single red pixel.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/strawberries.png" alt="The strawberries" width="320" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>The strawberries</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;The Strawberries!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;What colour are the strawberries in `photo`?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Red&#34;</span>: <span style="color:#e6db74">&#34;The strawberries are red&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Grey&#34;</span>: <span style="color:#e6db74">&#34;The strawberries are grey&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/strawberries-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>I was surprised by this one - Jev sees them as red. I&rsquo;d have thought this particular illusion was a variation on the checker shadow, so I expected Jev to get it correct here.</p>
+<h2 id="the-müller-lyer-illusion">The Müller-Lyer Illusion</h2>
+<p>The <a href="https://en.wikipedia.org/wiki/M%C3%BCller-Lyer_illusion">Müller-Lyer illusion</a> is an interesting one - all of the lines are the same length, but the arrowheads make some look longer than others. It usually comes in two versions, so I sent them to Jev one at a time with the same question.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;The Müller-Lyer Illusion!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;Which line in `photo` is longer?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;The left line&#34;</span>: <span style="color:#e6db74">&#34;The left line is longer than the right line&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Neither&#34;</span>: <span style="color:#e6db74">&#34;Both lines are exactly the same length&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/muller-joined.png" alt="The lines joined" width="480" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>The lines joined</figcaption>
+</figure>
+
+<figure><img src="/images/2026/11-16-jev-hardest-questions/muller-joined-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/muller-apart.png" alt="The lines apart" width="480" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>The lines apart</figcaption>
+</figure>
+
+<figure><img src="/images/2026/11-16-jev-hardest-questions/muller-apart-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>What&rsquo;s interesting here is the difference between how Jev performs on the two. With the lines joined it&rsquo;s a coin flip, leaning slightly towards the illusion, but with the lines apart it&rsquo;s fairly sure they&rsquo;re the same length. Also notice how its confidence differs between the two - 10% with the lines joined versus 54% with them apart.</p>
+<h2 id="the-ebbinghaus-illusion">The Ebbinghaus Illusion</h2>
+<p>In the same vein, we&rsquo;ve got the <a href="https://en.wikipedia.org/wiki/Ebbinghaus_illusion">Ebbinghaus illusion</a>, in which the two orange circles are exactly the same size but appear different sizes because of the circles around them.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/ebbinghaus.png" alt="The Ebbinghaus illusion" width="480" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>The Ebbinghaus illusion</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;The Ebbinghaus Illusion!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;Which orange circle in `photo` is bigger?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;The right circle&#34;</span>: <span style="color:#e6db74">&#34;The orange circle on the right is bigger than the one on the left&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Neither&#34;</span>: <span style="color:#e6db74">&#34;Both orange circles are exactly the same size&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/ebbinghaus-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>I&rsquo;m kind of liking the fact that Jev falls for the same illusions that people do. But you can see the difference here between a typical decision and a decision with confidence. Jev picks the right circle, but it&rsquo;s only 50% confident, and you can add a lot of nuance to your system when you have confidence as well as a decision.</p>
+<h2 id="the-café-wall">The Café Wall</h2>
+<p>In the <a href="https://en.wikipedia.org/wiki/Caf%C3%A9_wall_illusion">café wall illusion</a> the horizontal lines are perfectly straight and parallel, but the offset tiles make them look like they slope. However, this one tricks people but not Jev.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/cafe-wall.png" alt="The café wall" width="480" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>The café wall</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;The Café Wall!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;Are the horizontal lines in `photo` sloped or straight?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sloped&#34;</span>: <span style="color:#e6db74">&#34;The horizontal lines slope and are not parallel&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Straight&#34;</span>: <span style="color:#e6db74">&#34;The horizontal lines are straight and parallel&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/cafe-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>Jev nails this one.</p>
+<h2 id="the-duck-rabbit">The Duck-Rabbit</h2>
+<p>The <a href="https://en.wikipedia.org/wiki/Rabbit%E2%80%93duck_illusion">duck-rabbit</a> doesn&rsquo;t really have an answer, I think, but here&rsquo;s what Jev thinks anyway. (I cut off the original caption, since it gives the game away.)</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/duck-rabbit.png" alt="The duck-rabbit" width="380" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>The duck-rabbit</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;The Duck-Rabbit!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;What animal is in `photo`?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Duck&#34;</span>: <span style="color:#e6db74">&#34;The animal is a duck&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Rabbit&#34;</span>: <span style="color:#e6db74">&#34;The animal is a rabbit&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/duck-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>I think I lean slightly towards rabbit too.</p>
+<h2 id="rubins-vase">Rubin&rsquo;s Vase</h2>
+<p><a href="https://en.wikipedia.org/wiki/Rubin_vase">Rubin&rsquo;s vase</a> feels a bit unfair to me, because I don&rsquo;t think it&rsquo;s either - it&rsquo;s both.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/rubin-vase.png" alt="Rubin&#39;s vase" width="260" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>Rubin&#39;s vase</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Rubin&#39;s Vase!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;What is in `photo`?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;A vase&#34;</span>: <span style="color:#e6db74">&#34;A vase&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Two faces&#34;</span>: <span style="color:#e6db74">&#34;Two faces looking at each other&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/vase-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>Jev, however, sees faces as more likely (but with low confidence).</p>
+<h2 id="my-wife-and-my-mother-in-law">My Wife and My Mother-in-Law</h2>
+<p><a href="https://en.wikipedia.org/wiki/My_Wife_and_My_Mother-in-Law">My Wife and My Mother-in-Law</a> is the oldest one I&rsquo;m aware of (the earliest known version is an 1888 German postcard), and it&rsquo;s one where I&rsquo;m able to switch which version I see depending on which part of the image I focus on.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/wife-mother-in-law.jpg" alt="My Wife and My Mother-in-Law" width="280" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>My Wife and My Mother-in-Law</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;My Wife and My Mother-in-Law!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;How old is the woman in `photo`?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Young&#34;</span>: <span style="color:#e6db74">&#34;A young woman looking away&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Old&#34;</span>: <span style="color:#e6db74">&#34;An old woman in profile&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/wife-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>However, Jev seems to really lean towards the young wife rather than the mother-in-law.</p>
+<h2 id="dog-or-mop">Dog or Mop</h2>
+<p>The dog in dog or mop is a <a href="https://en.wikipedia.org/wiki/Komondor">Komondor</a>. I picked A and B (outlined in blue) and asked about each one.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/dog-mop.jpg" alt="Dog or mop" width="420" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>Dog or mop</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Dog or Mop!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;Is `photo` a dog or a mop?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Dog&#34;</span>: <span style="color:#e6db74">&#34;A dog&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Mop&#34;</span>: <span style="color:#e6db74">&#34;A mop&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/mop-a-jev.png"
+    alt="A"><figcaption>
+      <p>A</p>
+    </figcaption>
+</figure>
+
+<figure><img src="/images/2026/11-16-jev-hardest-questions/mop-b-jev.png"
+    alt="B"><figcaption>
+      <p>B</p>
+    </figcaption>
+</figure>
+
+<p>Good news for dogs - Jev can tell the difference.</p>
+<h2 id="the-impossible-elephant">The Impossible Elephant</h2>
+<p>Roger Shepard&rsquo;s <a href="https://en.wikipedia.org/wiki/Shepard_elephant">impossible elephant</a> swaps its legs with the gaps between them, so it&rsquo;s hard to say how many legs it has.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/elephant.jpg" alt="The impossible elephant" width="338" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>The impossible elephant</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;The Impossible Elephant!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;How many legs does the elephant in `photo` have?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Four&#34;</span>: <span style="color:#e6db74">&#34;The elephant has four legs&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Five&#34;</span>: <span style="color:#e6db74">&#34;The elephant has five legs&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/elephant-jev.png"
+    alt="Jev&rsquo;s verdict"><figcaption>
+      <p>Jev&rsquo;s verdict</p>
+    </figcaption>
+</figure>
+
+<p>I like the fact that Jev isn&rsquo;t sure here, because there really isn&rsquo;t a correct answer.</p>
+<h2 id="chihuahua-or-muffin">Chihuahua or Muffin</h2>
+<p>And finally, we&rsquo;ll finish with two classics. First, the famous <a href="https://www.npr.org/sections/thesalt/2016/03/11/470084215/canine-or-cuisine-this-photo-meme-is-fetching">chihuahua or muffin</a> meme. I took these four and sent them to Jev one at a time.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/chihuahua-muffin.jpg" alt="Chihuahua or muffin" width="360" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>Chihuahua or muffin</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Chihuahua or Muffin!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;Is `photo` a chihuahua or a muffin?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Chihuahua&#34;</span>: <span style="color:#e6db74">&#34;A chihuahua&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Muffin&#34;</span>: <span style="color:#e6db74">&#34;A blueberry muffin&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/chihuahua-tl-jev.png"
+    alt="Top left"><figcaption>
+      <p>Top left</p>
+    </figcaption>
+</figure>
+
+<figure><img src="/images/2026/11-16-jev-hardest-questions/chihuahua-tr-jev.png"
+    alt="Top right"><figcaption>
+      <p>Top right</p>
+    </figcaption>
+</figure>
+
+<figure><img src="/images/2026/11-16-jev-hardest-questions/chihuahua-bl-jev.png"
+    alt="Bottom left"><figcaption>
+      <p>Bottom left</p>
+    </figcaption>
+</figure>
+
+<figure><img src="/images/2026/11-16-jev-hardest-questions/chihuahua-br-jev.png"
+    alt="Bottom right"><figcaption>
+      <p>Bottom right</p>
+    </figcaption>
+</figure>
+
+<p>The good news here is that Jev can be trusted for food safety.</p>
+<h2 id="labradoodle-or-fried-chicken">Labradoodle or Fried Chicken</h2>
+<p>A variation on the above, <a href="https://www.npr.org/sections/thesalt/2016/03/11/470084215/canine-or-cuisine-this-photo-meme-is-fetching">labradoodle or fried chicken</a>. I sent each of these separately.</p>
+<figure style="text-align:center">
+  <img src="/images/2026/11-16-jev-hardest-questions/labradoodle-chicken.jpg" alt="Labradoodle or fried chicken" width="480" style="display:block;margin-left:auto;margin-right:auto">
+  <figcaption>Labradoodle or fried chicken</figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Labradoodle or Fried Chicken!&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instructions&#34;</span>: <span style="color:#e6db74">&#34;Is `photo` labradoodles or fried chicken?&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;criteria&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Labradoodles&#34;</span>: <span style="color:#e6db74">&#34;Labradoodle puppies&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Fried chicken&#34;</span>: <span style="color:#e6db74">&#34;Fried chicken&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/images/2026/11-16-jev-hardest-questions/labradoodle-left-jev.png"
+    alt="Left half"><figcaption>
+      <p>Left half</p>
+    </figcaption>
+</figure>
+
+<figure><img src="/images/2026/11-16-jev-hardest-questions/labradoodle-right-jev.png"
+    alt="Right half"><figcaption>
+      <p>Right half</p>
+    </figcaption>
+</figure>
+
+<p>I&rsquo;m a wee bit worried about the labradoodles here, given that Jev is almost 30% convinced they&rsquo;re chicken.</p>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/ai/">Ai</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/typesafe/">Typesafe</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/jev/">Jev</a></li>
+    </ul>
+</div>
+
+    <footer id="content-footer" class="not-prose">
+
+      
+
+      
+      <div id="related-post" class="">
+
+        <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8">Recommended for You</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-13-ai-in-housing-finance/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-20-ivy-rock/slide-01_hu_7f1eb0357a08b213.jpg" alt="Trust, Data and Governance in Housing Finance" width="750" height="422">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-11-13T06:00:00&#43;00:00">Nov 13, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Trust, Data and Governance in Housing Finance</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">What I said on Ivy Rock&#39;s AI in Housing Finance panel, plus some great examples from Paul McGrady and Victor Ochieng.</p>
+
+	</div>
+</article><article class="relative group bg-zinc-100 hover:bg-blue-100 rounded-3xl">
+	
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-11-claude-in-the-enterprise/"></a>
+
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-11-edge-tech/speakers_hu_77ce66f59c2b4a8e.jpg" alt="Claude in the Enterprise" width="750" height="1000">
+
+	  </figure>
+
+	<div class="p-6">
+
+		<time datetime="2026-11-11T06:00:00&#43;00:00">Nov 11, 2026</time>
+
+		<h3 class="my-4 text-2xl font-bold">Claude in the Enterprise</h3>
+
+		<p class="text-normal leading-normal text-zinc-500 line-clamp-2">Reporting from the field on the different types of impact AI is having in large organisations.</p>
+
+	</div>
+</article>
+          
+        </div>
+      </div>
+
+    </footer>
+
+  </article>
+
+  
+  <aside class="md:col-span-1"><div class="lg:sticky lg:top-8"><div class="rounded-2xl p-4 bg-zinc-100 mb-10">
+
+		<img class="aspect-video rounded" src="/images/2024/infinite_archive.png" alt="things i think i think abstract image of waves and a stick figure">
+
+		<p class="text-right text-xs mt-2 leading-none text-zinc-500">things i think i think</p>
+
+</div><div class="space-y-6">
+
+		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
+
+		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_90771763e1e6f5c2.png" alt="Using Jev to Answer the Internet&#39;s Hardest Questions" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Using Jev to Answer the Internet&#39;s Hardest Questions</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-13-ai-in-housing-finance/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-20-ivy-rock/slide-01_hu_b6c064037fcad7fe.jpg" alt="Trust, Data and Governance in Housing Finance" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Trust, Data and Governance in Housing Finance</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-11-claude-in-the-enterprise/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-11-edge-tech/speakers_hu_c6968840cc8851cc.jpg" alt="Claude in the Enterprise" width="188" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">Claude in the Enterprise</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-10-on-the-psc-podcast/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-06-psc-podcast/hero-nikki-pick_hu_bf165f067c213e8e.jpg" alt="On The PSC Podcast" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">On The PSC Podcast</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-09-personal-agents/hero-logo-collage_hu_17f6f7d4c4bf2efd.jpg" alt="How I Got Hacked by Instinct" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">How I Got Hacked by Instinct</h3>
+	</div>
+</article>
+
+		
+	</div>
+
+</div>
+</aside>
+
+</div>
+  
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://thingsithinkithink.blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+        
+        <span class="text-2xl font-semibold uppercase">thingsithinkithink</span>
+      </a>
+
+      <p class="font-semibold">
+        
+      </p>
+
+      
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://linkedin.com/in/davidfarrell81" target="_blank" rel="noopener noreferrer">
+			<img src="/images/linkedin-color-svgrepo-com.svg" alt="LinkedIn Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://github.com/DavidFarrell/" target="_blank" rel="noopener noreferrer">
+			<img src="/images/github-mark.svg" alt="GitHub Logo" class="w-8 h-8">
+		</a>
+	</li>
+	<li> 
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" 
+		   href="https://bsky.app/profile/dgerouvillefarrell.bsky.social" target="_blank" rel="noopener noreferrer">
+			<img src="/images/Bluesky_Logo.svg" alt="Bluesky Logo" class="w-8 h-8">
+		</a>
+	</li>
+	
+	
+</ul>
+
+    </div>
+    
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/categories/">Taxonomy</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">
+      Powered by 
+      <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>, 
+      <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> 
+      and based on the 
+      <a href="https://pehtheme-hugo.netlify.app/" target="_blank" rel="noopener">pehtheme</a> theme.
+    </p>
+
+  </div>
+  
+</div>
+</footer>
+      <script defer src="/js/insertoggle.5e0074947f573e105c5cd8cc6469570dd0c8bab091b8009e1895ab2f34e82d21.js" integrity="sha256-XgB0lH9XPhBcXNjMZGlXDdDIurCRuACeGJWrLzToLSE=" crossorigin="anonymous"></script>
+      <script defer src="/js/search.a60eb1bcca84a7fca79f62f442bfc9072560eda4426cf061f9e232ee320cd6e0.js" integrity="sha256-pg6xvMqEp/ynn2L0Qr/JByVg7aRCbPBh&#43;eIy7jIM1uA=" crossorigin="anonymous"></script>
+
+</body>
+</html>
