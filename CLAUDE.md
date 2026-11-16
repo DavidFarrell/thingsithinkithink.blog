@@ -3,14 +3,13 @@
 ## Build and Deploy
 
 Use `./build.sh "commit message"` to build and deploy. The script:
-1. Runs `npm run build` (Tailwind CSS)
-2. Runs `hugo --gc --minify` (production build)
-3. Commits everything
-4. Pushes to GitHub
+1. Runs `npm run build`, which builds the Tailwind CSS and runs `hugo --environment production`
+2. Commits everything (including `public/`)
+3. Pushes to GitHub
 
 The GitHub Action uploads `./public` directly - it does NOT run Hugo, so the local build must happen first.
 
-**Do NOT commit after running `hugo server`** - it writes localhost:1313 URLs into `public/`. Always use `./build.sh` or `hugo --gc --minify` for production builds.
+**Do NOT commit after running `hugo server`** - it writes localhost:1313 URLs into `public/`. Always use `./build.sh`, or `npm run build` for a production build without publishing.
 
 **Build script location:** `./build.sh` in the blog root.
 
