@@ -38,6 +38,17 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# Refuse to publish a dev-server build. `hugo server` without --renderToMemory
+# writes http://localhost:1313/ links into public/. Matches "//localhost" (any
+# scheme or port), not the bare word: some posts mention localhost in their text.
+LEAKED=$(grep -rlF "//localhost" public/)
+if [ -n "$LEAKED" ]; then
+    echo "Error: these files in public/ link to localhost, so they came from a dev server:"
+    echo "$LEAKED" | sed 's/^/  /'
+    echo "Nothing was committed. Stop any 'hugo server' writing to public/, then run ./build.sh again."
+    exit 1
+fi
+
 # Add all files
 echo "Adding files to git..."
 git add .
