@@ -45,7 +45,9 @@ LEAKED=$(grep -rlF "//localhost" public/)
 if [ -n "$LEAKED" ]; then
     echo "Error: these files in public/ link to localhost, so they came from a dev server:"
     echo "$LEAKED" | sed 's/^/  /'
-    echo "Nothing was committed. Stop any 'hugo server' writing to public/, then run ./build.sh again."
+    echo "Nothing was committed. The build does not delete old files in public/, so these are"
+    echo "left over from a 'hugo server' run. Stop it, look with 'git status public/', put tracked"
+    echo "files back with 'git checkout -- public/', delete untracked leftovers, then run ./build.sh again."
     exit 1
 fi
 
