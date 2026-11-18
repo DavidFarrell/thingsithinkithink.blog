@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="627">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://thingsithinkithink.blog/images/2026/02-02-claude-agent-sdk-part-4_hu_8b3410026cd09267.jpg">
-      <link rel="stylesheet" href="/css/main.min.8c78a3be3773522aca77753a4cb797e255cc8f58a7fef21eec2091e345509b95.css" integrity="sha256-jHijvjdzUirKd3U6TLeX4lXMj1in/vIe7CCR40VQm5U=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0657c01794fee5c88963ab6ada7d0aab9f2b678656027822359621876bafee45.css" integrity="sha256-BlfAF5T&#43;5ciJY6tq2n0Kq58rZ4ZWAngiNZYhh2uv7kU=" crossorigin="anonymous">
 
 <link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
 <link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
@@ -154,30 +154,30 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Here&rsquo;s what each field means:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>What it measures</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>input_tokens</code></td>
-          <td>Tokens after the last cache breakpoint (not cached)</td>
-      </tr>
-      <tr>
-          <td><code>cache_creation_input_tokens</code></td>
-          <td>Tokens <strong>newly added</strong> to cache this turn</td>
-      </tr>
-      <tr>
-          <td><code>cache_read_input_tokens</code></td>
-          <td>Tokens <strong>reused</strong> from cache</td>
-      </tr>
-      <tr>
-          <td><code>output_tokens</code></td>
-          <td>Tokens Claude generated</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>What it measures</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>input_tokens</code></td>
+					<td>Tokens after the last cache breakpoint (not cached)</td>
+			</tr>
+			<tr>
+					<td><code>cache_creation_input_tokens</code></td>
+					<td>Tokens <strong>newly added</strong> to cache this turn</td>
+			</tr>
+			<tr>
+					<td><code>cache_read_input_tokens</code></td>
+					<td>Tokens <strong>reused</strong> from cache</td>
+			</tr>
+			<tr>
+					<td><code>output_tokens</code></td>
+					<td>Tokens Claude generated</td>
+			</tr>
+	</tbody>
 </table>
 <p>So - <strong>new tokens this turn</strong> = <code>input_tokens + cache_creation_input_tokens</code></p>
 <p>Everything in <code>cache_read_input_tokens</code> was already sent in a previous turn and is being reused.</p>
@@ -343,7 +343,7 @@ The main loop structure now handles both conversation flow and session resets:</
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-26-claude-agent-sdk-part-3/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-26-claude-agent-sdk-part-3_hu_150233a42889ec1.png" alt="Claude Agent SDK Part 3: The Context Control Problem" width="750" height="419">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-26-claude-agent-sdk-part-3_hu_703a015573b18e3b.png" alt="Claude Agent SDK Part 3: The Context Control Problem" width="750" height="419">
 
 	  </figure>
 
@@ -360,7 +360,7 @@ The main loop structure now handles both conversation flow and session resets:</
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/01-19-claude-agent-sdk-part-2/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-19-claude-agent-sdk-part-2_hu_a99f46546073ac8d.png" alt="Claude Agent SDK: Part 2" width="750" height="419">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/01-19-claude-agent-sdk-part-2_hu_439b388a28067dc1.png" alt="Claude Agent SDK: Part 2" width="750" height="419">
 
 	  </figure>
 
@@ -394,8 +394,17 @@ The main loop structure now handles both conversation flow and session resets:</
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-18-how-ai-built-this-at-figma/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-18-how-ai-built-this-at-figma/figma-hero-16x9_hu_9d1f2ab96c509a6b.jpg" alt="How AI Built This at Figma" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">How AI Built This at Figma</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/"></a>
-	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_90771763e1e6f5c2.png" alt="Using Jev to Answer the Internet&#39;s Hardest Questions" width="444" height="250" style="object-fit: contain;">
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_c4956a3624d1224c.png" alt="Using Jev to Answer the Internet&#39;s Hardest Questions" width="444" height="250" style="object-fit: contain;">
 
 	</figure>
 	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
@@ -427,15 +436,6 @@ The main loop structure now handles both conversation flow and session resets:</
 	</figure>
 	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
 		<h3 class="font-bold group-hover:underline decoration-auto">On The PSC Podcast</h3>
-	</div>
-</article>
-<article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/"></a>
-	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-09-personal-agents/hero-logo-collage_hu_17f6f7d4c4bf2efd.jpg" alt="How I Got Hacked by Instinct" width="444" height="250" style="object-fit: contain;">
-
-	</figure>
-	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
-		<h3 class="font-bold group-hover:underline decoration-auto">How I Got Hacked by Instinct</h3>
 	</div>
 </article>
 

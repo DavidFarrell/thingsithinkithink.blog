@@ -13,12 +13,12 @@
 <meta property="og:url" content="https://thingsithinkithink.blog/posts/2026/06-21-open-swimcast/">
 <meta property="og:site_name" content="thingsithinkithink">
 <meta property="article:published_time" content="2026-06-21T12:00:00Z">
-<meta property="og:image" content="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_f72081e566b507cd.png">
+<meta property="og:image" content="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_845179e01a652a78.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_f72081e566b507cd.png">
-      <link rel="stylesheet" href="/css/main.min.8c78a3be3773522aca77753a4cb797e255cc8f58a7fef21eec2091e345509b95.css" integrity="sha256-jHijvjdzUirKd3U6TLeX4lXMj1in/vIe7CCR40VQm5U=" crossorigin="anonymous">
+<meta name="twitter:image" content="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_845179e01a652a78.png">
+      <link rel="stylesheet" href="/css/main.min.0657c01794fee5c88963ab6ada7d0aab9f2b678656027822359621876bafee45.css" integrity="sha256-BlfAF5T&#43;5ciJY6tq2n0Kq58rZ4ZWAngiNZYhh2uv7kU=" crossorigin="anonymous">
 
 <link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
 <link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
@@ -132,7 +132,7 @@
     </header>
 
     <figure id="featureimage" class="rounded-xl aspect-video">
-            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_d6a4c24438ee2db6.png" alt="" width="750" height="422">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_3e305958c4167766.png" alt="" width="750" height="422">
         <figcaption class="text-center italic text-xs">Open Swimcast</figcaption>
 
     </figure>
@@ -142,9 +142,9 @@
 <p>I looked online to see how people do this, and as far as I can tell there isn&rsquo;t a good solution. There&rsquo;s a custom Android underwater tablet, about the size of an Apple Watch, that you strap to the back of your goggles and plug waterproof headphones into - customer reviews basically indicate it&rsquo;s a very low quality product. There are also devices that transmit radio waves to a receiver on your headset, and the receiver can be plugged into with underwater headphones. That&rsquo;s fine, but then you have to put your phone near the pool so the signal can be broadcast, and I don&rsquo;t want to leave my phone exposed at the poolside.</p>
 <p>I was basically thinking there wasn&rsquo;t a solution. Then my wife, knowing I was trying to do this, bought me these underwater MP3-player headphones. They&rsquo;re great - I love these headphones. But they don&rsquo;t support podcasts, they support music. You drag MP3 files onto the disk when you plug the headphones into your computer, and then when you switch the headphones on, they play what&rsquo;s on their hard drive.</p>
 <figure><img src="/images/2026/06-17-openswimcast-headphones.png"
-    alt="The underwater bone-conduction headphones - great for music, but no podcast support"><figcaption>
-      <p>The underwater bone-conduction headphones - great for music, but no podcast support</p>
-    </figcaption>
+			alt="The underwater bone-conduction headphones - great for music, but no podcast support"><figcaption>
+			<p>The underwater bone-conduction headphones - great for music, but no podcast support</p>
+		</figcaption>
 </figure>
 
 <p>The problem is that podcasts aren&rsquo;t really a drag-and-drop medium. They&rsquo;re a feed-based medium, and I want to synchronise with whatever I&rsquo;m already listening to on my phone. I don&rsquo;t want to manually figure out the URL of the MP3s, download them, and so on - it&rsquo;s just too much faff.</p>
@@ -152,30 +152,30 @@
 <p>The app I use for podcasts is called Pocket Casts. Pocket Casts is cross-platform - you can listen on your phone, and you can listen in a web browser. And because there&rsquo;s a web browser version, that means there&rsquo;s an API, documented or not. So I was able to build this little app. I&rsquo;m calling it Open Swimcast.</p>
 <p>Open Swimcast logs into my podcast feed and lets me choose which podcasts I want to listen to, selecting the ones I want to hear in my next swim.</p>
 <figure><img src="/images/2026/06-17-openswimcast-queue.jpg"
-    alt="My Pocket Casts feed, picking episodes for the next swim"><figcaption>
-      <p>My Pocket Casts feed, picking episodes for the next swim</p>
-    </figcaption>
+			alt="My Pocket Casts feed, picking episodes for the next swim"><figcaption>
+			<p>My Pocket Casts feed, picking episodes for the next swim</p>
+		</figcaption>
 </figure>
 
 <p>Then I go to the preparation screen, where I can choose settings like volume boost, speed-up, and text-to-speech generated announcements.</p>
 <figure><img src="/images/2026/06-17-openswimcast-lineup.jpg"
-    alt="The preparation screen - boost, speed, spoken announcements, and ad trimming"><figcaption>
-      <p>The preparation screen - boost, speed, spoken announcements, and ad trimming</p>
-    </figcaption>
+			alt="The preparation screen - boost, speed, spoken announcements, and ad trimming"><figcaption>
+			<p>The preparation screen - boost, speed, spoken announcements, and ad trimming</p>
+		</figcaption>
 </figure>
 
 <p>I can even run the transcription of each podcast through a little pipeline I built that identifies and strips ad breaks. I don&rsquo;t mind ads in my podcasts, but I listened to This Week in Tech the other day underwater and there was a solid eight-minute advert - and I&rsquo;m not doing that.</p>
 <figure><img src="/images/2026/06-17-openswimcast-pipeline.jpg"
-    alt="Each episode runs through the pipeline - transcribe, find ad breaks, re-edit, encode, and copy to the headphones"><figcaption>
-      <p>Each episode runs through the pipeline - transcribe, find ad breaks, re-edit, encode, and copy to the headphones</p>
-    </figcaption>
+			alt="Each episode runs through the pipeline - transcribe, find ad breaks, re-edit, encode, and copy to the headphones"><figcaption>
+			<p>Each episode runs through the pipeline - transcribe, find ad breaks, re-edit, encode, and copy to the headphones</p>
+		</figcaption>
 </figure>
 
 <p>So far I&rsquo;ve probably spent more time playing with the app than I have swimming, but it&rsquo;s early days and I&rsquo;m highly motivated now that I&rsquo;ve got my ability to keep listening underwater. It&rsquo;s actually a lot of fun.</p>
 <p>There&rsquo;s a wee video below if you want to see how it looks in practice.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/htrqQ63iFXg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/htrqQ63iFXg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
 
 
 
@@ -216,7 +216,7 @@
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_7be91843b6ac2868.png" alt="The Jevons Paradox and the Kindle Web Proxy" width="750" height="793">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_3cb69eb9c46786d2.png" alt="The Jevons Paradox and the Kindle Web Proxy" width="750" height="793">
 
 	  </figure>
 
@@ -250,8 +250,17 @@
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-18-how-ai-built-this-at-figma/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-18-how-ai-built-this-at-figma/figma-hero-16x9_hu_9d1f2ab96c509a6b.jpg" alt="How AI Built This at Figma" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">How AI Built This at Figma</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/"></a>
-	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_90771763e1e6f5c2.png" alt="Using Jev to Answer the Internet&#39;s Hardest Questions" width="444" height="250" style="object-fit: contain;">
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_c4956a3624d1224c.png" alt="Using Jev to Answer the Internet&#39;s Hardest Questions" width="444" height="250" style="object-fit: contain;">
 
 	</figure>
 	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
@@ -283,15 +292,6 @@
 	</figure>
 	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
 		<h3 class="font-bold group-hover:underline decoration-auto">On The PSC Podcast</h3>
-	</div>
-</article>
-<article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/"></a>
-	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-09-personal-agents/hero-logo-collage_hu_17f6f7d4c4bf2efd.jpg" alt="How I Got Hacked by Instinct" width="444" height="250" style="object-fit: contain;">
-
-	</figure>
-	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
-		<h3 class="font-bold group-hover:underline decoration-auto">How I Got Hacked by Instinct</h3>
 	</div>
 </article>
 

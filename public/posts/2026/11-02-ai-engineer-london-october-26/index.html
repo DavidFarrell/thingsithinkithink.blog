@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="627">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://thingsithinkithink.blog/images/2026/11-01-ai-engineer-london/shapeless-blob_hu_b9656e102c856db1.jpg">
-      <link rel="stylesheet" href="/css/main.min.8c78a3be3773522aca77753a4cb797e255cc8f58a7fef21eec2091e345509b95.css" integrity="sha256-jHijvjdzUirKd3U6TLeX4lXMj1in/vIe7CCR40VQm5U=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/main.min.0657c01794fee5c88963ab6ada7d0aab9f2b678656027822359621876bafee45.css" integrity="sha256-BlfAF5T&#43;5ciJY6tq2n0Kq58rZ4ZWAngiNZYhh2uv7kU=" crossorigin="anonymous">
 
 <link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
 <link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
@@ -145,30 +145,30 @@
 <p>I think the shapeless blob metaphor at the top of this post worked really well, because every one of these models does have a unique shape. For a minute there it did feel to me, incorrectly, that models were going to converge on very similar profiles, but this has proven not to be the case. Hearing more about how Arena think about and shape their work was really interesting.</p>
 <p>For example, they&rsquo;ve got a benchmark on <a href="https://arena.ai/resources/agent-arena-signals/">agent mode</a>. You can see from the slide that they look for indicators of performance across multiple signals - in this case, looking for confirmations of success, weighing praise against complaints from users, looking to see how steerable the AIs are, whether they use bash correctly and whether they hallucinated any tools.</p>
 <figure><img src="/images/2026/11-01-ai-engineer-london/five-signals.jpg"
-    alt="Agent mode: five signals"><figcaption>
-      <p>Agent mode: five signals</p>
-    </figcaption>
+			alt="Agent mode: five signals"><figcaption>
+			<p>Agent mode: five signals</p>
+		</figcaption>
 </figure>
 
 <p>So for example, steerability. They score each assistant turn by how much correcting the user has to do, and a repeated correction costs more than a first one.</p>
 <figure><img src="/images/2026/11-01-ai-engineer-london/steerability.jpg"
-    alt="Steerability: the cost of each correction"><figcaption>
-      <p>Steerability: the cost of each correction</p>
-    </figcaption>
+			alt="Steerability: the cost of each correction"><figcaption>
+			<p>Steerability: the cost of each correction</p>
+		</figcaption>
 </figure>
 
 <p>You can see here that there are meaningful differences between today&rsquo;s frontier models, as of late October. You can understand why Anthropic are leading so effectively in coding tasks when Opus 5.5 is performing so much better overall than GPT-6 Astra (with GPT-6.1 Sol just behind Astra).</p>
 <figure><img src="/images/2026/11-01-ai-engineer-london/current-profiles.jpg"
-    alt="Agent mode: current profiles for Claude Opus 5.5 (Max), GPT-6 Astra (Max) and Mistral Medium 3.5"><figcaption>
-      <p>Agent mode: current profiles for Claude Opus 5.5 (Max), GPT-6 Astra (Max) and Mistral Medium 3.5</p>
-    </figcaption>
+			alt="Agent mode: current profiles for Claude Opus 5.5 (Max), GPT-6 Astra (Max) and Mistral Medium 3.5"><figcaption>
+			<p>Agent mode: current profiles for Claude Opus 5.5 (Max), GPT-6 Astra (Max) and Mistral Medium 3.5</p>
+		</figcaption>
 </figure>
 
 <p>I also enjoyed hearing about how they <a href="https://arena.ai/blog/ai-alignment-index">measure alignment</a>. The way that they categorise failure signals feels to me in line with the way one would identify clusters of errors when performing <a href="https://thingsithinkithink.blog/posts/2025/04-13-error-analysis-for-improving-llm-applications/">error analysis</a>.</p>
 <figure><img src="/images/2026/11-01-ai-engineer-london/alignment.jpg"
-    alt="Alignment: three failure signals"><figcaption>
-      <p>Alignment: three failure signals</p>
-    </figcaption>
+			alt="Alignment: three failure signals"><figcaption>
+			<p>Alignment: three failure signals</p>
+		</figcaption>
 </figure>
 
 <p>Also, I&rsquo;m pretty sure it&rsquo;s universally agreed that Peter is one of the most creative people out there when it comes to using these frontier models, and it&rsquo;s always a joy to see the weird and wonderful demos he creates. He <a href="https://x.com/petergostev/status/2048078400628412885">basically recreated Google Street View</a> for the Hanging Gardens of Babylon, with GPT-Image-2 generating the 1,500 images and GPT-5.5 in Codex building it. If you haven&rsquo;t seen his stuff, have a look at his <a href="https://www.youtube.com/watch?v=GQPi39sjNhU">first impressions of GPT-6 Astra</a>. What a fun job he has, and I&rsquo;m pretty sure he&rsquo;s the right guy for that job.</p>
@@ -183,16 +183,16 @@
 <p>It shows that intuitions can lead you astray. The intuition is that a larger model will always be better, specialised fine-tunes aside. That doesn&rsquo;t always hold, and there are actual concrete downsides.</p>
 <p>He also shared a benchmark with a graph of the same model at bigger and bigger sizes. It might have been Meta, it might have been Nvidia, I&rsquo;m not sure. At a certain point timestamp accuracy started to decrease. It was the same class of model and the same training regime, so the argument of large generic model versus smaller fine-tuned model doesn&rsquo;t really apply. As I understood it, as the model got bigger it started to learn all these clever shortcuts that decreased its accuracy. I had a look for the benchmark but I couldn&rsquo;t find it.</p>
 <figure><img src="/images/2026/11-01-ai-engineer-london/voice-on-device.jpg"
-    alt="Danila&rsquo;s closing slide: voice, on device"><figcaption>
-      <p>Danila&rsquo;s closing slide: voice, on device</p>
-    </figcaption>
+			alt="Danila&rsquo;s closing slide: voice, on device"><figcaption>
+			<p>Danila&rsquo;s closing slide: voice, on device</p>
+		</figcaption>
 </figure>
 
 <p>If you&rsquo;re interested in the ElevenLabs local models, they&rsquo;ve got a <a href="https://elevenlabs.io/local-deployment-waitlist">waitlist here</a>.</p>
 <figure><img src="/images/2026/11-01-ai-engineer-london/elevenlabs-waitlist-qr.png"
-    alt="ElevenLabs local deployment waitlist" width="220"><figcaption>
-      <p>ElevenLabs local deployment waitlist</p>
-    </figcaption>
+			alt="ElevenLabs local deployment waitlist" width="220"><figcaption>
+			<p>ElevenLabs local deployment waitlist</p>
+		</figcaption>
 </figure>
 
 <h2 id="thingsithinkithink">thingsithinkithink</h2>
@@ -221,7 +221,7 @@
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/06-21-open-swimcast/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_d6a4c24438ee2db6.png" alt="Open Swimcast" width="750" height="422">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/06-17-openswimcast-hero_hu_3e305958c4167766.png" alt="Open Swimcast" width="750" height="422">
 
 	  </figure>
 
@@ -272,8 +272,17 @@
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-18-how-ai-built-this-at-figma/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-18-how-ai-built-this-at-figma/figma-hero-16x9_hu_9d1f2ab96c509a6b.jpg" alt="How AI Built This at Figma" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">How AI Built This at Figma</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/"></a>
-	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_90771763e1e6f5c2.png" alt="Using Jev to Answer the Internet&#39;s Hardest Questions" width="444" height="250" style="object-fit: contain;">
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_c4956a3624d1224c.png" alt="Using Jev to Answer the Internet&#39;s Hardest Questions" width="444" height="250" style="object-fit: contain;">
 
 	</figure>
 	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
@@ -305,15 +314,6 @@
 	</figure>
 	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
 		<h3 class="font-bold group-hover:underline decoration-auto">On The PSC Podcast</h3>
-	</div>
-</article>
-<article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/"></a>
-	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-09-personal-agents/hero-logo-collage_hu_17f6f7d4c4bf2efd.jpg" alt="How I Got Hacked by Instinct" width="444" height="250" style="object-fit: contain;">
-
-	</figure>
-	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
-		<h3 class="font-bold group-hover:underline decoration-auto">How I Got Hacked by Instinct</h3>
 	</div>
 </article>
 

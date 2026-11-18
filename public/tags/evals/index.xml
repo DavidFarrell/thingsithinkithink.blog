@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Evals on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/evals/</link>
-    <description>Recent content in Evals on thingsithinkithink</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 02 Nov 2026 09:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/evals/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI Engineer London - October 26</title>
-      <link>https://thingsithinkithink.blog/posts/2026/11-02-ai-engineer-london-october-26/</link>
-      <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2026/11-02-ai-engineer-london-october-26/</guid>
-      <description>&lt;p&gt;Last week I got back to the AI Engineer London meetup for the first time in a while. It was great to see &lt;a href=&#34;https://www.linkedin.com/in/eddie-forson/&#34;&gt;Eddie Forson&lt;/a&gt; again and to meet &lt;a href=&#34;https://www.linkedin.com/in/tpina/&#34;&gt;Tiago Pina&lt;/a&gt;, &lt;a href=&#34;https://www.linkedin.com/in/amandineflachs/&#34;&gt;Amandine Flachs&lt;/a&gt; and &lt;a href=&#34;https://www.linkedin.com/in/nelith-bandularatne/&#34;&gt;Nel Bandularatne&lt;/a&gt;. I always enjoy going to London AI meetups, but it&amp;rsquo;s been over a month since I&amp;rsquo;ve gone to one because I&amp;rsquo;ve had so many travels and some game projects I had to attend to.&lt;/p&gt;&#xA;&lt;p&gt;I wanted to share a couple of interesting things from the talks.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Three Things I Did Over Christmas</title>
-      <link>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</link>
-      <pubDate>Wed, 07 Jan 2026 06:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</guid>
-      <description>&lt;p&gt;One of the nice things about not having work over the Christmas break is that it gives me a chance to play a little.&lt;/p&gt;&#xA;&lt;p&gt;This year I had three main projects.&lt;/p&gt;&#xA;&lt;h2 id=&#34;finishing-my-llm-evals-course-notes&#34;&gt;Finishing My LLM Evals Course Notes&lt;/h2&gt;&#xA;&lt;p&gt;I finally wrote up the last of my notes on the &lt;a href=&#34;https://thingsithinkithink.blog/posts/2026/01-05-llm-evals-course-recap/&#34;&gt;LLM Evals course&lt;/a&gt;, including an overall summary and an index page pulling together all eight lessons. It felt good to close the loop on something I&amp;rsquo;d been chipping away at for months.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Evals on thingsithinkithink</title>
+		<link>https://thingsithinkithink.blog/tags/evals/</link>
+		<description>Recent content in Evals on thingsithinkithink</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 18 Nov 2026 06:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://thingsithinkithink.blog/tags/evals/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>How AI Built This at Figma</title>
+				<link>https://thingsithinkithink.blog/posts/2026/11-18-how-ai-built-this-at-figma/</link>
+				<pubDate>Wed, 18 Nov 2026 06:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/posts/2026/11-18-how-ai-built-this-at-figma/</guid>
+				<description>&lt;p&gt;Last Thursday evening I went to &lt;a href=&#34;https://luma.com/29zm6gmg&#34;&gt;How AI Built This&lt;/a&gt; at Figma&amp;rsquo;s new London office, run with &lt;a href=&#34;https://inaratalent.com/&#34;&gt;Inara Talent&lt;/a&gt; and &lt;a href=&#34;https://www.womenintech.co.uk/&#34;&gt;Women in Tech UK&lt;/a&gt;. The London team owns Figma&amp;rsquo;s MCP server and the journey between design and code, and three of their engineers gave talks about how they work.&lt;/p&gt;&#xA;&lt;h2 id=&#34;taking-the-human-out-of-the-loop&#34;&gt;Taking the human out of the loop&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/in/emilculic/&#34;&gt;Emil Culic&lt;/a&gt; talked about how a small team built the Figma app for ChatGPT and Codex with OpenAI. The timeline was very aggressive: the first intro call was at the start of September and it was announced at the end of September, and OpenAI were still building the SDK they were building on top of while they did it.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>AI Engineer London - October 26</title>
+				<link>https://thingsithinkithink.blog/posts/2026/11-02-ai-engineer-london-october-26/</link>
+				<pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/posts/2026/11-02-ai-engineer-london-october-26/</guid>
+				<description>&lt;p&gt;Last week I got back to the AI Engineer London meetup for the first time in a while. It was great to see &lt;a href=&#34;https://www.linkedin.com/in/eddie-forson/&#34;&gt;Eddie Forson&lt;/a&gt; again and to meet &lt;a href=&#34;https://www.linkedin.com/in/tpina/&#34;&gt;Tiago Pina&lt;/a&gt;, &lt;a href=&#34;https://www.linkedin.com/in/amandineflachs/&#34;&gt;Amandine Flachs&lt;/a&gt; and &lt;a href=&#34;https://www.linkedin.com/in/nelith-bandularatne/&#34;&gt;Nel Bandularatne&lt;/a&gt;. I always enjoy going to London AI meetups, but it&amp;rsquo;s been over a month since I&amp;rsquo;ve gone to one because I&amp;rsquo;ve had so many travels and some game projects I had to attend to.&lt;/p&gt;&#xA;&lt;p&gt;I wanted to share a couple of interesting things from the talks.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Three Things I Did Over Christmas</title>
+				<link>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</link>
+				<pubDate>Wed, 07 Jan 2026 06:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/posts/2026/01-07-christmas-break-projects/</guid>
+				<description>&lt;p&gt;One of the nice things about not having work over the Christmas break is that it gives me a chance to play a little.&lt;/p&gt;&#xA;&lt;p&gt;This year I had three main projects.&lt;/p&gt;&#xA;&lt;h2 id=&#34;finishing-my-llm-evals-course-notes&#34;&gt;Finishing My LLM Evals Course Notes&lt;/h2&gt;&#xA;&lt;p&gt;I finally wrote up the last of my notes on the &lt;a href=&#34;https://thingsithinkithink.blog/posts/2026/01-05-llm-evals-course-recap/&#34;&gt;LLM Evals course&lt;/a&gt;, including an overall summary and an index page pulling together all eight lessons. It felt good to close the loop on something I&amp;rsquo;d been chipping away at for months.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

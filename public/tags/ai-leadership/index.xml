@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ai-Leadership on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/ai-leadership/</link>
-    <description>Recent content in Ai-Leadership on thingsithinkithink</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 04 Nov 2026 09:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/ai-leadership/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Does It Matter If AI Wrote This?</title>
-      <link>https://thingsithinkithink.blog/posts/2026/11-04-does-it-matter-if-ai-wrote-this/</link>
-      <pubDate>Wed, 04 Nov 2026 09:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2026/11-04-does-it-matter-if-ai-wrote-this/</guid>
-      <description>&lt;p&gt;LLMs are so useful that it&amp;rsquo;s hard not to use them. And yet I hate it when somebody sends me a document that reads like it was written entirely by Claude or by ChatGPT. The signal it sends is that the writer didn&amp;rsquo;t put any effort into it.&lt;/p&gt;&#xA;&lt;p&gt;This is not something that&amp;rsquo;s unique to me. It&amp;rsquo;s a topic of conversation I find frequently in all the various circles I am connected to. One client&amp;rsquo;s office has a stance of &amp;ldquo;no blank sheeting&amp;rdquo;, and they require all colleagues to do their first draft entirely before asking AI to help with edits. Another organisation I work with suggests that people are allowed to use AI to create things, but they should disclose it. And even extremely AI-savvy and AI-forward authors like &lt;a href=&#34;https://www.oneusefulthing.org/about&#34;&gt;Ethan Mollick&lt;/a&gt; make a big deal of it.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Climbing the Ladder of Abstraction</title>
-      <link>https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/</link>
-      <pubDate>Mon, 15 Jun 2026 05:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/</guid>
-      <description>&lt;p&gt;Last week I gave a talk at AI Practitioner London. The theme of the evening was &amp;ldquo;Coding Agents: Good, Bad, Ugly and Worse&amp;rdquo;, and my role was to represent good - or more precisely, what good looks like when you can no longer review every line an AI writes.&lt;/p&gt;&#xA;&lt;p&gt;When an agent produces more code in an afternoon than you could read in a week, how do you say the work is good? I built the talk around Hayakawa&amp;rsquo;s ladder of abstraction.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>The Embedded AI Trio</title>
-      <link>https://thingsithinkithink.blog/posts/2026/06-15-the-embedded-ai-trio/</link>
-      <pubDate>Sun, 14 Jun 2026 08:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2026/06-15-the-embedded-ai-trio/</guid>
-      <description>&lt;p&gt;One of my favourite writers on AI isn&amp;rsquo;t really someone you&amp;rsquo;d consider (from a distance) to be an AI guy. However, I came across &lt;a href=&#34;https://www.oneusefulthing.org/&#34;&gt;Ethan Mollick&lt;/a&gt; not long after the ChatGPT moment, writing about the overlap between what generative AI can do and how it is likely to change the working world. He&amp;rsquo;s a Wharton professor of business, not a technologist. He also wrote one of the first good books about our current AI moment, &lt;a href=&#34;https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/&#34;&gt;&lt;em&gt;Co-Intelligence&lt;/em&gt;&lt;/a&gt;. That book formed the basis of my first AI enablement workshops. What I love about Ethan is that he takes AI seriously without sounding like a sci-fi author. He&amp;rsquo;s grounded in how real work gets done.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Ai-Leadership on thingsithinkithink</title>
+		<link>https://thingsithinkithink.blog/tags/ai-leadership/</link>
+		<description>Recent content in Ai-Leadership on thingsithinkithink</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 04 Nov 2026 09:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://thingsithinkithink.blog/tags/ai-leadership/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Does It Matter If AI Wrote This?</title>
+				<link>https://thingsithinkithink.blog/posts/2026/11-04-does-it-matter-if-ai-wrote-this/</link>
+				<pubDate>Wed, 04 Nov 2026 09:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/posts/2026/11-04-does-it-matter-if-ai-wrote-this/</guid>
+				<description>&lt;p&gt;LLMs are so useful that it&amp;rsquo;s hard not to use them. And yet I hate it when somebody sends me a document that reads like it was written entirely by Claude or by ChatGPT. The signal it sends is that the writer didn&amp;rsquo;t put any effort into it.&lt;/p&gt;&#xA;&lt;p&gt;This is not something that&amp;rsquo;s unique to me. It&amp;rsquo;s a topic of conversation I find frequently in all the various circles I am connected to. One client&amp;rsquo;s office has a stance of &amp;ldquo;no blank sheeting&amp;rdquo;, and they require all colleagues to do their first draft entirely before asking AI to help with edits. Another organisation I work with suggests that people are allowed to use AI to create things, but they should disclose it. And even extremely AI-savvy and AI-forward authors like &lt;a href=&#34;https://www.oneusefulthing.org/about&#34;&gt;Ethan Mollick&lt;/a&gt; make a big deal of it.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Climbing the Ladder of Abstraction</title>
+				<link>https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/</link>
+				<pubDate>Mon, 15 Jun 2026 05:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/posts/2026/06-14-climbing-the-ladder-of-abstraction/</guid>
+				<description>&lt;p&gt;Last week I gave a talk at AI Practitioner London. The theme of the evening was &amp;ldquo;Coding Agents: Good, Bad, Ugly and Worse&amp;rdquo;, and my role was to represent good - or more precisely, what good looks like when you can no longer review every line an AI writes.&lt;/p&gt;&#xA;&lt;p&gt;When an agent produces more code in an afternoon than you could read in a week, how do you say the work is good? I built the talk around Hayakawa&amp;rsquo;s ladder of abstraction.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>The Embedded AI Trio</title>
+				<link>https://thingsithinkithink.blog/posts/2026/06-15-the-embedded-ai-trio/</link>
+				<pubDate>Sun, 14 Jun 2026 08:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/posts/2026/06-15-the-embedded-ai-trio/</guid>
+				<description>&lt;p&gt;One of my favourite writers on AI isn&amp;rsquo;t really someone you&amp;rsquo;d consider (from a distance) to be an AI guy. However, I came across &lt;a href=&#34;https://www.oneusefulthing.org/&#34;&gt;Ethan Mollick&lt;/a&gt; not long after the ChatGPT moment, writing about the overlap between what generative AI can do and how it is likely to change the working world. He&amp;rsquo;s a Wharton professor of business, not a technologist. He also wrote one of the first good books about our current AI moment, &lt;a href=&#34;https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/&#34;&gt;&lt;em&gt;Co-Intelligence&lt;/em&gt;&lt;/a&gt;. That book formed the basis of my first AI enablement workshops. What I love about Ethan is that he takes AI seriously without sounding like a sci-fi author. He&amp;rsquo;s grounded in how real work gets done.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

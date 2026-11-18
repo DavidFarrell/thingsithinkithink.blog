@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Events on thingsithinkithink</title>
+		<link>https://thingsithinkithink.blog/tags/events/</link>
+		<description>Recent content in Events on thingsithinkithink</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 18 Nov 2026 06:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://thingsithinkithink.blog/tags/events/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>How AI Built This at Figma</title>
+				<link>https://thingsithinkithink.blog/posts/2026/11-18-how-ai-built-this-at-figma/</link>
+				<pubDate>Wed, 18 Nov 2026 06:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/posts/2026/11-18-how-ai-built-this-at-figma/</guid>
+				<description>&lt;p&gt;Last Thursday evening I went to &lt;a href=&#34;https://luma.com/29zm6gmg&#34;&gt;How AI Built This&lt;/a&gt; at Figma&amp;rsquo;s new London office, run with &lt;a href=&#34;https://inaratalent.com/&#34;&gt;Inara Talent&lt;/a&gt; and &lt;a href=&#34;https://www.womenintech.co.uk/&#34;&gt;Women in Tech UK&lt;/a&gt;. The London team owns Figma&amp;rsquo;s MCP server and the journey between design and code, and three of their engineers gave talks about how they work.&lt;/p&gt;&#xA;&lt;h2 id=&#34;taking-the-human-out-of-the-loop&#34;&gt;Taking the human out of the loop&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/in/emilculic/&#34;&gt;Emil Culic&lt;/a&gt; talked about how a small team built the Figma app for ChatGPT and Codex with OpenAI. The timeline was very aggressive: the first intro call was at the start of September and it was announced at the end of September, and OpenAI were still building the SDK they were building on top of while they did it.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

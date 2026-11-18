@@ -13,12 +13,12 @@
 <meta property="og:url" content="https://thingsithinkithink.blog/posts/2026/02-09-jevons-paradox-and-the-kindle-web-proxy/">
 <meta property="og:site_name" content="thingsithinkithink">
 <meta property="article:published_time" content="2026-02-09T12:00:00Z">
-<meta property="og:image" content="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_812cf3ccfe47a399.png">
+<meta property="og:image" content="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_40331615b7a283f0.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_812cf3ccfe47a399.png">
-      <link rel="stylesheet" href="/css/main.min.8c78a3be3773522aca77753a4cb797e255cc8f58a7fef21eec2091e345509b95.css" integrity="sha256-jHijvjdzUirKd3U6TLeX4lXMj1in/vIe7CCR40VQm5U=" crossorigin="anonymous">
+<meta name="twitter:image" content="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_40331615b7a283f0.png">
+      <link rel="stylesheet" href="/css/main.min.0657c01794fee5c88963ab6ada7d0aab9f2b678656027822359621876bafee45.css" integrity="sha256-BlfAF5T&#43;5ciJY6tq2n0Kq58rZ4ZWAngiNZYhh2uv7kU=" crossorigin="anonymous">
 
 <link rel="icon" type="image/svg+xml" href="https://thingsithinkithink.blog/favicon.svg"> 
 <link rel="icon" type="image/x-icon" href="https://thingsithinkithink.blog/favicon.ico"> 
@@ -132,7 +132,7 @@
     </header>
 
     <figure id="featureimage" class="rounded-xl aspect-video">
-            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_7be91843b6ac2868.png" alt="" width="750" height="793">
+            <img class="rounded-lg" src="https://thingsithinkithink.blog/images/2026/02-09-kindle-proxy-home_hu_3cb69eb9c46786d2.png" alt="" width="750" height="793">
         <figcaption class="text-center italic text-xs">The Kindle Web Proxy home page</figcaption>
 
     </figure>
@@ -141,15 +141,15 @@
       <p>I have a Kindle Oasis that I&rsquo;ve had for years and I love it. I really love reading, I feel good about myself when I read more, but I struggle to resist the allure of the internet and the ease of access that my phone gives me to a never-ending slot machine of interesting things.</p>
 <p>The Kindle Oasis has just enough connectivity built in to be useful. Long press a word and you can look it up in the dictionary or check Wikipedia. Occasionally I&rsquo;d want to understand something from a book a bit better and I&rsquo;d open the Kindle&rsquo;s web browser to look it up. The browser used to be labelled &ldquo;experimental&rdquo; and while they&rsquo;ve dropped that label, it&rsquo;s still very bare-bones. Most modern websites render fine, albeit they don&rsquo;t perform very well, but it&rsquo;s not really been something that bothered me until recently.</p>
 <figure><img src="/images/2026/02-09-bbc-direct.jpg"
-    alt="BBC News rendered directly on the Kindle - garbled text and broken layout"><figcaption>
-      <p>BBC News rendered directly on the Kindle - garbled text and broken layout</p>
-    </figcaption>
+			alt="BBC News rendered directly on the Kindle - garbled text and broken layout"><figcaption>
+			<p>BBC News rendered directly on the Kindle - garbled text and broken layout</p>
+		</figcaption>
 </figure>
 
 <figure><img src="/images/2026/02-09-bbc-proxied.jpg"
-    alt="The same page through the Kindle Web Proxy - clean and readable"><figcaption>
-      <p>The same page through the Kindle Web Proxy - clean and readable</p>
-    </figcaption>
+			alt="The same page through the Kindle Web Proxy - clean and readable"><figcaption>
+			<p>The same page through the Kindle Web Proxy - clean and readable</p>
+		</figcaption>
 </figure>
 
 <p>These days, though, I sometimes come across concepts that Wikipedia doesn&rsquo;t cover well enough, and what I really want is to ask an AI about them. The Kindle can&rsquo;t do this. None of the main AI websites work on it. Additionally, I love taking my Kindle with me to the sauna, and you don&rsquo;t take your phone to the sauna, which means I can&rsquo;t access my passkeys for OAuth anyway, even if the frontier lab websites did render correctly on it.</p>
@@ -157,9 +157,9 @@
 <p>Last night I solved this problem by prompting AI maybe 20 times as I cooked dinner. With the help of Claude Code, I built a <a href="https://github.com/DavidFarrell/kindle-web-proxy">Kindle Web Proxy</a> - a server-side web proxy that makes the modern web readable on e-ink.</p>
 <p>It&rsquo;s a Flask app that sits between my Kindle and the internet. You get a simple input box and you can do three things with it:</p>
 <figure><img src="/images/2026/02-09-kindle-proxy-home.png"
-    alt="The home page - type anything and choose Open URL, Search, or Ask the AI"><figcaption>
-      <p>The home page - type anything and choose Open URL, Search, or Ask the AI</p>
-    </figcaption>
+			alt="The home page - type anything and choose Open URL, Search, or Ask the AI"><figcaption>
+			<p>The home page - type anything and choose Open URL, Search, or Ask the AI</p>
+		</figcaption>
 </figure>
 
 <ol>
@@ -168,21 +168,21 @@
 <li><strong>Ask AI</strong> - you can have a multi-turn conversation with Google&rsquo;s Gemini 3 Flash Preview about whatever you&rsquo;re reading</li>
 </ol>
 <figure><img src="/images/2026/02-09-kindle-proxy-search.png"
-    alt="Search results for &rsquo;the second opium war&#39;"><figcaption>
-      <p>Search results for &rsquo;the second opium war'</p>
-    </figcaption>
+			alt="Search results for &rsquo;the second opium war&#39;"><figcaption>
+			<p>Search results for &rsquo;the second opium war'</p>
+		</figcaption>
 </figure>
 
 <figure><img src="/images/2026/02-09-kindle-proxy-wikipedia.png"
-    alt="Wikipedia article rendered through the proxy - with images, working links, and an AI cleanup option"><figcaption>
-      <p>Wikipedia article rendered through the proxy - with images, working links, and an AI cleanup option</p>
-    </figcaption>
+			alt="Wikipedia article rendered through the proxy - with images, working links, and an AI cleanup option"><figcaption>
+			<p>Wikipedia article rendered through the proxy - with images, working links, and an AI cleanup option</p>
+		</figcaption>
 </figure>
 
 <figure><img src="/images/2026/02-09-kindle-proxy-ask-ai.png"
-    alt="Asking the AI about the Second Opium War"><figcaption>
-      <p>Asking the AI about the Second Opium War</p>
-    </figcaption>
+			alt="Asking the AI about the Second Opium War"><figcaption>
+			<p>Asking the AI about the Second Opium War</p>
+		</figcaption>
 </figure>
 
 <p>It also handles images (converts to greyscale, resizes for e-ink), paginates long articles so the Kindle doesn&rsquo;t choke, and even extracts text from PDFs. There&rsquo;s a bookmarks system so I can save pages for later.</p>
@@ -222,7 +222,7 @@
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/09-23-decade-of-agents-swyx-keynote/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/swyx-decade-agents/09-23-swyx-decade-agents_hu_b8d0bb77fb2c5f39.png" alt="The Decade of Agents: Swyx&#39;s AI Engineer Paris Keynote" width="750" height="392">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/swyx-decade-agents/09-23-swyx-decade-agents_hu_55eb81c9cd193c08.png" alt="The Decade of Agents: Swyx&#39;s AI Engineer Paris Keynote" width="750" height="392">
 
 	  </figure>
 
@@ -239,7 +239,7 @@
 	
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2025/06-22-ai-demystified-book-by-antonio-weiss/"></a>
 
-	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/06-22-ai-demystified-book-cover_hu_f9497362d184216f.png" alt="AI Demystified Book by Antonio Weiss" width="750" height="887">
+	<figure class="w-full aspect-video overflow-hidden rounded-3xl"><img class="object-cover group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2025/06-22-ai-demystified-book-cover_hu_84b4f883aeacfc1a.png" alt="AI Demystified Book by Antonio Weiss" width="750" height="887">
 
 	  </figure>
 
@@ -273,8 +273,17 @@
 		<h2 class="font-bold text-xl mb-8">Recent Post</h2>
 
 		<article class="relative group flex flex-row">
+	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-18-how-ai-built-this-at-figma/"></a>
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-18-how-ai-built-this-at-figma/figma-hero-16x9_hu_9d1f2ab96c509a6b.jpg" alt="How AI Built This at Figma" width="444" height="250" style="object-fit: contain;">
+
+	</figure>
+	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
+		<h3 class="font-bold group-hover:underline decoration-auto">How AI Built This at Figma</h3>
+	</div>
+</article>
+<article class="relative group flex flex-row">
 	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/"></a>
-	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_90771763e1e6f5c2.png" alt="Using Jev to Answer the Internet&#39;s Hardest Questions" width="444" height="250" style="object-fit: contain;">
+	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-16-jev-hardest-questions/dress-hero-16x9_hu_c4956a3624d1224c.png" alt="Using Jev to Answer the Internet&#39;s Hardest Questions" width="444" height="250" style="object-fit: contain;">
 
 	</figure>
 	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
@@ -306,15 +315,6 @@
 	</figure>
 	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
 		<h3 class="font-bold group-hover:underline decoration-auto">On The PSC Podcast</h3>
-	</div>
-</article>
-<article class="relative group flex flex-row">
-	<a class="insert-link" href="https://thingsithinkithink.blog/posts/2026/11-09-trying-out-personal-agents/"></a>
-	<figure class="aspect-video overflow-hidden rounded-xl border border-zinc-200 bg-white p-1" style="flex: 0 0 33.333333%;"><img class="h-full w-full rounded-lg group-hover:scale-105 transition duration-500 cursor-pointer" src="https://thingsithinkithink.blog/images/2026/11-09-personal-agents/hero-logo-collage_hu_17f6f7d4c4bf2efd.jpg" alt="How I Got Hacked by Instinct" width="444" height="250" style="object-fit: contain;">
-
-	</figure>
-	<div class="self-center ml-4" style="flex: 1 1 0%; min-width: 0;">
-		<h3 class="font-bold group-hover:underline decoration-auto">How I Got Hacked by Instinct</h3>
 	</div>
 </article>
 

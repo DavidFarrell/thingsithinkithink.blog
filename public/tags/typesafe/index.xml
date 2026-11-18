@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Typesafe on thingsithinkithink</title>
-    <link>https://thingsithinkithink.blog/tags/typesafe/</link>
-    <description>Recent content in Typesafe on thingsithinkithink</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 16 Nov 2026 06:00:00 +0000</lastBuildDate>
-    <atom:link href="https://thingsithinkithink.blog/tags/typesafe/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Using Jev to Answer the Internet&#39;s Hardest Questions</title>
-      <link>https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/</link>
-      <pubDate>Mon, 16 Nov 2026 06:00:00 +0000</pubDate>
-      <guid>https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/</guid>
-      <description>&lt;p&gt;Last Thursday I was at a Figma AI event, &lt;a href=&#34;https://luma.com/29zm6gmg&#34;&gt;How AI Built This with Figma&lt;/a&gt;. I&amp;rsquo;m going to write up the event properly later, but one of the demos was showing off how Figma used &lt;a href=&#34;https://typesafe.ai&#34;&gt;Jev&lt;/a&gt; - TypeSafe&amp;rsquo;s model that answers questions with typed outputs and probabilities rather than generated text - and somebody made a joke about how we could finally figure out what colour that dress was.&lt;/p&gt;&#xA;&lt;p&gt;Inspired by that, I have decided it&amp;rsquo;s finally time to answer each of the internet&amp;rsquo;s hardest questions.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Typesafe on thingsithinkithink</title>
+		<link>https://thingsithinkithink.blog/tags/typesafe/</link>
+		<description>Recent content in Typesafe on thingsithinkithink</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 16 Nov 2026 06:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://thingsithinkithink.blog/tags/typesafe/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Using Jev to Answer the Internet&#39;s Hardest Questions</title>
+				<link>https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/</link>
+				<pubDate>Mon, 16 Nov 2026 06:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/posts/2026/11-16-jev-hardest-questions/</guid>
+				<description>&lt;p&gt;Last Thursday I was at a Figma AI event, &lt;a href=&#34;https://luma.com/29zm6gmg&#34;&gt;How AI Built This with Figma&lt;/a&gt;. I&amp;rsquo;m going to write up the event properly later, but one of the demos was showing off how Figma used &lt;a href=&#34;https://typesafe.ai&#34;&gt;Jev&lt;/a&gt; - TypeSafe&amp;rsquo;s model that answers questions with typed outputs and probabilities rather than generated text - and somebody made a joke about how we could finally figure out what colour that dress was.&lt;/p&gt;&#xA;&lt;p&gt;Inspired by that, I have decided it&amp;rsquo;s finally time to answer each of the internet&amp;rsquo;s hardest questions.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>
