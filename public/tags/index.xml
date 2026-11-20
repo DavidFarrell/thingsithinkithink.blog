@@ -10,14 +10,35 @@
 		
 		
 		
-			<lastBuildDate>Wed, 18 Nov 2026 06:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Fri, 20 Nov 2026 06:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="https://thingsithinkithink.blog/tags/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Ai</title>
 				<link>https://thingsithinkithink.blog/tags/ai/</link>
-				<pubDate>Wed, 18 Nov 2026 06:00:00 +0000</pubDate>
+				<pubDate>Fri, 20 Nov 2026 06:00:00 +0000</pubDate>
 				<guid>https://thingsithinkithink.blog/tags/ai/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Customer-Service</title>
+				<link>https://thingsithinkithink.blog/tags/customer-service/</link>
+				<pubDate>Fri, 20 Nov 2026 06:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/tags/customer-service/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Personal-Agents</title>
+				<link>https://thingsithinkithink.blog/tags/personal-agents/</link>
+				<pubDate>Fri, 20 Nov 2026 06:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/tags/personal-agents/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Service-Design</title>
+				<link>https://thingsithinkithink.blog/tags/service-design/</link>
+				<pubDate>Fri, 20 Nov 2026 06:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/tags/service-design/</guid>
 				<description></description>
 			</item>
 			<item>
@@ -476,7 +497,7 @@
 				<description></description>
 			</item>
 			<item>
-				<title>Product Management</title>
+				<title>Product-Management</title>
 				<link>https://thingsithinkithink.blog/tags/product-management/</link>
 				<pubDate>Sat, 12 Apr 2025 00:00:00 +0000</pubDate>
 				<guid>https://thingsithinkithink.blog/tags/product-management/</guid>

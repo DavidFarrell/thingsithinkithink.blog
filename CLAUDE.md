@@ -4,17 +4,14 @@
 
 Use `./build.sh "commit message"` to build and deploy. The script:
 1. Runs `npm run build`, which builds the Tailwind CSS and runs `hugo --environment production`
-2. Refuses to go on, committing nothing, if any file in `public/` links to `//localhost` (a dev-server build leaked in)
-3. Commits everything (including `public/`)
-4. Pushes to GitHub
+2. Commits everything (including `public/`)
+3. Pushes to GitHub
 
 The GitHub Action uploads `./public` directly - it does NOT run Hugo, so the local build must happen first.
 
 **Do NOT commit after running `hugo server`** - it writes localhost:1313 URLs into `public/`. Always use `./build.sh`, or `npm run build` for a production build without publishing.
 
 **Build script location:** `./build.sh` in the blog root.
-
-**Tests for build.sh:** `python3 -m unittest discover tests` (runs it in a throwaway repo with a stand-in `npm`; never publishes).
 
 ## Images
 
@@ -26,6 +23,8 @@ The GitHub Action uploads `./public` directly - it does NOT run Hugo, so the loc
 - `layouts/partials/head.html` (site-level override of the theme's head, added 2026-11-09) writes Open Graph + Twitter card tags. Before that the site had none, and LinkedIn guessed an image (the goldfinch icon).
 - The preview image is the post's hero (`image:`), cropped to 1200x627. To use a different image for one post, add `og_image: images/...` to its front matter (same path style as `image:`; jpg/png/webp, from `assets/images/`).
 - LinkedIn caches previews: after changing one, re-scrape the URL in https://www.linkedin.com/post-inspector/
+- **Never write or schedule a LinkedIn promo before the post is live.** LinkedIn fetches the preview when the post is composed. A future-dated post returns 404 at that point (Hugo doesn't build it yet), so the preview has no image, and the cached failure sticks even after the post goes live (Jev post, 16 Nov 2026). Write the promo after the 06:00 build, or attach the image to the LinkedIn post directly. If a bad preview is already cached, add a query string to make the URL unique (e.g. `?utm_source=linkedin`); LinkedIn treats that as a new link and fetches it again.
+- Post URLs are `/posts/YYYY/MM-DD-slug/`. The `slug:` in front matter does not set the URL, so `/MM-DD-slug/` returns 404.
 
 ## Internal Links (cross-references between posts)
 

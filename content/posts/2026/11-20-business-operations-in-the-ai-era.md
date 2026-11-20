@@ -40,6 +40,12 @@ The public sector is already getting swamped with FOI requests. The [ICO has iss
 
 When it's simple to see a pothole and just go "Claude, report that pothole", or, as in [my experience with Instinct]({{< ref "posts/2026/11-09-trying-out-personal-agents.md" >}}), the agent itself suggests you claim your Delay Repay, everybody who runs any kind of service that interacts with the public should expect absolutely ginormous growth in engagement with it.
 
+And it's not only people sending agents to do things on their behalf. Agents doing research generate tons of traffic on their own. Ethan Mollick [posted this week](https://x.com/emollick/status/2121641417483169934) about asking Fable 5.2 to reconstruct W. H. Auden's 1941 poetry class. It found a relevant book on the Internet Archive, but that copy was lending-only, so it couldn't open the pages. Instead it read the book a line or two at a time, running full-text search after full-text search and searching each time for the last few words of the previous snippet.
+
+{{< figure src="/images/2026/11-20-business-operations-in-the-ai-era/mollick-agent-reads-book.jpg" caption="One question, one obscure book, and an awful lot of searches." link="https://x.com/emollick/status/2121641417483169934" >}}
+
+That's one person asking one question. Multiply it by everybody with an agent, and the 100x spikes start to look less far-fetched.
+
 ## Removing the demand by fixing the root cause
 
 One of the themes of the talk was ways of removing that demand. One could have a presupposition that reducing customer contact could be anti-user. But it's not really, if the way you remove the demand is by actually solving the problem.
