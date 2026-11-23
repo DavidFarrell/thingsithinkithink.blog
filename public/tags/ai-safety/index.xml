@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Ai-Safety on thingsithinkithink</title>
+		<link>https://thingsithinkithink.blog/tags/ai-safety/</link>
+		<description>Recent content in Ai-Safety on thingsithinkithink</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 23 Nov 2026 06:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://thingsithinkithink.blog/tags/ai-safety/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>What AI Engineers Can Learn From Pilots</title>
+				<link>https://thingsithinkithink.blog/posts/2026/11-23-what-ai-engineers-can-learn-from-pilots/</link>
+				<pubDate>Mon, 23 Nov 2026 06:00:00 +0000</pubDate>
+				<guid>https://thingsithinkithink.blog/posts/2026/11-23-what-ai-engineers-can-learn-from-pilots/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/in/afieldio/&#34;&gt;Adam Field&lt;/a&gt;, who founded &lt;a href=&#34;https://crox.io&#34;&gt;Crox&lt;/a&gt; and used to fly 737s, gave a talk at a &lt;a href=&#34;https://luma.com/0nvp3a1v&#34;&gt;Mindstone meetup&lt;/a&gt; in London last week about a plane crash in 1972. The crew were busy trying to fix a burnt-out landing gear bulb and didn&amp;rsquo;t notice that the autopilot had been knocked off and the plane was slowly descending.&lt;/p&gt;&#xA;&lt;p&gt;He drew an analogy between that and AI. If the AI model is the bulb, we&amp;rsquo;re all so focused on stopping problems with the AI that we sometimes neglect the system around it.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
