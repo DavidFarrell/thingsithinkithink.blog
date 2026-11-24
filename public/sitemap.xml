@@ -2,31 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://thingsithinkithink.blog/tags/ai/</loc>
+    <lastmod>2026-11-24T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/ai-adoption/</loc>
+    <lastmod>2026-11-24T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/artificial-intelligence/</loc>
+    <lastmod>2026-11-24T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/blog/</loc>
+    <lastmod>2026-11-24T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/categories/</loc>
+    <lastmod>2026-11-24T06:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://thingsithinkithink.blog/posts/</loc>
+    <lastmod>2026-11-24T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/tags/</loc>
     <lastmod>2026-11-24T06:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/</loc>
     <lastmod>2026-11-24T06:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://thingsithinkithink.blog/tags/training/</loc>
+    <lastmod>2026-11-24T06:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://thingsithinkithink.blog/posts/2026/11-24-what-companies-can-learn-from-a-nine-year-old/</loc>
+    <lastmod>2026-11-24T06:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://thingsithinkithink.blog/tags/agents/</loc>
     <lastmod>2026-11-23T06:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thingsithinkithink.blog/tags/ai/</loc>
-    <lastmod>2026-11-23T06:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://thingsithinkithink.blog/tags/ai-safety/</loc>
-    <lastmod>2026-11-23T06:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/categories/artificial-intelligence/</loc>
-    <lastmod>2026-11-23T06:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/categories/blog/</loc>
-    <lastmod>2026-11-23T06:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/categories/</loc>
-    <lastmod>2026-11-23T06:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/</loc>
     <lastmod>2026-11-23T06:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/posts/2026/11-23-what-ai-engineers-can-learn-from-pilots/</loc>
@@ -73,9 +82,6 @@
   </url><url>
     <loc>https://thingsithinkithink.blog/posts/2026/11-13-ai-in-housing-finance/</loc>
     <lastmod>2026-11-13T06:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thingsithinkithink.blog/tags/ai-adoption/</loc>
-    <lastmod>2026-11-11T06:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thingsithinkithink.blog/tags/claude/</loc>
     <lastmod>2026-11-11T06:00:00+00:00</lastmod>
