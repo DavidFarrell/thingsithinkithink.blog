@@ -1,5 +1,5 @@
 ---
-title: "What Companies Can Learn From How a Nine-Year-Old Uses AI"
+title: "Why a 9-Year-Old Uses AI Better Than Most"
 date: 2026-11-24T06:00:00Z
 slug: /11-24-what-companies-can-learn-from-a-nine-year-old/
 description: "How to get brilliant at your job with AI, no formal training needed."
